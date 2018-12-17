@@ -1,0 +1,229 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <changeSet id="1" author="martin">
+        <createTable tableName="Payment_Method">
+            <column name="pay_uuid" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="provider" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pay_description" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="Role">
+            <column name="role_uuid" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="role_title" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="User">
+            <column name="email" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="firstname" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lastname" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_uuid" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="pay_uuid" type="varchar(255)">
+                <constraints nullable="true" foreignKeyName="pay_uuid" references="Payment_Method(pay_uuid)"/>
+            </column>
+            <column name="role_uuid" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="role_uuid" references="Role(role_uuid)"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="Genre">
+            <column name="genre_uuid" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="Movie">
+            <column name="movie_uuid" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="genre_uuid" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="genre_uuid" references="Genre(genre_uuid)"/>
+            </column>
+            <column name="prod_year" type="Integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fsk" type="Integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="runtime" type="Integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="picture" type="BLOB">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+
+        <createTable tableName="Seat_Busy">
+            <column name="seat_uuid" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="pres_uuid" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="busy" type="BOOLEAN" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="Reservation">
+            <column name="res_uuid" type="Integer" autoIncrement="true" startWith="1000">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="date" type="Date">
+                <constraints primaryKey="false" nullable="false" unique="false"/>
+            </column>
+            <column name="user_uuid" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="user_uuid" references="User(user_uuid)"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="Room">
+            <column name="room_uuid" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="room_type" type="varchar(255)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="clean" type="BOOLEAN">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="vip_seats" type="BOOLEAN">
+                <constraints nullable="false" unique="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="Seat_Category">
+            <column name="seatcat_uuid" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="seatcat_title" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="seatcat_description" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="Seat">
+            <column name="seat_uuid" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="number" type="Integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="row" type="Integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="seatcat_uuid" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="seatcat_uuid" references="Seat_Category(seatcat_uuid)"/>
+            </column>
+            <column name="room_uuid" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="room_uuid" references="Room(room_uuid)"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="Presentation_Category">
+            <column name="prescat_uuid" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="prescat_title" type="varchar(255)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="prescat_description" type="varchar(255)">
+                <constraints nullable="true" unique="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="Presentation">
+            <column name="pres_uuid" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="movie_uuid" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="movie_uuid" references="Movie(movie_uuid)"/>
+            </column>
+            <column name="prescat_uuid" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="prescat_uuid" references="Presentation_Category(prescat_uuid)"/>
+            </column>
+            <column name="room_uuid" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="room_uuid"/>
+            </column>
+            <column name="date" type="Date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="Price_Category">
+            <column name="pricecat_uuid" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="prescat_uuid" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="prescat_uuid"/>
+            </column>
+            <column name="seatcat_uuid" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="seatcat_uuid"/>
+            </column>
+            <column name="pricecat_title" type="varchar(255)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="pricecat_description" type="varchar(255)">
+                <constraints nullable="true" unique="false"/>
+            </column>
+            <column name="price" type="currency">
+                <constraints nullable="false" unique="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="Ticket">
+            <column name="ticket_uuid" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="res_uuid" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="res_uuid" references="Reservation(res_uuid)"/>
+            </column>
+            <column name="seat_uuid" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="seat_uuid" references="Seat(seat_uuid)"/>
+            </column>
+            <column name="pricecat_uuid" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="pricecat_uuid" references="Price_Category(pricecat_uuid)"/>
+            </column>
+            <column name="pres_uuid" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="pres_uuid" references="Presentation(pres_uuid)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
