@@ -16,21 +16,26 @@ public class RoleDao extends AbstractDao<Role> {
 
     @Override
     public boolean persist(Role object) {
-        if(object instanceof Role && object != null) {
-            Role role = object;
-            return this.persistObject(Role.class, role.getUuid(), COUNT, UPDATE, PERSIST, role.getUuid(), role.getTitle());
+        if (object != null) {
+            return this.persistObject(Role.class, object.getUuid(), COUNT, UPDATE, PERSIST, object.getUuid(), object.getTitle());
         }
         return false;
     }
 
     @Override
     public Role get(Object key) {
-        return this.getObject(Role.class, SELECT, new Object[]{key}, new RoleMapper());
+        if (key != null && !key.equals("")) {
+            return this.getObject(Role.class, SELECT, new Object[]{key}, new RoleMapper());
+        }
+        return null;
     }
 
     @Override
     public boolean delete(Object key) {
-        return this.deleteObject(Role.class, DELETE, key);
+        if (key != null && !key.equals("")) {
+            return this.deleteObject(Role.class, DELETE, key);
+        }
+        return false;
     }
 
     @Override

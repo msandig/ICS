@@ -17,21 +17,26 @@ public class PaymentMethodDao extends AbstractDao<PaymentMethod> {
 
     @Override
     public boolean persist(PaymentMethod object) {
-        if(object instanceof PaymentMethod && object != null) {
-            PaymentMethod paymentMethod = object;
-            return this.persistObject(PaymentMethod.class, paymentMethod.getUuid(), COUNT, UPDATE, PERSIST, paymentMethod.getUuid(), paymentMethod.getDescription(), paymentMethod.getProvider());
+        if (object != null) {
+            return this.persistObject(PaymentMethod.class, object.getUuid(), COUNT, UPDATE, PERSIST, object.getUuid(), object.getDescription(), object.getProvider());
         }
         return false;
     }
 
     @Override
     public PaymentMethod get(Object key) {
-        return this.getObject(PaymentMethod.class, SELECT, new Object[]{key}, new PaymentMethodMapper());
+        if (key != null && !key.equals("")) {
+            return this.getObject(PaymentMethod.class, SELECT, new Object[]{key}, new PaymentMethodMapper());
+        }
+        return null;
     }
 
     @Override
     public boolean delete(Object key) {
-        return this.deleteObject(PaymentMethod.class, DELETE, key);
+        if (key != null && !key.equals("")) {
+            return this.deleteObject(PaymentMethod.class, DELETE, key);
+        }
+        return false;
     }
 
     @Override

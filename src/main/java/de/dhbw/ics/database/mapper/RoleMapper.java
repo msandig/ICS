@@ -13,8 +13,7 @@ public class RoleMapper implements RowMapper<Role> {
 
         String uuid = resultSet.getString("role_uuid");
         String title = resultSet.getString("role_title");
-        Role role = new Role(uuid, title);
-        return role;
+        return new Role(uuid, title);
     }
 
 }

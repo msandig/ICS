@@ -12,7 +12,6 @@ public class PresentationCategoryMapper implements RowMapper<PresentationCategor
         String uuid = resultSet.getString("prescat_uuid");
         String title = resultSet.getString("prescat_title");
         String description = resultSet.getString("prescat_description");
-        PresentationCategory presentationCategory = new PresentationCategory(uuid, title, description);
-        return presentationCategory;
+        return new PresentationCategory(uuid, title, description);
     }
 }

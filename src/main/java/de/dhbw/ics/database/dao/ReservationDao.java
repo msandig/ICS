@@ -19,16 +19,18 @@ public class ReservationDao extends AbstractDao<Reservation> {
 
     @Override
     public boolean persist(Reservation object) {
-        if (object instanceof Reservation && object != null) {
-            Reservation reservation = object;
-            return this.persistObject(Reservation.class, reservation.getUuid(), COUNT, UPDATE, PERSIST, reservation.getUuid(), reservation.getUser().getUuid(), reservation.getDate());
+        if (object != null) {
+            return this.persistObject(Reservation.class, object.getUuid(), COUNT, UPDATE, PERSIST, object.getUuid(), object.getUser().getUuid(), object.getDate());
         }
         return false;
     }
 
     @Override
     public Reservation get(Object key) {
-        return this.getObject(Reservation.class, SELECT, new Object[]{key}, new ReservationMapper());
+        if (key != null && !key.equals("")) {
+            return this.getObject(Reservation.class, SELECT, new Object[]{key}, new ReservationMapper());
+        }
+        return null;
     }
 
     public List<Reservation> getAll(User user) {
@@ -37,11 +39,17 @@ public class ReservationDao extends AbstractDao<Reservation> {
 
     @Override
     public boolean delete(Object key) {
-        return this.deleteObject(Reservation.class, DELETE, key);
+        if (key != null && !key.equals("")) {
+            return this.deleteObject(Reservation.class, DELETE, key);
+        }
+        return false;
     }
 
     public boolean delete(User user) {
-        return this.deleteObject(Reservation.class, DELETE_ALL_BY_USER, user.getUuid());
+        if (user != null) {
+            return this.deleteObject(Reservation.class, DELETE_ALL_BY_USER, user.getUuid());
+        }
+        return false;
     }
 
     @Override

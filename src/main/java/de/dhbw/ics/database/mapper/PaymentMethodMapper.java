@@ -13,8 +13,7 @@ public class PaymentMethodMapper implements RowMapper<PaymentMethod> {
         String uuid = resultSet.getString("pay_uuid");
         String description = resultSet.getString("pay_description");
         String provider =  resultSet.getString("provider");
-        PaymentMethod paymentMethod = new PaymentMethod(uuid, description, provider);
-        return paymentMethod;
+        return new PaymentMethod(uuid, description, provider);
     }
 
 }

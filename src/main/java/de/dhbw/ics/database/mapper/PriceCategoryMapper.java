@@ -19,7 +19,6 @@ public class PriceCategoryMapper implements RowMapper<PriceCategory> {
         String title = resultSet.getString("pricecat_title");
         String description = resultSet.getString("pricecat_description");
         BigDecimal price = resultSet.getBigDecimal("price");
-        PriceCategory priceCategory = new PriceCategory(uuid, presentationCategory, seatCategory, title, description, price);
-        return priceCategory;
+        return new PriceCategory(uuid, presentationCategory, seatCategory, title, description, price);
     }
 }

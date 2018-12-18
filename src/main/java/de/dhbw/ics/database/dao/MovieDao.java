@@ -19,21 +19,27 @@ public class MovieDao extends AbstractDao<Movie> {
 
     @Override
     public boolean persist(Movie object) {
-        if(object instanceof Movie && object != null) {
-            Movie movie = object;
-            return this.persistObject(Movie.class, movie.getUuid(), COUNT, UPDATE, PERSIST, movie.getUuid(), movie.getGenre().getUuid(), movie.getProductionYear(), movie.getTitle(), movie.getDescription(), movie.getFsk(), movie.getRunTime(), movie.getPicture());
+        if (object != null) {
+            return this.persistObject(Movie.class, object.getUuid(), COUNT, UPDATE, PERSIST, object.getUuid(), object.getGenre().getUuid(), object.getProductionYear(), object.getTitle(), object.getDescription(), object.getFsk(), object.getRunTime(), object.getPicture());
         }
         return false;
     }
 
     @Override
     public Movie get(Object key) {
-        return this.getObject(Movie.class, SELECT, new Object[]{key}, new MovieMapper());
+
+        if (key != null && !key.equals("")) {
+            return this.getObject(Movie.class, SELECT, new Object[]{key}, new MovieMapper());
+        }
+        return null;
     }
 
     @Override
     public boolean delete(Object key) {
-        return this.deleteObject(Movie.class, DELETE, key);
+        if (key != null && !key.equals("")) {
+            return this.deleteObject(Movie.class, DELETE, key);
+        }
+        return false;
     }
 
     @Override
@@ -41,7 +47,10 @@ public class MovieDao extends AbstractDao<Movie> {
         return this.getAllObjects(Movie.class, SELECT_ALL, new MovieMapper());
     }
 
-    public List<Movie> getMoviesBetweenIntervall(Date startDate, Date endDate){
-        return this.getObjectsByMultipleArguments(Movie.class, SELECT_BETWEEN_DATE, new Object[]{startDate, endDate}, new MovieMapper());
+    public List<Movie> getMoviesBetweenIntervall(Date startDate, Date endDate) {
+        if (startDate != null && endDate != null) {
+            return this.getObjectsByMultipleArguments(Movie.class, SELECT_BETWEEN_DATE, new Object[]{startDate, endDate}, new MovieMapper());
+        }
+        return null;
     }
 }

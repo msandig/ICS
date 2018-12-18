@@ -16,16 +16,18 @@ public class UserDao extends AbstractDao<User> {
 
     @Override
     public boolean persist(User object) {
-        if (object instanceof User && object != null) {
-            User user = object;
-            return this.persistObject(User.class, user.getEmail(), COUNT, UPDATE, PERSIST, user.getUuid(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getPaymentMethod().getUuid());
+        if (object != null) {
+            return this.persistObject(User.class, object.getEmail(), COUNT, UPDATE, PERSIST, object.getUuid(), object.getFirstName(), object.getLastName(), object.getPassword(), object.getPaymentMethod().getUuid());
         }
         return false;
     }
 
     @Override
     public User get(Object key) {
-        return this.getObject(User.class, SELECT, new Object[]{key}, new UserMapper());
+        if (key != null && !key.equals("")) {
+            return this.getObject(User.class, SELECT, new Object[]{key}, new UserMapper());
+        }
+        return null;
     }
 
     @Override
@@ -35,6 +37,9 @@ public class UserDao extends AbstractDao<User> {
 
     @Override
     public boolean delete(Object key) {
-        return this.deleteObject(User.class, DELETE, key);
+        if (key != null && !key.equals("")) {
+            return this.deleteObject(User.class, DELETE, key);
+        }
+        return false;
     }
 }

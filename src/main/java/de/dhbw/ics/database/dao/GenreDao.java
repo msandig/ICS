@@ -16,21 +16,26 @@ public class GenreDao extends AbstractDao<Genre> {
 
     @Override
     public boolean persist(Genre object) {
-        if(object instanceof Genre && object != null) {
-            Genre genre = object;
-            return this.persistObject(Genre.class, genre.getUuid(), COUNT, UPDATE, PERSIST, genre.getUuid(), genre.getName());
+        if (object != null) {
+            return this.persistObject(Genre.class, object.getUuid(), COUNT, UPDATE, PERSIST, object.getUuid(), object.getName());
         }
         return false;
     }
 
     @Override
     public Genre get(Object key) {
-        return this.getObject(Genre.class, SELECT, new Object[]{key}, new GenreMapper());
+        if (key != null && !key.equals("")) {
+            return this.getObject(Genre.class, SELECT, new Object[]{key}, new GenreMapper());
+        }
+        return null;
     }
 
     @Override
     public boolean delete(Object key) {
-        return this.deleteObject(Genre.class, DELETE, key);
+        if (key != null && !key.equals("")) {
+            return this.deleteObject(Genre.class, DELETE, key);
+        }
+        return false;
     }
 
     @Override

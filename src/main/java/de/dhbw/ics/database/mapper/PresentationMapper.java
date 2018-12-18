@@ -18,7 +18,6 @@ public class PresentationMapper implements RowMapper<Presentation> {
         Room room = new RoomMapper().mapRow(resultSet, i);
         Date date = resultSet.getDate("date");
         PresentationCategory presentationCategory = new PresentationCategoryMapper().mapRow(resultSet, i);
-        Presentation presentation = new Presentation(uuid, movie, room, date, presentationCategory);
-        return presentation;
+        return new Presentation(uuid, movie, room, date, presentationCategory);
     }
 }

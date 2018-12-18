@@ -12,7 +12,6 @@ public class SeatCategoryMapper implements RowMapper<SeatCategory> {
         String uuid = resultSet.getString("seatcat_uuid");
         String title = resultSet.getString("seatcat_uuid");
         String description = resultSet.getString("seatcat_title");
-        SeatCategory seatCategory = new SeatCategory(uuid, title, description);
-        return seatCategory;
+        return new SeatCategory(uuid, title, description);
     }
 }

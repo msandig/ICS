@@ -16,21 +16,26 @@ public class SeatCategoryDao extends AbstractDao<SeatCategory> {
 
     @Override
     public boolean persist(SeatCategory object) {
-        if(object instanceof SeatCategory && object != null) {
-            SeatCategory seatCategory = object;
-            return this.persistObject(SeatCategory.class, seatCategory.getUuid(), COUNT, UPDATE, PERSIST, seatCategory.getUuid(), seatCategory.getTitle(), seatCategory.getDescription());
+        if (object != null) {
+            return this.persistObject(SeatCategory.class, object.getUuid(), COUNT, UPDATE, PERSIST, object.getUuid(), object.getTitle(), object.getDescription());
         }
         return false;
     }
 
     @Override
     public SeatCategory get(Object key) {
-        return this.getObject(SeatCategory.class, SELECT, new Object[]{key}, new SeatCategoryMapper());
+        if (key != null && !key.equals("")) {
+            return this.getObject(SeatCategory.class, SELECT, new Object[]{key}, new SeatCategoryMapper());
+        }
+        return null;
     }
 
     @Override
     public boolean delete(Object key) {
-        return this.deleteObject(SeatCategory.class, DELETE, key);
+        if (key != null && !key.equals("")) {
+            return this.deleteObject(SeatCategory.class, DELETE, key);
+        }
+        return false;
     }
 
     @Override

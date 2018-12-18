@@ -19,7 +19,10 @@ public class SeatDao extends AbstractDao<Seat> {
 
     @Override
     public boolean persist(Seat object) {
-        return this.persistObject(Seat.class, object.getUuid(), COUNT, UPDATE, PERSIST, object.getUuid(), object.getRow(), object.getNumber(), object.getSeatCategory().getUuid(), object.getRoom().getUuid());
+        if (object != null) {
+            return this.persistObject(Seat.class, object.getUuid(), COUNT, UPDATE, PERSIST, object.getUuid(), object.getRow(), object.getNumber(), object.getSeatCategory().getUuid(), object.getRoom().getUuid());
+        }
+        return false;
     }
 
     @Override

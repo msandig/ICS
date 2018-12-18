@@ -13,7 +13,6 @@ public class RoomMapper implements RowMapper<Room> {
         String roomType = resultSet.getString("roomType");
         boolean clean = resultSet.getBoolean("clean");
         boolean vip = resultSet.getBoolean("vip_seats");
-        Room room = new Room(uuid, roomType, clean, vip);
-        return room;
+        return new Room(uuid, roomType, clean, vip);
     }
 }

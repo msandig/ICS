@@ -11,19 +11,17 @@ import java.util.List;
 
 public abstract class AbstractDao<T> implements Dao<T> {
 
-    protected DataSource dataSource = null;
-    protected JdbcTemplate jdbcTemplate = null;
+    private JdbcTemplate jdbcTemplate = null;
     private static final Logger LOG = LoggerFactory.getLogger(AbstractDao.class);
 
     @Override
     public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
         if (dataSource != null) {
             jdbcTemplate = new JdbcTemplate(dataSource);
         }
     }
 
-    protected boolean persistObject(Class clazz, Object primaryKey, String countStatement, String updateStatement, String persistStatement, Object... args) {
+    boolean persistObject(Class clazz, Object primaryKey, String countStatement, String updateStatement, String persistStatement, Object... args) {
         try {
             if (jdbcTemplate != null) {
                 int i = jdbcTemplate.queryForObject(countStatement, Integer.class, primaryKey);
@@ -43,7 +41,8 @@ public abstract class AbstractDao<T> implements Dao<T> {
         return false;
     }
 
-    protected T getObject(Class clazz, String selectStatement, Object[] args , RowMapper rowMapper){
+    @SuppressWarnings("unchecked")
+    T getObject(Class clazz, String selectStatement, Object[] args , RowMapper<T> rowMapper){
         Object object = null;
         try {
             object = jdbcTemplate.queryForObject(selectStatement, args, rowMapper);
@@ -54,16 +53,16 @@ public abstract class AbstractDao<T> implements Dao<T> {
         return (T) object;
     }
 
-    protected boolean deleteObject(Class clazz, String deleteStatement, Object primaryKey){
+    boolean deleteObject(Class clazz, String deleteStatement, Object primaryKey){
         try {
-            return (jdbcTemplate.update(deleteStatement, primaryKey) != 0) ? true : false;
+            return jdbcTemplate.update(deleteStatement, primaryKey) != 0;
         } catch (DataAccessException e) {
             LOG.info("Could not delete {} for primary key: {}", clazz.getName(), primaryKey);
         }
         return false;
     }
 
-    protected List<T> getAllObjects(Class clazz, String selectStatement, RowMapper rowMapper){
+    List<T> getAllObjects(Class clazz, String selectStatement, RowMapper<T> rowMapper){
         List<T> objectList = null;
         try {
             objectList = jdbcTemplate.query(selectStatement, rowMapper);
@@ -74,7 +73,7 @@ public abstract class AbstractDao<T> implements Dao<T> {
         return objectList;
     }
 
-    protected List<T> getObjectsByMultipleArguments(Class clazz, String selectStatement, Object[] args , RowMapper rowMapper){
+    List<T> getObjectsByMultipleArguments(Class clazz, String selectStatement, Object[] args , RowMapper<T> rowMapper){
         List<T> objectList = null;
         try {
             objectList = jdbcTemplate.query(selectStatement, args, rowMapper);
