@@ -23,9 +23,10 @@ public class ReservationMapper implements RowMapper<Reservation> {
         Integer uuid = resultSet.getInt("res_uuid");
         String userUUID = resultSet.getString("user_uuid");
         Date date = resultSet.getDate("date");
-        Reservation reservation = new Reservation(uuid, date);
+        boolean payed = resultSet.getBoolean("payed");
+        Reservation reservation = new Reservation(uuid, date, payed);
         if(this.user != null){
-            if (userUUID == this.user.getUuid()){
+            if (userUUID.equals(this.user.getUuid())){
                 reservation.setUser(this.user);
             }
         }else{

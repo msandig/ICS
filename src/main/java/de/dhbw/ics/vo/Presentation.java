@@ -27,6 +27,14 @@ public class Presentation {
         this.presentationCategory = presentationCategory;
     }
 
+    public PresentationCategory getPresentationCategory() {
+        return presentationCategory;
+    }
+
+    public void setPresentationCategory(PresentationCategory presentationCategory) {
+        this.presentationCategory = presentationCategory;
+    }
+
     public String getUuid() {
         return uuid;
     }

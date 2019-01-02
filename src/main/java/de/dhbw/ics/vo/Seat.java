@@ -1,16 +1,17 @@
 package de.dhbw.ics.vo;
 
-import org.apache.commons.lang3.StringUtils;
-
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class Seat {
 
-    private String uuid = StringUtils.EMPTY;
-    private Integer number = 0;
-    private Integer row = 0;
-    private SeatCategory seatCategory = null;
-    private Room room = null;
+    private String uuid;
+    private Integer number;
+    private Integer row;
+    private SeatCategory seatCategory;
+    private Room room;
+    private Map<String, BusySeat> seatBusy = new HashMap<>();
 
     public Seat(String uuid, Room room, SeatCategory seatCategory, Integer number, Integer row) {
         this.uuid = uuid;
@@ -26,6 +27,14 @@ public class Seat {
         this.uuid = UUID.randomUUID().toString();
         this.row = row;
         this.number = number;
+    }
+
+    public void setBusy(BusySeat busySeat) {
+        seatBusy.putIfAbsent(busySeat.getPresentation().getUuid(), busySeat);
+    }
+
+    public boolean isBusy(Presentation presentation) {
+        return this.seatBusy.get(presentation.getUuid()).isBusy();
     }
 
     public String getUuid() {

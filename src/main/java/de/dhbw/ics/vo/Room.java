@@ -10,20 +10,23 @@ public class Room {
     private String roomType;
     private boolean isClean;
     private boolean isVIP;
-    private List<Seat> seats = new ArrayList<Seat>();
+    private Integer number;
+    private List<Seat> seats = new ArrayList<>();
 
-    public Room(String uuid, String roomType, boolean isClean, boolean isVIP) {
+    public Room(String uuid, String roomType, boolean isClean, boolean isVIP, int number) {
         this.uuid = uuid;
         this.roomType = roomType;
         this.isClean = isClean;
         this.isVIP = isVIP;
+        this.number = number;
     }
 
-    public Room(String roomType, boolean isClean, boolean isVIP) {
+    public Room(String roomType, boolean isClean, boolean isVIP, int number) {
         this.roomType = roomType;
         this.isClean = isClean;
         this.isVIP = isVIP;
         this.uuid = UUID.randomUUID().toString();
+        this.number = number;
     }
 
     public String getUuid() {
@@ -60,5 +63,13 @@ public class Room {
 
     public void setSeats(List<Seat> seats) {
         this.seats = seats;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 }

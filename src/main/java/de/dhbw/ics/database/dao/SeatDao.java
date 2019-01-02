@@ -1,5 +1,6 @@
 package de.dhbw.ics.database.dao;
 
+import de.dhbw.ics.database.mapper.SeatMapper;
 import de.dhbw.ics.vo.Room;
 import de.dhbw.ics.vo.Seat;
 
@@ -8,14 +9,12 @@ import java.util.List;
 public class SeatDao extends AbstractDao<Seat> {
 
     private static final String PERSIST = "INSERT INTO SEAT(seat_uuid, row, number, seatcat_uuid, room_uuid) VALUES (?, ?, ?, ?, ?)";
-    private static final String SELECT = "SELECT * FROM SEAT JOIN SEAT_CATEGORY ON SEAT.seatcat_uuid = SEAT_CATEGORY.seatcat_uuid WHERE seat_uuid = ?";
+    private static final String SELECT = "SELECT * FROM SEAT JOIN SEAT_CATEGORY ON SEAT.seatcat_uuid = SEAT_CATEGORY.seatcat_uuid JOIN ROOM ON SEAT.room_uuid = ROOM.room_uuid WHERE seat_uuid = ?";
     private static final String DELETE = "DELETE FROM SEAT WHERE seat_uuid = ?";
     private static final String UPDATE = "UPDATE SEAT SET row = ?, number = ?, seatcat_uuid = ?, room_uuid = ? WHERE seat_uuid = ?";
     private static final String COUNT = "SELECT COUNT(*) FROM SEAT WHERE seat_uuid = ?";
-    private static final String SELECT_ALL = "SELECT * FROM SEAT";
-    private static final String SELECT_ALL_BY_ROOM = "SELECT * FROM SEAT WHERE room_uuid = ?";
-
-    private Room room = null;
+    private static final String SELECT_ALL = "SELECT * FROM SEAT JOIN SEAT_CATEGORY ON SEAT.seatcat_uuid = SEAT_CATEGORY.seatcat_uuid JOIN ROOM ON SEAT.room_uuid = ROOM.room_uuid";
+    private static final String SELECT_ALL_BY_ROOM = "SELECT * FROM SEAT WHERE room_uuid = ? JOIN SEAT_CATEGORY ON SEAT.seatcat_uuid = SEAT_CATEGORY.seatcat_uuid";
 
     @Override
     public boolean persist(Seat object) {
@@ -26,21 +25,34 @@ public class SeatDao extends AbstractDao<Seat> {
     }
 
     @Override
-    public Seat get(Object key) {
+    public Seat get(Object object) {
+        if (object != null && object instanceof Seat) {
+            Seat seat = (Seat) object;
+            if (seat.getRoom() != null) {
+                return this.getObject(Seat.class, SELECT, new Object[]{seat.getUuid()}, new SeatMapper(seat.getRoom()));
+            }
+        }
         return null;
     }
 
     @Override
     public boolean delete(Object key) {
+        if (key != null && !key.equals("")) {
+            return this.deleteObject(Seat.class, DELETE, key);
+        }
         return false;
     }
 
     @Override
     public List<Seat> getAll() {
+        return this.getAllObjects(Seat.class, SELECT_ALL, new SeatMapper());
+    }
+
+    public List<Seat> getAllByRoom(Room room) {
+        if (room != null) {
+            return this.getAllObjects(Seat.class, SELECT_ALL_BY_ROOM, new SeatMapper(room));
+        }
         return null;
     }
 
-    public List<Seat> getAll(Room room) {
-        return null;
-    }
 }

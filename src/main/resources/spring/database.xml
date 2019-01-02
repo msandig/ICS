@@ -86,7 +86,7 @@
             </column>
         </createTable>
 
-        <createTable tableName="Seat_Busy">
+        <createTable tableName="Busy_Seat">
             <column name="seat_uuid" type="varchar(255)">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
@@ -108,6 +108,9 @@
             <column name="user_uuid" type="varchar(255)">
                 <constraints nullable="false" foreignKeyName="user_uuid" references="User(user_uuid)"/>
             </column>
+            <column name="payed" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
 
         <createTable tableName="Room">
@@ -122,6 +125,9 @@
             </column>
             <column name="vip_seats" type="BOOLEAN">
                 <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="room_number" type="Integer">
+                <constraints nullable="false" unique="true"/>
             </column>
         </createTable>
 

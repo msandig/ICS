@@ -8,10 +8,10 @@ import java.util.List;
 
 public class ReservationDao extends AbstractDao<Reservation> {
 
-    private static final String PERSIST = "INSERT INTO RESERVATION (res_uuid, user_uuid, date) VALUES (?, ?, ?)";
+    private static final String PERSIST = "INSERT INTO RESERVATION (res_uuid, user_uuid, date, payed) VALUES (?, ?, ?, ?)";
     private static final String SELECT = "SELECT * FROM RESERVATION WHERE res_uuid = ?";
-    private static final String DELETE = "DELETE FROM RESERVATION WHERE role_uuid = ?";
-    private static final String UPDATE = "UPDATE RESERVATION SET user_uuid = ?, date = ? WHERE res_uuid = ?";
+    private static final String DELETE = "DELETE FROM RESERVATION WHERE res_uuid = ?";
+    private static final String UPDATE = "UPDATE RESERVATION SET user_uuid = ?, date = ?, payed = ? WHERE res_uuid = ?";
     private static final String COUNT = "SELECT COUNT(*) FROM RESERVATION WHERE res_uuid = ?";
     private static final String SELECT_ALL = "SELECT * FROM RESERVATION";
     private static final String SELECT_ALL_BY_USER = "SELECT * FROM RESERVATION WHERE user_uuid = ?";
@@ -33,7 +33,7 @@ public class ReservationDao extends AbstractDao<Reservation> {
         return null;
     }
 
-    public List<Reservation> getAll(User user) {
+    public List<Reservation> getAllByUser(User user) {
         return this.getObjectsByMultipleArguments(Reservation.class, SELECT_ALL_BY_USER, new Object[]{user.getUuid()}, new ReservationMapper(user));
     }
 
@@ -45,7 +45,7 @@ public class ReservationDao extends AbstractDao<Reservation> {
         return false;
     }
 
-    public boolean delete(User user) {
+    public boolean deleteAllByUser(User user) {
         if (user != null) {
             return this.deleteObject(Reservation.class, DELETE_ALL_BY_USER, user.getUuid());
         }
