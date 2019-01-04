@@ -9,12 +9,20 @@ import java.util.List;
 public class SeatDao extends AbstractDao<Seat> {
 
     private static final String PERSIST = "INSERT INTO SEAT(seat_uuid, row, number, seatcat_uuid, room_uuid) VALUES (?, ?, ?, ?, ?)";
-    private static final String SELECT = "SELECT * FROM SEAT JOIN SEAT_CATEGORY ON SEAT.seatcat_uuid = SEAT_CATEGORY.seatcat_uuid JOIN ROOM ON SEAT.room_uuid = ROOM.room_uuid WHERE seat_uuid = ?";
+    private static final String SELECT = "SELECT SEAT.seat_uuid as seat_uuid, SEAT.seatcat_uuid as seatcat_uuid, SEAT.room_uuid as room_uuid, " +
+            "SEAT.number as number, SEAT.row as row, SEAT_CATEGORY.seatcat_title as seatcat_title, SEAT_CATEGORY.seatcat_description as seatcat_description, " +
+            "ROOM.room_type as room_type, ROOM.clean as clean, ROOM.vip_seats as vip_seats, ROOM.number as number " +
+            "FROM SEAT JOIN SEAT_CATEGORY ON SEAT.seatcat_uuid = SEAT_CATEGORY.seatcat_uuid JOIN ROOM ON SEAT.room_uuid = ROOM.room_uuid WHERE seat_uuid = ?";
     private static final String DELETE = "DELETE FROM SEAT WHERE seat_uuid = ?";
     private static final String UPDATE = "UPDATE SEAT SET row = ?, number = ?, seatcat_uuid = ?, room_uuid = ? WHERE seat_uuid = ?";
     private static final String COUNT = "SELECT COUNT(*) FROM SEAT WHERE seat_uuid = ?";
-    private static final String SELECT_ALL = "SELECT * FROM SEAT JOIN SEAT_CATEGORY ON SEAT.seatcat_uuid = SEAT_CATEGORY.seatcat_uuid JOIN ROOM ON SEAT.room_uuid = ROOM.room_uuid";
-    private static final String SELECT_ALL_BY_ROOM = "SELECT * FROM SEAT WHERE room_uuid = ? JOIN SEAT_CATEGORY ON SEAT.seatcat_uuid = SEAT_CATEGORY.seatcat_uuid";
+    private static final String SELECT_ALL = "SELECT SEAT.seat_uuid as seat_uuid, SEAT.seatcat_uuid as seatcat_uuid, SEAT.room_uuid as room_uuid, " +
+            "SEAT.number as number, SEAT.row as row, SEAT_CATEGORY.seatcat_title as seatcat_title, SEAT_CATEGORY.seatcat_description as seatcat_description, " +
+            "ROOM.room_type as room_type, ROOM.clean as clean, ROOM.vip_seats as vip_seats, ROOM.number as number " +
+            "FROM SEAT JOIN SEAT_CATEGORY ON SEAT.seatcat_uuid = SEAT_CATEGORY.seatcat_uuid JOIN ROOM ON SEAT.room_uuid = ROOM.room_uuid";
+    private static final String SELECT_ALL_BY_ROOM = "SELECT SEAT.seat_uuid as seat_uuid, SEAT.seatcat_uuid as seatcat_uuid, SEAT.room_uuid as room_uuid, " +
+            "SEAT.number as number, SEAT.row as row, SEAT_CATEGORY.seatcat_title as seatcat_title, SEAT_CATEGORY.seatcat_description as seatcat_description, " +
+            "FROM SEAT WHERE room_uuid = ? JOIN SEAT_CATEGORY ON SEAT.seatcat_uuid = SEAT_CATEGORY.seatcat_uuid";
 
     @Override
     public boolean persist(Seat object) {
@@ -38,7 +46,7 @@ public class SeatDao extends AbstractDao<Seat> {
     @Override
     public boolean delete(Object key) {
         if (key != null && !key.equals("")) {
-            return this.deleteObject(Seat.class, DELETE, key);
+            return this.deleteObject(Seat.class, DELETE, new Object[]{key});
         }
         return false;
     }

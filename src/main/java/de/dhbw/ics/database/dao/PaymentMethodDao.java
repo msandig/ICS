@@ -34,7 +34,7 @@ public class PaymentMethodDao extends AbstractDao<PaymentMethod> {
     @Override
     public boolean delete(Object key) {
         if (key != null && !key.equals("")) {
-            return this.deleteObject(PaymentMethod.class, DELETE, key);
+            return this.deleteObject(PaymentMethod.class, DELETE,  new Object[]{key});
         }
         return false;
     }

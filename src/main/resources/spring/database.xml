@@ -96,6 +96,9 @@
             <column name="busy" type="BOOLEAN" defaultValue="false">
                 <constraints nullable="false"/>
             </column>
+            <column name="looked" type="BOOLEAN" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
 
         <createTable tableName="Reservation">

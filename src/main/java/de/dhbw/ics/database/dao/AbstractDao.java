@@ -11,32 +11,40 @@ import java.util.List;
 
 public abstract class AbstractDao<T> implements Dao<T> {
 
-    private JdbcTemplate jdbcTemplate = null;
+    protected JdbcTemplate jdbcTemplate = null;
     private static final Logger LOG = LoggerFactory.getLogger(AbstractDao.class);
 
     @Override
     public void setDataSource(DataSource dataSource) {
         if (dataSource != null) {
-            jdbcTemplate = new JdbcTemplate(dataSource);
+            this.jdbcTemplate = new JdbcTemplate(dataSource);
         }
     }
 
     boolean persistObject(Class clazz, Object primaryKey, String countStatement, String updateStatement, String persistStatement, Object... args) {
         try {
-            if (jdbcTemplate != null) {
-                int i = jdbcTemplate.queryForObject(countStatement, Integer.class, primaryKey);
+            if (this.jdbcTemplate != null) {
+                int i = this.jdbcTemplate.queryForObject(countStatement, Integer.class, primaryKey);
                 if (i == 1) {
                     var helper = args[0];
-                    args[0] = args[args.length-1];
-                    args[args.length-1] = helper;
-                    jdbcTemplate.update(updateStatement, args);
+                    Object[] updateArgs = new Object[args.length];
+                    for(int j = 1; j <= updateArgs.length-1; j++){
+                        updateArgs[j-1] = args[j];
+                    }
+                    updateArgs[args.length-1] = helper;
+                    this.jdbcTemplate.update(updateStatement, updateArgs);
+                    LOG.info("Update {}!", clazz.getSimpleName() );
                 } else {
-                    jdbcTemplate.update(persistStatement, args);
+                    this.jdbcTemplate.update(persistStatement, args);
+                    LOG.info("Persist new {}!", clazz.getSimpleName() );
                 }
                 return true;
             }
         } catch (DataAccessException e) {
-            LOG.info("Could not persist {}!", clazz.getName() );
+            LOG.info("Could not persist {}!", clazz.getSimpleName() );
+            if(LOG.isDebugEnabled()){
+                LOG.debug(e.getMessage());
+            }
         }
         return false;
     }
@@ -45,19 +53,19 @@ public abstract class AbstractDao<T> implements Dao<T> {
     T getObject(Class clazz, String selectStatement, Object[] args , RowMapper<T> rowMapper){
         Object object = null;
         try {
-            object = jdbcTemplate.queryForObject(selectStatement, args, rowMapper);
+            object = this.jdbcTemplate.queryForObject(selectStatement, args, rowMapper);
         } catch (DataAccessException e) {
-            LOG.info("Could not find {} for primary key: {} ", clazz.getName(), args);
+            LOG.info("Could not find {} for primary key: {} ", clazz.getSimpleName(), args);
         }
 
         return (T) object;
     }
 
-    boolean deleteObject(Class clazz, String deleteStatement, Object primaryKey){
+    boolean deleteObject(Class clazz, String deleteStatement, Object[] primaryKey){
         try {
             return jdbcTemplate.update(deleteStatement, primaryKey) != 0;
         } catch (DataAccessException e) {
-            LOG.info("Could not delete {} for primary key: {}", clazz.getName(), primaryKey);
+            LOG.info("Could not delete {} for primary key: {}", clazz.getSimpleName(), primaryKey);
         }
         return false;
     }
@@ -65,9 +73,9 @@ public abstract class AbstractDao<T> implements Dao<T> {
     List<T> getAllObjects(Class clazz, String selectStatement, RowMapper<T> rowMapper){
         List<T> objectList = null;
         try {
-            objectList = jdbcTemplate.query(selectStatement, rowMapper);
+            objectList = this.jdbcTemplate.query(selectStatement, rowMapper);
         } catch (DataAccessException e) {
-            LOG.info("Could not find any object of kind {}!", clazz.getName());
+            LOG.info("Could not find any object of kind {}!", clazz.getSimpleName());
         }
 
         return objectList;
@@ -76,9 +84,9 @@ public abstract class AbstractDao<T> implements Dao<T> {
     List<T> getObjectsByMultipleArguments(Class clazz, String selectStatement, Object[] args , RowMapper<T> rowMapper){
         List<T> objectList = null;
         try {
-            objectList = jdbcTemplate.query(selectStatement, args, rowMapper);
+            objectList = this.jdbcTemplate.query(selectStatement, args, rowMapper);
         } catch (DataAccessException e) {
-            LOG.info("Could not find any object of kind {}!", clazz.getName());
+            LOG.info("Could not find any object of kind {}!", clazz.getSimpleName());
         }
         return objectList;
     }

@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class User {
+public class User implements Cloneable{
 
     private String uuid;
     private String firstName = StringUtils.EMPTY;
     private String lastName = StringUtils.EMPTY;
     private String email;
-    private String password = StringUtils.EMPTY;
+    private String password;
     private PaymentMethod paymentMethod = null;
     private Role role = null;
     private List<Reservation> reservationList = new ArrayList<>();
@@ -27,6 +27,7 @@ public class User {
         this.uuid = uuid;
         this.email = email;
         this.role = role;
+        this.password = password;
     }
 
     public User(String email, String password, Role role) {
@@ -125,5 +126,10 @@ public class User {
                 .append(password)
                 .append(paymentMethod)
                 .toHashCode();
+    }
+
+    @Override
+    public User clone() throws CloneNotSupportedException {
+        return (User) super.clone();
     }
 }

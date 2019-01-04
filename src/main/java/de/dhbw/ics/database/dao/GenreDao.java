@@ -33,7 +33,7 @@ public class GenreDao extends AbstractDao<Genre> {
     @Override
     public boolean delete(Object key) {
         if (key != null && !key.equals("")) {
-            return this.deleteObject(Genre.class, DELETE, key);
+            return this.deleteObject(Genre.class, DELETE,  new Object[]{key});
         }
         return false;
     }

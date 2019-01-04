@@ -29,7 +29,7 @@ public class Seat {
         this.number = number;
     }
 
-    public void setBusy(BusySeat busySeat) {
+    public void addBusy(BusySeat busySeat) {
         seatBusy.putIfAbsent(busySeat.getPresentation().getUuid(), busySeat);
     }
 

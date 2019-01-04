@@ -40,7 +40,7 @@ public class SeatMapper implements RowMapper<Seat> {
         Integer row = resultSet.getInt("row");
         String uuid = resultSet.getString("seat_uuid");
         Seat seat = new Seat(uuid, this.globalRoom, seatCategory, number, row);
-        this.globalRoom.getSeats().add(seat);
+        this.globalRoom.getSeats().put(seat.getUuid(), seat);
         return seat;
     }
 }

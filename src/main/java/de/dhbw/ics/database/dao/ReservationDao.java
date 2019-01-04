@@ -40,14 +40,14 @@ public class ReservationDao extends AbstractDao<Reservation> {
     @Override
     public boolean delete(Object key) {
         if (key != null && !key.equals("")) {
-            return this.deleteObject(Reservation.class, DELETE, key);
+            return this.deleteObject(Reservation.class, DELETE, new Object[]{key});
         }
         return false;
     }
 
     public boolean deleteAllByUser(User user) {
         if (user != null) {
-            return this.deleteObject(Reservation.class, DELETE_ALL_BY_USER, user.getUuid());
+            return this.deleteObject(Reservation.class, DELETE_ALL_BY_USER,  new Object[]{user.getUuid()});
         }
         return false;
     }

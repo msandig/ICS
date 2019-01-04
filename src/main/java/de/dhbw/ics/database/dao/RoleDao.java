@@ -33,7 +33,7 @@ public class RoleDao extends AbstractDao<Role> {
     @Override
     public boolean delete(Object key) {
         if (key != null && !key.equals("")) {
-            return this.deleteObject(Role.class, DELETE, key);
+            return this.deleteObject(Role.class, DELETE,  new Object[]{key});
         }
         return false;
     }

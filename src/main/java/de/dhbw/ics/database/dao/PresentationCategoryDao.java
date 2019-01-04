@@ -33,7 +33,7 @@ public class PresentationCategoryDao extends AbstractDao<PresentationCategory> {
     @Override
     public boolean delete(Object key) {
         if (key != null && !key.equals("")) {
-            return this.deleteObject(PresentationCategory.class, DELETE, key);
+            return this.deleteObject(PresentationCategory.class, DELETE,  new Object[]{key});
         }
         return false;
     }

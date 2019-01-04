@@ -8,7 +8,12 @@ import java.util.List;
 public class PresentationDao extends AbstractDao<Presentation> {
 
     private static final String PERSIST = "INSERT INTO PRESENTATION (pres_uuid, movie_uuid, prescat_uuid, room_uuid, date) VALUES (?, ?, ?, ?, ?)";
-    private static final String SELECT = "SELECT * FROM PRESENTATION " +
+    private static final String SELECT = "SELECT PRESENTATION.pres_uuid as pres_uuid, PRESENTATION.movie_uuid as movie_uuid, PRESENTATION.prescat_uuid as prescat_uuid, " +
+            "PRESENTATION.room_uuid as room_uuid, PRESENTATION.date as date, MOVIE.genre_uuid as genre_uuid, MOVIE.prod_year as prod_year, " +
+            "MOVIE.title as title, MOVIE.description as description, MOVIE.fsk as fsk, MOVIE.runtime as runtime, MOVIE.picture as picture, " +
+            "GERNE.name as name, ROOM.room_type as room_type, ROOM.clean as clean, ROOM.vip_seats as vip_seats, ROOM.number as number, " +
+            "PRESENTATION_CATEGORY.prescat_title as prescat_title, PRESENTATION_CATEGORY.prescat_description as prescat_description " +
+            "FROM PRESENTATION " +
             "JOIN MOVIE ON PRESENTATION.movie_uuid = MOVIE.movie_uuid " +
             "JOIN GENRE ON MOVIE.genre_uuid = GENRE.genre_uuid " +
             "JOIN ROOM ON PRESENTATION.room_uuid = ROOM.room_uuid " +
@@ -17,7 +22,12 @@ public class PresentationDao extends AbstractDao<Presentation> {
     private static final String DELETE = "DELETE FROM PRESENTATION WHERE pres_uuid = ?";
     private static final String UPDATE = "UPDATE PRESENTATION SET movie_uuid = ?, prescat_uuid = ?, room_uuid = ?, date = ? WHERE pres_uuid = ?";
     private static final String COUNT = "SELECT COUNT(*) FROM PRESENTATION WHERE pres_uuid = ?";
-    private static final String SELECT_ALL = "SELECT * FROM PRESENTATION" +
+    private static final String SELECT_ALL = "SELECT PRESENTATION.pres_uuid as pres_uuid, PRESENTATION.movie_uuid as movie_uuid, PRESENTATION.prescat_uuid as prescat_uuid, " +
+            "PRESENTATION.room_uuid as room_uuid, PRESENTATION.date as date, MOVIE.genre_uuid as genre_uuid, MOVIE.prod_year as prod_year, " +
+            "MOVIE.title as title, MOVIE.description as description, MOVIE.fsk as fsk, MOVIE.runtime as runtime, MOVIE.picture as picture, " +
+            "GERNE.name as name, ROOM.room_type as room_type, ROOM.clean as clean, ROOM.vip_seats as vip_seats, ROOM.number as number, " +
+            "PRESENTATION_CATEGORY.prescat_title as prescat_title, PRESENTATION_CATEGORY.prescat_description as prescat_description " +
+            "FROM PRESENTATION " +
             "JOIN MOVIE ON PRESENTATION.movie_uuid = MOVIE.movie_uuid " +
             "JOIN GENRE ON MOVIE.genre_uuid = GENRE.genre_uuid " +
             "JOIN ROOM ON PRESENTATION.room_uuid = ROOM.room_uuid " +
@@ -42,7 +52,7 @@ public class PresentationDao extends AbstractDao<Presentation> {
     @Override
     public boolean delete(Object key) {
         if (key != null && !key.equals("")) {
-            return this.deleteObject(Presentation.class, DELETE, key);
+            return this.deleteObject(Presentation.class, DELETE,  new Object[]{key});
         }
         return false;
     }

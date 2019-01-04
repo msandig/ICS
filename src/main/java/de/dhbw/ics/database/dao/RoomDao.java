@@ -32,7 +32,7 @@ public class RoomDao extends AbstractDao<Room> {
     @Override
     public boolean delete(Object key) {
         if (key != null && !key.equals("")) {
-            return this.deleteObject(Room.class, DELETE, key);
+            return this.deleteObject(Room.class, DELETE,  new Object[]{key});
         }
         return false;
     }

@@ -5,6 +5,15 @@ public class BusySeat {
     private boolean isBusy = false;
     private Seat seat = null;
     private Presentation presentation = null;
+    private boolean looked = false;
+
+    public boolean isLooked() {
+        return looked;
+    }
+
+    public void setLooked(boolean looked) {
+        this.looked = looked;
+    }
 
     public boolean isBusy() {
         return isBusy;

@@ -1,7 +1,7 @@
 package de.dhbw.ics.vo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class Room {
@@ -11,7 +11,7 @@ public class Room {
     private boolean isClean;
     private boolean isVIP;
     private Integer number;
-    private List<Seat> seats = new ArrayList<>();
+    private Map<String, Seat> seats = new HashMap<>();
 
     public Room(String uuid, String roomType, boolean isClean, boolean isVIP, int number) {
         this.uuid = uuid;
@@ -57,11 +57,11 @@ public class Room {
         isVIP = VIP;
     }
 
-    public List<Seat> getSeats() {
+    public Map<String,Seat> getSeats() {
         return seats;
     }
 
-    public void setSeats(List<Seat> seats) {
+    public void setSeats(Map<String,Seat> seats) {
         this.seats = seats;
     }
 

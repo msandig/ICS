@@ -9,12 +9,18 @@ import java.util.List;
 public class MovieDao extends AbstractDao<Movie> {
 
     private static final String PERSIST = "INSERT INTO MOVIE (movie_uuid, genre_uuid, prod_year, title, description, fsk, runtime, picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    private static final String SELECT = "SELECT * FROM MOVIE JOIN GENRE ON MOVIE.movie_uuid = GENRE.uuid WHERE movie_uuid = ?";
+    private static final String SELECT = "SELECT MOVIE.movie_uuid as movie_uuid, MOVIE.genre_uuid as genre_uuid, MOVIE.prod_year as prod_year, " +
+            "MOVIE.title as title, MOVIE.description as description, MOVIE.fsk as fsk, MOVIE.runtime as runtime, MOVIE.picture as picture, " +
+            "GERNE.name as name FROM MOVIE JOIN GENRE ON MOVIE.movie_uuid = GENRE.uuid WHERE movie_uuid = ?";
     private static final String DELETE = "DELETE FROM MOVIE WHERE movie_uuid = ?";
     private static final String UPDATE = "UPDATE MOVIE SET genre_uuid = ?, prod_year = ?, title = ?, description = ?, fsk = ?, runtime = ?, picture = ? WHERE movie_uuid = ?";
     private static final String COUNT = "SELECT COUNT(*) FROM MOVIE WHERE movie_uuid = ?";
-    private static final String SELECT_ALL = "SELECT * FROM MOVIE";
-    private static final String SELECT_BETWEEN_DATE = "SELECT * FROM MOVIE JOIN GENRE ON MOVIE.movie_uuid = GENRE.uuid WHERE data BETWEEN ? AND ?";
+    private static final String SELECT_ALL = "SELECT MOVIE.movie_uuid as movie_uuid, MOVIE.genre_uuid as genre_uuid, MOVIE.prod_year as prod_year, " +
+            "MOVIE.title as title, MOVIE.description as description, MOVIE.fsk as fsk, MOVIE.runtime as runtime, MOVIE.picture as picture " +
+            "GERNE.name as name FROM MOVIE";
+    private static final String SELECT_BETWEEN_DATE = "SELECT MOVIE.movie_uuid as movie_uuid, MOVIE.genre_uuid as genre_uuid, MOVIE.prod_year as prod_year, " +
+            "MOVIE.title as title, MOVIE.description as description, MOVIE.fsk as fsk, MOVIE.runtime as runtime, MOVIE.picture as picture, " +
+            "GERNE.name as name FROM MOVIE JOIN GENRE ON MOVIE.movie_uuid = GENRE.uuid WHERE data BETWEEN ? AND ?";
 
 
     @Override
@@ -37,7 +43,7 @@ public class MovieDao extends AbstractDao<Movie> {
     @Override
     public boolean delete(Object key) {
         if (key != null && !key.equals("")) {
-            return this.deleteObject(Movie.class, DELETE, key);
+            return this.deleteObject(Movie.class, DELETE,  new Object[]{key});
         }
         return false;
     }
