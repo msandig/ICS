@@ -1,5 +1,9 @@
 package de.dhbw.ics.vo;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+import java.sql.Blob;
 import java.util.UUID;
 
 public class Movie {
@@ -10,7 +14,7 @@ public class Movie {
     private String title;
     private Integer fsk;
     private Integer runTime;
-    private byte[] picture = null;
+    private Blob picture = null;
     private String description;
 
     public Movie(String uuid, Integer productionYear, String title, String description, Integer fsk, Integer runTime) {
@@ -75,11 +79,11 @@ public class Movie {
         this.runTime = runTime;
     }
 
-    public byte[] getPicture() {
+    public Blob getPicture() {
         return picture;
     }
 
-    public void setPicture(byte[] picture) {
+    public void setPicture(Blob picture) {
         this.picture = picture;
     }
 
@@ -89,5 +93,39 @@ public class Movie {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Movie movie = (Movie) o;
+
+        return new EqualsBuilder()
+                .append(uuid, movie.uuid)
+                .append(genre, movie.genre)
+                .append(productionYear, movie.productionYear)
+                .append(title, movie.title)
+                .append(fsk, movie.fsk)
+                .append(runTime, movie.runTime)
+                .append(picture, movie.picture)
+                .append(description, movie.description)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(uuid)
+                .append(genre)
+                .append(productionYear)
+                .append(title)
+                .append(fsk)
+                .append(runTime)
+                .append(picture)
+                .append(description)
+                .toHashCode();
     }
 }

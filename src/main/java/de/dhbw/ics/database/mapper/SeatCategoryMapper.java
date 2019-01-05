@@ -10,8 +10,8 @@ public class SeatCategoryMapper implements RowMapper<SeatCategory> {
     @Override
     public SeatCategory mapRow(ResultSet resultSet, int i) throws SQLException {
         String uuid = resultSet.getString("seatcat_uuid");
-        String title = resultSet.getString("seatcat_uuid");
-        String description = resultSet.getString("seatcat_title");
+        String title = resultSet.getString("seatcat_title");
+        String description = resultSet.getString("seatcat_description");
         return new SeatCategory(uuid, title, description);
     }
 }

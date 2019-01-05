@@ -1,5 +1,8 @@
 package de.dhbw.ics.vo;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -61,5 +64,33 @@ public class Presentation {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Presentation that = (Presentation) o;
+
+        return new EqualsBuilder()
+                .append(uuid, that.uuid)
+                .append(movie, that.movie)
+                .append(room, that.room)
+                .append(date, that.date)
+                .append(presentationCategory, that.presentationCategory)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(uuid)
+                .append(movie)
+                .append(room)
+                .append(date)
+                .append(presentationCategory)
+                .toHashCode();
     }
 }

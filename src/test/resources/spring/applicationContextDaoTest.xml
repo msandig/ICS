@@ -27,4 +27,29 @@
         <property name="dataSource" ref="testDataSource"/>
     </bean>
 
+    <bean id="genreDao" class="de.dhbw.ics.database.dao.GenreDao">
+        <property name="dataSource" ref="testDataSource"/>
+    </bean>
+
+    <bean id="movieDao" class="de.dhbw.ics.database.dao.MovieDao">
+        <property name="dataSource" ref="testDataSource"/>
+    </bean>
+
+    <bean id="seatCategoryDao" class="de.dhbw.ics.database.dao.SeatCategoryDao">
+        <property name="dataSource" ref="testDataSource"/>
+    </bean>
+
+    <bean id="presentationCategoryDao" class="de.dhbw.ics.database.dao.PresentationCategoryDao">
+        <property name="dataSource" ref="testDataSource"/>
+    </bean>
+
+    <bean id="seatDao" class="de.dhbw.ics.database.dao.SeatDao">
+        <property name="dataSource" ref="testDataSource"/>
+    </bean>
+
+    <bean id="roomDao" class="de.dhbw.ics.database.dao.RoomDao">
+        <property name="dataSource" ref="testDataSource"/>
+    </bean>
+
+
 </beans>

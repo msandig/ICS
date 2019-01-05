@@ -3,6 +3,7 @@ package de.dhbw.ics.database.dao;
 import de.dhbw.ics.database.mapper.PresentationMapper;
 import de.dhbw.ics.vo.Presentation;
 
+import java.util.Date;
 import java.util.List;
 
 public class PresentationDao extends AbstractDao<Presentation> {
@@ -33,6 +34,17 @@ public class PresentationDao extends AbstractDao<Presentation> {
             "JOIN ROOM ON PRESENTATION.room_uuid = ROOM.room_uuid " +
             "JOIN PRESENTATION_CATEGORY ON PRESENTATION.prescat_uuid = PRESENTATION_CATEGORY.prescat_uuid";
 
+    private static final String SELECT_ALL_BETWEEN_DATE = "SELECT PRESENTATION.pres_uuid as pres_uuid, PRESENTATION.movie_uuid as movie_uuid, PRESENTATION.prescat_uuid as prescat_uuid, " +
+            "PRESENTATION.room_uuid as room_uuid, PRESENTATION.date as date, MOVIE.genre_uuid as genre_uuid, MOVIE.prod_year as prod_year, " +
+            "MOVIE.title as title, MOVIE.description as description, MOVIE.fsk as fsk, MOVIE.runtime as runtime, MOVIE.picture as picture, " +
+            "GERNE.name as name, ROOM.room_type as room_type, ROOM.clean as clean, ROOM.vip_seats as vip_seats, ROOM.number as number, " +
+            "PRESENTATION_CATEGORY.prescat_title as prescat_title, PRESENTATION_CATEGORY.prescat_description as prescat_description " +
+            "FROM PRESENTATION " +
+            "JOIN MOVIE ON PRESENTATION.movie_uuid = MOVIE.movie_uuid " +
+            "JOIN GENRE ON MOVIE.genre_uuid = GENRE.genre_uuid " +
+            "JOIN ROOM ON PRESENTATION.room_uuid = ROOM.room_uuid " +
+            "JOIN PRESENTATION_CATEGORY ON PRESENTATION.prescat_uuid = PRESENTATION_CATEGORY.prescat_uuid WHERE MOVIE.prod_year BETWEEN ? AND ?";
+
     @Override
     public boolean persist(Presentation object) {
         if (object != null) {
@@ -60,5 +72,12 @@ public class PresentationDao extends AbstractDao<Presentation> {
     @Override
     public List<Presentation> getAll() {
         return this.getAllObjects(Presentation.class, SELECT_ALL, new PresentationMapper());
+    }
+
+    public List<Presentation> getMoviesBetweenIntervall(Date startDate, Date endDate) {
+        if (startDate != null && endDate != null) {
+            return this.getObjectsByMultipleArguments(Presentation.class, SELECT_ALL_BETWEEN_DATE, new Object[]{startDate, endDate}, new PresentationMapper());
+        }
+        return null;
     }
 }

@@ -1,5 +1,8 @@
 package de.dhbw.ics.vo;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -52,5 +55,31 @@ public class Reservation {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Reservation that = (Reservation) o;
+
+        return new EqualsBuilder()
+                .append(payed, that.payed)
+                .append(uuid, that.uuid)
+                .append(date, that.date)
+                .append(user, that.user)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(uuid)
+                .append(date)
+                .append(user)
+                .append(payed)
+                .toHashCode();
     }
 }

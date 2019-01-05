@@ -69,10 +69,10 @@
             <column name="prod_year" type="Integer">
                 <constraints nullable="false" />
             </column>
-            <column name="title" type="varchar(255)">
+            <column name="movie_title" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="description" type="varchar(255)">
+            <column name="movie_description" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="fsk" type="Integer">

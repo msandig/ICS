@@ -1,6 +1,8 @@
 package de.dhbw.ics.vo;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -74,5 +76,35 @@ public class PriceCategory {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        PriceCategory that = (PriceCategory) o;
+
+        return new EqualsBuilder()
+                .append(uuid, that.uuid)
+                .append(presentationCategory, that.presentationCategory)
+                .append(seatCategory, that.seatCategory)
+                .append(title, that.title)
+                .append(description, that.description)
+                .append(price, that.price)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(uuid)
+                .append(presentationCategory)
+                .append(seatCategory)
+                .append(title)
+                .append(description)
+                .append(price)
+                .toHashCode();
     }
 }

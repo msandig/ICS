@@ -1,8 +1,6 @@
 package de.dhbw.ics.database.dao;
 
 import de.dhbw.ics.vo.PaymentMethod;
-import de.dhbw.ics.vo.Role;
-import de.dhbw.ics.vo.User;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -13,62 +11,49 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.assertNotNull;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ContextConfiguration("classpath:spring/applicationContextDaoTest.xml")
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class UserDaoTest {
+public class PaymentMethodDaoTest {
 
-    private static User user;
+    private static PaymentMethod paymentMethod;
     private static DaoTestHelper daoTestHelper;
-
-    @Autowired
-    private UserDao userDao;
-
-    @Autowired
-    private RoleDao roleDao;
 
     @Autowired
     private PaymentMethodDao paymentMethodDao;
 
+
     @BeforeClass
     public static void setUp() throws Exception {
-        user = new User("max@mustermann.de", "test1234", new Role("testUser"));
-        user.setPaymentMethod(new PaymentMethod("testPayment", "testProvider"));
-        user.setFirstName("Max");
-        user.setLastName("Mustermann");
+        paymentMethod = new PaymentMethod("test", "testProvider");
         daoTestHelper = new DaoTestHelper();
     }
 
     @Test
     public void test1Persist() {
-        this.roleDao.persist(user.getRole());
-        this.paymentMethodDao.persist(user.getPaymentMethod());
-        daoTestHelper.persist(this.userDao, user);
+        daoTestHelper.persist(this.paymentMethodDao, paymentMethod);
     }
 
     @Test
     public void test2Get() {
-        daoTestHelper.get(this.userDao, user, user.getEmail());
+        daoTestHelper.get(this.paymentMethodDao, paymentMethod, paymentMethod.getUuid());
     }
 
     @Test
     public void test3GetAll() {
-        daoTestHelper.getAll(this.userDao, user);
+        daoTestHelper.getAll(this.paymentMethodDao, paymentMethod);
     }
 
     @Test
-    public void test4Update() throws CloneNotSupportedException {
-        User u = user.clone();
-        assertNotNull(u);
-        u.setFirstName("Erika");
-        daoTestHelper.update(this.userDao, user.getEmail(), user, u);
+    public void test4Update() {
+        PaymentMethod testPaymentMathod = new PaymentMethod(paymentMethod.getUuid(), "otherTest", "otherProvider");
+        daoTestHelper.update(this.paymentMethodDao, paymentMethod.getUuid(), paymentMethod, testPaymentMathod);
     }
 
     @Test
     public void test5Delete() {
-        daoTestHelper.delete(this.userDao, user.getEmail());
+        daoTestHelper.delete(this.paymentMethodDao, paymentMethod.getUuid());
     }
+
 }

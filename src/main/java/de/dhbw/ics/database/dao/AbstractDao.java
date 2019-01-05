@@ -28,65 +28,68 @@ public abstract class AbstractDao<T> implements Dao<T> {
                 if (i == 1) {
                     var helper = args[0];
                     Object[] updateArgs = new Object[args.length];
-                    for(int j = 1; j <= updateArgs.length-1; j++){
-                        updateArgs[j-1] = args[j];
+                    for (int j = 1; j <= updateArgs.length - 1; j++) {
+                        updateArgs[j - 1] = args[j];
                     }
-                    updateArgs[args.length-1] = helper;
+                    updateArgs[args.length - 1] = helper;
                     this.jdbcTemplate.update(updateStatement, updateArgs);
-                    LOG.info("Update {}!", clazz.getSimpleName() );
+                    LOG.info("Update {}!", clazz.getSimpleName());
                 } else {
                     this.jdbcTemplate.update(persistStatement, args);
-                    LOG.info("Persist new {}!", clazz.getSimpleName() );
+                    LOG.info("Persist new {}!", clazz.getSimpleName());
                 }
                 return true;
             }
         } catch (DataAccessException e) {
-            LOG.info("Could not persist {}!", clazz.getSimpleName() );
-            if(LOG.isDebugEnabled()){
-                LOG.debug(e.getMessage());
-            }
+            LOG.error("Could not persist {}!", clazz.getSimpleName());
+            LOG.error(e.getMessage());
+
         }
         return false;
     }
 
     @SuppressWarnings("unchecked")
-    T getObject(Class clazz, String selectStatement, Object[] args , RowMapper<T> rowMapper){
+    T getObject(Class clazz, String selectStatement, Object[] args, RowMapper<T> rowMapper) {
         Object object = null;
         try {
             object = this.jdbcTemplate.queryForObject(selectStatement, args, rowMapper);
         } catch (DataAccessException e) {
-            LOG.info("Could not find {} for primary key: {} ", clazz.getSimpleName(), args);
+            LOG.error("Could not find {} for primary key: {} ", clazz.getSimpleName(), args);
+            LOG.error(e.getMessage());
         }
 
         return (T) object;
     }
 
-    boolean deleteObject(Class clazz, String deleteStatement, Object[] primaryKey){
+    boolean deleteObject(Class clazz, String deleteStatement, Object[] primaryKey) {
         try {
             return jdbcTemplate.update(deleteStatement, primaryKey) != 0;
         } catch (DataAccessException e) {
-            LOG.info("Could not delete {} for primary key: {}", clazz.getSimpleName(), primaryKey);
+            LOG.error("Could not delete {} for primary key: {}", clazz.getSimpleName(), primaryKey);
+            LOG.error(e.getMessage());
         }
         return false;
     }
 
-    List<T> getAllObjects(Class clazz, String selectStatement, RowMapper<T> rowMapper){
+    List<T> getAllObjects(Class clazz, String selectStatement, RowMapper<T> rowMapper) {
         List<T> objectList = null;
         try {
             objectList = this.jdbcTemplate.query(selectStatement, rowMapper);
         } catch (DataAccessException e) {
-            LOG.info("Could not find any object of kind {}!", clazz.getSimpleName());
+            LOG.error("Could not find any object of kind {}!", clazz.getSimpleName());
+            LOG.error(e.getMessage());
         }
 
         return objectList;
     }
 
-    List<T> getObjectsByMultipleArguments(Class clazz, String selectStatement, Object[] args , RowMapper<T> rowMapper){
+    List<T> getObjectsByMultipleArguments(Class clazz, String selectStatement, Object[] args, RowMapper<T> rowMapper) {
         List<T> objectList = null;
         try {
             objectList = this.jdbcTemplate.query(selectStatement, args, rowMapper);
         } catch (DataAccessException e) {
-            LOG.info("Could not find any object of kind {}!", clazz.getSimpleName());
+            LOG.error("Could not find any object of kind {}!", clazz.getSimpleName());
+            LOG.error(e.getMessage());
         }
         return objectList;
     }

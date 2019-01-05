@@ -1,5 +1,8 @@
 package de.dhbw.ics.vo;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 public class BusySeat {
 
     private boolean isBusy = false;
@@ -37,5 +40,31 @@ public class BusySeat {
 
     public void setPresentation(Presentation presentation) {
         this.presentation = presentation;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        BusySeat busySeat = (BusySeat) o;
+
+        return new EqualsBuilder()
+                .append(isBusy, busySeat.isBusy)
+                .append(looked, busySeat.looked)
+                .append(seat, busySeat.seat)
+                .append(presentation, busySeat.presentation)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(isBusy)
+                .append(seat)
+                .append(presentation)
+                .append(looked)
+                .toHashCode();
     }
 }

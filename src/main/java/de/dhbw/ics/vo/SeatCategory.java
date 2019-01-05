@@ -1,5 +1,8 @@
 package de.dhbw.ics.vo;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.util.UUID;
 
 public class SeatCategory {
@@ -38,5 +41,29 @@ public class SeatCategory {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SeatCategory that = (SeatCategory) o;
+
+        return new EqualsBuilder()
+                .append(uuid, that.uuid)
+                .append(title, that.title)
+                .append(description, that.description)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(uuid)
+                .append(title)
+                .append(description)
+                .toHashCode();
     }
 }

@@ -10,7 +10,7 @@ public class RoomMapper implements RowMapper<Room> {
     @Override
     public Room mapRow(ResultSet resultSet, int i) throws SQLException {
         String uuid = resultSet.getString("room_uuid");
-        String roomType = resultSet.getString("roomType");
+        String roomType = resultSet.getString("room_type");
         boolean clean = resultSet.getBoolean("clean");
         boolean vip = resultSet.getBoolean("vip_seats");
         int number = resultSet.getInt("room_number");

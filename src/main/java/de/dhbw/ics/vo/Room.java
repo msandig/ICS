@@ -1,5 +1,8 @@
 package de.dhbw.ics.vo;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -71,5 +74,33 @@ public class Room {
 
     public void setNumber(Integer number) {
         this.number = number;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Room room = (Room) o;
+
+        return new EqualsBuilder()
+                .append(isClean, room.isClean)
+                .append(isVIP, room.isVIP)
+                .append(uuid, room.uuid)
+                .append(roomType, room.roomType)
+                .append(number, room.number)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(uuid)
+                .append(roomType)
+                .append(isClean)
+                .append(isVIP)
+                .append(number)
+                .toHashCode();
     }
 }
