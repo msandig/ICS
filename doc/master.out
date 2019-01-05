@@ -1,0 +1,27 @@
+\BOOKMARK [0][-]{chapter.1}{Einleitung}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Theoretische Grundlagen}{}% 2
+\BOOKMARK [0][-]{chapter.3}{Methodik}{}% 3
+\BOOKMARK [0][-]{chapter.4}{Projektplanung}{}% 4
+\BOOKMARK [1][-]{section.4.1}{Organisation}{chapter.4}% 5
+\BOOKMARK [1][-]{section.4.2}{Projektplan}{chapter.4}% 6
+\BOOKMARK [0][-]{chapter.5}{Analyse}{}% 7
+\BOOKMARK [1][-]{section.5.1}{Projekthintergrund}{chapter.5}% 8
+\BOOKMARK [1][-]{section.5.2}{Projektdefinition}{chapter.5}% 9
+\BOOKMARK [2][-]{subsection.5.2.1}{Vorgabe}{section.5.2}% 10
+\BOOKMARK [2][-]{subsection.5.2.2}{Rahmenbedingungen}{section.5.2}% 11
+\BOOKMARK [2][-]{subsection.5.2.3}{Bewertungskriterien}{section.5.2}% 12
+\BOOKMARK [0][-]{chapter.6}{Entwurf}{}% 13
+\BOOKMARK [1][-]{section.6.1}{Design Entwurf}{chapter.6}% 14
+\BOOKMARK [2][-]{subsection.6.1.1}{User-Research-Prozess}{section.6.1}% 15
+\BOOKMARK [2][-]{subsection.6.1.2}{Prototyp}{section.6.1}% 16
+\BOOKMARK [1][-]{section.6.2}{Technischer Entwurf}{chapter.6}% 17
+\BOOKMARK [2][-]{subsection.6.2.1}{Komponentendiagramm}{section.6.2}% 18
+\BOOKMARK [2][-]{subsection.6.2.2}{Klassen}{section.6.2}% 19
+\BOOKMARK [2][-]{subsection.6.2.3}{usw.}{section.6.2}% 20
+\BOOKMARK [0][-]{chapter.7}{Umsetzung}{}% 21
+\BOOKMARK [1][-]{section.7.1}{Organisation}{chapter.7}% 22
+\BOOKMARK [1][-]{section.7.2}{Backend}{chapter.7}% 23
+\BOOKMARK [1][-]{section.7.3}{Frontend}{chapter.7}% 24
+\BOOKMARK [0][-]{chapter.8}{Modultests}{}% 25
+\BOOKMARK [0][-]{chapter.9}{Evaluation}{}% 26
+\BOOKMARK [0][-]{chapter.10}{Ausblick}{}% 27
