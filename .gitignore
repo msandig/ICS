@@ -4,3 +4,12 @@
 .classpath
 .project
 .ics.iml
+*.toc
+*.out
+*.log
+*.bcf
+*.aux
+*.gz
+*.aux
+*.bbl
+*.blg
