@@ -7,6 +7,10 @@
 * Wenn euch eure IDE darauf hinweißt, dass es im Origin/Remote Projekt Mergekonflikte entstehen, dann führte den PUSH nicht zwanghaft aus sondern versucht die Probleme lokal zu lösen!
 * Bei größeren Arbeitsschritten commitet zwischendrin und synchronisiert die Projekte
 
+# Informationen zum Projekt
+* Beim normalen Start der Anwendung wird (falls keine Umgebungsvariable gesetzt ist) ein Verzeichnis tmp auf eurem Root-Path der Festplatte angelegt. In diesem wird die Datenbank erzeugt.
+* Falls ihr Probleme wegen der Datenbank habt löscht einfach diesen Ordner ( ein Fix muss noch geschrieben werden ) oder setzt in der Spring-Konfiguration (applicationContext.xml) den Wert im Constuctor-Arg beim Bean "dataSource" auf true. Dann wird die Datenbank in Memory erzeugt.
+
 # Fallstudie 
 
 ## Status
@@ -44,4 +48,6 @@ Entwicklung eines Prototyps für die Online-Reservierung von Kino-Tickets
     * Testen der REST-Schnittstellen :x:
     
 ### Frontend
+
+
 

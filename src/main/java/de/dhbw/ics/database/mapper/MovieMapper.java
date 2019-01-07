@@ -4,7 +4,6 @@ import de.dhbw.ics.vo.Genre;
 import de.dhbw.ics.vo.Movie;
 import org.springframework.jdbc.core.RowMapper;
 
-import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -13,7 +12,7 @@ public class MovieMapper implements RowMapper<Movie> {
     public Movie mapRow(ResultSet resultSet, int i) throws SQLException {
 
         int fsk = resultSet.getInt("fsk");
-        Blob picture = resultSet.getBlob("picture");
+        String picture = resultSet.getString("picture");
         int productionYear = resultSet.getInt("prod_year");
         int runtime = resultSet.getInt("runtime");
         String title = resultSet.getString("movie_title");
