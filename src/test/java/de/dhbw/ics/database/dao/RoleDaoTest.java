@@ -23,7 +23,6 @@ import static org.junit.Assert.assertTrue;
 public class RoleDaoTest {
 
     private static Role role;
-    private static DaoTestHelper daoTestHelper;
 
     @Autowired
     private UserDao userDao;
@@ -37,33 +36,32 @@ public class RoleDaoTest {
     @BeforeClass
     public static void setUp() throws Exception {
         role = new Role("testAdmin");
-        daoTestHelper = new DaoTestHelper();
     }
 
     @Test
     public void test1Persist() {
-        daoTestHelper.persist(this.roleDao, role);
+        DaoTestHelper.persist(this.roleDao, role);
     }
 
     @Test
     public void test2Get() {
-        daoTestHelper.get(this.roleDao, role, role.getUuid());
+        DaoTestHelper.get(this.roleDao, role, role.getUuid());
     }
 
     @Test
     public void test3GetAll() {
-        daoTestHelper.getAll(this.roleDao, role);
+        DaoTestHelper.getAll(this.roleDao, role);
     }
 
     @Test
     public void test4Update() {
         Role changedRole = new Role(role.getUuid(), "otherRole");
-        daoTestHelper.update(this.roleDao,role.getUuid(), role, changedRole);
+        DaoTestHelper.update(this.roleDao,role.getUuid(), role, changedRole);
     }
 
     @Test
     public void test5Delete() {
-        daoTestHelper.delete(this.roleDao, role.getUuid());
+        DaoTestHelper.delete(this.roleDao, role.getUuid());
     }
 
     @Test

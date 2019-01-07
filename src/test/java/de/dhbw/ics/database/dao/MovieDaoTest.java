@@ -23,7 +23,6 @@ public class MovieDaoTest {
 
     private static Movie movie;
     private static Genre genre;
-    private static DaoTestHelper daoTestHelper;
 
     @Autowired
     private GenreDao genreDao;
@@ -36,35 +35,34 @@ public class MovieDaoTest {
         movie = new Movie(2015, "TestMovie", "Nice Test Movie", 12, 120);
         genre = new Genre("testGenre");
         movie.setGenre(genre);
-        daoTestHelper = new DaoTestHelper();
     }
 
     @Test
     public void test1Persist() {
         assertFalse(this.movieDao.persist(movie));
         assertTrue(this.genreDao.persist(genre));
-        daoTestHelper.persist(this.movieDao, movie);
+        DaoTestHelper.persist(this.movieDao, movie);
     }
 
     @Test
     public void test2Get() {
-        daoTestHelper.get(this.movieDao, movie, movie.getUuid());
+        DaoTestHelper.get(this.movieDao, movie, movie.getUuid());
     }
 
     @Test
     public void test3GetAll() {
-        daoTestHelper.getAll(this.movieDao, movie);
+        DaoTestHelper.getAll(this.movieDao, movie);
     }
 
     @Test
     public void test4Update() {
         Movie testMovie = new Movie(movie.getUuid(), 2000,"updatedMovie", movie.getDescription(), movie.getFsk(), movie.getRunTime());
         testMovie.setGenre(movie.getGenre());
-        daoTestHelper.update(this.movieDao, movie.getUuid(), movie, testMovie);
+        DaoTestHelper.update(this.movieDao, movie.getUuid(), movie, testMovie);
     }
 
     @Test
     public void test5Delete() {
-        daoTestHelper.delete(this.movieDao, movie.getUuid());
+        DaoTestHelper.delete(this.movieDao, movie.getUuid());
     }
 }

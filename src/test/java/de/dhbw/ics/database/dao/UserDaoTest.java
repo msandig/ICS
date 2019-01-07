@@ -22,7 +22,6 @@ import static org.junit.Assert.assertNotNull;
 public class UserDaoTest {
 
     private static User user;
-    private static DaoTestHelper daoTestHelper;
 
     @Autowired
     private UserDao userDao;
@@ -39,24 +38,23 @@ public class UserDaoTest {
         user.setPaymentMethod(new PaymentMethod("testPayment", "testProvider"));
         user.setFirstName("Max");
         user.setLastName("Mustermann");
-        daoTestHelper = new DaoTestHelper();
     }
 
     @Test
     public void test1Persist() {
         this.roleDao.persist(user.getRole());
         this.paymentMethodDao.persist(user.getPaymentMethod());
-        daoTestHelper.persist(this.userDao, user);
+        DaoTestHelper.persist(this.userDao, user);
     }
 
     @Test
     public void test2Get() {
-        daoTestHelper.get(this.userDao, user, user.getEmail());
+        DaoTestHelper.get(this.userDao, user, user.getEmail());
     }
 
     @Test
     public void test3GetAll() {
-        daoTestHelper.getAll(this.userDao, user);
+        DaoTestHelper.getAll(this.userDao, user);
     }
 
     @Test
@@ -64,11 +62,11 @@ public class UserDaoTest {
         User u = user.clone();
         assertNotNull(u);
         u.setFirstName("Erika");
-        daoTestHelper.update(this.userDao, user.getEmail(), user, u);
+        DaoTestHelper.update(this.userDao, user.getEmail(), user, u);
     }
 
     @Test
     public void test5Delete() {
-        daoTestHelper.delete(this.userDao, user.getEmail());
+        DaoTestHelper.delete(this.userDao, user.getEmail());
     }
 }

@@ -18,41 +18,38 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class PresentationCategoryDaoTest {
 
     private static PresentationCategory presentationCategory;
-    private static DaoTestHelper daoTestHelper;
-
     @Autowired
     private PresentationCategoryDao presentationCategoryDao;
 
     @BeforeClass
     public static void setUp() throws Exception {
         presentationCategory = new PresentationCategory("testCategory", "test");
-        daoTestHelper = new DaoTestHelper();
     }
 
     @Test
     public void test1Persist() {
-        daoTestHelper.persist(this.presentationCategoryDao, presentationCategory);
+        DaoTestHelper.persist(this.presentationCategoryDao, presentationCategory);
     }
 
     @Test
     public void test2Get() {
-        daoTestHelper.get(this.presentationCategoryDao, presentationCategory, presentationCategory.getUuid());
+        DaoTestHelper.get(this.presentationCategoryDao, presentationCategory, presentationCategory.getUuid());
     }
 
     @Test
     public void test3GetAll() {
-        daoTestHelper.getAll(this.presentationCategoryDao, presentationCategory);
+        DaoTestHelper.getAll(this.presentationCategoryDao, presentationCategory);
     }
 
     @Test
     public void test4Update() {
         PresentationCategory testPresentationCategory = new PresentationCategory(presentationCategory.getUuid(), "otherCategoryName", "testCahnged");
-        daoTestHelper.update(this.presentationCategoryDao, presentationCategory.getUuid(), presentationCategory, testPresentationCategory);
+        DaoTestHelper.update(this.presentationCategoryDao, presentationCategory.getUuid(), presentationCategory, testPresentationCategory);
     }
 
     @Test
     public void test5Delete() {
-        daoTestHelper.delete(this.presentationCategoryDao, presentationCategory.getUuid());
+        DaoTestHelper.delete(this.presentationCategoryDao, presentationCategory.getUuid());
     }
 
 }

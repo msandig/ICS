@@ -17,7 +17,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GenreDaoTest {
     private static Genre genre;
-    private static DaoTestHelper daoTestHelper;
 
     @Autowired
     private GenreDao genreDao;
@@ -28,33 +27,32 @@ public class GenreDaoTest {
     @BeforeClass
     public static void setUp() throws Exception {
         genre = new Genre("testGenre");
-        daoTestHelper = new DaoTestHelper();
     }
 
     @Test
     public void test1Persist() {
-        daoTestHelper.persist(this.genreDao, genre);
+        DaoTestHelper.persist(this.genreDao, genre);
     }
 
     @Test
     public void test2Get() {
-        daoTestHelper.get(this.genreDao, genre, genre.getUuid());
+        DaoTestHelper.get(this.genreDao, genre, genre.getUuid());
     }
 
     @Test
     public void test3GetAll() {
-        daoTestHelper.getAll(this.genreDao, genre);
+        DaoTestHelper.getAll(this.genreDao, genre);
     }
 
     @Test
     public void test4Update() {
         Genre changedGenre = new Genre(genre.getUuid(), "otherGenre");
-        daoTestHelper.update(this.genreDao, genre.getUuid(), genre, changedGenre);
+        DaoTestHelper.update(this.genreDao, genre.getUuid(), genre, changedGenre);
     }
 
     @Test
     public void test5Delete() {
-        daoTestHelper.delete(this.genreDao, genre.getUuid());
+        DaoTestHelper.delete(this.genreDao, genre.getUuid());
     }
 
     @Test
