@@ -30,6 +30,8 @@ Entwicklung eines Prototyps für die Online-Reservierung von Kino-Tickets
     * Erzeugen der Datenbankstruktur bei erstem Projektstartup :white_check_mark:
     * Implementierung von DAO's (Data Access Objects) :white_check_mark:
     * Testen der DAO's :ballot_box_with_check:
+        * CRUD-Tests :ballot_box_with_check:
+        * Dependency-Tests :x:
 * Manager
     * Entwerfen der Verarbeitungslogik :x:
     * Implementierung der Verarbeitungslogik :x:
