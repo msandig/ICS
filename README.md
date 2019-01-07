@@ -28,6 +28,8 @@ Entwicklung eines Prototyps für die Online-Reservierung von Kino-Tickets
 * Datenbank
     * Modell :white_check_mark:
     * Erzeugen der Datenbankstruktur bei erstem Projektstartup :white_check_mark:
+    * Implementierung von VO (Value Object) - Klassen :white_check_mark:
+    * Testen von VO's :x:
     * Implementierung von DAO's (Data Access Objects) :white_check_mark:
     * Testen der DAO's :ballot_box_with_check:
         * CRUD-Tests :ballot_box_with_check:
