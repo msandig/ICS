@@ -18,7 +18,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class SeatCategoryDaoTest {
 
     private static SeatCategory seatCategory;
-    private static DaoTestHelper daoTestHelper;
 
     @Autowired
     private SeatCategoryDao seatCategoryDao;
@@ -27,33 +26,32 @@ public class SeatCategoryDaoTest {
     @BeforeClass
     public static void setUp() throws Exception {
         seatCategory = new SeatCategory("test", "testCategory");
-        daoTestHelper = new DaoTestHelper();
     }
 
     @Test
     public void test1Persist() {
-        daoTestHelper.persist(this.seatCategoryDao, seatCategory);
+        DaoTestHelper.persist(this.seatCategoryDao, seatCategory);
     }
 
     @Test
     public void test2Get() {
-        daoTestHelper.get(this.seatCategoryDao, seatCategory, seatCategory.getUuid());
+        DaoTestHelper.get(this.seatCategoryDao, seatCategory, seatCategory.getUuid());
     }
 
     @Test
     public void test3GetAll() {
-        daoTestHelper.getAll(this.seatCategoryDao, seatCategory);
+        DaoTestHelper.getAll(this.seatCategoryDao, seatCategory);
     }
 
     @Test
     public void test4Update() {
         SeatCategory testSeatCategory = new SeatCategory(seatCategory.getUuid(), "otherTest", "otherDescription");
-        daoTestHelper.update(this.seatCategoryDao, seatCategory.getUuid(), seatCategory, testSeatCategory);
+        DaoTestHelper.update(this.seatCategoryDao, seatCategory.getUuid(), seatCategory, testSeatCategory);
     }
 
     @Test
     public void test5Delete() {
-        daoTestHelper.delete(this.seatCategoryDao, seatCategory.getUuid());
+        DaoTestHelper.delete(this.seatCategoryDao, seatCategory.getUuid());
     }
 
 }

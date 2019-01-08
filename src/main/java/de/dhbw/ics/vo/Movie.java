@@ -3,7 +3,6 @@ package de.dhbw.ics.vo;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import java.sql.Blob;
 import java.util.UUID;
 
 public class Movie {
@@ -14,7 +13,7 @@ public class Movie {
     private String title;
     private Integer fsk;
     private Integer runTime;
-    private Blob picture = null;
+    private String picture = null;
     private String description;
 
     public Movie(String uuid, Integer productionYear, String title, String description, Integer fsk, Integer runTime) {
@@ -79,11 +78,11 @@ public class Movie {
         this.runTime = runTime;
     }
 
-    public Blob getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setPicture(Blob picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 

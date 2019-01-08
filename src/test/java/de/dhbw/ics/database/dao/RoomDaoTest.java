@@ -18,7 +18,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class RoomDaoTest {
 
     private static Room room;
-    private static DaoTestHelper daoTestHelper;
 
     @Autowired
     private RoomDao roomDao;
@@ -26,33 +25,32 @@ public class RoomDaoTest {
     @BeforeClass
     public static void setUp() throws Exception {
         room = new Room("niceRoom", true, false, 5);
-        daoTestHelper = new DaoTestHelper();
     }
 
     @Test
     public void test1Persist() {
-        daoTestHelper.persist(this.roomDao, room);
+        DaoTestHelper.persist(this.roomDao, room);
     }
 
     @Test
     public void test2Get() {
-        daoTestHelper.get(this.roomDao, room, room.getUuid());
+        DaoTestHelper.get(this.roomDao, room, room.getUuid());
     }
 
     @Test
     public void test3GetAll() {
-        daoTestHelper.getAll(this.roomDao, room);
+        DaoTestHelper.getAll(this.roomDao, room);
     }
 
     @Test
     public void test4Update() {
         Room testRoom = new Room(room.getUuid(),"testRoom", true, false, 1);
-        daoTestHelper.update(this.roomDao, room.getUuid(), room, testRoom);
+        DaoTestHelper.update(this.roomDao, room.getUuid(), room, testRoom);
     }
 
     @Test
     public void test5Delete() {
-        daoTestHelper.delete(this.roomDao, room.getUuid());
+        DaoTestHelper.delete(this.roomDao, room.getUuid());
     }
 
 

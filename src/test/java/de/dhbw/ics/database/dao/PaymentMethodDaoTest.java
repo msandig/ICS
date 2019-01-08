@@ -18,7 +18,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class PaymentMethodDaoTest {
 
     private static PaymentMethod paymentMethod;
-    private static DaoTestHelper daoTestHelper;
 
     @Autowired
     private PaymentMethodDao paymentMethodDao;
@@ -27,33 +26,32 @@ public class PaymentMethodDaoTest {
     @BeforeClass
     public static void setUp() throws Exception {
         paymentMethod = new PaymentMethod("test", "testProvider");
-        daoTestHelper = new DaoTestHelper();
     }
 
     @Test
     public void test1Persist() {
-        daoTestHelper.persist(this.paymentMethodDao, paymentMethod);
+        DaoTestHelper.persist(this.paymentMethodDao, paymentMethod);
     }
 
     @Test
     public void test2Get() {
-        daoTestHelper.get(this.paymentMethodDao, paymentMethod, paymentMethod.getUuid());
+        DaoTestHelper.get(this.paymentMethodDao, paymentMethod, paymentMethod.getUuid());
     }
 
     @Test
     public void test3GetAll() {
-        daoTestHelper.getAll(this.paymentMethodDao, paymentMethod);
+        DaoTestHelper.getAll(this.paymentMethodDao, paymentMethod);
     }
 
     @Test
     public void test4Update() {
         PaymentMethod testPaymentMathod = new PaymentMethod(paymentMethod.getUuid(), "otherTest", "otherProvider");
-        daoTestHelper.update(this.paymentMethodDao, paymentMethod.getUuid(), paymentMethod, testPaymentMathod);
+        DaoTestHelper.update(this.paymentMethodDao, paymentMethod.getUuid(), paymentMethod, testPaymentMathod);
     }
 
     @Test
     public void test5Delete() {
-        daoTestHelper.delete(this.paymentMethodDao, paymentMethod.getUuid());
+        DaoTestHelper.delete(this.paymentMethodDao, paymentMethod.getUuid());
     }
 
 }

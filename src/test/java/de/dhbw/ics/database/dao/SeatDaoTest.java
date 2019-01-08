@@ -22,7 +22,6 @@ import static org.junit.Assert.*;
 public class SeatDaoTest {
 
     private static Seat seat;
-    private static DaoTestHelper daoTestHelper;
 
     @Autowired
     private SeatDao seatDao;
@@ -37,7 +36,6 @@ public class SeatDaoTest {
     public static void setUp() throws Exception {
         seat = new Seat(new Room("niceRoom", true, false, 5), new SeatCategory("testCategory", "test"), 1, 12);
         seat.getRoom().getSeats().put(seat.getUuid(), seat);
-        daoTestHelper = new DaoTestHelper();
     }
 
     @Test
@@ -45,29 +43,29 @@ public class SeatDaoTest {
         assertFalse(this.seatDao.persist(seat));
         assertTrue(this.roomDao.persist(seat.getRoom()));
         assertTrue(this.seatCategoryDao.persist(seat.getSeatCategory()));
-        daoTestHelper.persist(seatDao, seat);
+        DaoTestHelper.persist(seatDao, seat);
     }
 
     @Test
     public void test2Get() {
         assertNull(this.seatDao.get(seat.getUuid()));
-        daoTestHelper.get(this.seatDao, seat, seat);
+        DaoTestHelper.get(this.seatDao, seat, seat);
     }
 
     @Test
     public void test3GetAll() {
-        daoTestHelper.getAll(this.seatDao, seat);
+        DaoTestHelper.getAll(this.seatDao, seat);
     }
 
     @Test
     public void test4Update() {
         Seat testSeat = new Seat(seat.getUuid(), seat.getRoom(), seat.getSeatCategory(), 5, 1);
-        daoTestHelper.update(this.seatDao, seat, seat, testSeat);
+        DaoTestHelper.update(this.seatDao, seat, seat, testSeat);
     }
 
     @Test
     public void test5Delete() {
-        daoTestHelper.delete(this.seatDao, seat.getUuid());
+        DaoTestHelper.delete(this.seatDao, seat.getUuid());
     }
 
 }

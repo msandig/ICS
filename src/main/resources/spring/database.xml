@@ -81,7 +81,7 @@
             <column name="runtime" type="Integer">
                 <constraints nullable="false"/>
             </column>
-            <column name="picture" type="BLOB">
+            <column name="picture" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
         </createTable>
