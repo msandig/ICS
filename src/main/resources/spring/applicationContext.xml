@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="de.dhbw.ics.controller.web" />
+    <context:component-scan base-package="de.dhbw.ics"/>
+
     <bean id="fileSystemInitializer" class="de.dhbw.ics.filesystem.FileSystemInitializer"/>
 
     <bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
-        <property name="dataSource" ref="dataSource" />
-        <property name="changeLog" value="classpath:spring/database.xml" />
+        <property name="dataSource" ref="dataSource"/>
+        <property name="changeLog" value="classpath:spring/database.xml"/>
     </bean>
 
     <bean id="dataSource" factory-bean="dataSourceFactory" factory-method="getDataSource">
