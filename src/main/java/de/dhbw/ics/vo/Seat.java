@@ -1,5 +1,6 @@
 package de.dhbw.ics.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -13,7 +14,11 @@ public class Seat {
     private Integer number;
     private Integer row;
     private SeatCategory seatCategory;
+
+    @JsonIgnore
     private Room room;
+
+    @JsonIgnore
     private Map<String, BusySeat> seatBusy = new HashMap<>();
 
     public Seat(String uuid, Room room, SeatCategory seatCategory, Integer number, Integer row) {

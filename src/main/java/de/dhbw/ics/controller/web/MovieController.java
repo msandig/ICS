@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MovieController {
 
 
-    @RequestMapping(method=RequestMethod.GET, path = "/get/movie")
+    @RequestMapping(method=RequestMethod.GET, path = "/service/get/movie")
     public @ResponseBody
     ResponseEntity<Movie> getMovie() {
         Movie movie = new Movie(2015, "TestMovie", "Nice Test Movie", 12, 120);
