@@ -19,3 +19,16 @@
 .gradbackground {
     background-image: linear-gradient(to bottom, darkgrey, black);
 }
+
+hr.linie-1 {
+    border-top: 3px solid grey !important;
+    border-bottom: 3px solid grey !important;
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 3%;
+    margin-right: 3%;
+    border-style: solid;
+    border-width: 0px;
+
+}
