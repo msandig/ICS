@@ -21,8 +21,8 @@
 }
 
 hr.linie-1 {
-    border-top: 3px solid grey !important;
-    border-bottom: 3px solid grey !important;
+    border-top: 3px solid darkgrey !important;
+    border-bottom: 3px solid darkgrey !important;
     display: block;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
