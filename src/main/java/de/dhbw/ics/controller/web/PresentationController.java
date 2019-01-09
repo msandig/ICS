@@ -20,19 +20,28 @@ public class PresentationController {
         Movie movie = new Movie(2015, "TestMovie", "Nice Test Movie", 12, 120);
         Genre genre = new Genre("testGenre");
         movie.setGenre(genre);
+        movie.setPicture("/movie/avatar.png");
         Room room = new Room("3D Raum", true, true, 1);
         Random ran = new Random();
         int x = ran.nextInt(6) + 10;
         int y = ran.nextInt(6) + 10;
 
+        Presentation presentation = new Presentation(movie, room, new Date(), new PresentationCategory("3D","3D Vorstellung"));
         SeatCategory seatCategory = new SeatCategory("Kuschliger Platz", "besonders kuschlig");
         for(int i = 1; i < x; i++){
             for(int j = 1; j<= y; j++){
                 Seat seat = new Seat(room, seatCategory,j, i);
+                BusySeat busySeat = new BusySeat();
+                busySeat.setSeat(seat);
+                busySeat.setPresentation(presentation);
+                busySeat.setLooked(false);
+                busySeat.setBusy(false);
+                seat.addBusy(busySeat);
+                seat.setCurrentBusySeat(busySeat);
                 room.getSeats().put(seat.getUuid(),seat);
             }
         }
-        Presentation presentation = new Presentation(movie, room, new Date(), new PresentationCategory("3D","3D Vorstellung"));
+
         return new ResponseEntity<>(presentation, HttpStatus.OK);
     }
 

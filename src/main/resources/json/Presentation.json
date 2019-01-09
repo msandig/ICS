@@ -1,0 +1,2735 @@
+{
+  "uuid": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d",
+  "movie": {
+    "uuid": "56671d9c-aec3-4556-9e53-5fb58a5c16a5",
+    "genre": {
+      "uuid": "d6f137c1-2bde-4fba-8a5d-fbde36be369f",
+      "name": "testGenre"
+    },
+    "productionYear": 2015,
+    "title": "TestMovie",
+    "fsk": 12,
+    "runTime": 120,
+    "picture": "/movie/avatar.png",
+    "description": "Nice Test Movie"
+  },
+  "room": {
+    "uuid": "e9c2c54b-11d2-4ab0-beb6-ab65b3200d31",
+    "roomType": "3D Raum",
+    "number": 1,
+    "seats": {
+      "1b87aea2-4793-4e27-9120-2e0f03879e7b": {
+        "uuid": "1b87aea2-4793-4e27-9120-2e0f03879e7b",
+        "number": 7,
+        "row": 8,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "1b87aea2-4793-4e27-9120-2e0f03879e7b",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "ea8e8ff6-e1d7-4229-ba1b-a29a7da6b512": {
+        "uuid": "ea8e8ff6-e1d7-4229-ba1b-a29a7da6b512",
+        "number": 8,
+        "row": 3,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "ea8e8ff6-e1d7-4229-ba1b-a29a7da6b512",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "bb1cb58e-7eeb-4b56-bcc0-6482776bf0b5": {
+        "uuid": "bb1cb58e-7eeb-4b56-bcc0-6482776bf0b5",
+        "number": 2,
+        "row": 4,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "bb1cb58e-7eeb-4b56-bcc0-6482776bf0b5",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "5aceaab3-e19b-4cbd-8224-bb97c5b5a5ae": {
+        "uuid": "5aceaab3-e19b-4cbd-8224-bb97c5b5a5ae",
+        "number": 9,
+        "row": 6,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "5aceaab3-e19b-4cbd-8224-bb97c5b5a5ae",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "38cfb828-170b-40e0-b4d2-9183f6caf8fe": {
+        "uuid": "38cfb828-170b-40e0-b4d2-9183f6caf8fe",
+        "number": 1,
+        "row": 11,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "38cfb828-170b-40e0-b4d2-9183f6caf8fe",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "c2789ffd-7654-4612-b3b9-1ecf4dcf81f5": {
+        "uuid": "c2789ffd-7654-4612-b3b9-1ecf4dcf81f5",
+        "number": 10,
+        "row": 13,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "c2789ffd-7654-4612-b3b9-1ecf4dcf81f5",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "e076bb3d-aef5-4b0c-8272-b1fb2ed199fe": {
+        "uuid": "e076bb3d-aef5-4b0c-8272-b1fb2ed199fe",
+        "number": 8,
+        "row": 2,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "e076bb3d-aef5-4b0c-8272-b1fb2ed199fe",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "8f2e2a94-7f74-4f60-a579-a4cdf5790d7b": {
+        "uuid": "8f2e2a94-7f74-4f60-a579-a4cdf5790d7b",
+        "number": 13,
+        "row": 11,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "8f2e2a94-7f74-4f60-a579-a4cdf5790d7b",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "23ede1e1-7f61-4151-b7d0-770aae743241": {
+        "uuid": "23ede1e1-7f61-4151-b7d0-770aae743241",
+        "number": 1,
+        "row": 4,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "23ede1e1-7f61-4151-b7d0-770aae743241",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "af5f4b02-efcd-484f-a23a-90bfdd14a8b7": {
+        "uuid": "af5f4b02-efcd-484f-a23a-90bfdd14a8b7",
+        "number": 3,
+        "row": 13,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "af5f4b02-efcd-484f-a23a-90bfdd14a8b7",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "25ce4884-9933-4b46-a37b-f0b1bd175e28": {
+        "uuid": "25ce4884-9933-4b46-a37b-f0b1bd175e28",
+        "number": 10,
+        "row": 6,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "25ce4884-9933-4b46-a37b-f0b1bd175e28",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "7faefe71-00af-44df-bf24-27a3085da3ad": {
+        "uuid": "7faefe71-00af-44df-bf24-27a3085da3ad",
+        "number": 5,
+        "row": 11,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "7faefe71-00af-44df-bf24-27a3085da3ad",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "df6dbc1a-2910-446f-8799-d41446a38513": {
+        "uuid": "df6dbc1a-2910-446f-8799-d41446a38513",
+        "number": 3,
+        "row": 1,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "df6dbc1a-2910-446f-8799-d41446a38513",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "8c64a6ff-0275-4b4d-aec6-4359f38dfdcb": {
+        "uuid": "8c64a6ff-0275-4b4d-aec6-4359f38dfdcb",
+        "number": 6,
+        "row": 11,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "8c64a6ff-0275-4b4d-aec6-4359f38dfdcb",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "8ada44c0-cdea-4dbb-a992-3091aaa0598a": {
+        "uuid": "8ada44c0-cdea-4dbb-a992-3091aaa0598a",
+        "number": 3,
+        "row": 11,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "8ada44c0-cdea-4dbb-a992-3091aaa0598a",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "bc1eb3e5-ea23-401a-b4af-aa683bb2b50c": {
+        "uuid": "bc1eb3e5-ea23-401a-b4af-aa683bb2b50c",
+        "number": 5,
+        "row": 10,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "bc1eb3e5-ea23-401a-b4af-aa683bb2b50c",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "83a0cf42-237c-49e9-bbb5-c30fbdb21126": {
+        "uuid": "83a0cf42-237c-49e9-bbb5-c30fbdb21126",
+        "number": 10,
+        "row": 5,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "83a0cf42-237c-49e9-bbb5-c30fbdb21126",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "76527ab2-b375-40c4-8f75-008936665741": {
+        "uuid": "76527ab2-b375-40c4-8f75-008936665741",
+        "number": 12,
+        "row": 10,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "76527ab2-b375-40c4-8f75-008936665741",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "01841850-9a72-4442-9f97-ec27cfb78aae": {
+        "uuid": "01841850-9a72-4442-9f97-ec27cfb78aae",
+        "number": 13,
+        "row": 12,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "01841850-9a72-4442-9f97-ec27cfb78aae",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "37276ae9-507d-440a-aa23-890a1827b2d7": {
+        "uuid": "37276ae9-507d-440a-aa23-890a1827b2d7",
+        "number": 9,
+        "row": 10,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "37276ae9-507d-440a-aa23-890a1827b2d7",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "37cc4678-e162-4671-b546-64212f13e273": {
+        "uuid": "37cc4678-e162-4671-b546-64212f13e273",
+        "number": 4,
+        "row": 4,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "37cc4678-e162-4671-b546-64212f13e273",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "030b126f-7222-4958-94b1-27fc755162ee": {
+        "uuid": "030b126f-7222-4958-94b1-27fc755162ee",
+        "number": 13,
+        "row": 8,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "030b126f-7222-4958-94b1-27fc755162ee",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "7f87fd4e-bc47-4c23-96a7-6045e38a6b8b": {
+        "uuid": "7f87fd4e-bc47-4c23-96a7-6045e38a6b8b",
+        "number": 6,
+        "row": 2,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "7f87fd4e-bc47-4c23-96a7-6045e38a6b8b",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "4b24718a-20bf-4507-8abb-20b02c45f322": {
+        "uuid": "4b24718a-20bf-4507-8abb-20b02c45f322",
+        "number": 2,
+        "row": 6,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "4b24718a-20bf-4507-8abb-20b02c45f322",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "5ce41438-6da7-4c3c-aad7-7709e99a9628": {
+        "uuid": "5ce41438-6da7-4c3c-aad7-7709e99a9628",
+        "number": 4,
+        "row": 12,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "5ce41438-6da7-4c3c-aad7-7709e99a9628",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "1169b1d1-e366-4101-a18d-c407a04e7c55": {
+        "uuid": "1169b1d1-e366-4101-a18d-c407a04e7c55",
+        "number": 1,
+        "row": 13,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "1169b1d1-e366-4101-a18d-c407a04e7c55",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "ca4bf347-f609-4bd9-b8ca-d1f7e4a223d3": {
+        "uuid": "ca4bf347-f609-4bd9-b8ca-d1f7e4a223d3",
+        "number": 8,
+        "row": 10,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "ca4bf347-f609-4bd9-b8ca-d1f7e4a223d3",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "a7bce505-8ddc-469a-a90d-998c8d63b125": {
+        "uuid": "a7bce505-8ddc-469a-a90d-998c8d63b125",
+        "number": 7,
+        "row": 5,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "a7bce505-8ddc-469a-a90d-998c8d63b125",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "97022d8e-e6a3-4496-850d-6434cbc2c046": {
+        "uuid": "97022d8e-e6a3-4496-850d-6434cbc2c046",
+        "number": 2,
+        "row": 3,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "97022d8e-e6a3-4496-850d-6434cbc2c046",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "c29d6af2-a9a4-4925-bf94-25d140fc6543": {
+        "uuid": "c29d6af2-a9a4-4925-bf94-25d140fc6543",
+        "number": 10,
+        "row": 11,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "c29d6af2-a9a4-4925-bf94-25d140fc6543",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "ea0800cd-0d6e-43e4-88c0-e9b9d4d41f75": {
+        "uuid": "ea0800cd-0d6e-43e4-88c0-e9b9d4d41f75",
+        "number": 4,
+        "row": 1,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "ea0800cd-0d6e-43e4-88c0-e9b9d4d41f75",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "c609374f-81cb-4c66-828a-e23907055514": {
+        "uuid": "c609374f-81cb-4c66-828a-e23907055514",
+        "number": 3,
+        "row": 9,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "c609374f-81cb-4c66-828a-e23907055514",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "6d52fb87-002d-4fd1-97ef-43f3fe3baf2a": {
+        "uuid": "6d52fb87-002d-4fd1-97ef-43f3fe3baf2a",
+        "number": 13,
+        "row": 1,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "6d52fb87-002d-4fd1-97ef-43f3fe3baf2a",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "fdd6d204-851c-490f-b311-64b3e1092c51": {
+        "uuid": "fdd6d204-851c-490f-b311-64b3e1092c51",
+        "number": 10,
+        "row": 10,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "fdd6d204-851c-490f-b311-64b3e1092c51",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "47fa13e1-13e2-42f7-a15d-ac1fa7ff7a03": {
+        "uuid": "47fa13e1-13e2-42f7-a15d-ac1fa7ff7a03",
+        "number": 9,
+        "row": 9,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "47fa13e1-13e2-42f7-a15d-ac1fa7ff7a03",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "b8e6732c-eb29-48b3-837d-8c77a126e93b": {
+        "uuid": "b8e6732c-eb29-48b3-837d-8c77a126e93b",
+        "number": 10,
+        "row": 1,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "b8e6732c-eb29-48b3-837d-8c77a126e93b",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "323411b3-9390-4abb-9766-1d75ee5d2227": {
+        "uuid": "323411b3-9390-4abb-9766-1d75ee5d2227",
+        "number": 5,
+        "row": 12,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "323411b3-9390-4abb-9766-1d75ee5d2227",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "a0430cb9-cf3e-46f5-a6b1-6a8642bf84d7": {
+        "uuid": "a0430cb9-cf3e-46f5-a6b1-6a8642bf84d7",
+        "number": 1,
+        "row": 8,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "a0430cb9-cf3e-46f5-a6b1-6a8642bf84d7",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "b5bd3717-8bc0-4067-8228-de07e778a7d1": {
+        "uuid": "b5bd3717-8bc0-4067-8228-de07e778a7d1",
+        "number": 11,
+        "row": 11,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "b5bd3717-8bc0-4067-8228-de07e778a7d1",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "e63007fe-212c-45f8-9423-dc0a101a204b": {
+        "uuid": "e63007fe-212c-45f8-9423-dc0a101a204b",
+        "number": 1,
+        "row": 9,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "e63007fe-212c-45f8-9423-dc0a101a204b",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "88057e11-982a-4511-9fa8-1e174d01b3ad": {
+        "uuid": "88057e11-982a-4511-9fa8-1e174d01b3ad",
+        "number": 2,
+        "row": 13,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "88057e11-982a-4511-9fa8-1e174d01b3ad",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "cd3cfec2-8ab7-4bb7-b002-d67eabf1cea9": {
+        "uuid": "cd3cfec2-8ab7-4bb7-b002-d67eabf1cea9",
+        "number": 6,
+        "row": 13,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "cd3cfec2-8ab7-4bb7-b002-d67eabf1cea9",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "557cac21-2d57-420a-b641-ac8fde42575d": {
+        "uuid": "557cac21-2d57-420a-b641-ac8fde42575d",
+        "number": 7,
+        "row": 7,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "557cac21-2d57-420a-b641-ac8fde42575d",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "eb672a47-b8c0-4d53-9eaa-8e2a07f15c9f": {
+        "uuid": "eb672a47-b8c0-4d53-9eaa-8e2a07f15c9f",
+        "number": 1,
+        "row": 6,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "eb672a47-b8c0-4d53-9eaa-8e2a07f15c9f",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "0f54582e-aee4-4ebe-bfed-93128b836173": {
+        "uuid": "0f54582e-aee4-4ebe-bfed-93128b836173",
+        "number": 10,
+        "row": 3,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "0f54582e-aee4-4ebe-bfed-93128b836173",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "5308ce7a-f22e-4d57-82d8-e0f08e62882e": {
+        "uuid": "5308ce7a-f22e-4d57-82d8-e0f08e62882e",
+        "number": 13,
+        "row": 5,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "5308ce7a-f22e-4d57-82d8-e0f08e62882e",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "934646ae-1e94-4ebd-88d2-b1b887f51470": {
+        "uuid": "934646ae-1e94-4ebd-88d2-b1b887f51470",
+        "number": 11,
+        "row": 7,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "934646ae-1e94-4ebd-88d2-b1b887f51470",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "efa4cf23-dd14-45d3-b667-55190437d29d": {
+        "uuid": "efa4cf23-dd14-45d3-b667-55190437d29d",
+        "number": 6,
+        "row": 8,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "efa4cf23-dd14-45d3-b667-55190437d29d",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "e5c9ccd7-f79a-4501-a7b6-8b06da5c079d": {
+        "uuid": "e5c9ccd7-f79a-4501-a7b6-8b06da5c079d",
+        "number": 3,
+        "row": 2,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "e5c9ccd7-f79a-4501-a7b6-8b06da5c079d",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "a16f4c0a-8645-4db4-84d4-d4b9f0090778": {
+        "uuid": "a16f4c0a-8645-4db4-84d4-d4b9f0090778",
+        "number": 11,
+        "row": 9,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "a16f4c0a-8645-4db4-84d4-d4b9f0090778",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "1539aaa7-503a-4b99-a2a2-3981ecb0dc1d": {
+        "uuid": "1539aaa7-503a-4b99-a2a2-3981ecb0dc1d",
+        "number": 5,
+        "row": 3,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "1539aaa7-503a-4b99-a2a2-3981ecb0dc1d",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "dbffc963-df02-4fed-ae47-3d15353c5432": {
+        "uuid": "dbffc963-df02-4fed-ae47-3d15353c5432",
+        "number": 12,
+        "row": 13,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "dbffc963-df02-4fed-ae47-3d15353c5432",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "9717686b-cf3a-4803-a2a2-335492131515": {
+        "uuid": "9717686b-cf3a-4803-a2a2-335492131515",
+        "number": 12,
+        "row": 2,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "9717686b-cf3a-4803-a2a2-335492131515",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "746ea92f-c949-4c5d-90b8-ce15feaa84cb": {
+        "uuid": "746ea92f-c949-4c5d-90b8-ce15feaa84cb",
+        "number": 3,
+        "row": 5,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "746ea92f-c949-4c5d-90b8-ce15feaa84cb",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "6957220d-6eea-480c-8ee8-a8441194910f": {
+        "uuid": "6957220d-6eea-480c-8ee8-a8441194910f",
+        "number": 11,
+        "row": 2,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "6957220d-6eea-480c-8ee8-a8441194910f",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "edeea051-9278-465d-9b7e-4f6043407563": {
+        "uuid": "edeea051-9278-465d-9b7e-4f6043407563",
+        "number": 3,
+        "row": 4,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "edeea051-9278-465d-9b7e-4f6043407563",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "bfdbc5e9-5e0e-44cd-ab54-b7f59708cc9e": {
+        "uuid": "bfdbc5e9-5e0e-44cd-ab54-b7f59708cc9e",
+        "number": 7,
+        "row": 10,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "bfdbc5e9-5e0e-44cd-ab54-b7f59708cc9e",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "a4afe953-2508-4ae7-b496-0b89a3c23eb1": {
+        "uuid": "a4afe953-2508-4ae7-b496-0b89a3c23eb1",
+        "number": 11,
+        "row": 4,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "a4afe953-2508-4ae7-b496-0b89a3c23eb1",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "adda87c1-c9d5-47d6-a1ec-43a4ef72a1d3": {
+        "uuid": "adda87c1-c9d5-47d6-a1ec-43a4ef72a1d3",
+        "number": 12,
+        "row": 12,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "adda87c1-c9d5-47d6-a1ec-43a4ef72a1d3",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "50472ec3-43d2-4aae-9500-ab52c8ba3127": {
+        "uuid": "50472ec3-43d2-4aae-9500-ab52c8ba3127",
+        "number": 6,
+        "row": 12,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "50472ec3-43d2-4aae-9500-ab52c8ba3127",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "3bedbba8-b286-4f9a-9122-9eab3e6f8f4d": {
+        "uuid": "3bedbba8-b286-4f9a-9122-9eab3e6f8f4d",
+        "number": 2,
+        "row": 2,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "3bedbba8-b286-4f9a-9122-9eab3e6f8f4d",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "c9ea89c6-c120-478b-b4c0-20da50446fa7": {
+        "uuid": "c9ea89c6-c120-478b-b4c0-20da50446fa7",
+        "number": 7,
+        "row": 9,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "c9ea89c6-c120-478b-b4c0-20da50446fa7",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "49426fb3-48c1-4cc5-906a-5630ed2335d8": {
+        "uuid": "49426fb3-48c1-4cc5-906a-5630ed2335d8",
+        "number": 8,
+        "row": 12,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "49426fb3-48c1-4cc5-906a-5630ed2335d8",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "e53b5f2a-4ad0-4a9b-92fe-8369ad9a9c0e": {
+        "uuid": "e53b5f2a-4ad0-4a9b-92fe-8369ad9a9c0e",
+        "number": 12,
+        "row": 3,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "e53b5f2a-4ad0-4a9b-92fe-8369ad9a9c0e",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "02b995de-5949-4d6c-9923-fd2bb4a681e0": {
+        "uuid": "02b995de-5949-4d6c-9923-fd2bb4a681e0",
+        "number": 11,
+        "row": 5,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "02b995de-5949-4d6c-9923-fd2bb4a681e0",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "f3639e87-1b3d-4436-89eb-3a625659b628": {
+        "uuid": "f3639e87-1b3d-4436-89eb-3a625659b628",
+        "number": 3,
+        "row": 10,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "f3639e87-1b3d-4436-89eb-3a625659b628",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "3c64c988-b166-4c40-a15a-261b20e64e49": {
+        "uuid": "3c64c988-b166-4c40-a15a-261b20e64e49",
+        "number": 1,
+        "row": 3,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "3c64c988-b166-4c40-a15a-261b20e64e49",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "31736f57-ef14-460a-82ff-d0157a1596a1": {
+        "uuid": "31736f57-ef14-460a-82ff-d0157a1596a1",
+        "number": 8,
+        "row": 7,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "31736f57-ef14-460a-82ff-d0157a1596a1",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "af27486f-2710-43de-9f1a-37ca631897c9": {
+        "uuid": "af27486f-2710-43de-9f1a-37ca631897c9",
+        "number": 9,
+        "row": 11,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "af27486f-2710-43de-9f1a-37ca631897c9",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "39946320-ceab-49d0-90f9-ba9eafe366ec": {
+        "uuid": "39946320-ceab-49d0-90f9-ba9eafe366ec",
+        "number": 8,
+        "row": 1,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "39946320-ceab-49d0-90f9-ba9eafe366ec",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "cebc4cfb-4ce3-4886-ac70-9eb1978d6380": {
+        "uuid": "cebc4cfb-4ce3-4886-ac70-9eb1978d6380",
+        "number": 3,
+        "row": 12,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "cebc4cfb-4ce3-4886-ac70-9eb1978d6380",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "cd60de6e-f2c6-44bf-8125-f21fd6d49332": {
+        "uuid": "cd60de6e-f2c6-44bf-8125-f21fd6d49332",
+        "number": 12,
+        "row": 1,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "cd60de6e-f2c6-44bf-8125-f21fd6d49332",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "7f130fe2-5644-426b-bbf1-3eee9a24d0c7": {
+        "uuid": "7f130fe2-5644-426b-bbf1-3eee9a24d0c7",
+        "number": 2,
+        "row": 11,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "7f130fe2-5644-426b-bbf1-3eee9a24d0c7",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "78673ea6-b8e5-4991-9c34-31c6cc0e3f70": {
+        "uuid": "78673ea6-b8e5-4991-9c34-31c6cc0e3f70",
+        "number": 11,
+        "row": 13,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "78673ea6-b8e5-4991-9c34-31c6cc0e3f70",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "2a86f920-e0ca-4395-9bb2-b5f07ca9fbe6": {
+        "uuid": "2a86f920-e0ca-4395-9bb2-b5f07ca9fbe6",
+        "number": 5,
+        "row": 7,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "2a86f920-e0ca-4395-9bb2-b5f07ca9fbe6",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "68cd3a71-6c58-46e8-a9a3-02c3970b3921": {
+        "uuid": "68cd3a71-6c58-46e8-a9a3-02c3970b3921",
+        "number": 7,
+        "row": 2,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "68cd3a71-6c58-46e8-a9a3-02c3970b3921",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "0bb9b3db-e062-49d4-a832-0f304a5c3aad": {
+        "uuid": "0bb9b3db-e062-49d4-a832-0f304a5c3aad",
+        "number": 6,
+        "row": 3,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "0bb9b3db-e062-49d4-a832-0f304a5c3aad",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "937518a4-b3e8-4001-8f68-8907f4d4140d": {
+        "uuid": "937518a4-b3e8-4001-8f68-8907f4d4140d",
+        "number": 6,
+        "row": 6,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "937518a4-b3e8-4001-8f68-8907f4d4140d",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "014bc6c1-78aa-4264-9370-a873bcd48dc2": {
+        "uuid": "014bc6c1-78aa-4264-9370-a873bcd48dc2",
+        "number": 1,
+        "row": 5,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "014bc6c1-78aa-4264-9370-a873bcd48dc2",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "756aced7-91b8-494e-8cfa-4e3d94cf731a": {
+        "uuid": "756aced7-91b8-494e-8cfa-4e3d94cf731a",
+        "number": 2,
+        "row": 8,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "756aced7-91b8-494e-8cfa-4e3d94cf731a",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "588b3ae6-39d0-4f62-8275-29ca927361c2": {
+        "uuid": "588b3ae6-39d0-4f62-8275-29ca927361c2",
+        "number": 10,
+        "row": 2,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "588b3ae6-39d0-4f62-8275-29ca927361c2",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "dea724a9-94c2-4bb5-92ab-bb7dbeb1157e": {
+        "uuid": "dea724a9-94c2-4bb5-92ab-bb7dbeb1157e",
+        "number": 7,
+        "row": 6,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "dea724a9-94c2-4bb5-92ab-bb7dbeb1157e",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "044db98f-6947-4391-bdc7-d3bcf2a18304": {
+        "uuid": "044db98f-6947-4391-bdc7-d3bcf2a18304",
+        "number": 4,
+        "row": 6,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "044db98f-6947-4391-bdc7-d3bcf2a18304",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "f1ac7ef1-27a4-40f9-acda-7756cba31f3d": {
+        "uuid": "f1ac7ef1-27a4-40f9-acda-7756cba31f3d",
+        "number": 9,
+        "row": 13,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "f1ac7ef1-27a4-40f9-acda-7756cba31f3d",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "f1acefb5-3b1a-4af4-aaea-1c2d40e670fa": {
+        "uuid": "f1acefb5-3b1a-4af4-aaea-1c2d40e670fa",
+        "number": 1,
+        "row": 12,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "f1acefb5-3b1a-4af4-aaea-1c2d40e670fa",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "35ad5480-6d79-459c-a965-91854de3f3d1": {
+        "uuid": "35ad5480-6d79-459c-a965-91854de3f3d1",
+        "number": 6,
+        "row": 7,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "35ad5480-6d79-459c-a965-91854de3f3d1",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "ef240fde-f885-4303-813d-d2894f75833e": {
+        "uuid": "ef240fde-f885-4303-813d-d2894f75833e",
+        "number": 11,
+        "row": 10,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "ef240fde-f885-4303-813d-d2894f75833e",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "fbe2483e-88e5-475c-a7cb-5d83a19497bb": {
+        "uuid": "fbe2483e-88e5-475c-a7cb-5d83a19497bb",
+        "number": 6,
+        "row": 4,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "fbe2483e-88e5-475c-a7cb-5d83a19497bb",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "8a5d70d2-5d89-41fd-87f6-43f109c61405": {
+        "uuid": "8a5d70d2-5d89-41fd-87f6-43f109c61405",
+        "number": 10,
+        "row": 12,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "8a5d70d2-5d89-41fd-87f6-43f109c61405",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "ff0ebf44-a83b-4a65-80bc-b5a9847e2cdf": {
+        "uuid": "ff0ebf44-a83b-4a65-80bc-b5a9847e2cdf",
+        "number": 9,
+        "row": 4,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "ff0ebf44-a83b-4a65-80bc-b5a9847e2cdf",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "62020201-714a-4aae-b17d-4b8772be7671": {
+        "uuid": "62020201-714a-4aae-b17d-4b8772be7671",
+        "number": 9,
+        "row": 3,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "62020201-714a-4aae-b17d-4b8772be7671",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "d563b4e3-8588-4c79-8c5a-4a3584646ea7": {
+        "uuid": "d563b4e3-8588-4c79-8c5a-4a3584646ea7",
+        "number": 13,
+        "row": 7,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "d563b4e3-8588-4c79-8c5a-4a3584646ea7",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "7f5dfa4b-5cbf-4d2f-92b5-d0fa8028096b": {
+        "uuid": "7f5dfa4b-5cbf-4d2f-92b5-d0fa8028096b",
+        "number": 6,
+        "row": 9,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "7f5dfa4b-5cbf-4d2f-92b5-d0fa8028096b",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "6f7fd6cd-41b2-45ab-8b17-8033232e2abe": {
+        "uuid": "6f7fd6cd-41b2-45ab-8b17-8033232e2abe",
+        "number": 3,
+        "row": 6,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "6f7fd6cd-41b2-45ab-8b17-8033232e2abe",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "2defff47-8246-4f95-b7d6-6711de3541da": {
+        "uuid": "2defff47-8246-4f95-b7d6-6711de3541da",
+        "number": 12,
+        "row": 7,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "2defff47-8246-4f95-b7d6-6711de3541da",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "bdf826d0-c159-4be7-ab04-4002c9291834": {
+        "uuid": "bdf826d0-c159-4be7-ab04-4002c9291834",
+        "number": 4,
+        "row": 7,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "bdf826d0-c159-4be7-ab04-4002c9291834",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "7e639820-736c-4fa8-bccc-0fac9f888d07": {
+        "uuid": "7e639820-736c-4fa8-bccc-0fac9f888d07",
+        "number": 4,
+        "row": 13,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "7e639820-736c-4fa8-bccc-0fac9f888d07",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "db0bed18-5017-4699-be06-178188359408": {
+        "uuid": "db0bed18-5017-4699-be06-178188359408",
+        "number": 8,
+        "row": 13,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "db0bed18-5017-4699-be06-178188359408",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "bfeefa73-3b2a-4d19-982b-4395faca72ef": {
+        "uuid": "bfeefa73-3b2a-4d19-982b-4395faca72ef",
+        "number": 8,
+        "row": 8,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "bfeefa73-3b2a-4d19-982b-4395faca72ef",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "419f5b77-6cf0-4f15-9db4-26cc92a3f173": {
+        "uuid": "419f5b77-6cf0-4f15-9db4-26cc92a3f173",
+        "number": 13,
+        "row": 4,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "419f5b77-6cf0-4f15-9db4-26cc92a3f173",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "9465c67f-d8df-4022-a9ca-d5b9138e00c2": {
+        "uuid": "9465c67f-d8df-4022-a9ca-d5b9138e00c2",
+        "number": 10,
+        "row": 7,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "9465c67f-d8df-4022-a9ca-d5b9138e00c2",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "a3a07517-53cc-43bf-8c31-dd70cce9ca3d": {
+        "uuid": "a3a07517-53cc-43bf-8c31-dd70cce9ca3d",
+        "number": 7,
+        "row": 11,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "a3a07517-53cc-43bf-8c31-dd70cce9ca3d",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "94db43ff-db65-40b5-bc35-c26b1c910fcd": {
+        "uuid": "94db43ff-db65-40b5-bc35-c26b1c910fcd",
+        "number": 7,
+        "row": 4,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "94db43ff-db65-40b5-bc35-c26b1c910fcd",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "42243b25-48e7-46a7-a9eb-aee25815c6e9": {
+        "uuid": "42243b25-48e7-46a7-a9eb-aee25815c6e9",
+        "number": 4,
+        "row": 10,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "42243b25-48e7-46a7-a9eb-aee25815c6e9",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "d5cdd1b9-91a1-4d0d-b054-21fc78b93e5a": {
+        "uuid": "d5cdd1b9-91a1-4d0d-b054-21fc78b93e5a",
+        "number": 8,
+        "row": 4,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "d5cdd1b9-91a1-4d0d-b054-21fc78b93e5a",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "f17643d6-c4f9-465e-8880-13ccda02a55b": {
+        "uuid": "f17643d6-c4f9-465e-8880-13ccda02a55b",
+        "number": 6,
+        "row": 5,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "f17643d6-c4f9-465e-8880-13ccda02a55b",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "d91ea63b-f078-448a-9e8a-50f1305bd436": {
+        "uuid": "d91ea63b-f078-448a-9e8a-50f1305bd436",
+        "number": 11,
+        "row": 6,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "d91ea63b-f078-448a-9e8a-50f1305bd436",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "82c57b3c-4179-4e4d-bf9b-d176f96de2cb": {
+        "uuid": "82c57b3c-4179-4e4d-bf9b-d176f96de2cb",
+        "number": 4,
+        "row": 9,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "82c57b3c-4179-4e4d-bf9b-d176f96de2cb",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "e413ecef-d4f7-49d5-9b37-5d6f7b83e4de": {
+        "uuid": "e413ecef-d4f7-49d5-9b37-5d6f7b83e4de",
+        "number": 4,
+        "row": 3,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "e413ecef-d4f7-49d5-9b37-5d6f7b83e4de",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "c09bac16-1aec-4051-91a0-8c0992e8605f": {
+        "uuid": "c09bac16-1aec-4051-91a0-8c0992e8605f",
+        "number": 3,
+        "row": 8,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "c09bac16-1aec-4051-91a0-8c0992e8605f",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "c2afef23-012f-42f5-a234-769375435c95": {
+        "uuid": "c2afef23-012f-42f5-a234-769375435c95",
+        "number": 4,
+        "row": 8,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "c2afef23-012f-42f5-a234-769375435c95",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "265eee2d-9d94-43e5-b4ac-23afaeb9a8d6": {
+        "uuid": "265eee2d-9d94-43e5-b4ac-23afaeb9a8d6",
+        "number": 5,
+        "row": 2,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "265eee2d-9d94-43e5-b4ac-23afaeb9a8d6",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "6971ee73-5ee3-45e1-9281-e5c3a827d59e": {
+        "uuid": "6971ee73-5ee3-45e1-9281-e5c3a827d59e",
+        "number": 5,
+        "row": 9,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "6971ee73-5ee3-45e1-9281-e5c3a827d59e",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "8b28d673-6177-4103-884b-88aea70161f8": {
+        "uuid": "8b28d673-6177-4103-884b-88aea70161f8",
+        "number": 13,
+        "row": 10,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "8b28d673-6177-4103-884b-88aea70161f8",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "3d45bbd5-709a-4a55-a4ae-0b6e53deecb9": {
+        "uuid": "3d45bbd5-709a-4a55-a4ae-0b6e53deecb9",
+        "number": 2,
+        "row": 1,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "3d45bbd5-709a-4a55-a4ae-0b6e53deecb9",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "185ac1d1-0796-49dd-ace5-04b21f368054": {
+        "uuid": "185ac1d1-0796-49dd-ace5-04b21f368054",
+        "number": 5,
+        "row": 1,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "185ac1d1-0796-49dd-ace5-04b21f368054",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "a934139f-a0ef-44be-9f9a-3c9591a0f5b5": {
+        "uuid": "a934139f-a0ef-44be-9f9a-3c9591a0f5b5",
+        "number": 13,
+        "row": 2,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "a934139f-a0ef-44be-9f9a-3c9591a0f5b5",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "a3e1753e-0ee1-4ed2-a360-e541cdb6abd5": {
+        "uuid": "a3e1753e-0ee1-4ed2-a360-e541cdb6abd5",
+        "number": 9,
+        "row": 7,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "a3e1753e-0ee1-4ed2-a360-e541cdb6abd5",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "fa912070-5d9d-4831-8e5e-26c8f1bf78d6": {
+        "uuid": "fa912070-5d9d-4831-8e5e-26c8f1bf78d6",
+        "number": 7,
+        "row": 12,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "fa912070-5d9d-4831-8e5e-26c8f1bf78d6",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "9363690e-c48d-4663-9551-97cc55028fe0": {
+        "uuid": "9363690e-c48d-4663-9551-97cc55028fe0",
+        "number": 10,
+        "row": 8,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "9363690e-c48d-4663-9551-97cc55028fe0",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "f1b25187-89f6-49c0-bb2b-dff68290e52c": {
+        "uuid": "f1b25187-89f6-49c0-bb2b-dff68290e52c",
+        "number": 10,
+        "row": 4,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "f1b25187-89f6-49c0-bb2b-dff68290e52c",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "8027d387-87c2-46ae-9e50-739f91e007ed": {
+        "uuid": "8027d387-87c2-46ae-9e50-739f91e007ed",
+        "number": 1,
+        "row": 7,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "8027d387-87c2-46ae-9e50-739f91e007ed",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "760c688e-1b9e-44c5-8bb6-fc7e5369524f": {
+        "uuid": "760c688e-1b9e-44c5-8bb6-fc7e5369524f",
+        "number": 6,
+        "row": 10,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "760c688e-1b9e-44c5-8bb6-fc7e5369524f",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "195b6783-7aba-41a9-b8f8-89d4342f4a98": {
+        "uuid": "195b6783-7aba-41a9-b8f8-89d4342f4a98",
+        "number": 1,
+        "row": 10,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "195b6783-7aba-41a9-b8f8-89d4342f4a98",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "5d73575b-0261-4ea3-af12-5b726d0df65c": {
+        "uuid": "5d73575b-0261-4ea3-af12-5b726d0df65c",
+        "number": 12,
+        "row": 4,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "5d73575b-0261-4ea3-af12-5b726d0df65c",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "ac4f3ee7-f688-484e-93cb-57c52510bbcb": {
+        "uuid": "ac4f3ee7-f688-484e-93cb-57c52510bbcb",
+        "number": 5,
+        "row": 6,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "ac4f3ee7-f688-484e-93cb-57c52510bbcb",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "090f6112-44e4-4d21-95d3-53e6a13c0cbe": {
+        "uuid": "090f6112-44e4-4d21-95d3-53e6a13c0cbe",
+        "number": 7,
+        "row": 1,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "090f6112-44e4-4d21-95d3-53e6a13c0cbe",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "af963a59-5bc9-47af-9f26-b05a14f3f661": {
+        "uuid": "af963a59-5bc9-47af-9f26-b05a14f3f661",
+        "number": 8,
+        "row": 6,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "af963a59-5bc9-47af-9f26-b05a14f3f661",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "f2d43a40-5e7a-47f0-921d-06abef855baa": {
+        "uuid": "f2d43a40-5e7a-47f0-921d-06abef855baa",
+        "number": 5,
+        "row": 5,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "f2d43a40-5e7a-47f0-921d-06abef855baa",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "264f0eb8-f43c-4177-81c7-348f0a85e13e": {
+        "uuid": "264f0eb8-f43c-4177-81c7-348f0a85e13e",
+        "number": 9,
+        "row": 5,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "264f0eb8-f43c-4177-81c7-348f0a85e13e",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "84d10671-0098-40e7-a0e6-52657f50ed23": {
+        "uuid": "84d10671-0098-40e7-a0e6-52657f50ed23",
+        "number": 13,
+        "row": 13,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "84d10671-0098-40e7-a0e6-52657f50ed23",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "62a20eb7-d707-4e99-8a94-220144a2e93d": {
+        "uuid": "62a20eb7-d707-4e99-8a94-220144a2e93d",
+        "number": 13,
+        "row": 3,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "62a20eb7-d707-4e99-8a94-220144a2e93d",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "783d6d1b-994b-45b3-be48-baa427d2af33": {
+        "uuid": "783d6d1b-994b-45b3-be48-baa427d2af33",
+        "number": 12,
+        "row": 11,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "783d6d1b-994b-45b3-be48-baa427d2af33",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "c16442ca-ff7b-4245-aaf5-7bd9dfa98aa2": {
+        "uuid": "c16442ca-ff7b-4245-aaf5-7bd9dfa98aa2",
+        "number": 4,
+        "row": 2,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "c16442ca-ff7b-4245-aaf5-7bd9dfa98aa2",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "a6a41421-38f1-40a4-bd5a-a33aa960f2e8": {
+        "uuid": "a6a41421-38f1-40a4-bd5a-a33aa960f2e8",
+        "number": 11,
+        "row": 1,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "a6a41421-38f1-40a4-bd5a-a33aa960f2e8",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "3ef8e97b-1158-4d33-9cad-9d8f43a0ee52": {
+        "uuid": "3ef8e97b-1158-4d33-9cad-9d8f43a0ee52",
+        "number": 8,
+        "row": 11,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "3ef8e97b-1158-4d33-9cad-9d8f43a0ee52",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "3deceffe-b837-4e46-b668-c8d83396ca38": {
+        "uuid": "3deceffe-b837-4e46-b668-c8d83396ca38",
+        "number": 8,
+        "row": 9,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "3deceffe-b837-4e46-b668-c8d83396ca38",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "2a8dea8f-9b9e-4852-b5ee-583f97988f1e": {
+        "uuid": "2a8dea8f-9b9e-4852-b5ee-583f97988f1e",
+        "number": 11,
+        "row": 3,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "2a8dea8f-9b9e-4852-b5ee-583f97988f1e",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "4964fc5c-f172-4411-83eb-2a077be31e6b": {
+        "uuid": "4964fc5c-f172-4411-83eb-2a077be31e6b",
+        "number": 4,
+        "row": 11,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "4964fc5c-f172-4411-83eb-2a077be31e6b",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "401a0c04-8d13-4260-a4a7-ad2384fe5a3a": {
+        "uuid": "401a0c04-8d13-4260-a4a7-ad2384fe5a3a",
+        "number": 13,
+        "row": 6,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "401a0c04-8d13-4260-a4a7-ad2384fe5a3a",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "8f8485a6-4602-41d7-a8aa-dc0a6090dee1": {
+        "uuid": "8f8485a6-4602-41d7-a8aa-dc0a6090dee1",
+        "number": 1,
+        "row": 2,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "8f8485a6-4602-41d7-a8aa-dc0a6090dee1",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "de51a318-91df-4de4-87ff-72b9865ca29e": {
+        "uuid": "de51a318-91df-4de4-87ff-72b9865ca29e",
+        "number": 5,
+        "row": 4,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "de51a318-91df-4de4-87ff-72b9865ca29e",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "941cdc0c-e3b0-4c18-b8ca-69233f0604e0": {
+        "uuid": "941cdc0c-e3b0-4c18-b8ca-69233f0604e0",
+        "number": 7,
+        "row": 3,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "941cdc0c-e3b0-4c18-b8ca-69233f0604e0",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "2dd8e43e-5d25-4512-a74e-ff6dfc85b0dc": {
+        "uuid": "2dd8e43e-5d25-4512-a74e-ff6dfc85b0dc",
+        "number": 5,
+        "row": 13,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "2dd8e43e-5d25-4512-a74e-ff6dfc85b0dc",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "54af8d9d-eb8b-4d63-af9a-879ecc0c8705": {
+        "uuid": "54af8d9d-eb8b-4d63-af9a-879ecc0c8705",
+        "number": 1,
+        "row": 1,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "54af8d9d-eb8b-4d63-af9a-879ecc0c8705",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "5732dc55-e180-4805-bfa6-30866a8cd753": {
+        "uuid": "5732dc55-e180-4805-bfa6-30866a8cd753",
+        "number": 12,
+        "row": 5,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "5732dc55-e180-4805-bfa6-30866a8cd753",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "0f9bda20-aa65-40f3-aa92-1dc133409ab2": {
+        "uuid": "0f9bda20-aa65-40f3-aa92-1dc133409ab2",
+        "number": 11,
+        "row": 12,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "0f9bda20-aa65-40f3-aa92-1dc133409ab2",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "c07ec897-4cce-4012-b777-2e5cc54e7a75": {
+        "uuid": "c07ec897-4cce-4012-b777-2e5cc54e7a75",
+        "number": 3,
+        "row": 7,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "c07ec897-4cce-4012-b777-2e5cc54e7a75",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "87843476-b1a8-48d7-a268-0cf52b4c3fce": {
+        "uuid": "87843476-b1a8-48d7-a268-0cf52b4c3fce",
+        "number": 7,
+        "row": 13,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "87843476-b1a8-48d7-a268-0cf52b4c3fce",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "8dd22399-7141-4682-99f1-22fe4e8f7387": {
+        "uuid": "8dd22399-7141-4682-99f1-22fe4e8f7387",
+        "number": 9,
+        "row": 1,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "8dd22399-7141-4682-99f1-22fe4e8f7387",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "15120897-61fc-4de8-a523-ad252e17223d": {
+        "uuid": "15120897-61fc-4de8-a523-ad252e17223d",
+        "number": 2,
+        "row": 7,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "15120897-61fc-4de8-a523-ad252e17223d",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "e431a911-7ee8-4f86-bbc5-f7b75c507929": {
+        "uuid": "e431a911-7ee8-4f86-bbc5-f7b75c507929",
+        "number": 6,
+        "row": 1,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "e431a911-7ee8-4f86-bbc5-f7b75c507929",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "657be1fd-009b-433b-8372-d178380ce840": {
+        "uuid": "657be1fd-009b-433b-8372-d178380ce840",
+        "number": 9,
+        "row": 2,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "657be1fd-009b-433b-8372-d178380ce840",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "6cbf9254-73dc-4dc4-bdd1-49f9f6a46c9e": {
+        "uuid": "6cbf9254-73dc-4dc4-bdd1-49f9f6a46c9e",
+        "number": 10,
+        "row": 9,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "6cbf9254-73dc-4dc4-bdd1-49f9f6a46c9e",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "35cd9a73-4176-46a5-9138-25c21bf4047e": {
+        "uuid": "35cd9a73-4176-46a5-9138-25c21bf4047e",
+        "number": 4,
+        "row": 5,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "35cd9a73-4176-46a5-9138-25c21bf4047e",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "d45eff98-11f6-484c-9dcc-df0ff7bb81b4": {
+        "uuid": "d45eff98-11f6-484c-9dcc-df0ff7bb81b4",
+        "number": 3,
+        "row": 3,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "d45eff98-11f6-484c-9dcc-df0ff7bb81b4",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "8bf59e68-6b22-44bf-991e-797c3c61f9d6": {
+        "uuid": "8bf59e68-6b22-44bf-991e-797c3c61f9d6",
+        "number": 5,
+        "row": 8,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "8bf59e68-6b22-44bf-991e-797c3c61f9d6",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "76165457-83ca-4fcd-a1f1-17209e11fe7a": {
+        "uuid": "76165457-83ca-4fcd-a1f1-17209e11fe7a",
+        "number": 9,
+        "row": 8,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "76165457-83ca-4fcd-a1f1-17209e11fe7a",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "a5e30c2d-1691-4e70-b19b-7e96aebacd62": {
+        "uuid": "a5e30c2d-1691-4e70-b19b-7e96aebacd62",
+        "number": 12,
+        "row": 8,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "a5e30c2d-1691-4e70-b19b-7e96aebacd62",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "c1fe7bf7-becc-44bd-8d13-3fb89d9411b2": {
+        "uuid": "c1fe7bf7-becc-44bd-8d13-3fb89d9411b2",
+        "number": 12,
+        "row": 6,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "c1fe7bf7-becc-44bd-8d13-3fb89d9411b2",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "2dda4cfe-4045-4216-9141-e164081517ca": {
+        "uuid": "2dda4cfe-4045-4216-9141-e164081517ca",
+        "number": 13,
+        "row": 9,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "2dda4cfe-4045-4216-9141-e164081517ca",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "a9f0439a-bc07-4b37-8319-0c39ccf2df4d": {
+        "uuid": "a9f0439a-bc07-4b37-8319-0c39ccf2df4d",
+        "number": 8,
+        "row": 5,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "a9f0439a-bc07-4b37-8319-0c39ccf2df4d",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "9c2d6ff8-8c58-42fb-a58f-e5bfffe868f4": {
+        "uuid": "9c2d6ff8-8c58-42fb-a58f-e5bfffe868f4",
+        "number": 2,
+        "row": 9,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "9c2d6ff8-8c58-42fb-a58f-e5bfffe868f4",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "cb0a076c-6bd8-4a83-a544-bbdf9c057b62": {
+        "uuid": "cb0a076c-6bd8-4a83-a544-bbdf9c057b62",
+        "number": 2,
+        "row": 5,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "cb0a076c-6bd8-4a83-a544-bbdf9c057b62",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "41f59bfc-f7d0-44fb-9ef2-5b92c0d1c118": {
+        "uuid": "41f59bfc-f7d0-44fb-9ef2-5b92c0d1c118",
+        "number": 9,
+        "row": 12,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "41f59bfc-f7d0-44fb-9ef2-5b92c0d1c118",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "05edecdb-40ec-4c3e-88fe-6663bb871d13": {
+        "uuid": "05edecdb-40ec-4c3e-88fe-6663bb871d13",
+        "number": 12,
+        "row": 9,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "05edecdb-40ec-4c3e-88fe-6663bb871d13",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "c31c6dbf-d978-45b0-93a6-971f55e90551": {
+        "uuid": "c31c6dbf-d978-45b0-93a6-971f55e90551",
+        "number": 2,
+        "row": 12,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "c31c6dbf-d978-45b0-93a6-971f55e90551",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "ff68a99c-5e4e-4d8d-9d92-94e600db166f": {
+        "uuid": "ff68a99c-5e4e-4d8d-9d92-94e600db166f",
+        "number": 2,
+        "row": 10,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "ff68a99c-5e4e-4d8d-9d92-94e600db166f",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      },
+      "9c1993f7-9498-41b3-9016-5db0541125bb": {
+        "uuid": "9c1993f7-9498-41b3-9016-5db0541125bb",
+        "number": 11,
+        "row": 8,
+        "seatCategory": {
+          "uuid": "a52a05f8-108d-40a6-a71f-343fde3c77c8",
+          "title": "Kuschliger Platz",
+          "description": "besonders kuschlig"
+        },
+        "seatInformation": {
+          "looked": false,
+          "busy": false,
+          "seat": "9c1993f7-9498-41b3-9016-5db0541125bb",
+          "presentation": "76ab076f-fd5f-4bb5-9fe2-44dbadc6983d"
+        }
+      }
+    },
+    "clean": true,
+    "vip": true
+  },
+  "date": 1547033495218,
+  "presentationCategory": {
+    "uuid": "cfc9225c-c221-4391-a398-1d944772dcc8",
+    "title": "3D",
+    "description": "3D Vorstellung"
+  }
+}
