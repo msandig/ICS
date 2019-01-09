@@ -1,5 +1,6 @@
 package de.dhbw.ics.vo;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -13,7 +14,7 @@ public class Movie {
     private String title;
     private Integer fsk;
     private Integer runTime;
-    private String picture = null;
+    private String picture = StringUtils.EMPTY;
     private String description;
 
     public Movie(String uuid, Integer productionYear, String title, String description, Integer fsk, Integer runTime) {
@@ -32,6 +33,20 @@ public class Movie {
         this.fsk = fsk;
         this.runTime = runTime;
         this.uuid = UUID.randomUUID().toString();
+    }
+
+    public Movie(Integer productionYear, String title, String description, Integer fsk, Integer runTime, Genre genre) {
+        this.productionYear = productionYear;
+        this.title = title;
+        this.description = description;
+        this.fsk = fsk;
+        this.runTime = runTime;
+        this.uuid = UUID.randomUUID().toString();
+        this.genre = genre;
+    }
+
+    public Movie(){
+
     }
 
     public String getUuid() {
