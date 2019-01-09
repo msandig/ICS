@@ -3,3 +3,19 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+#gradAqua {
+      background-image: linear-gradient(to bottom, aqua, black);
+  }
+
+#gradBohemian {
+    background-image: linear-gradient(to bottom, purple, yellow);
+}
+
+#gradBumble {
+    background-image: radial-gradient(circle, black, yellow);
+}
+
+.gradbackground {
+    background-image: linear-gradient(to bottom, darkgrey, black);
+}
