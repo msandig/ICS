@@ -20,18 +20,8 @@
     background-image: linear-gradient(to bottom, darkgrey, black);
 }
 
-.icsFontColor {
-    color: darkgray;
-}
-
-.icsStandardMargin {
-    margin-top: 3%;
-    margin-left: 3%;
-    margin-right: 3%;
-}
-
 hr.linie-1 {
-    border-top: 1px solid darkgrey !important;
+    border-top: 3px solid darkgrey !important;
     border-bottom: 3px solid darkgrey !important;
     display: block;
     margin-top: 0.5em;
@@ -43,26 +33,18 @@ hr.linie-1 {
 
 }
 
-hr.linie-2 {
-    border-top: 1px solid darkgrey !important;
-    border-bottom: 0px solid darkgrey !important;
-    display: block;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    margin-left: 0%;
-    margin-right: 0%;
-    border-style: solid;
-    border-width: 0px;
-
+.card-ics {
+    width: 433px;
+    height: 200px;
+    background-color: darkgray;
 }
 
-.movieSpecs {
-    float: left;
-    margin-right: 3%;
+.card-body-ics {
+    color: black;
 }
 
-.presentationTable{
-    color: inherit;
-    width: 14.29%;
-    align: center;
+.card:hover {
+    -webkit-box-shadow: -1px 9px 40px -12px white;
+    -moz-box-shadow: -1px 9px 40px -12px white;
+    box-shadow: -1px 9px 40px -12px white;
 }
