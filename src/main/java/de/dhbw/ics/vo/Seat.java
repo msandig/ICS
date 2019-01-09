@@ -1,5 +1,7 @@
 package de.dhbw.ics.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -13,8 +15,23 @@ public class Seat {
     private Integer number;
     private Integer row;
     private SeatCategory seatCategory;
+
+    @JsonIgnore
     private Room room;
-    private Map<String, BusySeat> seatBusy = new HashMap<>();
+
+    @JsonIgnore
+    private Map<String, BusySeat> busySeatMap = new HashMap<>();
+
+    @JsonProperty("seatInformation")
+    private BusySeat currentBusySeat = null;
+
+    public BusySeat getCurrentBusySeat() {
+        return currentBusySeat;
+    }
+
+    public void setCurrentBusySeat(BusySeat currentBusySeat) {
+        this.currentBusySeat = currentBusySeat;
+    }
 
     public Seat(String uuid, Room room, SeatCategory seatCategory, Integer number, Integer row) {
         this.uuid = uuid;
@@ -33,11 +50,11 @@ public class Seat {
     }
 
     public void addBusy(BusySeat busySeat) {
-        seatBusy.putIfAbsent(busySeat.getPresentation().getUuid(), busySeat);
+        busySeatMap.putIfAbsent(busySeat.getPresentation().getUuid(), busySeat);
     }
 
     public boolean isBusy(Presentation presentation) {
-        return this.seatBusy.get(presentation.getUuid()).isBusy();
+        return this.busySeatMap.get(presentation.getUuid()).isBusy();
     }
 
     public String getUuid() {
@@ -86,7 +103,7 @@ public class Seat {
                 .append(row, seat.row)
                 .append(seatCategory, seat.seatCategory)
                 .append(room, seat.room)
-                .append(seatBusy, seat.seatBusy)
+                .append(busySeatMap, seat.busySeatMap)
                 .isEquals();
     }
 
@@ -98,7 +115,7 @@ public class Seat {
                 .append(row)
                 .append(seatCategory)
                 .append(room)
-                .append(seatBusy)
+                .append(busySeatMap)
                 .toHashCode();
     }
 }
