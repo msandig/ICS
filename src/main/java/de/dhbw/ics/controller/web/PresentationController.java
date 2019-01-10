@@ -50,4 +50,18 @@ public class PresentationController {
         return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
     }
 
+    @RequestMapping(method = RequestMethod.DELETE, path = "/service/get/presentations/{id}")
+    public @ResponseBody
+    ResponseEntity<String> delete(@PathVariable String id) {
+        boolean result = false;
+        if (id != null && !id.isEmpty()) {
+             result = this.presentationManager.deletePresentation(id);
+        }
+        if (result) {
+            return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+        }
+        return new ResponseEntity<>("FAILED", HttpStatus.EXPECTATION_FAILED);
+    }
+
+
 }

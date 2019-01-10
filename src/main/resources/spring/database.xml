@@ -239,4 +239,14 @@
         <modifyDataType tableName="Movie" columnName="movie_description" newDataType="CLOB"></modifyDataType>
     </changeSet>
 
+    <changeSet author="martin" id="3">
+        <sqlFile dbms="h2, oracle"
+                 encoding="utf8"
+                 endDelimiter="\nGO"
+                 path="data.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+    </changeSet>
+
 </databaseChangeLog>
