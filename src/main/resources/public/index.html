@@ -20,7 +20,6 @@
     </script>
 
 
-
 </head>
 <body style="padding-top:65px" class="bg-dark">
 <div id="Navbar">
@@ -60,43 +59,62 @@
 </div>
 <h1 style="margin-top: 3%; margin-left: 3%; color: darkgray">Aktuelles Programm</h1>
 <hr class="linie-1">
-<div class="card-columns" style="margin-top: 3% ;margin-left: 3%">
-<div class="card" style="width: 18rem">
-    <img class="card-img-top" src="img/movies/aquaman.jpg" style="width: 50px" alt="Card image cap">
-    <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+            <a href="#">
+                <div class="card card-ics">
+                    <img class="card-img pull-left" src="img/movies/aquaman.jpg" style="width: 40%; height: 100%; padding-left: 2px; padding-bottom: 4px; padding-top: 2px"  alt="Card image cap">
+                    <div class="card-body card-body-ics">
+                        <h4 class="card-title">Aquaman</h4>
+                        <p class="card-text" style="padding-left: 10px">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+            <a href="#">
+                <div class="card card-ics">
+                    <img class="card-img pull-left" src="img/movies/aquaman.jpg" style="width: 40%; height: 100%; padding-left: 2px; padding-bottom: 4px; padding-top: 2px"  alt="Card image cap">
+                    <div class="card-body card-body-ics">
+                        <h4 class="card-title">Aquaman</h4>
+                        <p class="card-text" style="padding-left: 10px">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+            <a href="#">
+                <div class="card card-ics">
+                    <img class="card-img pull-left" src="img/movies/aquaman.jpg" style="width: 40%; height: 100%; padding-left: 2px; padding-bottom: 4px; padding-top: 2px"  alt="Card image cap">
+                    <div class="card-body card-body-ics">
+                        <h4 class="card-title">Aquaman</h4>
+                        <p class="card-text" style="padding-left: 10px">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
     </div>
 </div>
-<div class="card" style="width: 18rem">
-    <img class="card-img-top" src="img/movies/aquaman.jpg" style="width: 50px" alt="Card image cap">
-    <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-</div>
-    <div class="card" style="width: 18rem">
-        <img class="card-img-top" src="img/movies/aquaman.jpg" style="width: 50px" alt="Card image cap">
-        <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem">
-        <img class="card-img-top" src="img/movies/aquaman.jpg" style="width: 50px" alt="Card image cap">
-        <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem">
-        <img class="card-img-top" src="img/movies/aquaman.jpg" style="width: 50px" alt="Card image cap">
-        <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem">
-        <img class="card-img pull-left" src="img/movies/aquaman.jpg" style="width: 100px" alt="Card image cap">
-        <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
+
+    <script>
+    $(document).ready(function () {
+        $('.card').hover(
+            function () {
+                $(this).animate({
+                    marginTop: "-=1%",
+                },200);
+            },
+            function () {
+                $(this).animate({
+                    marginTop: "+=1%"
+                },200);
+            }
+        );
+    });
+</script>
 </div>
 </body>
 </html>
