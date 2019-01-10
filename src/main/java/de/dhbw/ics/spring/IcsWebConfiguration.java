@@ -1,24 +1,17 @@
 package de.dhbw.ics.spring;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import java.util.List;
 @Configuration
 @ImportResource("classpath:spring/applicationContext.xml")
-@EnableWebMvc
-public class IcsWebConfiguration extends WebMvcConfigurationSupport {
+public class IcsWebConfiguration implements WebMvcConfigurer {
 
     private static final Logger LOG = LoggerFactory.getLogger(IcsWebConfiguration.class);
 
@@ -37,7 +30,8 @@ public class IcsWebConfiguration extends WebMvcConfigurationSupport {
         };
     }
 
-    @Bean
+
+/*    @Bean
     public MappingJackson2HttpMessageConverter customJackson2HttpMessageConverter() {
         MappingJackson2HttpMessageConverter jsonConverter = new MappingJackson2HttpMessageConverter();
         ObjectMapper objectMapper = new ObjectMapper();
@@ -49,7 +43,6 @@ public class IcsWebConfiguration extends WebMvcConfigurationSupport {
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(customJackson2HttpMessageConverter());
-        super.addDefaultHttpMessageConverters(converters);
-    }
+    }*/
 
 }

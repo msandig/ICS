@@ -1,48 +1,53 @@
 package de.dhbw.ics.controller.web;
 
-import de.dhbw.ics.vo.*;
+import de.dhbw.ics.manager.PresentationManager;
+import de.dhbw.ics.vo.Presentation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
-import java.util.Random;
+import java.util.List;
 
 @RestController
 public class PresentationController {
 
-    @RequestMapping(method= RequestMethod.GET, path = "/service/get/presentation")
-    public @ResponseBody
-    ResponseEntity<Presentation> getMovie() {
-        Movie movie = new Movie(2015, "TestMovie", "Nice Test Movie", 12, 120);
-        Genre genre = new Genre("testGenre");
-        movie.setGenre(genre);
-        movie.setPicture("/movie/avatar.png");
-        Room room = new Room("3D Raum", true, true, 1);
-        Random ran = new Random();
-        int x = ran.nextInt(6) + 10;
-        int y = ran.nextInt(6) + 10;
+    @Autowired
+    private PresentationManager presentationManager;
 
-        Presentation presentation = new Presentation(movie, room, new Date(), new PresentationCategory("3D","3D Vorstellung"));
-        SeatCategory seatCategory = new SeatCategory("Kuschliger Platz", "besonders kuschlig");
-        for(int i = 1; i < x; i++){
-            for(int j = 1; j<= y; j++){
-                Seat seat = new Seat(room, seatCategory,j, i);
-                BusySeat busySeat = new BusySeat();
-                busySeat.setSeat(seat);
-                busySeat.setPresentation(presentation);
-                busySeat.setLooked(false);
-                busySeat.setBusy(false);
-                seat.addBusy(busySeat);
-                seat.setCurrentBusySeat(busySeat);
-                room.getSeats().put(seat.getUuid(),seat);
-            }
+    @RequestMapping(method = RequestMethod.GET, path = "/service/get/presentations/{id}")
+    public @ResponseBody
+    ResponseEntity<Presentation> get(@PathVariable String id) {
+        Presentation presentation = null;
+        if (id != null && !id.isEmpty()) {
+            presentation = this.presentationManager.getPresentation(id);
+        }
+        return new ResponseEntity<>(presentation, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/service/get/presentations")
+    public @ResponseBody
+    ResponseEntity<List<Presentation>> getAll(@RequestParam(value = "start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date start, @RequestParam(value = "start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date end) {
+        List<Presentation> presentations = null;
+        if(start != null && end != null){
+            presentations = this.presentationManager.getAllPresentations();
+        }else {
+            presentations = this.presentationManager.getAllPresentations();
         }
 
-        return new ResponseEntity<>(presentation, HttpStatus.OK);
+        return new ResponseEntity<List<Presentation>>(presentations, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/service/get/presentations")
+    public @ResponseBody
+    ResponseEntity<Presentation> post(@RequestBody Presentation presentation) {
+        boolean result = this.presentationManager.persistPresentation(presentation);
+        if(result){
+            return new ResponseEntity<>(presentation, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
     }
 
 }
