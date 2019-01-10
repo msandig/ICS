@@ -34,8 +34,10 @@ hr.linie-1 {
 }
 
 .card-ics {
-    width: 433px;
-    height: 200px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 100%;
+    height: 50%;
     background-color: darkgray;
 }
 
