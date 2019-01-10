@@ -43,7 +43,7 @@ public class PresentationDao extends AbstractDao<Presentation> {
             "JOIN MOVIE ON PRESENTATION.movie_uuid = MOVIE.movie_uuid " +
             "JOIN GENRE ON MOVIE.genre_uuid = GENRE.genre_uuid " +
             "JOIN ROOM ON PRESENTATION.room_uuid = ROOM.room_uuid " +
-            "JOIN PRESENTATION_CATEGORY ON PRESENTATION.prescat_uuid = PRESENTATION_CATEGORY.prescat_uuid WHERE MOVIE.prod_year BETWEEN ? AND ?";
+            "JOIN PRESENTATION_CATEGORY ON PRESENTATION.prescat_uuid = PRESENTATION_CATEGORY.prescat_uuid WHERE PRESENTATION.date BETWEEN ? AND ?";
 
     @Override
     public boolean persist(Presentation object) {
@@ -74,7 +74,7 @@ public class PresentationDao extends AbstractDao<Presentation> {
         return this.getAllObjects(Presentation.class, SELECT_ALL, new PresentationMapper());
     }
 
-    public List<Presentation> getMoviesBetweenIntervall(Date startDate, Date endDate) {
+    public List<Presentation> getPresentationsBetweenIntervall(Date startDate, Date endDate) {
         if (startDate != null && endDate != null) {
             return this.getObjectsByMultipleArguments(Presentation.class, SELECT_ALL_BETWEEN_DATE, new Object[]{startDate, endDate}, new PresentationMapper());
         }

@@ -29,4 +29,62 @@
 
     <bean id="dataSourceFactory" class="de.dhbw.ics.database.DatabaseFactory" depends-on="fileSystemInitializer"/>
 
+    <bean id="presentationManager" class="de.dhbw.ics.manager.PresentationManager"/>
+
+    <bean id="busySeatDao" class="de.dhbw.ics.database.dao.BusySeatDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="genreDao" class="de.dhbw.ics.database.dao.GenreDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="movieDao" class="de.dhbw.ics.database.dao.MovieDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="paymentMethodDao" class="de.dhbw.ics.database.dao.PaymentMethodDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="presentationDao" class="de.dhbw.ics.database.dao.PresentationDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="presentationCategoryDao" class="de.dhbw.ics.database.dao.PresentationCategoryDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="priceCategoryDao" class="de.dhbw.ics.database.dao.PriceCategoryDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="reservationDao" class="de.dhbw.ics.database.dao.ReservationDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="roleDao" class="de.dhbw.ics.database.dao.RoleDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="roomDao" class="de.dhbw.ics.database.dao.RoomDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="seatDao" class="de.dhbw.ics.database.dao.SeatDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="seatCategoryDao" class="de.dhbw.ics.database.dao.SeatCategoryDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="ticketDao" class="de.dhbw.ics.database.dao.TicketDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="userDao" class="de.dhbw.ics.database.dao.UserDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
 </beans>

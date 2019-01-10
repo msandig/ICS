@@ -235,4 +235,8 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="2" author="martin">
+        <modifyDataType tableName="Movie" columnName="movie_description" newDataType="CLOB"></modifyDataType>
+    </changeSet>
+
 </databaseChangeLog>
