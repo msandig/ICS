@@ -1,21 +1,32 @@
 package de.dhbw.ics.vo;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class Reservation {
 
-    private Integer uuid ;
-    private Date date;
+    private Integer uuid;
+    private long date;
     private User user = null;
     private boolean payed;
     private List<Ticket> tickets = new ArrayList<>();
 
-    public Reservation(Integer uuid, Date date, boolean payed) {
+    @JsonCreator
+    public Reservation(Map<String, Object> delegate) {
+        if (delegate.get("uuid") != null) {
+            this.uuid = (Integer) delegate.get("uuid");
+        }
+        this.date = (long) delegate.get("date");
+        this.user = new User((Map<String, Object>) delegate.get("user"));
+        this.payed = Boolean.parseBoolean((String) delegate.get("payed"));
+    }
+
+    public Reservation(Integer uuid, long date, boolean payed) {
         this.uuid = uuid;
         this.date = date;
         this.payed = payed;
@@ -41,11 +52,11 @@ public class Reservation {
         return uuid;
     }
 
-    public Date getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(long date) {
         this.date = date;
     }
 

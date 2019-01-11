@@ -67,7 +67,7 @@
                 <constraints nullable="false" foreignKeyName="genre_uuid" references="Genre(genre_uuid)"/>
             </column>
             <column name="prod_year" type="Integer">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="movie_title" type="varchar(255)">
                 <constraints nullable="false"/>
@@ -82,7 +82,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="picture" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
         </createTable>
 
@@ -185,7 +185,8 @@
                 <constraints nullable="false" foreignKeyName="movie_uuid" references="Movie(movie_uuid)"/>
             </column>
             <column name="prescat_uuid" type="varchar(255)">
-                <constraints nullable="false" foreignKeyName="prescat_uuid" references="Presentation_Category(prescat_uuid)"/>
+                <constraints nullable="false" foreignKeyName="prescat_uuid"
+                             references="Presentation_Category(prescat_uuid)"/>
             </column>
             <column name="room_uuid" type="varchar(255)">
                 <constraints nullable="false" foreignKeyName="room_uuid"/>
@@ -227,7 +228,8 @@
                 <constraints nullable="false" foreignKeyName="seat_uuid" references="Seat(seat_uuid)"/>
             </column>
             <column name="pricecat_uuid" type="varchar(255)">
-                <constraints nullable="false" foreignKeyName="pricecat_uuid" references="Price_Category(pricecat_uuid)"/>
+                <constraints nullable="false" foreignKeyName="pricecat_uuid"
+                             references="Price_Category(pricecat_uuid)"/>
             </column>
             <column name="pres_uuid" type="varchar(255)">
                 <constraints nullable="false" foreignKeyName="pres_uuid" references="Presentation(pres_uuid)"/>
@@ -242,5 +244,6 @@
     <changeSet id="3" author="martin">
         <modifyDataType tableName="Presentation" columnName="date" newDataType="BIGINT"></modifyDataType>
         <addUniqueConstraint tableName="Presentation" columnNames="room_uuid, date"/>
+        <modifyDataType tableName="Reservation" columnName="date" newDataType="BIGINT"></modifyDataType>
     </changeSet>
 </databaseChangeLog>

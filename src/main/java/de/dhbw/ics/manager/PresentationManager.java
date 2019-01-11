@@ -1,7 +1,8 @@
 package de.dhbw.ics.manager;
 
-import de.dhbw.ics.database.dao.*;
-import de.dhbw.ics.vo.Movie;
+import de.dhbw.ics.database.dao.BusySeatDao;
+import de.dhbw.ics.database.dao.PresentationDao;
+import de.dhbw.ics.database.dao.SeatDao;
 import de.dhbw.ics.vo.Presentation;
 import de.dhbw.ics.vo.Room;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +15,7 @@ import java.util.Objects;
 public class PresentationManager {
 
     @Autowired
-    private MovieDao movieDao;
-
-    @Autowired
     private PresentationDao presentationDao;
-
-    @Autowired
-    private GenreDao genreDao;
 
     @Autowired
     private SeatDao seatDao;
@@ -36,10 +31,6 @@ public class PresentationManager {
         List<Presentation> presentations = this.presentationDao.getPresentationsBetweenIntervall(start, end);
         this.mapRooms(presentations);
         return presentations;
-    }
-
-    public List<Movie> getAllMovie(int startDate, int endDate) {
-        return this.movieDao.getMoviesBetweenIntervall(startDate, endDate);
     }
 
     private void mapRooms(List<Presentation> presentations){

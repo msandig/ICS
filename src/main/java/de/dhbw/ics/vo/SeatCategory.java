@@ -1,8 +1,10 @@
 package de.dhbw.ics.vo;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import java.util.Map;
 import java.util.UUID;
 
 public class SeatCategory {
@@ -21,6 +23,18 @@ public class SeatCategory {
         this.title = title;
         this.description = description;
         this.uuid = UUID.randomUUID().toString();
+    }
+
+
+    @JsonCreator
+    public SeatCategory(Map<String, Object> delegate) {
+        if (delegate.get("uuid") == null) {
+            this.uuid = UUID.randomUUID().toString();
+        } else {
+            this.uuid = (String) delegate.get("uuid");
+        }
+        this.title = (String) delegate.get("title");
+        this.description = (String) delegate.get("description");
     }
 
     public String getUuid() {

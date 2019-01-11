@@ -1,18 +1,32 @@
 package de.dhbw.ics.vo;
 
-import org.apache.commons.lang3.StringUtils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import java.util.Map;
 import java.util.UUID;
 
 public class Ticket {
 
-    private String uuid = StringUtils.EMPTY;
+    private String uuid;
     private Reservation reservation = null;
-    private Seat seat = null;
-    private PriceCategory priceCategory = null;
-    private Presentation presentation = null;
+    private Seat seat;
+    private PriceCategory priceCategory;
+    private Presentation presentation;
+
+    @JsonCreator
+    public Ticket(Map<String, Object> delegate) {
+        if (delegate.get("uuid") == null) {
+            this.uuid = UUID.randomUUID().toString();
+        } else {
+            this.uuid = (String) delegate.get("uuid");
+        }
+        this.reservation = new Reservation((Map<String, Object>) delegate.get("paymentMethod"));
+        this.presentation = new Presentation((Map<String, Object>) delegate.get("paymentMethod"));
+        this.priceCategory = new PriceCategory((Map<String, Object>) delegate.get("paymentMethod"));
+        this.seat = new Seat((Map<String, Object>) delegate.get("paymentMethod"));
+    }
 
     public Ticket(String uuid, Seat seat, PriceCategory priceCategory, Presentation presentation) {
         this.uuid = uuid;

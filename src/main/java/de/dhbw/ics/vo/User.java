@@ -1,14 +1,16 @@
 package de.dhbw.ics.vo;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
-public class User implements Cloneable{
+public class User implements Cloneable {
 
     private String uuid;
     private String firstName = StringUtils.EMPTY;
@@ -18,6 +20,21 @@ public class User implements Cloneable{
     private PaymentMethod paymentMethod = null;
     private Role role = null;
     private List<Reservation> reservationList = new ArrayList<>();
+
+    @JsonCreator
+    public User(Map<String, Object> delegate) {
+        if (delegate.get("uuid") == null) {
+            this.uuid = UUID.randomUUID().toString();
+        } else {
+            this.uuid = (String) delegate.get("uuid");
+        }
+        this.firstName = (String) delegate.get("firstName");
+        this.lastName = (String) delegate.get("lastName");
+        this.email = (String) delegate.get("email");
+        this.password = (String) delegate.get("password");
+        this.paymentMethod = new PaymentMethod((Map<String, Object>) delegate.get("paymentMethod"));
+        this.role = new Role((Map<String, Object>) delegate.get("paymentMethod"));
+    }
 
     public User(String uuid) {
         this.uuid = uuid;
@@ -89,7 +106,7 @@ public class User implements Cloneable{
         return paymentMethod;
     }
 
-    public boolean comparePassword(String password){
+    public boolean comparePassword(String password) {
         //TODO add comparing Method for passwords
         return false;
     }

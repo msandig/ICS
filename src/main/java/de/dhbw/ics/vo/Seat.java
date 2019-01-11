@@ -1,5 +1,6 @@
 package de.dhbw.ics.vo;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -32,6 +33,19 @@ public class Seat {
     public void setCurrentBusySeat(BusySeat currentBusySeat) {
         this.currentBusySeat = currentBusySeat;
     }
+
+    @JsonCreator
+    public Seat(Map<String, Object> delegate) {
+        if (delegate.get("uuid") == null) {
+            this.uuid = UUID.randomUUID().toString();
+        } else {
+            this.uuid = (String) delegate.get("uuid");
+        }
+        this.number = (Integer) delegate.get("roomType");
+        this.row = (Integer) delegate.get("roomType");
+        this.seatCategory =  new SeatCategory((Map<String, Object>) delegate.get("seatCategory"));
+    }
+
 
     public Seat(String uuid, Room room, SeatCategory seatCategory, Integer number, Integer row) {
         this.uuid = uuid;
