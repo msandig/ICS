@@ -19,13 +19,27 @@
            })
         });
     </script>
+    <script>
+    $(document).ready(function () {
+        $('.card').hover(
+            function () {
+                $(this).animate({
+                    marginTop: "-=1%",
+                },200);
+            },
+            function () {
+                $(this).animate({
+                    marginTop: "+=1%"
+                },200);
+            }
+        );
+    });
+</script>
 </head>
 
-<body style="padding-top:65px" class="bg-dark">
-<div id="Navbar">
-
-</div>
-<div>
+<body style="background-color: darkgray">
+<div style="padding-top: 65px; max-width: 1300px; margin: 0 auto" class="bg-dark">
+    <div id="Navbar"></div>
 <div id="mycarousel" class="carousel slide" data-ride="carousel">
 
     <!-- Indicators -->
@@ -55,7 +69,6 @@
     <a class="carousel-control-next" href="#mycarousel" data-slide="next">
         <span class="carousel-control-next-icon"></span>
     </a>
-</div>
 </div>
 <h1 style="margin-top: 3%; margin-left: 3%; color: darkgray">Aktuelles Programm</h1>
 <hr class="linie-1">
@@ -101,22 +114,6 @@
     </div>
 </div>
 
-    <script>
-    $(document).ready(function () {
-        $('.card').hover(
-            function () {
-                $(this).animate({
-                    marginTop: "-=1%",
-                },200);
-            },
-            function () {
-                $(this).animate({
-                    marginTop: "+=1%"
-                },200);
-            }
-        );
-    });
-</script>
 </div>
 </body>
 </html>
