@@ -31,7 +31,7 @@ public class PresentationDao extends AbstractDao<Presentation> {
             "JOIN MOVIE ON PRESENTATION.movie_uuid = MOVIE.movie_uuid " +
             "JOIN GENRE ON MOVIE.genre_uuid = GENRE.genre_uuid " +
             "JOIN ROOM ON PRESENTATION.room_uuid = ROOM.room_uuid " +
-            "JOIN PRESENTATION_CATEGORY ON PRESENTATION.prescat_uuid = PRESENTATION_CATEGORY.prescat_uuid";
+            "JOIN PRESENTATION_CATEGORY ON PRESENTATION.prescat_uuid = PRESENTATION_CATEGORY.prescat_uuid LIMIT 1000";
 
     private static final String SELECT_ALL_BETWEEN_DATE = "SELECT PRESENTATION.pres_uuid as pres_uuid, PRESENTATION.movie_uuid as movie_uuid, PRESENTATION.prescat_uuid as prescat_uuid, " +
             "PRESENTATION.room_uuid as room_uuid, PRESENTATION.date as date, MOVIE.genre_uuid as genre_uuid, MOVIE.prod_year as prod_year, " +
