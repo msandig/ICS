@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 
 public class PresentationMapper implements RowMapper<Presentation> {
     @Override
@@ -16,7 +15,7 @@ public class PresentationMapper implements RowMapper<Presentation> {
         String uuid = resultSet.getString("pres_uuid");
         Movie movie = new MovieMapper().mapRow(resultSet, i);
         Room room = new RoomMapper().mapRow(resultSet, i);
-        Date date = resultSet.getDate("date");
+        long date = resultSet.getLong("date");
         PresentationCategory presentationCategory = new PresentationCategoryMapper().mapRow(resultSet, i);
         return new Presentation(uuid, movie, room, date, presentationCategory);
     }

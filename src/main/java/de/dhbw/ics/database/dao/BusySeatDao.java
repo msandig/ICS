@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class BusySeatDao extends AbstractDao<BusySeat> {
 
-    private static final String PERSIST = "INSERT INTO BUSY_SEAT (seat_uuid, res_uuid, busy, looked) VALUES (?, ?, ?, ?)";
+    private static final String PERSIST = "INSERT INTO BUSY_SEAT (seat_uuid, pres_uuid, busy, looked) VALUES (?, ?, ?, ?)";
     private static final String SELECT = "SELECT * FROM BUSY_SEAT WHERE pres_uuid = ? AND seat_uuid = ?";
     private static final String DELETE = "DELETE FROM BUSY_SEAT WHERE pres_uuid = ? AND seat_uuid = ?";
     private static final String UPDATE = "UPDATE BUSY_SEAT SET busy = ?, looked = ? WHERE pres_uuid = ? AND seat_uuid = ?";
@@ -72,9 +72,10 @@ public class BusySeatDao extends AbstractDao<BusySeat> {
         }
     }
 
-    public void getAllByPresentation(Presentation presentation) {
+    public List<BusySeat> getAllByPresentation(Presentation presentation) {
         if (presentation != null && presentation.getRoom() != null && presentation.getRoom().getSeats().keySet().size() != 0) {
-            this.getObjectsByMultipleArguments(BusySeat.class, SELECT_ALL_BY_PRESENTATION, new Object[]{presentation.getUuid()}, new BusySeatMapper(presentation));
+            return this.getObjectsByMultipleArguments(BusySeat.class, SELECT_ALL_BY_PRESENTATION, new Object[]{presentation.getUuid()}, new BusySeatMapper(presentation));
         }
+        return null;
     }
 }

@@ -1,14 +1,27 @@
 package de.dhbw.ics.vo;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import java.util.Map;
 import java.util.UUID;
 
 public class Genre {
 
     private String uuid;
     private String name;
+
+    @JsonCreator
+    public Genre(Map<String, Object> delegate) {
+        if (delegate.get("uuid") == null) {
+            this.uuid = UUID.randomUUID().toString();
+        } else {
+            this.uuid = (String) delegate.get("uuid");
+        }
+
+        this.name = (String) delegate.get("name");
+    }
 
     public Genre(String uuid, String name) {
         this.uuid = uuid;

@@ -243,15 +243,4 @@
         <modifyDataType tableName="Presentation" columnName="date" newDataType="BIGINT"></modifyDataType>
         <addUniqueConstraint tableName="Presentation" columnNames="room_uuid, date"/>
     </changeSet>
-
-    <changeSet author="martin" id="4">
-        <sqlFile dbms="h2, oracle"
-                 encoding="utf8"
-                 endDelimiter="\nGO"
-                 path="data.sql"
-                 relativeToChangelogFile="true"
-                 splitStatements="true"
-                 stripComments="true"/>
-    </changeSet>
-
 </databaseChangeLog>

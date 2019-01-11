@@ -1,5 +1,6 @@
 package de.dhbw.ics.vo;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -16,6 +17,19 @@ public class Room {
     private Integer number;
     private Map<String, Seat> seats = new HashMap<>();
 
+    @JsonCreator
+    public Room(Map<String, Object> delegate) {
+        if (delegate.get("uuid") == null) {
+            this.uuid = UUID.randomUUID().toString();
+        } else {
+            this.uuid = (String) delegate.get("uuid");
+        }
+        this.roomType = (String) delegate.get("roomType");
+        this.isVIP =  Boolean.parseBoolean((String) delegate.get("roomType"));
+        this.isClean =  Boolean.parseBoolean((String) delegate.get("roomType"));
+        this.number =  (Integer) delegate.get("number");
+    }
+
     public Room(String uuid, String roomType, boolean isClean, boolean isVIP, int number) {
         this.uuid = uuid;
         this.roomType = roomType;
@@ -23,6 +37,7 @@ public class Room {
         this.isVIP = isVIP;
         this.number = number;
     }
+
 
     public Room(String roomType, boolean isClean, boolean isVIP, int number) {
         this.roomType = roomType;
@@ -60,11 +75,11 @@ public class Room {
         isVIP = VIP;
     }
 
-    public Map<String,Seat> getSeats() {
+    public Map<String, Seat> getSeats() {
         return seats;
     }
 
-    public void setSeats(Map<String,Seat> seats) {
+    public void setSeats(Map<String, Seat> seats) {
         this.seats = seats;
     }
 

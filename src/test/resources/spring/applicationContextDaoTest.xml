@@ -4,7 +4,7 @@
 
     <bean id="testLiquibase" class="liquibase.integration.spring.SpringLiquibase">
         <property name="dataSource" ref="testDataSource" />
-        <property name="changeLog" value="classpath:spring/database.xml" />
+        <property name="changeLog" value="classpath:spring/testDatabase.xml" />
     </bean>
 
     <bean id="testDataSource" factory-bean="testDataSourceFactory" factory-method="getDataSource">

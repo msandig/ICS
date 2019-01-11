@@ -1,8 +1,11 @@
 package de.dhbw.ics.vo;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import java.util.Map;
 import java.util.UUID;
 
 public class PresentationCategory {
@@ -11,13 +14,26 @@ public class PresentationCategory {
     private String title;
     private String description;
 
-    public PresentationCategory(String uuid, String title, String description) {
+    @JsonCreator
+    public PresentationCategory(Map<String, Object> delegate) {
+        if (delegate.get("uuid") == null) {
+            this.uuid = UUID.randomUUID().toString();
+        } else {
+            this.uuid = (String) delegate.get("uuid");
+        }
+
+        this.title = (String) delegate.get("title");
+        this.description = (String) delegate.get("description");
+    }
+
+    public PresentationCategory(@JsonProperty("uuid")String uuid, @JsonProperty("title") String title, @JsonProperty("description") String description) {
         this.uuid = uuid;
         this.title = title;
         this.description = description;
     }
 
-    public PresentationCategory(String title, String description) {
+
+    public PresentationCategory(@JsonProperty("title") String title, @JsonProperty("description") String description) {
         this.title = title;
         this.description = description;
         this.uuid = UUID.randomUUID().toString();
