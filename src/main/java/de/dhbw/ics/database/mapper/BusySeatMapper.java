@@ -36,9 +36,13 @@ public class BusySeatMapper implements RowMapper<BusySeat> {
         String presentationUUID = resultSet.getString("pres_uuid");
         boolean looked = resultSet.getBoolean("looked");
         boolean busy = resultSet.getBoolean("busy");
+        String sessionID = resultSet.getString("sessionID");
+        long timestamp = resultSet.getLong("timestamp");
         BusySeat busySeat = new BusySeat();
         busySeat.setBusy(busy);
         busySeat.setLooked(looked);
+        busySeat.setSessionID(sessionID);
+        busySeat.setTimestamp(timestamp);
 
         if (this.room != null && this.room.getSeats().size() != 0 && this.presentation != null && this.presentation.getUuid().equals(presentationUUID)) {
             busySeat.setPresentation(this.presentation);

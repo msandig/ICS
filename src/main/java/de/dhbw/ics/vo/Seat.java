@@ -41,8 +41,8 @@ public class Seat {
         } else {
             this.uuid = (String) delegate.get("uuid");
         }
-        this.number = (Integer) delegate.get("roomType");
-        this.row = (Integer) delegate.get("roomType");
+        this.number = (Integer) delegate.get("number");
+        this.row = (Integer) delegate.get("row");
         this.seatCategory =  new SeatCategory((Map<String, Object>) delegate.get("seatCategory"));
     }
 

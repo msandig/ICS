@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.tomcat.util.codec.binary.Base64;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class User implements Cloneable {
         this.firstName = (String) delegate.get("firstName");
         this.lastName = (String) delegate.get("lastName");
         this.email = (String) delegate.get("email");
-        this.password = (String) delegate.get("password");
+        this.setPassword((String) delegate.get("password"));
         this.paymentMethod = new PaymentMethod((Map<String, Object>) delegate.get("paymentMethod"));
         this.role = new Role((Map<String, Object>) delegate.get("paymentMethod"));
     }
@@ -44,14 +45,24 @@ public class User implements Cloneable {
         this.uuid = uuid;
         this.email = email;
         this.role = role;
-        this.password = password;
+        this.setPassword(password);
+
     }
 
     public User(String email, String password, Role role) {
         this.email = email;
-        this.password = password;
+        this.setPassword(password);
         this.role = role;
         this.uuid = UUID.randomUUID().toString();
+    }
+
+    private void setPassword(String password){
+        boolean isBase64 = Base64.isBase64(password);
+        if(isBase64) {
+            this.password = password;
+        }else {
+            this.password = Base64.encodeBase64String(password.getBytes());
+        }
     }
 
     public Role getRole() {
@@ -94,10 +105,6 @@ public class User implements Cloneable {
         return email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -107,8 +114,7 @@ public class User implements Cloneable {
     }
 
     public boolean comparePassword(String password) {
-        //TODO add comparing Method for passwords
-        return false;
+        return this.password.equals(Base64.encodeBase64String(password.getBytes()));
     }
 
     public void setPaymentMethod(PaymentMethod paymentMethod) {

@@ -1,3 +1,6 @@
+INSERT INTO ROLE(role_uuid, role_title) VALUES('efds8fe2-a1wq5-481f-a12d5-7557085edffe', 'Guest');
+INSERT INTO ROLE(role_uuid, role_title) VALUES('efds8fe2-a1wq5-dler-a12d5-7557325edffe', 'User');
+
 INSERT INTO GENRE (genre_uuid, name) VALUES ('07dda2c3-072a-4fc4-a02d-7557085edffe', 'Action');
 INSERT INTO GENRE (genre_uuid, name) VALUES ('07dda2c3-072a-4fc4-a02d-7557085edffd', 'Fantasy');
 INSERT INTO GENRE (genre_uuid, name) VALUES ('07dda2c3-072a-4fc4-a02d-7557085edfte', 'Drama');

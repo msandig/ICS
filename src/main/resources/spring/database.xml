@@ -247,7 +247,21 @@
         <modifyDataType tableName="Reservation" columnName="date" newDataType="BIGINT"></modifyDataType>
     </changeSet>
 
-    <changeSet author="martin" id="4">
+    <changeSet id="4" author="martin">
+        <addColumn tableName="Busy_Seat">
+            <column name="sessionID" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+
+        <addColumn tableName="Busy_Seat">
+            <column name="timestamp" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="martin" id="5">
         <sqlFile dbms="h2, oracle"
                  encoding="utf8"
                  endDelimiter="\nGO"

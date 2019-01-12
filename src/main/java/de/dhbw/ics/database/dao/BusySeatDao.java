@@ -13,10 +13,10 @@ import java.util.Map;
 
 public class BusySeatDao extends AbstractDao<BusySeat> {
 
-    private static final String PERSIST = "INSERT INTO BUSY_SEAT (seat_uuid, pres_uuid, busy, looked) VALUES (?, ?, ?, ?)";
+    private static final String PERSIST = "INSERT INTO BUSY_SEAT (seat_uuid, pres_uuid, busy, looked, timestamp, sessionID) VALUES (?, ?, ?, ?, ?, ?)";
     private static final String SELECT = "SELECT * FROM BUSY_SEAT WHERE pres_uuid = ? AND seat_uuid = ?";
     private static final String DELETE = "DELETE FROM BUSY_SEAT WHERE pres_uuid = ? AND seat_uuid = ?";
-    private static final String UPDATE = "UPDATE BUSY_SEAT SET busy = ?, looked = ? WHERE pres_uuid = ? AND seat_uuid = ?";
+    private static final String UPDATE = "UPDATE BUSY_SEAT SET busy = ?, looked = ?, timestamp = ?, sessionID = ? WHERE pres_uuid = ? AND seat_uuid = ?";
     private static final String COUNT = "SELECT COUNT(*) FROM BUSY_SEAT WHERE pres_uuid = ? AND seat_uuid = ?";
     private static final String SELECT_ALL = "SELECT * FROM BUSY_SEAT";
     private static final String SELECT_ALL_BY_PRESENTATION = "SELECT * FROM BUSY_SEAT WHERE pres_uuid = ?";
@@ -30,9 +30,9 @@ public class BusySeatDao extends AbstractDao<BusySeat> {
                 if (this.jdbcTemplate != null) {
                     int i = jdbcTemplate.queryForObject(COUNT, Integer.class, object.getPresentation().getUuid(), object.getSeat().getUuid());
                     if (i == 1) {
-                        this.jdbcTemplate.update(UPDATE, object.isBusy(), object.isLooked(), object.getPresentation().getUuid(), object.getSeat().getUuid());
+                        this.jdbcTemplate.update(UPDATE, object.isBusy(), object.isLooked(), object.getTimestamp(), object.getSessionID(), object.getPresentation().getUuid(), object.getSeat().getUuid());
                     } else {
-                        this.jdbcTemplate.update(PERSIST, object.getPresentation().getUuid(), object.getSeat().getUuid(), object.isBusy(), object.isLooked());
+                        this.jdbcTemplate.update(PERSIST, object.getPresentation().getUuid(), object.getSeat().getUuid(), object.isBusy(), object.isLooked(), object.getTimestamp(), object.getSessionID());
                     }
                     return true;
                 }
