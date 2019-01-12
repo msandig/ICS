@@ -1,6 +1,7 @@
 package de.dhbw.ics.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -10,6 +11,8 @@ import java.util.UUID;
 public class Ticket {
 
     private String uuid;
+
+    @JsonIgnore
     private Reservation reservation = null;
     private Seat seat;
     private PriceCategory priceCategory;
@@ -22,9 +25,8 @@ public class Ticket {
         } else {
             this.uuid = (String) delegate.get("uuid");
         }
-        this.reservation = new Reservation((Map<String, Object>) delegate.get("paymentMethod"));
-        this.presentation = new Presentation((Map<String, Object>) delegate.get("paymentMethod"));
-        this.priceCategory = new PriceCategory((Map<String, Object>) delegate.get("paymentMethod"));
+        this.presentation = new Presentation((Map<String, Object>) delegate.get("presentation"));
+        this.priceCategory = new PriceCategory((Map<String, Object>) delegate.get("priceCategory"));
         this.seat = new Seat((Map<String, Object>) delegate.get("paymentMethod"));
     }
 

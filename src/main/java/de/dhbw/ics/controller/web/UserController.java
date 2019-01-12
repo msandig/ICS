@@ -1,42 +1,38 @@
 package de.dhbw.ics.controller.web;
 
+import de.dhbw.ics.manager.ReservationManager;
+import de.dhbw.ics.vo.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
 public class UserController {
 
 
-   /* @Autowired
-    private PresentationManager presentationManager;
+   @Autowired
+    private ReservationManager reservationManager;
 
-    @RequestMapping(method = RequestMethod.GET, path = "/service/get/user/{id}")
+    @RequestMapping(method = RequestMethod.GET, path = "/service/get/users/{email}")
     public @ResponseBody
-    ResponseEntity<User> get(@PathVariable String id) {
-        Presentation presentation = null;
-        if (id != null && !id.isEmpty()) {
-            user = this.presentationManager.getPresentation(id);
+    ResponseEntity<User> get(@PathVariable String email) {
+        User user = null;
+        if (email != null && !email.isEmpty()) {
+            user = this.reservationManager.getUser(email);
         }
-        return new ResponseEntity<>(presentation, HttpStatus.OK);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/service/get/user", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_PROBLEM_JSON_UTF8_VALUE})
+    @RequestMapping(method = RequestMethod.POST, path = "/service/get/users", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_PROBLEM_JSON_UTF8_VALUE})
     public @ResponseBody
-    ResponseEntity<Object> post(@RequestBody Presentation presentation) {
-        boolean result = this.presentationManager.persistPresentation(presentation);
-        if(result){
-            return new ResponseEntity<>(presentation, HttpStatus.OK);
+    ResponseEntity<Object> post(@RequestBody User user) {
+        User u = this.reservationManager.persistUser(user);
+        if(u != null){
+            return new ResponseEntity<>(u, HttpStatus.OK);
         }
         return new ResponseEntity<>("FAILED", HttpStatus.EXPECTATION_FAILED);
     }
-
-    @RequestMapping(method = RequestMethod.DELETE, path = "/service/get/presentations/{id}")
-    public @ResponseBody
-    ResponseEntity<String> delete(@PathVariable String id) {
-        boolean result = false;
-        if (id != null && !id.isEmpty()) {
-            result = this.presentationManager.deletePresentation(id);
-        }
-        if (result) {
-            return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
-        }
-        return new ResponseEntity<>("FAILED", HttpStatus.EXPECTATION_FAILED);
-    }*/
 
 }

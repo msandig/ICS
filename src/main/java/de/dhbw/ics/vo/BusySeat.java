@@ -1,6 +1,7 @@
 package de.dhbw.ics.vo;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -16,7 +17,10 @@ public class BusySeat {
     private Presentation presentation = null;
     private boolean looked = false;
 
+    @JsonIgnore
     private String sessionID = StringUtils.EMPTY;
+
+    @JsonIgnore
     private long timestamp = 0;
 
     public boolean isLooked() {

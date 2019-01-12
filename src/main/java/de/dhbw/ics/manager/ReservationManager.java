@@ -13,7 +13,6 @@ import java.util.Map;
 
 public class ReservationManager {
 
-
     @Autowired
     UserDao userDao;
 
@@ -32,12 +31,14 @@ public class ReservationManager {
     @Autowired
     PresentationDao presentationDao;
 
-    public User getUser(String id) {
-        if (id != null && !id.isEmpty())
-            return userDao.get(id);
+    @Autowired
+    TicketDao ticketDao;
+
+    public User getUser(String email) {
+        if (email != null && !email.isEmpty() && EmailValidator.getInstance().isValid(email))
+            return userDao.get(email);
 
         return null;
-
     }
 
     public User persistUser(User user) {
@@ -57,7 +58,7 @@ public class ReservationManager {
         } else if (user.getRole() == null) {
             user.setRole(roleDao.getByTitle("User"));
         }
-        if(this.userDao.persist(user))
+        if (this.userDao.persist(user))
             return user;
 
         return null;
@@ -86,13 +87,76 @@ public class ReservationManager {
     }
 
     public Reservation getReservation(String email, Integer resID) {
-        if (email == null || !EmailValidator.getInstance().isValid(email)) {
+        Reservation reservation = this.checkForReservation(email, resID);
+        this.ticketDao.getAllByReservation(reservation);
+        return reservation;
+    }
+
+    public Reservation persistReservation(Reservation reservation) {
+        if(reservation == null)
             return null;
+
+        if(reservation.getTickets() == null || reservation.getTickets().size() == 0)
+            return null;
+
+        if(reservation.getUser() == null ||reservation.getUser().getEmail() == null || !EmailValidator.getInstance().isValid(reservation.getUser().getEmail()))
+            return null;
+
+        User user = this.userDao.get(reservation.getUser().getEmail());
+
+        if(user == null)
+            return null;
+
+        if(user.getRole().getTitle() != "Guest"){
+            String password = user.getPassword();
+            if(!Base64.isBase64(password.getBytes())){
+                if(!user.comparePassword(password))
+                    return null;
+            }else {
+                if(!password.equals(user.getPassword()))
+                    return null;
+            }
         }
 
-        if (resID == 0) {
-            return null;
+        //TODO mach hier weiter
+
+        return null;
+    }
+
+    public boolean deleteReservation(String email, Integer resID) {
+        Reservation reservation = this.checkForReservation(email, resID);
+        this.ticketDao.getAllByReservation(reservation);
+        if(reservation != null){
+            boolean error = false;
+            for(Ticket ticket : reservation.getTickets()){
+                Map<String, Object> map = new HashMap<>();
+                map.put("p", ticket.getPresentation());
+                map.put("s", ticket.getSeat());
+
+                BusySeat busySeat = this.busySeatDao.get(map);
+                busySeat.setLooked(false);
+                busySeat.setBusy(false);
+
+                error = this.busySeatDao.persist(busySeat);
+                if(error)
+                    return !error;
+
+                error = ticketDao.delete(ticket.getUuid());
+                if(error)
+                    return !error;
+            }
+            return this.reservationDao.delete(reservation.getUuid());
         }
+        return true;
+    }
+
+
+    private Reservation checkForReservation(String email, Integer resID){
+        if (email == null || !EmailValidator.getInstance().isValid(email))
+            return null;
+
+        if (resID == 0)
+            return null;
 
         User user = this.userDao.get(email);
         if (user == null)
@@ -105,12 +169,8 @@ public class ReservationManager {
         if (!reservation.getUser().getUuid().equals(user.getUuid()))
             return null;
 
+        reservation.setUser(user);
         return reservation;
-    }
-
-    public Reservation persistReservation(Reservation reservation) {
-        return null;
-
     }
 
     public List<Seat> lockSeats(String uuid, List<Seat> seats, String sessionID) {

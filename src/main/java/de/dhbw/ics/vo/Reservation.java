@@ -24,6 +24,12 @@ public class Reservation {
         this.date = (long) delegate.get("date");
         this.user = new User((Map<String, Object>) delegate.get("user"));
         this.payed = Boolean.parseBoolean((String) delegate.get("payed"));
+        List<Map<String, Object>> unmappedTickets = (List<Map<String, Object>>) delegate.get("tickets");
+        for(Map<String, Object> unmappedTicket : unmappedTickets){
+            Ticket ticket = new Ticket(unmappedTicket);
+            ticket.setReservation(this);
+            this.tickets.add(ticket);
+        }
     }
 
     public Reservation(Integer uuid, long date, boolean payed) {
