@@ -65,3 +65,18 @@ hr.linie-2 {
     width: 14.29%;
     align: center;
 }
+
+.card-ics{
+    background-image: linear-gradient(to bottom,  #343a40, gray);
+    color: darkgray;
+}
+
+.grid-container{
+    display: grid;
+
+    grid-template-columns: auto auto auto;
+}
+
+.grid-item{
+    padding: 5%;
+}
