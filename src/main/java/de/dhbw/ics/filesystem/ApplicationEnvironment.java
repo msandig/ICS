@@ -20,4 +20,12 @@ public class ApplicationEnvironment {
          return path;
     }
 
+    public static URI getContentPath(){
+        return URI.create(getApplicationPath().toString().concat("/content"));
+    }
+
+    public static URI getDatabasePath() {
+        return URI.create(getApplicationPath().toString().concat("/database"));
+    }
+
 }
