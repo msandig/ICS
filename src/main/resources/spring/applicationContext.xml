@@ -19,14 +19,6 @@
         <constructor-arg value="false"/>
     </bean>
 
-    <bean id="genreDao" class="de.dhbw.ics.database.dao.GenreDao">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
-
-    <bean id="movieDao" class="de.dhbw.ics.database.dao.MovieDao">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
-
     <bean id="dataSourceFactory" class="de.dhbw.ics.database.DatabaseFactory" depends-on="fileSystemInitializer"/>
 
     <bean id="reservationManager" class="de.dhbw.ics.manager.ReservationManager"/>

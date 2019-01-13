@@ -324,7 +324,7 @@ public class ReservationManager {
             return null;
 
         for (Seat s : seats) {
-            Seat seat = this.seatDao.get(s.getUuid());
+            Seat seat = this.seatDao.get(s);
             if (seat == null || !seat.equals(s))
                 return null;
         }

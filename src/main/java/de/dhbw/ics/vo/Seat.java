@@ -72,6 +72,7 @@ public class Seat {
     }
 
     public String getUuid() {
+
         return uuid;
     }
 
@@ -116,8 +117,8 @@ public class Seat {
                 .append(number, seat.number)
                 .append(row, seat.row)
                 .append(seatCategory, seat.seatCategory)
-                .append(room, seat.room)
-                .append(busySeatMap, seat.busySeatMap)
+                //.append(room, seat.room)
+                //.append(busySeatMap, seat.busySeatMap)
                 .isEquals();
     }
 
@@ -128,8 +129,8 @@ public class Seat {
                 .append(number)
                 .append(row)
                 .append(seatCategory)
-                .append(room)
-                .append(busySeatMap)
+                //.append(room)
+                //.append(busySeatMap)
                 .toHashCode();
     }
 }
