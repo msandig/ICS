@@ -8,6 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 public class ReservationController {
 
@@ -26,8 +28,8 @@ public class ReservationController {
 
     @RequestMapping(method = RequestMethod.POST, path = "/service/get/reservations", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_PROBLEM_JSON_UTF8_VALUE})
     public @ResponseBody
-    ResponseEntity<Object> post(@RequestBody Reservation reservation) {
-        Reservation result = this.reservationManager.persistReservation(reservation);
+    ResponseEntity<Object> post(@RequestBody Reservation reservation, HttpServletRequest request) {
+        Reservation result = this.reservationManager.persistReservation(reservation, request.getSession().getId());
         if (result != null) {
             return new ResponseEntity<>(result, HttpStatus.OK);
         }

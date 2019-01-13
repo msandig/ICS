@@ -19,11 +19,12 @@ public class ReservationMapper implements RowMapper<Reservation> {
 
     @Override
     public Reservation mapRow(ResultSet resultSet, int i) throws SQLException {
-        Integer uuid = resultSet.getInt("res_uuid");
+        Integer number = resultSet.getInt("res_number");
+        String uuid = resultSet.getString("res_uuid");
         String userUUID = resultSet.getString("user_uuid");
         long date = resultSet.getLong("date");
         boolean payed = resultSet.getBoolean("payed");
-        Reservation reservation = new Reservation(uuid, date, payed);
+        Reservation reservation = new Reservation(uuid, number, date, payed);
         if(this.user != null){
             if (userUUID.equals(this.user.getUuid())){
                 reservation.setUser(this.user);

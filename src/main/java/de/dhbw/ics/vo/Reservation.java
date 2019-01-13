@@ -7,10 +7,12 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class Reservation {
 
-    private Integer uuid;
+    private String uuid;
+    private Integer number;
     private long date;
     private User user = null;
     private boolean payed;
@@ -19,7 +21,9 @@ public class Reservation {
     @JsonCreator
     public Reservation(Map<String, Object> delegate) {
         if (delegate.get("uuid") != null) {
-            this.uuid = (Integer) delegate.get("uuid");
+            this.uuid = (String) delegate.get("uuid");
+        } else {
+            this.uuid = UUID.randomUUID().toString();
         }
         this.date = (long) delegate.get("date");
         this.user = new User((Map<String, Object>) delegate.get("user"));
@@ -32,8 +36,9 @@ public class Reservation {
         }
     }
 
-    public Reservation(Integer uuid, long date, boolean payed) {
+    public Reservation(String uuid, Integer number, long date, boolean payed) {
         this.uuid = uuid;
+        this.number = number;
         this.date = date;
         this.payed = payed;
     }
@@ -54,7 +59,15 @@ public class Reservation {
         this.tickets = tickets;
     }
 
-    public Integer getUuid() {
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public String getUuid() {
         return uuid;
     }
 

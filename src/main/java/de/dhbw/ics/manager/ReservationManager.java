@@ -34,6 +34,12 @@ public class ReservationManager {
     @Autowired
     TicketDao ticketDao;
 
+    @Autowired
+    RoomDao roomDao;
+
+    @Autowired
+    PriceCategoryDao priceCategoryDao;
+
     public User getUser(String email) {
         if (email != null && !email.isEmpty() && EmailValidator.getInstance().isValid(email))
             return userDao.get(email);
@@ -92,43 +98,120 @@ public class ReservationManager {
         return reservation;
     }
 
-    public Reservation persistReservation(Reservation reservation) {
-        if(reservation == null)
+    public Reservation persistReservation(Reservation reservation, String sessionID) {
+        if (reservation == null)
             return null;
 
-        if(reservation.getTickets() == null || reservation.getTickets().size() == 0)
+        if (reservation.getTickets() == null || reservation.getTickets().size() == 0)
             return null;
 
-        if(reservation.getUser() == null ||reservation.getUser().getEmail() == null || !EmailValidator.getInstance().isValid(reservation.getUser().getEmail()))
+        if (reservation.getUser() == null || reservation.getUser().getEmail() == null || !EmailValidator.getInstance().isValid(reservation.getUser().getEmail()))
             return null;
 
         User user = this.userDao.get(reservation.getUser().getEmail());
 
-        if(user == null)
+        if (user == null)
             return null;
 
-        if(user.getRole().getTitle() != "Guest"){
+        if (user.getRole().getTitle() != "Guest") {
             String password = user.getPassword();
-            if(!Base64.isBase64(password.getBytes())){
-                if(!user.comparePassword(password))
+            if (!Base64.isBase64(password.getBytes())) {
+                if (!user.comparePassword(password))
                     return null;
-            }else {
-                if(!password.equals(user.getPassword()))
+            } else {
+                if (!password.equals(user.getPassword()))
                     return null;
             }
         }
 
-        //TODO mach hier weiter
+        List<Ticket> tickets = reservation.getTickets();
+        if (tickets.size() == 0)
+            return null;
 
-        return null;
+        for (Ticket ticket : tickets) {
+            Presentation p = null;
+            if (ticket.getPresentation() != null) {
+                p = this.presentationDao.get(ticket.getPresentation().getUuid());
+                if (p == null)
+                    return null;
+            } else {
+                return null;
+            }
+            Room r = null;
+            if (ticket.getPresentation().getRoom() != null) {
+                r = this.roomDao.get(ticket.getPresentation().getRoom().getUuid());
+            } else if (ticket.getSeat().getRoom() != null) {
+                r = this.roomDao.get(ticket.getSeat().getRoom().getUuid());
+            } else {
+                return null;
+            }
+
+            if (r == null)
+                return null;
+
+            if (ticket.getPriceCategory() == null) {
+                return null;
+            } else {
+                PriceCategory priceCategory = this.priceCategoryDao.get(ticket.getPriceCategory());
+                if (priceCategory == null || !priceCategory.equals(ticket.getPriceCategory()))
+                    return null;
+            }
+
+            if (ticket.getSeat() != null) {
+                Seat s = this.seatDao.get(ticket.getSeat().getUuid());
+                if (s == null)
+                    return null;
+
+                if (!s.equals(ticket.getSeat()))
+                    return null;
+
+                BusySeat busySeat = this.getBusySeat(p, s);
+                if (busySeat != null && busySeat.isBusy()) {
+                    return null;
+                } else if (busySeat != null && busySeat.isLooked()) {
+                    if (!busySeat.getSessionID().equals(sessionID)) {
+                        int result = BusySeat.compareLockTimestamp(busySeat);
+                        if (result > 0) {
+                            return null;
+                        }
+                    }
+                } else if (busySeat == null) {
+                    busySeat = new BusySeat();
+                    busySeat.setPresentation(p);
+                    busySeat.setSeat(ticket.getSeat());
+                }
+
+                busySeat.setBusy(true);
+                busySeat.setLooked(true);
+                busySeat.setTimestamp(Calendar.getInstance().getTimeInMillis());
+                busySeat.setSessionID(sessionID);
+
+                if (!this.busySeatDao.persist(busySeat))
+                    return null;
+
+                if (!this.ticketDao.persist(ticket))
+                    return null;
+
+            }
+        }
+
+        if (!this.reservationDao.persist(reservation))
+            return null;
+
+        Reservation result = this.reservationDao.get(reservation.getUuid());
+        if(result != null){
+            this.ticketDao.getAllByReservation(result);
+        }
+
+        return result;
     }
 
     public boolean deleteReservation(String email, Integer resID) {
         Reservation reservation = this.checkForReservation(email, resID);
         this.ticketDao.getAllByReservation(reservation);
-        if(reservation != null){
+        if (reservation != null) {
             boolean error = false;
-            for(Ticket ticket : reservation.getTickets()){
+            for (Ticket ticket : reservation.getTickets()) {
                 Map<String, Object> map = new HashMap<>();
                 map.put("p", ticket.getPresentation());
                 map.put("s", ticket.getSeat());
@@ -138,11 +221,11 @@ public class ReservationManager {
                 busySeat.setBusy(false);
 
                 error = this.busySeatDao.persist(busySeat);
-                if(error)
+                if (error)
                     return !error;
 
                 error = ticketDao.delete(ticket.getUuid());
-                if(error)
+                if (error)
                     return !error;
             }
             return this.reservationDao.delete(reservation.getUuid());
@@ -151,7 +234,7 @@ public class ReservationManager {
     }
 
 
-    private Reservation checkForReservation(String email, Integer resID){
+    private Reservation checkForReservation(String email, Integer resID) {
         if (email == null || !EmailValidator.getInstance().isValid(email))
             return null;
 
