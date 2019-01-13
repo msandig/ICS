@@ -36,7 +36,7 @@ public class ReservationController {
         return new ResponseEntity<>("FAILED", HttpStatus.EXPECTATION_FAILED);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, path = "/service/get/presentations/{id}")
+    @RequestMapping(method = RequestMethod.DELETE, path = "/service/get/reservations/{id}")
     public @ResponseBody
     ResponseEntity<String> delete(@PathVariable Integer id, @RequestParam(value = "email") String email) {
         boolean result = false;
