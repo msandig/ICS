@@ -8,6 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 public class UserController {
 
@@ -17,10 +19,11 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/service/get/users/{email}")
     public @ResponseBody
-    ResponseEntity<User> get(@PathVariable String email) {
+    ResponseEntity<User> get(@PathVariable String email, HttpServletRequest request) {
         User user = null;
         if (email != null && !email.isEmpty()) {
-            user = this.reservationManager.getUser(email);
+            String password = request.getHeader("auth");
+            user = this.reservationManager.getUser(email, password);
         }
         return new ResponseEntity<>(user, HttpStatus.OK);
     }

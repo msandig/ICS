@@ -40,13 +40,6 @@ public class ReservationManager {
     @Autowired
     PriceCategoryDao priceCategoryDao;
 
-    public User getUser(String email) {
-        if (email != null && !email.isEmpty() && EmailValidator.getInstance().isValid(email))
-            return userDao.get(email);
-
-        return null;
-    }
-
     public User persistUser(User user) {
 
         if (user.getEmail() == null || !EmailValidator.getInstance().isValid(user.getEmail())) {
