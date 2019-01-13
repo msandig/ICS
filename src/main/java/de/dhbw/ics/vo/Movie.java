@@ -1,9 +1,10 @@
 package de.dhbw.ics.vo;
 
-import org.apache.commons.lang3.StringUtils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import java.util.Map;
 import java.util.UUID;
 
 public class Movie {
@@ -14,8 +15,25 @@ public class Movie {
     private String title;
     private Integer fsk;
     private Integer runTime;
-    private String picture = StringUtils.EMPTY;
+    private String picture = null;
     private String description;
+
+    @JsonCreator
+    public Movie(Map<String, Object> delegate) {
+        if (delegate.get("uuid") == null) {
+            this.uuid = UUID.randomUUID().toString();
+        } else {
+            this.uuid = (String) delegate.get("uuid");
+        }
+
+        this.genre = new Genre((Map<String, Object>) delegate.get("genre"));
+        this.productionYear = (Integer) delegate.get("productionYear");
+        this.title = (String) delegate.get("title");
+        this.fsk = (Integer) delegate.get("fsk");
+        this.runTime = (Integer) delegate.get("runTime");
+        this.picture = (String) delegate.get("picture");
+        this.description = (String) delegate.get("description");
+    }
 
     public Movie(String uuid, Integer productionYear, String title, String description, Integer fsk, Integer runTime) {
         this.uuid = uuid;
@@ -33,20 +51,6 @@ public class Movie {
         this.fsk = fsk;
         this.runTime = runTime;
         this.uuid = UUID.randomUUID().toString();
-    }
-
-    public Movie(Integer productionYear, String title, String description, Integer fsk, Integer runTime, Genre genre) {
-        this.productionYear = productionYear;
-        this.title = title;
-        this.description = description;
-        this.fsk = fsk;
-        this.runTime = runTime;
-        this.uuid = UUID.randomUUID().toString();
-        this.genre = genre;
-    }
-
-    public Movie(){
-
     }
 
     public String getUuid() {

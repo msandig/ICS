@@ -2,19 +2,26 @@ package de.dhbw.ics.vo;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+import java.util.Calendar;
 
 public class BusySeat {
 
     private boolean isBusy = false;
 
-    @JsonIgnore
     private Seat seat = null;
 
-    @JsonIgnore
     private Presentation presentation = null;
     private boolean looked = false;
+
+    @JsonIgnore
+    private String sessionID = StringUtils.EMPTY;
+
+    @JsonIgnore
+    private long timestamp = 0;
 
     public boolean isLooked() {
         return looked;
@@ -48,17 +55,33 @@ public class BusySeat {
         this.presentation = presentation;
     }
 
+    public String getSessionID() {
+        return sessionID;
+    }
+
+    public void setSessionID(String sessionID) {
+        this.sessionID = sessionID;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
     @JsonGetter("presentation")
-    public String getPresentationUUID(){
-        if(this.presentation != null) {
+    public String getPresentationUUID() {
+        if (this.presentation != null) {
             return this.presentation.getUuid();
         }
         return null;
     }
 
     @JsonGetter("seat")
-    public String getSeatUUID(){
-        if(this.seat != null) {
+    public String getSeatUUID() {
+        if (this.seat != null) {
             return this.seat.getUuid();
         }
         return null;
@@ -88,5 +111,13 @@ public class BusySeat {
                 .append(presentation)
                 .append(looked)
                 .toHashCode();
+    }
+
+    public static int compareLockTimestamp(BusySeat bs) {
+        Calendar c1 = Calendar.getInstance();
+        Calendar c2 = Calendar.getInstance();
+        c1.setTimeInMillis(bs.getTimestamp());
+        c1.add(Calendar.MINUTE, 5);
+        return c2.compareTo(c1);
     }
 }

@@ -45,8 +45,7 @@ hr.linie-1 {
 
 hr.linie-2 {
     border-top: 1px solid darkgrey !important;
-    border-bottom: 0px solid darkgrey !important;
-    display: block;
+    border-bottom: 0px solid darkgrey !important;display: block;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
     margin-left: 0%;
@@ -65,4 +64,19 @@ hr.linie-2 {
     color: inherit;
     width: 14.29%;
     align: center;
+}
+
+.card-ics{
+    background-image: linear-gradient(to bottom,  #343a40, gray);
+    color: darkgray;
+}
+
+.grid-container{
+    display: grid;
+
+    grid-template-columns: auto auto auto;
+}
+
+.grid-item{
+    padding: 5%;
 }

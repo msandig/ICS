@@ -13,6 +13,7 @@ public class RoleDao extends AbstractDao<Role> {
     private static final String UPDATE = "UPDATE ROLE SET role_title = ? WHERE role_uuid = ?";
     private static final String COUNT = "SELECT COUNT(*) FROM ROLE WHERE role_uuid = ?";
     private static final String SELECT_ALL = "SELECT * FROM ROLE";
+    private static final String SELECT_BY_TITLE = "SELECT * FROM ROLE WHERE role_title = ?";
 
     @Override
     public boolean persist(Role object) {
@@ -24,10 +25,7 @@ public class RoleDao extends AbstractDao<Role> {
 
     @Override
     public Role get(Object key) {
-        if (key != null && !key.equals("")) {
-            return this.getObject(Role.class, SELECT, new Object[]{key}, new RoleMapper());
-        }
-        return null;
+        return getRole(key, SELECT);
     }
 
     @Override
@@ -41,5 +39,17 @@ public class RoleDao extends AbstractDao<Role> {
     @Override
     public List<Role> getAll() {
         return this.getAllObjects(Role.class, SELECT_ALL, new RoleMapper());
+    }
+
+
+    public Role getByTitle(Object key) {
+        return getRole(key, SELECT_BY_TITLE);
+    }
+
+    private Role getRole(Object key, String selectByTitle) {
+        if (key != null && !key.equals("")) {
+            return this.getObject(Role.class, selectByTitle, new Object[]{key}, new RoleMapper());
+        }
+        return null;
     }
 }

@@ -3,13 +3,13 @@ package de.dhbw.ics.controller.web;
 import de.dhbw.ics.manager.PresentationManager;
 import de.dhbw.ics.vo.Presentation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class PresentationController {
@@ -29,25 +29,39 @@ public class PresentationController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/service/get/presentations")
     public @ResponseBody
-    ResponseEntity<List<Presentation>> getAll(@RequestParam(value = "start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date start, @RequestParam(value = "start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date end) {
+    ResponseEntity<List<Presentation>> getAll(@RequestParam(value = "start") Optional<Long> start, @RequestParam(value = "end") Optional<Long> end) {
         List<Presentation> presentations = null;
-        if(start != null && end != null){
-            presentations = this.presentationManager.getAllPresentations();
-        }else {
+        if (start.isPresent() && end.isPresent()) {
+            presentations = this.presentationManager.getAllPresentations(start.get(), end.get());
+        } else {
             presentations = this.presentationManager.getAllPresentations();
         }
 
         return new ResponseEntity<List<Presentation>>(presentations, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/service/get/presentations")
+    @RequestMapping(method = RequestMethod.POST, path = "/service/get/presentations", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_PROBLEM_JSON_UTF8_VALUE})
     public @ResponseBody
-    ResponseEntity<Presentation> post(@RequestBody Presentation presentation) {
+    ResponseEntity<Object> post(@RequestBody Presentation presentation) {
         boolean result = this.presentationManager.persistPresentation(presentation);
-        if(result){
+        if (result) {
             return new ResponseEntity<>(presentation, HttpStatus.OK);
         }
-        return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
+        return new ResponseEntity<>("FAILED", HttpStatus.EXPECTATION_FAILED);
     }
+
+    @RequestMapping(method = RequestMethod.DELETE, path = "/service/get/presentations/{id}")
+    public @ResponseBody
+    ResponseEntity<String> delete(@PathVariable String id) {
+        boolean result = false;
+        if (id != null && !id.isEmpty()) {
+            result = this.presentationManager.deletePresentation(id);
+        }
+        if (result) {
+            return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+        }
+        return new ResponseEntity<>("FAILED", HttpStatus.EXPECTATION_FAILED);
+    }
+
 
 }

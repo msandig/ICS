@@ -1,8 +1,10 @@
 package de.dhbw.ics.vo;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import java.util.Map;
 import java.util.UUID;
 
 public class Role {
@@ -16,6 +18,16 @@ public class Role {
 
     public String getTitle() {
         return title;
+    }
+
+    @JsonCreator
+    public Role(Map<String, Object> delegate) {
+        if (delegate.get("uuid") != null) {
+            this.uuid = (String) delegate.get("uuid");
+        }else {
+            this.uuid = UUID.randomUUID().toString();
+        }
+        this.title = (String) delegate.get("title");
     }
 
     public Role(String uuid, String title) {

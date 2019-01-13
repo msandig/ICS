@@ -1,9 +1,10 @@
 package de.dhbw.ics.vo;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import java.util.Date;
+import java.util.Map;
 import java.util.UUID;
 
 public class Presentation {
@@ -11,10 +12,24 @@ public class Presentation {
     private String uuid;
     private Movie movie;
     private Room room;
-    private Date date;
+    private long date;
     private PresentationCategory presentationCategory;
 
-    public Presentation(String uuid, Movie movie, Room room, Date date, PresentationCategory presentationCategory) {
+    @JsonCreator
+    public Presentation(Map<String, Object> delegate) {
+        if (delegate.get("uuid") == null) {
+            this.uuid = UUID.randomUUID().toString();
+        } else {
+            this.uuid = (String) delegate.get("uuid");
+        }
+
+        this.date = (long) delegate.get("date");
+        this.movie = new Movie((Map<String, Object>) delegate.get("movie"));
+        this.room = new Room((Map<String, Object>) delegate.get("room"));
+        this.presentationCategory = new PresentationCategory((Map<String, Object>) delegate.get("presentationCategory"));
+    }
+
+    public Presentation(String uuid, Movie movie, Room room, long date, PresentationCategory presentationCategory) {
         this.uuid = uuid;
         this.movie = movie;
         this.room = room;
@@ -22,7 +37,8 @@ public class Presentation {
         this.presentationCategory = presentationCategory;
     }
 
-    public Presentation(Movie movie, Room room, Date date, PresentationCategory presentationCategory) {
+
+    public Presentation(Movie movie, Room room, long date, PresentationCategory presentationCategory) {
         this.movie = movie;
         this.room = room;
         this.date = date;
@@ -58,11 +74,11 @@ public class Presentation {
         this.room = room;
     }
 
-    public Date getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(long date) {
         this.date = date;
     }
 

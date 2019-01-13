@@ -1,14 +1,17 @@
 package de.dhbw.ics.vo;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.tomcat.util.codec.binary.Base64;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
-public class User implements Cloneable{
+public class User implements Cloneable {
 
     private String uuid;
     private String firstName = StringUtils.EMPTY;
@@ -19,6 +22,21 @@ public class User implements Cloneable{
     private Role role = null;
     private List<Reservation> reservationList = new ArrayList<>();
 
+    @JsonCreator
+    public User(Map<String, Object> delegate) {
+        if (delegate.get("uuid") == null) {
+            this.uuid = UUID.randomUUID().toString();
+        } else {
+            this.uuid = (String) delegate.get("uuid");
+        }
+        this.firstName = (String) delegate.get("firstName");
+        this.lastName = (String) delegate.get("lastName");
+        this.email = (String) delegate.get("email");
+        this.setPassword((String) delegate.get("password"));
+        this.paymentMethod = new PaymentMethod((Map<String, Object>) delegate.get("paymentMethod"));
+        this.role = new Role((Map<String, Object>) delegate.get("paymentMethod"));
+    }
+
     public User(String uuid) {
         this.uuid = uuid;
     }
@@ -27,14 +45,24 @@ public class User implements Cloneable{
         this.uuid = uuid;
         this.email = email;
         this.role = role;
-        this.password = password;
+        this.setPassword(password);
+
     }
 
     public User(String email, String password, Role role) {
         this.email = email;
-        this.password = password;
+        this.setPassword(password);
         this.role = role;
         this.uuid = UUID.randomUUID().toString();
+    }
+
+    private void setPassword(String password){
+        boolean isBase64 = Base64.isBase64(password);
+        if(isBase64) {
+            this.password = password;
+        }else {
+            this.password = Base64.encodeBase64String(password.getBytes());
+        }
     }
 
     public Role getRole() {
@@ -77,10 +105,6 @@ public class User implements Cloneable{
         return email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -89,9 +113,8 @@ public class User implements Cloneable{
         return paymentMethod;
     }
 
-    public boolean comparePassword(String password){
-        //TODO add comparing Method for passwords
-        return false;
+    public boolean comparePassword(String password) {
+        return this.password.equals(Base64.encodeBase64String(password.getBytes()));
     }
 
     public void setPaymentMethod(PaymentMethod paymentMethod) {

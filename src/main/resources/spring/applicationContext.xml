@@ -29,6 +29,7 @@
 
     <bean id="dataSourceFactory" class="de.dhbw.ics.database.DatabaseFactory" depends-on="fileSystemInitializer"/>
 
+    <bean id="reservationManager" class="de.dhbw.ics.manager.ReservationManager"/>
     <bean id="presentationManager" class="de.dhbw.ics.manager.PresentationManager"/>
 
     <bean id="busySeatDao" class="de.dhbw.ics.database.dao.BusySeatDao">

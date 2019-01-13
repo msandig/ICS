@@ -102,11 +102,8 @@
         </createTable>
 
         <createTable tableName="Reservation">
-            <column name="res_uuid" type="varchar(255)">
-                <constraints primaryKey="true" nullable="false" unique="true"/>
-            </column>
             <column name="res_uuid" type="Integer" autoIncrement="true" startWith="1000">
-                <constraints nullable="false" unique="true"/>
+                <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
             <column name="date" type="Date">
                 <constraints primaryKey="false" nullable="false" unique="false"/>
@@ -262,16 +259,6 @@
                 <constraints nullable="true"/>
             </column>
         </addColumn>
-    </changeSet>
-
-    <changeSet author="martin" id="5">
-        <sqlFile dbms="h2, oracle"
-                 encoding="utf8"
-                 endDelimiter="\nGO"
-                 path="data.sql"
-                 relativeToChangelogFile="true"
-                 splitStatements="true"
-                 stripComments="true"/>
     </changeSet>
 
 </databaseChangeLog>

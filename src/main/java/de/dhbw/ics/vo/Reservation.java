@@ -1,22 +1,44 @@
 package de.dhbw.ics.vo;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public class Reservation {
 
-    private Integer uuid ;
-    private Date date;
+    private String uuid;
+    private Integer number;
+    private long date;
     private User user = null;
     private boolean payed;
     private List<Ticket> tickets = new ArrayList<>();
 
-    public Reservation(Integer uuid, Date date, boolean payed) {
+    @JsonCreator
+    public Reservation(Map<String, Object> delegate) {
+        if (delegate.get("uuid") != null) {
+            this.uuid = (String) delegate.get("uuid");
+        } else {
+            this.uuid = UUID.randomUUID().toString();
+        }
+        this.date = (long) delegate.get("date");
+        this.user = new User((Map<String, Object>) delegate.get("user"));
+        this.payed = Boolean.parseBoolean((String) delegate.get("payed"));
+        List<Map<String, Object>> unmappedTickets = (List<Map<String, Object>>) delegate.get("tickets");
+        for(Map<String, Object> unmappedTicket : unmappedTickets){
+            Ticket ticket = new Ticket(unmappedTicket);
+            ticket.setReservation(this);
+            this.tickets.add(ticket);
+        }
+    }
+
+    public Reservation(String uuid, Integer number, long date, boolean payed) {
         this.uuid = uuid;
+        this.number = number;
         this.date = date;
         this.payed = payed;
     }
@@ -37,15 +59,23 @@ public class Reservation {
         this.tickets = tickets;
     }
 
-    public Integer getUuid() {
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public String getUuid() {
         return uuid;
     }
 
-    public Date getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(long date) {
         this.date = date;
     }
 
