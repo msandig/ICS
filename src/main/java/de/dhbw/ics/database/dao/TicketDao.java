@@ -11,10 +11,10 @@ public class TicketDao extends AbstractDao<Ticket> {
     private static final String SELECT = "SELECT TICKET.ticket_uuid as ticket_uuid, TICKET.res_uuid as res_uuid, TICKET.seat_uuid as seat_uuid, TICKET.pricecat_uuid as pricecat_uuid, " +
             "TICKET.pres_uuid as pres_uuid, SEAT.number as number, SEAT.row as row, PRICE_CATEGORY.prescat_uuid as prescat_uuid, PRICE_CATEGORY.seatcat_uuid as seatcat_uuid, " +
             "PRICE_CATEGORY.pricecat_title as pricecat_title, PRICE_CATEGORY.pricecat_description as pricecat_description, PRICE_CATEGORY.price as price, " +
-            "PRESENTATION.movie_uuid as movie_uuid, PRESENTATION.room_uuid as room_uuid, PRESENTATION.date as date, ROOM.room_type as room_type, ROOM.clean as clean" +
+            "PRESENTATION.movie_uuid as movie_uuid, PRESENTATION.room_uuid as room_uuid, PRESENTATION.date as date, ROOM.room_type as room_type, ROOM.clean as clean, " +
             "ROOM.vip_seats as vip_seats, ROOM.room_number as room_number, SEAT_CATEGORY.seatcat_description as seatcat_description, SEAT_CATEGORY.seatcat_title as seatcat_title, " +
-            "MOVIE.genre_uuid as genre_uuid, MOVIE.prod_year as prod_year, MOVIE.title as title, MOVIE.description as description, MOVIE.fsk as fsk, MOVIE.runtime as runtime, MOVIE.picture as picture, " +
-            "GENRE.name as name, PRESENTATION_CATEGORY.prescat_title as prescat_title, PRESENTATION_CATEGORY.prescat_description as prescat_description, SEAT_BUSY.busy as busy, SEAT_BUSY.looked as looked " +
+            "MOVIE.genre_uuid as genre_uuid, MOVIE.prod_year as prod_year, MOVIE.movie_title as movie_title , MOVIE.movie_description as movie_description, MOVIE.fsk as fsk, MOVIE.runtime as runtime, MOVIE.picture as picture, " +
+            "GENRE.name as name, PRESENTATION_CATEGORY.prescat_title as prescat_title, PRESENTATION_CATEGORY.prescat_description as prescat_description, BUSY_SEAT.busy as busy, BUSY_SEAT.looked as looked " +
             "FROM TICKET " +
             "JOIN SEAT ON TICKET.seat_uuid = SEAT.seat_uuid " +
             "JOIN PRICE_CATEGORY ON TICKET.pricecat_uuid = PRICE_CATEGORY.pricecat_uuid " +
@@ -23,8 +23,8 @@ public class TicketDao extends AbstractDao<Ticket> {
             "JOIN SEAT_CATEGORY ON PRICE_CATEGORY.seatcat_uuid = SEAT_CATEGORY.seatcat_uuid " +
             "JOIN MOVIE ON MOVIE.movie_uuid = PRESENTATION.movie_uuid " +
             "JOIN GENRE ON GENRE.genre_uuid = MOVIE.genre_uuid " +
-            "JOIN PRESENTATION_CATEGORY ON PRESENTATION_CATECORY.prescat_uuid = PRICE_CATEGORY.prescat_uuid " +
-            "JOIN SEAT_BUSY ON SEAT_BUSY.pres_uuid = TICKET.pres_uuid AND SEAT_BUSY.seat_uuid = TICKET.seat_uuid " +
+            "JOIN PRESENTATION_CATEGORY ON PRESENTATION_CATEGORY.prescat_uuid = PRICE_CATEGORY.prescat_uuid " +
+            "JOIN BUSY_SEAT ON BUSY_SEAT.pres_uuid = TICKET.pres_uuid AND BUSY_SEAT.seat_uuid = TICKET.seat_uuid " +
             "WHERE TICKET.ticket_uuid = ?";
 
     private static final String DELETE = "DELETE FROM TICKET WHERE ticket_uuid = ?";
@@ -33,10 +33,10 @@ public class TicketDao extends AbstractDao<Ticket> {
     private static final String SELECT_ALL = "SELECT TICKET.ticket_uuid as ticket_uuid, TICKET.res_uuid as res_uuid, TICKET.seat_uuid as seat_uuid, TICKET.pricecat_uuid as pricecat_uuid, " +
             "TICKET.pres_uuid as pres_uuid, SEAT.number as number, SEAT.row as row, PRICE_CATEGORY.prescat_uuid as prescat_uuid, PRICE_CATEGORY.seatcat_uuid as seatcat_uuid, " +
             "PRICE_CATEGORY.pricecat_title as pricecat_title, PRICE_CATEGORY.pricecat_description as pricecat_description, PRICE_CATEGORY.price as price, " +
-            "PRESENTATION.movie_uuid as movie_uuid, PRESENTATION.room_uuid as room_uuid, PRESENTATION.date as date, ROOM.room_type as room_type, ROOM.clean as clean" +
+            "PRESENTATION.movie_uuid as movie_uuid, PRESENTATION.room_uuid as room_uuid, PRESENTATION.date as date, ROOM.room_type as room_type, ROOM.clean as clean, " +
             "ROOM.vip_seats as vip_seats, ROOM.room_number as room_number, SEAT_CATEGORY.seatcat_description as seatcat_description, SEAT_CATEGORY.seatcat_title as seatcat_title, " +
-            "MOVIE.genre_uuid as genre_uuid, MOVIE.prod_year as prod_year, MOVIE.title as title, MOVIE.description as description, MOVIE.fsk as fsk, MOVIE.runtime as runtime, MOVIE.picture as picture, " +
-            "GENRE.name as name, PRESENTATION_CATEGORY.prescat_title as prescat_title, PRESENTATION_CATEGORY.prescat_description as prescat_description, SEAT_BUSY.busy as busy, SEAT_BUSY.looked as looked " +
+            "MOVIE.genre_uuid as genre_uuid, MOVIE.prod_year as prod_year, MOVIE.movie_title as movie_title , MOVIE.movie_description as movie_description, MOVIE.fsk as fsk, MOVIE.runtime as runtime, MOVIE.picture as picture, " +
+            "GENRE.name as name, PRESENTATION_CATEGORY.prescat_title as prescat_title, PRESENTATION_CATEGORY.prescat_description as prescat_description, BUSY_SEAT.busy as busy, BUSY_SEAT.looked as looked " +
             "FROM TICKET " +
             "JOIN SEAT ON TICKET.seat_uuid = SEAT.seat_uuid " +
             "JOIN PRICE_CATEGORY ON TICKET.pricecat_uuid = PRICE_CATEGORY.pricecat_uuid " +
@@ -45,16 +45,16 @@ public class TicketDao extends AbstractDao<Ticket> {
             "JOIN ROOM ON ROOM.room_uuid = PRESENTATION.room_uuid " +
             "JOIN MOVIE ON MOVIE.movie_uuid = PRESENTATION.movie_uuid " +
             "JOIN GENRE ON GENRE.genre_uuid = MOVIE.genre_uuid " +
-            "JOIN PRESENTATION_CATEGORY ON PRESENTATION_CATECORY.prescat_uuid = PRICE_CATEGORY.prescat_uuid " +
-            "JOIN SEAT_BUSY ON SEAT_BUSY.pres_uuid = TICKET.pres_uuid AND SEAT_BUSY.seat_uuid = TICKET.seat_uuid ";
+            "JOIN PRESENTATION_CATEGORY ON PRESENTATION_CATEGORY.prescat_uuid = PRICE_CATEGORY.prescat_uuid " +
+            "JOIN BUSY_SEAT ON BUSY_SEAT.pres_uuid = TICKET.pres_uuid AND BUSY_SEAT.seat_uuid = TICKET.seat_uuid ";
 
     private static final String SELECT_ALL_BY_RESERVATION = "SELECT TICKET.ticket_uuid as ticket_uuid, TICKET.res_uuid as res_uuid, TICKET.seat_uuid as seat_uuid, TICKET.pricecat_uuid as pricecat_uuid, " +
             "TICKET.pres_uuid as pres_uuid, SEAT.number as number, SEAT.row as row, PRICE_CATEGORY.prescat_uuid as prescat_uuid, PRICE_CATEGORY.seatcat_uuid as seatcat_uuid, " +
             "PRICE_CATEGORY.pricecat_title as pricecat_title, PRICE_CATEGORY.pricecat_description as pricecat_description, PRICE_CATEGORY.price as price, " +
-            "PRESENTATION.movie_uuid as movie_uuid, PRESENTATION.room_uuid as room_uuid, PRESENTATION.date as date, ROOM.room_type as room_type, ROOM.clean as clean" +
+            "PRESENTATION.movie_uuid as movie_uuid, PRESENTATION.room_uuid as room_uuid, PRESENTATION.date as date, ROOM.room_type as room_type, ROOM.clean as clean, " +
             "ROOM.vip_seats as vip_seats, ROOM.room_number as room_number, SEAT_CATEGORY.seatcat_description as seatcat_description, SEAT_CATEGORY.seatcat_title as seatcat_title, " +
-            "MOVIE.genre_uuid as genre_uuid, MOVIE.prod_year as prod_year, MOVIE.title as title, MOVIE.description as description, MOVIE.fsk as fsk, MOVIE.runtime as runtime, MOVIE.picture as picture, " +
-            "GENRE.name as name, PRESENTATION_CATEGORY.prescat_title as prescat_title, PRESENTATION_CATEGORY.prescat_description as prescat_description, SEAT_BUSY.busy as busy, SEAT_BUSY.looked as looked " +
+            "MOVIE.genre_uuid as genre_uuid, MOVIE.prod_year as prod_year, MOVIE.movie_title as movie_title , MOVIE.movie_description as movie_description, MOVIE.fsk as fsk, MOVIE.runtime as runtime, MOVIE.picture as picture, " +
+            "GENRE.name as name, PRESENTATION_CATEGORY.prescat_title as prescat_title, PRESENTATION_CATEGORY.prescat_description as prescat_description, BUSY_SEAT.busy as busy, BUSY_SEAT.looked as looked " +
             "FROM TICKET " +
             "JOIN SEAT ON TICKET.seat_uuid = SEAT.seat_uuid " +
             "JOIN PRICE_CATEGORY ON TICKET.pricecat_uuid = PRICE_CATEGORY.pricecat_uuid " +
@@ -63,8 +63,8 @@ public class TicketDao extends AbstractDao<Ticket> {
             "JOIN ROOM ON ROOM.room_uuid = PRESENTATION.room_uuid " +
             "JOIN MOVIE ON MOVIE.movie_uuid = PRESENTATION.movie_uuid " +
             "JOIN GENRE ON GENRE.genre_uuid = MOVIE.genre_uuid " +
-            "JOIN PRESENTATION_CATEGORY ON PRESENTATION_CATECORY.prescat_uuid = PRICE_CATEGORY.prescat_uuid " +
-            "JOIN SEAT_BUSY ON SEAT_BUSY.pres_uuid = TICKET.pres_uuid AND SEAT_BUSY.seat_uuid = TICKET.seat_uuid " +
+            "JOIN PRESENTATION_CATEGORY ON PRESENTATION_CATEGORY.prescat_uuid = PRICE_CATEGORY.prescat_uuid " +
+            "JOIN BUSY_SEAT ON BUSY_SEAT.pres_uuid = TICKET.pres_uuid AND BUSY_SEAT.seat_uuid = TICKET.seat_uuid " +
             "WHERE TICKET.res_uuid = ?";
 
     private static final String DELETE_ALL_BY_RESERVATION = "DELETE FROM TICKET WHERE res_uuid = ?";

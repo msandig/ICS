@@ -27,7 +27,7 @@ public class UserDao extends AbstractDao<User> {
             if (object.getPaymentMethod() != null) {
                 return this.persistObject(User.class, object.getEmail(), COUNT, UPDATE, PERSIST, object.getEmail(), object.getUuid(), object.getFirstName(), object.getLastName(), object.getPassword(), object.getPaymentMethod().getUuid(), object.getRole().getUuid());
             } else {
-                return this.persistObject(User.class, object.getEmail(), COUNT, UPDATE, PERSIST, object.getEmail(), object.getUuid(), object.getFirstName(), object.getLastName(), object.getPassword(), StringUtils.EMPTY, object.getRole().getUuid());
+                return this.persistObject(User.class, object.getEmail(), COUNT, UPDATE, PERSIST, object.getEmail(), object.getUuid(), object.getFirstName(), object.getLastName(), object.getPassword(), null, object.getRole().getUuid());
             }
         }
         return false;

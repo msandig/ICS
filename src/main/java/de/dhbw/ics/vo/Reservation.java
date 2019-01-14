@@ -43,8 +43,8 @@ public class Reservation {
         this.payed = payed;
     }
 
-    public Reservation(Integer number, long date, boolean payed){
-        this.number = number;
+    public Reservation( long date, boolean payed ){
+
         this.date = date;
         this.payed = payed;
         this.uuid = UUID.randomUUID().toString();

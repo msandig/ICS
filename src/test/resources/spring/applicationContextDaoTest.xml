@@ -37,6 +37,18 @@
         <property name="dataSource" ref="testDataSource"/>
     </bean>
 
+    <bean id="reservationDao" class="de.dhbw.ics.database.dao.ReservationDao">
+        <property name="dataSource" ref="testDataSource"/>
+    </bean>
+
+    <bean id="presentationDao" class="de.dhbw.ics.database.dao.PresentationDao">
+        <property name="dataSource" ref="testDataSource"/>
+    </bean>
+
+    <bean id="priceCategoryDao" class="de.dhbw.ics.database.dao.PriceCategoryDao">
+        <property name="dataSource" ref="testDataSource"/>
+    </bean>
+
     <bean id="seatCategoryDao" class="de.dhbw.ics.database.dao.SeatCategoryDao">
         <property name="dataSource" ref="testDataSource"/>
     </bean>
