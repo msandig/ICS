@@ -29,15 +29,18 @@ public class PresentationController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/service/get/presentations")
     public @ResponseBody
-    ResponseEntity<Object> getAll(@RequestParam(value = "start") Optional<Long> start, @RequestParam(value = "end") Optional<Long> end, Optional<String> title) {
+    ResponseEntity<Object> getAll(@RequestParam(value = "start") Optional<Long> start, @RequestParam(value = "end") Optional<Long> end, Optional<String> title, Optional<String> movie) {
         List<Presentation> presentations = null;
-        if (start.isPresent() && end.isPresent() && !title.isPresent()) {
+        if (start.isPresent() && end.isPresent() && !title.isPresent() && !movie.isPresent()) {
             presentations = this.presentationManager.getAllPresentations(start.get(), end.get());
-        } else if (start.isPresent() && end.isPresent() && title.isPresent()) {
+        } else if (start.isPresent() && end.isPresent() && title.isPresent() && !movie.isPresent()) {
             presentations = this.presentationManager.getAllPresentationsByTitle(start.get(), end.get(), title.get());
-        } else if (!start.isPresent() && !end.isPresent() && !title.isPresent()){
+        } else if (!start.isPresent() && !end.isPresent() && !title.isPresent() && !movie.isPresent()) {
             presentations = this.presentationManager.getAllPresentations();
+        } else if (start.isPresent() && end.isPresent() && !title.isPresent() && movie.isPresent()) {
+            presentations = this.presentationManager.getAllPresentationsByMovie(start.get(), end.get(), movie.get());
         }
+
         if (presentations == null) {
             return new ResponseEntity<>("FAILED", HttpStatus.EXPECTATION_FAILED);
         }
