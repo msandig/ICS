@@ -17,7 +17,7 @@ public class BusySeatController {
     @Autowired
     ReservationManager reservationManager;
 
-    @RequestMapping(method = RequestMethod.POST, path = "/service/get/seats/lock/", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_PROBLEM_JSON_UTF8_VALUE})
+    @RequestMapping(method = RequestMethod.POST, path = "/service/get/seats/lock", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_PROBLEM_JSON_UTF8_VALUE})
     public @ResponseBody
     ResponseEntity<Object> lockSeats(@RequestParam(value = "presentation") String presentation, @RequestParam(value = "locked") boolean locked, @RequestBody List<Seat> seats, HttpServletRequest request) {
 
