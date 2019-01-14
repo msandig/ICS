@@ -43,6 +43,13 @@ public class Reservation {
         this.payed = payed;
     }
 
+    public Reservation(Integer number, long date, boolean payed){
+        this.number = number;
+        this.date = date;
+        this.payed = payed;
+        this.uuid = UUID.randomUUID().toString();
+    }
+
     public boolean isPayed() {
         return payed;
     }

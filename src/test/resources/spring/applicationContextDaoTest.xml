@@ -33,6 +33,10 @@
         <property name="dataSource" ref="testDataSource"/>
     </bean>
 
+    <bean id="ticketDao" class="de.dhbw.ics.database.dao.TicketDao">
+        <property name="dataSource" ref="testDataSource"/>
+    </bean>
+
     <bean id="seatCategoryDao" class="de.dhbw.ics.database.dao.SeatCategoryDao">
         <property name="dataSource" ref="testDataSource"/>
     </bean>
