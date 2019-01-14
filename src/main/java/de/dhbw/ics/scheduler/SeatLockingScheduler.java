@@ -21,7 +21,7 @@ public class SeatLockingScheduler {
 
     @Scheduled(initialDelay = 10000, fixedRate = 3000000)
     public void clearLockedSeats() {
-
+        LOG.info("Starting UnlockSeatScheduler!");
         if (this.busySeatDao != null) {
             List<BusySeat> busySeats = this.busySeatDao.getAll();
             for (BusySeat bs : busySeats) {
@@ -35,5 +35,6 @@ public class SeatLockingScheduler {
                 }
             }
         }
+        LOG.info("Finished UnlockSeatScheduler!");
     }
 }
