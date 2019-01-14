@@ -32,12 +32,13 @@ public class BusySeatDao extends AbstractDao<BusySeat> {
                     if (i == 1) {
                         this.jdbcTemplate.update(UPDATE, object.isBusy(), object.isLooked(), object.getTimestamp(), object.getSessionID(), object.getPresentation().getUuid(), object.getSeat().getUuid());
                     } else {
-                        this.jdbcTemplate.update(PERSIST, object.getPresentation().getUuid(), object.getSeat().getUuid(), object.isBusy(), object.isLooked(), object.getTimestamp(), object.getSessionID());
+                        this.jdbcTemplate.update(PERSIST, object.getSeat().getUuid(), object.getPresentation().getUuid(), object.isBusy(), object.isLooked(), object.getTimestamp(), object.getSessionID());
                     }
                     return true;
                 }
             } catch (DataAccessException e) {
-                LOG.info("Could not persist BusySeat!");
+                LOG.error("Could not persist BusySeat!");
+                LOG.error(e.getMessage());
             }
         }
         return false;

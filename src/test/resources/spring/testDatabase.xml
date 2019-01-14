@@ -86,24 +86,12 @@
             </column>
         </createTable>
 
-        <createTable tableName="Busy_Seat">
-            <column name="seat_uuid" type="varchar(255)">
-                <constraints primaryKey="true" nullable="false" unique="true"/>
-            </column>
-            <column name="pres_uuid" type="varchar(255)">
-                <constraints primaryKey="true" nullable="false" unique="true"/>
-            </column>
-            <column name="busy" type="BOOLEAN" defaultValue="false">
-                <constraints nullable="false"/>
-            </column>
-            <column name="looked" type="BOOLEAN" defaultValue="false">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
         <createTable tableName="Reservation">
-            <column name="res_uuid" type="Integer" autoIncrement="true" startWith="1000">
+            <column name="res_uuid" type="varchar(255)">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="res_number" type="Integer" autoIncrement="true" startWith="1000">
+                <constraints nullable="false" unique="true"/>
             </column>
             <column name="date" type="Date">
                 <constraints primaryKey="false" nullable="false" unique="false"/>
@@ -196,6 +184,23 @@
             </column>
         </createTable>
 
+        <createTable tableName="Busy_Seat">
+            <column name="seat_uuid" type="varchar(255)">
+                <constraints nullable="false" unique="false" foreignKeyName="seat_uuid"/>
+            </column>
+            <column name="pres_uuid" type="varchar(255)">
+                <constraints nullable="false" unique="false" foreignKeyName="pres_uuid" references="Presentation(pres_uuid)"/>
+            </column>
+            <column name="busy" type="BOOLEAN" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="looked" type="BOOLEAN" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey tableName="Busy_Seat" columnNames="seat_uuid, pres_uuid" constraintName="pk_busy_seat"/>
+
         <createTable tableName="Price_Category">
             <column name="pricecat_uuid" type="varchar(255)">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
@@ -232,7 +237,7 @@
                              references="Price_Category(pricecat_uuid)"/>
             </column>
             <column name="pres_uuid" type="varchar(255)">
-                <constraints nullable="false" foreignKeyName="pres_uuid" references="Presentation(pres_uuid)"/>
+                <constraints nullable="false" foreignKeyName="pres_uuid"/>
             </column>
         </createTable>
     </changeSet>

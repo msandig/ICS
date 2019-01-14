@@ -19,9 +19,10 @@ public class SeatLockingScheduler {
     private BusySeatDao busySeatDao;
 
 
-    @Scheduled(initialDelay = 10000, fixedRate = 3000000)
+    @Scheduled(initialDelay = 10000, fixedRate = 300000)
     public void clearLockedSeats() {
         LOG.info("Starting UnlockSeatScheduler!");
+        int count = 0;
         if (this.busySeatDao != null) {
             List<BusySeat> busySeats = this.busySeatDao.getAll();
             for (BusySeat bs : busySeats) {
@@ -31,10 +32,11 @@ public class SeatLockingScheduler {
                         bs.setTimestamp(0);
                         bs.setSessionID("");
                         this.busySeatDao.persist(bs);
+                        count++;
                     }
                 }
             }
         }
-        LOG.info("Finished UnlockSeatScheduler!");
+        LOG.info("Finished UnlockSeatScheduler with {} unlocks!", count);
     }
 }

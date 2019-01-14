@@ -30,7 +30,7 @@ public class BusySeatController {
         }
 
         if(result != null) {
-            return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+            return new ResponseEntity<>(result, HttpStatus.OK);
         }
 
         return new ResponseEntity<>("FAILED", HttpStatus.EXPECTATION_FAILED);
