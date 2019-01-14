@@ -44,6 +44,9 @@ public class PresentationDao extends AbstractDao<Presentation> {
             "JOIN ROOM ON PRESENTATION.room_uuid = ROOM.room_uuid " +
             "JOIN PRESENTATION_CATEGORY ON PRESENTATION.prescat_uuid = PRESENTATION_CATEGORY.prescat_uuid WHERE PRESENTATION.date BETWEEN ? AND ?";
 
+    private static final String SELECT_ALL_BY_TITLE_AND_DATE = SELECT_ALL_BETWEEN_DATE.concat(" AND MOVIE.movie_title LIKE ? ");
+    private static final String SELECT_ALL_BY_MOVIE_AND_DATE = SELECT_ALL_BETWEEN_DATE.concat(" AND PRESENTATION.movie_uuid = ? ");
+
     @Override
     public boolean persist(Presentation object) {
         if (object != null) {
@@ -73,9 +76,23 @@ public class PresentationDao extends AbstractDao<Presentation> {
         return this.getAllObjects(Presentation.class, SELECT_ALL, new PresentationMapper());
     }
 
-    public List<Presentation> getPresentationsBetweenIntervall(long startDate, long endDate) {
+    public List<Presentation> getPresentationsBetweenInterval(long startDate, long endDate) {
         if (startDate != 0 && endDate != 0) {
             return this.getObjectsByMultipleArguments(Presentation.class, SELECT_ALL_BETWEEN_DATE, new Object[]{startDate, endDate}, new PresentationMapper());
+        }
+        return null;
+    }
+
+    public List<Presentation> getPresentationsByTitleAndDateInterval(long startDate, long endDate, String title) {
+        if (startDate != 0 && endDate != 0 && title != null && !title.isEmpty()) {
+            return this.getObjectsByMultipleArguments(Presentation.class, SELECT_ALL_BY_TITLE_AND_DATE, new Object[]{startDate, endDate, "%" + title + "%"}, new PresentationMapper());
+        }
+        return null;
+    }
+
+    public List<Presentation> getPresentationsByMovieAndDateInterval(long startDate, long endDate, String movieID) {
+        if (startDate != 0 && endDate != 0 && movieID != null && !movieID.isEmpty()) {
+            return this.getObjectsByMultipleArguments(Presentation.class, SELECT_ALL_BY_MOVIE_AND_DATE, new Object[]{startDate, endDate, movieID}, new PresentationMapper());
         }
         return null;
     }

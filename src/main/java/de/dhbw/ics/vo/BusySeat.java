@@ -118,6 +118,6 @@ public class BusySeat {
         Calendar c2 = Calendar.getInstance();
         c1.setTimeInMillis(bs.getTimestamp());
         c1.add(Calendar.MINUTE, 5);
-        return c2.compareTo(c1);
+        return c1.compareTo(c2);
     }
 }
