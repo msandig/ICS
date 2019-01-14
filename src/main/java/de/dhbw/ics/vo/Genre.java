@@ -33,10 +33,6 @@ public class Genre {
         this.uuid = UUID.randomUUID().toString();
     }
 
-    public Genre(){
-
-    }
-
     public String getUuid() {
         return uuid;
     }

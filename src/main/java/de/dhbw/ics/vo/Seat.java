@@ -43,7 +43,7 @@ public class Seat {
         }
         this.number = (Integer) delegate.get("number");
         this.row = (Integer) delegate.get("row");
-        this.seatCategory =  new SeatCategory((Map<String, Object>) delegate.get("seatCategory"));
+        this.seatCategory = new SeatCategory((Map<String, Object>) delegate.get("seatCategory"));
     }
 
 
@@ -72,7 +72,6 @@ public class Seat {
     }
 
     public String getUuid() {
-
         return uuid;
     }
 
