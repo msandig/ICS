@@ -45,7 +45,7 @@ public class PresentationDao extends AbstractDao<Presentation> {
             "JOIN PRESENTATION_CATEGORY ON PRESENTATION.prescat_uuid = PRESENTATION_CATEGORY.prescat_uuid WHERE PRESENTATION.date BETWEEN ? AND ?";
 
     private static final String SELECT_ALL_BY_TITLE_AND_DATE = SELECT_ALL_BETWEEN_DATE.concat(" AND MOVIE.movie_title LIKE ? ");
-    private static final String SELECT_ALL_BY_MOVIE_AND_DATE = SELECT_ALL_BETWEEN_DATE.concat(" AND PRESENTATION.movie_title = ? ");
+    private static final String SELECT_ALL_BY_MOVIE_AND_DATE = SELECT_ALL_BETWEEN_DATE.concat(" AND PRESENTATION.movie_uuid = ? ");
 
     @Override
     public boolean persist(Presentation object) {

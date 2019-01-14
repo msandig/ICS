@@ -29,7 +29,7 @@ public class PresentationController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/service/get/presentations")
     public @ResponseBody
-    ResponseEntity<Object> getAll(@RequestParam(value = "start") Optional<Long> start, @RequestParam(value = "end") Optional<Long> end, Optional<String> title, Optional<String> movie) {
+    ResponseEntity<Object> getAll(@RequestParam(value = "start") Optional<Long> start, @RequestParam(value = "end") Optional<Long> end, @RequestParam(value = "title") Optional<String> title, @RequestParam(value = "movie") Optional<String> movie) {
         List<Presentation> presentations = null;
         if (start.isPresent() && end.isPresent() && !title.isPresent() && !movie.isPresent()) {
             presentations = this.presentationManager.getAllPresentations(start.get(), end.get());

@@ -62,6 +62,13 @@ public class PresentationManager {
         return presentations;
     }
 
+    public List<Movie> getAllMoviesBetweenInterval(long start, long end){
+        if(start == 0 || end == 0)
+            return null;
+
+        return this.movieDao.getMoviesBetweenDate(start, end);
+    }
+
     private void mapRooms(List<Presentation> presentations) {
         if (presentations != null) {
             List<Room> roomList = new ArrayList<>();

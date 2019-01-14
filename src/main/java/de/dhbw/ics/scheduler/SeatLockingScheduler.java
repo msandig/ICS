@@ -25,6 +25,8 @@ public class SeatLockingScheduler {
         List<BusySeat> bsUpdate = new ArrayList<>();
         if (this.busySeatDao != null) {
             List<BusySeat> busySeats = this.busySeatDao.getAll();
+            if(busySeats == null)
+                return;
 
             for (BusySeat bs : busySeats) {
                 if (bs.isLooked() && !bs.isBusy()) {

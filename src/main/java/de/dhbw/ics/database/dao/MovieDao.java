@@ -22,6 +22,10 @@ public class MovieDao extends AbstractDao<Movie> {
             "MOVIE.movie_title as movie_title, MOVIE.movie_description as movie_description, MOVIE.fsk as fsk, MOVIE.runtime as runtime, MOVIE.picture as picture, " +
             "GENRE.name as name FROM MOVIE JOIN GENRE ON GENRE.genre_uuid = MOVIE.genre_uuid WHERE MOVIE.movie_title LIKE ? ";
 
+    private static final String SELECT_ALL_MOVIES_BY_PRESENTATION_DATE = "SELECT DISTINCT MOVIE.movie_uuid as movie_uuid, MOVIE.genre_uuid as genre_uuid, MOVIE.prod_year as prod_year, " +
+            "MOVIE.movie_title as movie_title, MOVIE.movie_description as movie_description, MOVIE.fsk as fsk, MOVIE.runtime as runtime, MOVIE.picture as picture, GENRE.name as name " +
+            "FROM PRESENTATION JOIN MOVIE ON PRESENTATION.movie_uuid = MOVIE.movie_uuid JOIN GENRE ON GENRE.genre_uuid = MOVIE.genre_uuid  WHERE date BETWEEN ? AND ? ";
+
     @Override
     public boolean persist(Movie object) {
         if (object != null) {
@@ -55,6 +59,13 @@ public class MovieDao extends AbstractDao<Movie> {
     public List<Movie> getMovieByTitle(String title) {
         if (title != null && !title.isEmpty()) {
             return this.getObjectsByMultipleArguments(Movie.class, SELECT_ALL_BY_TITLE, new Object[]{"%" + title + "%"}, new MovieMapper());
+        }
+        return null;
+    }
+
+    public List<Movie> getMoviesBetweenDate(long startDate, long endDate) {
+        if (startDate != 0 && endDate != 0) {
+            return this.getObjectsByMultipleArguments(Movie.class, SELECT_ALL_MOVIES_BY_PRESENTATION_DATE, new Object[]{startDate, endDate}, new MovieMapper());
         }
         return null;
     }
