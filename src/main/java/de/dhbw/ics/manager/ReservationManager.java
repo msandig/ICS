@@ -262,7 +262,7 @@ public class ReservationManager {
 
                 if (bs.isLooked() && !bs.getSessionID().equals(sessionID)) {
                     int result = BusySeat.compareLockTimestamp(bs);
-                    if (result <= 0) {
+                    if (result > 0) {
                         return null;
                     }
                 }
@@ -302,6 +302,8 @@ public class ReservationManager {
                     bs.setTimestamp(0);
                     bs.setSessionID("");
                     this.busySeatDao.persist(bs);
+                    s.setCurrentBusySeat(bs);
+                    s.addBusy(bs);
                 }
             }
         }
