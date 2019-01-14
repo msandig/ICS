@@ -6,10 +6,7 @@ import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ReservationManager {
 
@@ -192,7 +189,7 @@ public class ReservationManager {
             return null;
 
         Reservation result = this.reservationDao.get(reservation.getUuid());
-        if(result != null){
+        if (result != null) {
             this.ticketDao.getAllByReservation(result);
         }
 
@@ -254,6 +251,7 @@ public class ReservationManager {
         if (presentation == null)
             return null;
 
+        List<BusySeat> bsUpdate = new ArrayList<>();
         for (Seat s : seats) {
             BusySeat bs = getBusySeat(presentation, s);
             if (bs != null) {
@@ -275,15 +273,16 @@ public class ReservationManager {
             busySeat.setTimestamp(Calendar.getInstance().getTimeInMillis());
             busySeat.setPresentation(presentation);
             busySeat.setSeat(s);
-            if (this.busySeatDao.persist(busySeat)) {
-                s.setCurrentBusySeat(busySeat);
-                s.addBusy(busySeat);
-            } else {
-                return null;
+            bsUpdate.add(busySeat);
+            s.setCurrentBusySeat(busySeat);
+            s.addBusy(busySeat);
+        }
+        if (bsUpdate.size() == seats.size()) {
+            if (this.busySeatDao.persistBatch(bsUpdate)) {
+                return seats;
             }
         }
-
-        return seats;
+        return null;
     }
 
     public List<Seat> unlockSeats(String uuid, List<Seat> seats, String sessionID) {
@@ -292,6 +291,7 @@ public class ReservationManager {
         if (presentation == null)
             return null;
 
+        List<BusySeat> bsUpdate = new ArrayList<>();
         for (Seat s : seats) {
             BusySeat bs = getBusySeat(presentation, s);
             if (bs != null) {
@@ -301,13 +301,18 @@ public class ReservationManager {
                     bs.setLooked(false);
                     bs.setTimestamp(0);
                     bs.setSessionID("");
-                    this.busySeatDao.persist(bs);
+                    bsUpdate.add(bs);
                     s.setCurrentBusySeat(bs);
                     s.addBusy(bs);
                 }
             }
         }
-        return seats;
+        if (bsUpdate.size() == seats.size()) {
+            if (this.busySeatDao.persistBatch(bsUpdate)) {
+                return seats;
+            }
+        }
+        return null;
     }
 
     private Presentation checkForLocking(String uuid, List<Seat> seats, String sessionID) {

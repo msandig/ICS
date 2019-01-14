@@ -85,4 +85,10 @@ public class PresentationManager {
     }
 
 
+    public List<Presentation> getAllPresentationsByTitle(long start, long end, String title){
+        List<Presentation> presentations = this.presentationDao.getPresentationsByTitleAndDateIntervall(start, end, title);
+        this.mapRooms(presentations);
+        return presentations;
+    }
+
 }

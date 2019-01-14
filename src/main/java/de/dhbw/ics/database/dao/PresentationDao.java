@@ -44,6 +44,8 @@ public class PresentationDao extends AbstractDao<Presentation> {
             "JOIN ROOM ON PRESENTATION.room_uuid = ROOM.room_uuid " +
             "JOIN PRESENTATION_CATEGORY ON PRESENTATION.prescat_uuid = PRESENTATION_CATEGORY.prescat_uuid WHERE PRESENTATION.date BETWEEN ? AND ?";
 
+    private static final String SELECT_ALL_BY_TITLE_AND_DATE = SELECT_ALL_BETWEEN_DATE.concat(" AND MOVIE.movie_title LIKE ? ");
+
     @Override
     public boolean persist(Presentation object) {
         if (object != null) {
@@ -76,6 +78,13 @@ public class PresentationDao extends AbstractDao<Presentation> {
     public List<Presentation> getPresentationsBetweenIntervall(long startDate, long endDate) {
         if (startDate != 0 && endDate != 0) {
             return this.getObjectsByMultipleArguments(Presentation.class, SELECT_ALL_BETWEEN_DATE, new Object[]{startDate, endDate}, new PresentationMapper());
+        }
+        return null;
+    }
+
+    public List<Presentation> getPresentationsByTitleAndDateIntervall(long startDate, long endDate, String title) {
+        if (startDate != 0 && endDate != 0 && title != null && !title.isEmpty()) {
+            return this.getObjectsByMultipleArguments(Presentation.class, SELECT_ALL_BY_TITLE_AND_DATE, new Object[]{startDate, endDate, "%" + title + "%"}, new PresentationMapper());
         }
         return null;
     }
