@@ -104,18 +104,17 @@ public class TicketDaoTest {
         ticket.setReservation(reservation);
 
 
-        ticketDao.persist(ticket);
+        DaoTestHelper.persist(ticketDao,ticket);
     }
 
     @Test
     public void test2Get() {
-        ticketDao.get(ticket.getUuid());
+        DaoTestHelper.get(ticketDao,ticket,ticket.getUuid());
     }
 
     @Test
     public void test3GetAll(){
-        List<Ticket> listTicket = ticketDao.getAll();
-        System.out.print(212);
+        DaoTestHelper.getAll(ticketDao,ticket);
     }
 
     @Test
@@ -125,7 +124,7 @@ public class TicketDaoTest {
 
     @Test
     public void test4Delete(){
-        ticketDao.delete(ticket.getUuid());
+        DaoTestHelper.delete(ticketDao,ticket.getUuid());
     }
 
     @Test
