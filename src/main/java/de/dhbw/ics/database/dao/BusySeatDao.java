@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class BusySeatDao extends AbstractDao<BusySeat> {
 
-    private static final String PERSIST = "MERGE INTO BUSY_SEAT (seat_uuid, pres_uuid, busy, looked, timestamp, sessionID) VALUES (?, ?, ?, ?, ?, ?)";
+    private static final String PERSIST = "MERGE INTO BUSY_SEAT (seat_uuid, pres_uuid, busy, locked, timestamp, sessionID) VALUES (?, ?, ?, ?, ?, ?)";
     private static final String SELECT = "SELECT * FROM BUSY_SEAT WHERE pres_uuid = ? AND seat_uuid = ?";
     private static final String DELETE = "DELETE FROM BUSY_SEAT WHERE pres_uuid = ? AND seat_uuid = ?";
     private static final String SELECT_ALL = "SELECT * FROM BUSY_SEAT";

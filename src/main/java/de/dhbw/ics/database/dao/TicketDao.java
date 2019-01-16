@@ -14,7 +14,7 @@ public class TicketDao extends AbstractDao<Ticket> {
             "PRESENTATION.movie_uuid as movie_uuid, PRESENTATION.room_uuid as room_uuid, PRESENTATION.date as date, ROOM.room_type as room_type, ROOM.clean as clean, " +
             "ROOM.vip_seats as vip_seats, ROOM.room_number as room_number, SEAT_CATEGORY.seatcat_description as seatcat_description, SEAT_CATEGORY.seatcat_title as seatcat_title, " +
             "MOVIE.genre_uuid as genre_uuid, MOVIE.prod_year as prod_year, MOVIE.movie_title as movie_title , MOVIE.movie_description as movie_description, MOVIE.fsk as fsk, MOVIE.runtime as runtime, MOVIE.picture as picture, " +
-            "GENRE.name as name, PRESENTATION_CATEGORY.prescat_title as prescat_title, PRESENTATION_CATEGORY.prescat_description as prescat_description, BUSY_SEAT.busy as busy, BUSY_SEAT.looked as looked " +
+            "GENRE.name as name, PRESENTATION_CATEGORY.prescat_title as prescat_title, PRESENTATION_CATEGORY.prescat_description as prescat_description, BUSY_SEAT.busy as busy, BUSY_SEAT.locked as locked " +
             "FROM TICKET " +
             "JOIN SEAT ON TICKET.seat_uuid = SEAT.seat_uuid " +
             "JOIN PRICE_CATEGORY ON TICKET.pricecat_uuid = PRICE_CATEGORY.pricecat_uuid " +
@@ -24,7 +24,7 @@ public class TicketDao extends AbstractDao<Ticket> {
             "JOIN MOVIE ON MOVIE.movie_uuid = PRESENTATION.movie_uuid " +
             "JOIN GENRE ON GENRE.genre_uuid = MOVIE.genre_uuid " +
             "JOIN PRESENTATION_CATEGORY ON PRESENTATION_CATEGORY.prescat_uuid = PRICE_CATEGORY.prescat_uuid " +
-            "JOIN BUSY_SEAT ON BUSY_SEAT.pres_uuid = TICKET.pres_uuid AND BUSY_SEAT.seat_uuid = TICKET.seat_uuid " +
+            "LEFT JOIN BUSY_SEAT ON BUSY_SEAT.pres_uuid = TICKET.pres_uuid AND BUSY_SEAT.seat_uuid = TICKET.seat_uuid " +
             "WHERE TICKET.ticket_uuid = ?";
 
     private static final String DELETE = "DELETE FROM TICKET WHERE ticket_uuid = ?";
@@ -36,7 +36,7 @@ public class TicketDao extends AbstractDao<Ticket> {
             "PRESENTATION.movie_uuid as movie_uuid, PRESENTATION.room_uuid as room_uuid, PRESENTATION.date as date, ROOM.room_type as room_type, ROOM.clean as clean, " +
             "ROOM.vip_seats as vip_seats, ROOM.room_number as room_number, SEAT_CATEGORY.seatcat_description as seatcat_description, SEAT_CATEGORY.seatcat_title as seatcat_title, " +
             "MOVIE.genre_uuid as genre_uuid, MOVIE.prod_year as prod_year, MOVIE.movie_title as movie_title , MOVIE.movie_description as movie_description, MOVIE.fsk as fsk, MOVIE.runtime as runtime, MOVIE.picture as picture, " +
-            "GENRE.name as name, PRESENTATION_CATEGORY.prescat_title as prescat_title, PRESENTATION_CATEGORY.prescat_description as prescat_description, BUSY_SEAT.busy as busy, BUSY_SEAT.looked as looked " +
+            "GENRE.name as name, PRESENTATION_CATEGORY.prescat_title as prescat_title, PRESENTATION_CATEGORY.prescat_description as prescat_description, BUSY_SEAT.busy as busy, BUSY_SEAT.locked as locked " +
             "FROM TICKET " +
             "JOIN SEAT ON TICKET.seat_uuid = SEAT.seat_uuid " +
             "JOIN PRICE_CATEGORY ON TICKET.pricecat_uuid = PRICE_CATEGORY.pricecat_uuid " +
@@ -54,7 +54,7 @@ public class TicketDao extends AbstractDao<Ticket> {
             "PRESENTATION.movie_uuid as movie_uuid, PRESENTATION.room_uuid as room_uuid, PRESENTATION.date as date, ROOM.room_type as room_type, ROOM.clean as clean, " +
             "ROOM.vip_seats as vip_seats, ROOM.room_number as room_number, SEAT_CATEGORY.seatcat_description as seatcat_description, SEAT_CATEGORY.seatcat_title as seatcat_title, " +
             "MOVIE.genre_uuid as genre_uuid, MOVIE.prod_year as prod_year, MOVIE.movie_title as movie_title , MOVIE.movie_description as movie_description, MOVIE.fsk as fsk, MOVIE.runtime as runtime, MOVIE.picture as picture, " +
-            "GENRE.name as name, PRESENTATION_CATEGORY.prescat_title as prescat_title, PRESENTATION_CATEGORY.prescat_description as prescat_description, BUSY_SEAT.busy as busy, BUSY_SEAT.looked as looked " +
+            "GENRE.name as name, PRESENTATION_CATEGORY.prescat_title as prescat_title, PRESENTATION_CATEGORY.prescat_description as prescat_description, BUSY_SEAT.busy as busy, BUSY_SEAT.locked as locked " +
             "FROM TICKET " +
             "JOIN SEAT ON TICKET.seat_uuid = SEAT.seat_uuid " +
             "JOIN PRICE_CATEGORY ON TICKET.pricecat_uuid = PRICE_CATEGORY.pricecat_uuid " +
@@ -107,8 +107,8 @@ public class TicketDao extends AbstractDao<Ticket> {
     }
 
     public boolean deleteAllByReservation(Object key) {
-        if (key != null && !key.equals("")) {
-            return this.deleteObject(Ticket.class, DELETE_ALL_BY_RESERVATION, new Object[]{key});
+        if (key instanceof Reservation) {
+            return this.deleteObject(Ticket.class, DELETE_ALL_BY_RESERVATION, new Object[]{((Reservation) key).getUuid()});
         }
         return false;
     }

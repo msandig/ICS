@@ -14,7 +14,7 @@ public class PriceCategoryDao extends AbstractDao<PriceCategory> {
             "JOIN PRESENTATION_CATEGORY ON PRICE_CATEGORY.prescat_uuid = PRESENTATION_CATEGORY.prescat_uuid " +
             "JOIN SEAT_CATEGORY ON PRICE_CATEGORY.seatcat_uuid = SEAT_CATEGORY.seatcat_uuid " +
             "WHERE pricecat_uuid = ?";
-    private static final String DELETE = "DELETE FROM PRICE_CATEGORY WHERE pres_uuid = ?";
+    private static final String DELETE = "DELETE FROM PRICE_CATEGORY WHERE pricecat_uuid = ?";
     private static final String UPDATE = "UPDATE PRICE_CATEGORY SET prescat_uuid = ?, seatcat_uuid = ?, pricecat_title = ?, pricecat_description = ?, price = ? WHERE pricecat_uuid = ?";
     private static final String COUNT = "SELECT COUNT(*) FROM PRICE_CATEGORY WHERE pricecat_uuid = ?";
     private static final String SELECT_ALL = "SELECT PRICE_CATEGORY.pricecat_uuid as pricecat_uuid, PRICE_CATEGORY.prescat_uuid as prescat_uuid, PRICE_CATEGORY.seatcat_uuid as seatcat_uuid, " +
