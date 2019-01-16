@@ -34,7 +34,7 @@ public class BusySeatMapper implements RowMapper<BusySeat> {
     public BusySeat mapRow(ResultSet resultSet, int i) throws SQLException {
         String seatUUID = resultSet.getString("seat_uuid");
         String presentationUUID = resultSet.getString("pres_uuid");
-        boolean looked = resultSet.getBoolean("looked");
+        boolean looked = resultSet.getBoolean("locked");
         boolean busy = resultSet.getBoolean("busy");
         String sessionID = resultSet.getString("sessionID");
         long timestamp = resultSet.getLong("timestamp");

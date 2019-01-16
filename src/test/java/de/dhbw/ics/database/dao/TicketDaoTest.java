@@ -51,7 +51,7 @@ public class TicketDaoTest {
     private PresentationCategoryDao presentationCategoryDao;
 
     @Autowired
-    private GenreDao genereDao;
+    private GenreDao genreDao;
 
     @Autowired
     private RoleDao roleDao;
@@ -84,7 +84,7 @@ public class TicketDaoTest {
         long date = 12122018;
         Movie movie = new Movie(2018,"Der Hobbit","Ein Film",18,232);
         Genre genre = new Genre("Drama");
-        genereDao.persist(genre);
+        genreDao.persist(genre);
         movie.setGenre(genre);
 
         movieDao.persist(movie);
