@@ -21,6 +21,13 @@
             })
         });
     </script>
+    <script type="text/javascript">
+        $(function () {
+            $.get("footer.html", function (data) {
+                $('#Footer').append(data);
+            })
+        });
+    </script>
 
 </head>
 <body style="padding-top: 80px; background-color: darkgray">
@@ -60,7 +67,10 @@
             </div>
         </div>
     </form>
+
 </div>
+
+    <div id="Footer"></div>
 </div>
 </body>
 </html>
