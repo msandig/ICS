@@ -1,6 +1,7 @@
 package de.dhbw.ics.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -17,6 +18,8 @@ public class User implements Cloneable {
     private String firstName = StringUtils.EMPTY;
     private String lastName = StringUtils.EMPTY;
     private String email;
+
+    @JsonIgnore
     private String password;
     private PaymentMethod paymentMethod = null;
     private Role role = null;

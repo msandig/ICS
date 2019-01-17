@@ -36,9 +36,7 @@ public class SeatDao extends AbstractDao<Seat> {
     public Seat get(Object seat) {
         if (seat instanceof Seat) {
             Seat s = (Seat) seat;
-            //if (s.getRoom() != null)
             return this.getObject(Seat.class, SELECT, new Object[]{s.getUuid()}, new SeatMapper(s.getRoom()));
-
         }
         return null;
     }

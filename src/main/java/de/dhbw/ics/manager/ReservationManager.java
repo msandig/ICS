@@ -51,8 +51,13 @@ public class ReservationManager {
         }
 
         User u = userDao.get(user.getEmail());
-        if (u != null)
-            return ResultMessage.USER_EXIST;
+        if (u != null) {
+            if ((u.getPassword() == null || u.getPassword().isEmpty()) && u.getRole().getTitle().equals("Guest")) {
+                return u;
+            } else {
+                return ResultMessage.USER_NEEDS_PASSWORD;
+            }
+        }
 
         if (user.getRole() == null && user.getPassword() == null) {
             user.setRole(roleDao.getByTitle("Guest"));
@@ -150,20 +155,21 @@ public class ReservationManager {
             if (ticket.getPriceCategory() == null) {
                 return ResultMessage.MISSING_PRICE_CATEGORY;
             } else {
-                PriceCategory priceCategory = this.priceCategoryDao.get(ticket.getPriceCategory());
-                if (priceCategory == null || !priceCategory.equals(ticket.getPriceCategory()))
+                PriceCategory priceCategory = this.priceCategoryDao.get(ticket.getPriceCategory().getUuid());
+                if (priceCategory == null)
                     return ResultMessage.PRICE_CATEGORY_NOT_FOUND;
             }
 
             if (ticket.getSeat() != null) {
-                Seat s = this.seatDao.get(ticket.getSeat().getUuid());
+                Seat s = this.seatDao.get(ticket.getSeat());
                 if (s == null)
                     return ResultMessage.SEAT_NOT_FOUND;
 
-
                 BusySeat busySeat = this.getBusySeat(p, s);
                 if (busySeat != null && busySeat.isBusy()) {
-                    return null;
+
+                    return ResultMessage.SEAT_TAKEN;
+
                 } else if (busySeat != null && busySeat.isLooked()) {
                     if (!busySeat.getSessionID().equals(sessionID)) {
                         int result = BusySeat.compareLockTimestamp(busySeat);
@@ -189,32 +195,43 @@ public class ReservationManager {
             }
         }
 
-        if (!this.busySeatDao.persistBatch(persistBusySeats))
-            return ResultMessage.COULD_NOT_BLOCK_SEATS;
-
-        for (Ticket t : persistTickets) {
-            if (!this.ticketDao.persist(t))
-                return ResultMessage.COULD_NOT_PERSIST_TICKETS;
-        }
-
-        if (!this.reservationDao.persist(reservation)) {
-            for (Ticket t : persistTickets) {
-                this.ticketDao.deleteAllByReservation(reservation);
-            }
-            for (BusySeat bs : persistBusySeats) {
-                bs.setLooked(false);
-                bs.setSessionID("");
-                bs.setBusy(false);
-            }
-            this.busySeatDao.persistBatch(persistBusySeats);
+        if(persistBusySeats.size() != reservation.getTickets().size() || persistBusySeats.size() != reservation.getTickets().size())
             return ResultMessage.COULD_NOT_PERSIST_RESERVATION;
-        }
 
-        Reservation result = this.reservationDao.get(reservation.getUuid());
-        if (result != null) {
-            this.ticketDao.getAllByReservation(result);
+        if (this.reservationDao.persist(reservation)) {
+            boolean error = false;
+            for (Ticket t : persistTickets) {
+                if (!this.ticketDao.persist(t)) {
+                    error = true;
+                    break;
+                }
+            }
+            if (!error) {
+                error = !this.busySeatDao.persistBatch(persistBusySeats);
+            }
+
+            if (error) {
+                for (BusySeat bs : persistBusySeats) {
+                    bs.setLooked(false);
+                    bs.setSessionID("");
+                    bs.setBusy(false);
+                }
+                this.busySeatDao.persistBatch(persistBusySeats);
+
+                for (Ticket t : persistTickets) {
+                    this.ticketDao.deleteAllByReservation(reservation);
+                }
+                return ResultMessage.COULD_NOT_PERSIST_RESERVATION;
+            }
+
+            Reservation result = this.reservationDao.get(reservation.getUuid());
+            if (result != null) {
+                this.ticketDao.getAllByReservation(result);
+                result.setUser(user);
+                return result;
+            }
         }
-        return result;
+        return ResultMessage.COULD_NOT_PERSIST_RESERVATION;
     }
 
     public Object deleteReservation(String email, Integer resID) {

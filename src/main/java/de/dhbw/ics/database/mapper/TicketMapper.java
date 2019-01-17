@@ -31,13 +31,13 @@ public class TicketMapper implements RowMapper<Ticket> {
         Ticket ticket = new Ticket(uuid, seat, priceCategory, presentation);
 
         if (reservation != null) {
-            Integer reservationUUID = resultSet.getInt("res_uuid");
+            String reservationUUID = resultSet.getString("res_uuid");
             if (reservationUUID.equals(reservation.getUuid())) {
                 ticket.setReservation(reservation);
                 reservation.getTickets().add(ticket);
             }
         }
-        return ticket;
+        return null;
 
     }
 }

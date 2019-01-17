@@ -44,7 +44,7 @@ public class ResultMessage {
     public static final String MISSING_PRESENTATION_CATEGORY = "Presentation Category is not set!";
     public static final String COULD_NOT_PERSIST_PRESENTATION = "Could not persist presentation!";
     public static final String COULD_NOT_DELETE_PRESENTATION = "Could not delete presentation!";
-
+    public static final String USER_NEEDS_PASSWORD = "User exists with password!";
 
 
 

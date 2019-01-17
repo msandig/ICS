@@ -32,7 +32,7 @@ public class Reservation {
         }
 
         this.payed = Boolean.parseBoolean((String) delegate.get("payed"));
-        if (delegate.get("tickets") instanceof Map) {
+        if (delegate.get("tickets") instanceof List) {
             List<Map<String, Object>> unmappedTickets = (List<Map<String, Object>>) delegate.get("tickets");
             for (Map<String, Object> unmappedTicket : unmappedTickets) {
                 Ticket ticket = new Ticket(unmappedTicket);
@@ -50,7 +50,6 @@ public class Reservation {
     }
 
     public Reservation(long date, boolean payed) {
-
         this.date = date;
         this.payed = payed;
         this.uuid = UUID.randomUUID().toString();

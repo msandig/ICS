@@ -33,8 +33,8 @@ public class Ticket {
             this.priceCategory = new PriceCategory((Map<String, Object>) delegate.get("priceCategory"));
         }
 
-        if (delegate.get("presentation") instanceof Map) {
-            this.seat = new Seat((Map<String, Object>) delegate.get("presentation"));
+        if (delegate.get("seat") instanceof Map) {
+            this.seat = new Seat((Map<String, Object>) delegate.get("seat"));
         }
     }
 
