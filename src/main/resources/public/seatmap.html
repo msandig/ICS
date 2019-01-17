@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:style="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ICS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/icsstyle.css">
+    <link rel="stylesheet" href="css/movieProgram.css">
+    <link rel="stylesheet" href="css/seatmap.css">
+
+
+
+    <script type="text/javascript">
+        $(function () {
+            $.get("navbar.html", function (data) {
+                $('#Navbar').append(data);
+            })
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $.get("footer.html", function (data) {
+                $('#Footer').append(data);
+            })
+        });
+    </script>
+
+
+    <script type="text/javascript" src="js/jquery.seat-charts.min.js"></script>
+    <script type="text/javascript" src="js/seatmap.controller.js"></script>
+
+
+</head>
+<body style="padding-top: 80px; background-color: darkgray">
+<div style="padding-top: 65px; max-width: 1300px; margin: 0 auto" class="bg-dark">
+    <!-- Navbar -->
+    <div id="Navbar"></div>
+    <!--Caption -->
+    <h1 style="margin-top: 3%; margin-left: 3%; color: darkgray">Ihr aktuelles Filmprogramm vom dd.mm.yyyy bis dd.mm.yyyy </h1>
+
+    <div class="ticket-outer">
+        <div class="seat-map-inner" id="seat-map">
+            <div class="front">SCREEN</div>
+        </div>
+        <div class="booking-details">
+            <h1>Aquaman</h1>
+            <p>Vorstellung:<span> November 3, 21:00</span></p>
+            <p>Gewählte Sitze: </p>
+            <ul id="selected-seats"></ul>
+
+            <p>Tickets: <span id="counter">0</span></p>
+            <p>Total: <b><span id="total">0</span></b> €</p>
+
+            <button class="btn checkout-button">Reservieren</button>
+            <button class="btn checkout-button">Kaufen</button>
+
+
+            <div id="legend"></div>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+
+
+
+    <div id="Footer"></div>
+</div>
+</body>
+</html>
