@@ -10,10 +10,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/icsstyle.css">
+    <link rel="stylesheet" href="css/movieProgram.css">
+
     <script type="text/javascript">
         $(function () {
             $.get("navbar.html", function (data) {
                 $('#Navbar').append(data);
+            })
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $.get("footer.html", function (data) {
+                $('#Footer').append(data);
             })
         });
     </script>
@@ -24,7 +33,6 @@
     <!-- Navbar -->
     <div id="Navbar"></div>
     <!-- Divider -->
-    <hr class="linie-2">
     <!--Caption -->
     <h1 style="margin-top: 3%; margin-left: 3%; color: darkgray">Ihr aktuelles Filmprogramm vom dd.mm.yyyy bis dd.mm.yyyy </h1>
     <!--<hr class="linie-1"> -->
@@ -67,7 +75,7 @@
                         <table class="icsFontColor" style="margin-left: 3%">
                             <thead>
                                 <tr>
-                                    <th class="presentationTable" > Monday </th>
+                                    <th class="presentationTable" width="14.29%"> Monday </th>
                                     <th class="presentationTable" width="14.29%"> Tuesday </th>
                                     <th class="presentationTable" width="14.29%"> Wednesday </th>
                                     <th class="presentationTable" width="14.29%"> Thursday </th>
@@ -147,6 +155,8 @@
             </table>
         </div>
     </div>
+
+    <div id="Footer"></div>
 </div>
 
 </body>
