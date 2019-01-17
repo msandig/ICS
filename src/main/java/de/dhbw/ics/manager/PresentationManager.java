@@ -1,9 +1,7 @@
 package de.dhbw.ics.manager;
 
-import de.dhbw.ics.database.dao.BusySeatDao;
-import de.dhbw.ics.database.dao.MovieDao;
-import de.dhbw.ics.database.dao.PresentationDao;
-import de.dhbw.ics.database.dao.SeatDao;
+import de.dhbw.ics.controller.web.ResultMessage;
+import de.dhbw.ics.database.dao.*;
 import de.dhbw.ics.vo.Movie;
 import de.dhbw.ics.vo.Presentation;
 import de.dhbw.ics.vo.Room;
@@ -28,6 +26,13 @@ public class PresentationManager {
     @Autowired
     private MovieDao movieDao;
 
+    @Autowired
+    private PriceCategoryDao priceCategoryDao;
+
+    public Object getAllPriceCategories(){
+        return this.priceCategoryDao.getAll();
+    }
+
     public List<Presentation> getAllPresentations() {
         return this.presentationDao.getAll();
     }
@@ -36,9 +41,9 @@ public class PresentationManager {
         return this.movieDao.getAll();
     }
 
-    public List<Movie> getAllMoviesByTitle(String title) {
+    public Object getAllMoviesByTitle(String title) {
         if (title == null || title.isEmpty())
-            return null;
+            return ResultMessage.MISSING_MOVIE_TITLE;
 
         return this.movieDao.getMovieByTitle(title);
     }
@@ -49,9 +54,9 @@ public class PresentationManager {
         return presentations;
     }
 
-    public List<Presentation> getAllPresentationsByMovie(long start, long end, String movieID) {
+    public Object getAllPresentationsByMovie(long start, long end, String movieID) {
         if (movieID == null || movieID.isEmpty() || start == 0 || end == 0)
-            return null;
+            return ResultMessage.WRONG_PARAMETERS;
 
         List<Presentation> presentations = this.presentationDao.getPresentationsByMovieAndDateInterval(start, end, movieID);
         this.mapRooms(presentations);
@@ -62,9 +67,9 @@ public class PresentationManager {
         return presentations;
     }
 
-    public List<Movie> getAllMoviesBetweenInterval(long start, long end){
+    public Object getAllMoviesBetweenInterval(long start, long end){
         if(start == 0 || end == 0)
-            return null;
+            return ResultMessage.WRONG_PARAMETERS;
 
         return this.movieDao.getMoviesBetweenDate(start, end);
     }
@@ -92,32 +97,44 @@ public class PresentationManager {
 
     }
 
-    public boolean persistPresentation(Presentation presentation) {
+    public Object persistPresentation(Presentation presentation) {
         if (presentation.getUuid().isEmpty())
-            return false;
+            return ResultMessage.MISSING_PRESENTATION_ID;
         if (Objects.isNull(presentation.getRoom()) || presentation.getRoom().getUuid().isEmpty())
-            return false;
+            return ResultMessage.MISSING_ROOM;
 
         if (Calendar.getInstance().getTimeInMillis() >= presentation.getDate())
-            return false;
+            return ResultMessage.DATE_IN_PAST;
 
         if (Objects.isNull(presentation.getMovie()) || presentation.getMovie().getUuid().isEmpty())
-            return false;
+            return ResultMessage.MISSING_MOVIE;
 
         if (Objects.isNull(presentation.getPresentationCategory()) || presentation.getPresentationCategory().getUuid().isEmpty())
-            return false;
+            return ResultMessage.MISSING_PRESENTATION_CATEGORY;
 
-        return this.presentationDao.persist(presentation);
+        if(this.presentationDao.persist(presentation))
+            return presentation;
+
+        return ResultMessage.COULD_NOT_PERSIST_PRESENTATION;
     }
 
-    public Presentation getPresentation(String uuid) {
+    public Object getPresentation(String uuid) {
+        if(uuid == null || uuid.isEmpty())
+            return ResultMessage.MISSING_PRESENTATION_ID;
+
         Presentation presentation = presentationDao.get(uuid);
         mapSeatInformation(presentation);
         return presentation;
     }
 
-    public boolean deletePresentation(String uuid) {
-        return presentationDao.delete(uuid);
+    public String deletePresentation(String uuid) {
+        if(uuid == null || uuid.isEmpty())
+            return ResultMessage.MISSING_PRESENTATION_ID;
+
+        if(presentationDao.delete(uuid))
+            return ResultMessage.SUCCESS;
+
+        return ResultMessage.COULD_NOT_DELETE_PRESENTATION;
     }
 
 

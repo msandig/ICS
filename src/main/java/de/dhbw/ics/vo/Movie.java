@@ -26,7 +26,10 @@ public class Movie {
             this.uuid = (String) delegate.get("uuid");
         }
 
-        this.genre = new Genre((Map<String, Object>) delegate.get("genre"));
+        if (delegate.get("genre") instanceof Map) {
+            this.genre = new Genre((Map<String, Object>) delegate.get("genre"));
+        }
+
         this.productionYear = (Integer) delegate.get("productionYear");
         this.title = (String) delegate.get("title");
         this.fsk = (Integer) delegate.get("fsk");

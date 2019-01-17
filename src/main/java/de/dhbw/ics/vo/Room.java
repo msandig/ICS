@@ -25,8 +25,8 @@ public class Room {
             this.uuid = (String) delegate.get("uuid");
         }
         this.roomType = (String) delegate.get("roomType");
-        this.isVIP =  Boolean.parseBoolean((String) delegate.get("roomType"));
-        this.isClean =  Boolean.parseBoolean((String) delegate.get("roomType"));
+        this.isVIP =  Boolean.parseBoolean((String) delegate.get("isVIP"));
+        this.isClean =  Boolean.parseBoolean((String) delegate.get("isClean"));
         this.number =  (Integer) delegate.get("number");
     }
 

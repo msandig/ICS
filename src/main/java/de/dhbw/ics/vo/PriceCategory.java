@@ -1,7 +1,6 @@
 package de.dhbw.ics.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -11,11 +10,11 @@ import java.util.UUID;
 
 public class PriceCategory {
 
-    private String uuid = StringUtils.EMPTY;
+    private String uuid;
     private PresentationCategory presentationCategory = null;
     private SeatCategory seatCategory = null;
-    private String title = StringUtils.EMPTY;
-    private String description = StringUtils.EMPTY;
+    private String title;
+    private String description;
     private BigDecimal price = null;
 
     @JsonCreator
@@ -28,9 +27,15 @@ public class PriceCategory {
 
         this.title = (String) delegate.get("title");
         this.description = (String) delegate.get("description");
-        this.presentationCategory = new PresentationCategory((Map<String,Object>) delegate.get("presentationCategory"));
-        this.seatCategory = new SeatCategory((Map<String, Object>) delegate.get("seatCategory"));
-        this.price = new BigDecimal((String)delegate.get("price"));
+        if (delegate.get("presentationCategory") != null) {
+            this.presentationCategory = new PresentationCategory((Map<String,Object>) delegate.get("presentationCategory"));
+        }
+        if (delegate.get("seatCategory") != null) {
+            this.seatCategory = new SeatCategory((Map<String, Object>) delegate.get("seatCategory"));
+        }
+        if (delegate.get("price") != null) {
+            this.price = new BigDecimal((String)delegate.get("price"));
+        }
     }
 
     public PriceCategory(String uuid, PresentationCategory presentationCategory, SeatCategory seatCategory, String title, String description, BigDecimal price) {

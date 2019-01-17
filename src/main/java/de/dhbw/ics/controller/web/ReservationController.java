@@ -18,37 +18,40 @@ public class ReservationController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/service/get/reservations/{id}")
     public @ResponseBody
-    ResponseEntity<Reservation> get(@PathVariable Integer id, @RequestParam(value = "email") String email) {
-        Reservation reservation = null;
+    ResponseEntity<Object> get(@PathVariable Integer id, @RequestParam(value = "email") String email) {
+        Object result = null;
         if (id != null && id != 0 && email != null && !email.isEmpty()) {
-            reservation = this.reservationManager.getReservation(email, id);
+            result = this.reservationManager.getReservation(email, id);
         }
-        return new ResponseEntity<>(reservation, HttpStatus.OK);
+        if (result instanceof Reservation) {
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(result, HttpStatus.EXPECTATION_FAILED);
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/service/get/reservations", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_PROBLEM_JSON_UTF8_VALUE})
     public @ResponseBody
     ResponseEntity<Object> post(@RequestBody Reservation reservation, HttpServletRequest request) {
-        Reservation result = this.reservationManager.persistReservation(reservation, request.getSession().getId());
-        if (result != null) {
+        Object result = this.reservationManager.persistReservation(reservation, request.getSession().getId());
+        if (result instanceof Reservation) {
             return new ResponseEntity<>(result, HttpStatus.OK);
         }
-        return new ResponseEntity<>("FAILED", HttpStatus.EXPECTATION_FAILED);
+        return new ResponseEntity<>(result, HttpStatus.EXPECTATION_FAILED);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, path = "/service/get/reservations/{id}")
     public @ResponseBody
-    ResponseEntity<String> delete(@PathVariable Integer id, @RequestParam(value = "email") String email) {
-        boolean result = false;
+    ResponseEntity<Object> delete(@PathVariable Integer id, @RequestParam(value = "email") String email) {
+        Object result = null;
         if (id != null && id != 0 && email != null && !email.isEmpty()) {
             result = this.reservationManager.deleteReservation(email, id);
         }
-        if (result) {
-            return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+        if (result != null) {
+            return new ResponseEntity<>(result, HttpStatus.OK);
         }
-        return new ResponseEntity<>("FAILED", HttpStatus.EXPECTATION_FAILED);
+        return new ResponseEntity<>(ResultMessage.FAILED, HttpStatus.EXPECTATION_FAILED);
     }
-
 
 
 }

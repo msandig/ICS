@@ -37,7 +37,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="password" type="varchar(255)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="user_uuid" type="varchar(255)">
                 <constraints nullable="false" unique="true"/>
@@ -243,13 +243,13 @@
     </changeSet>
 
     <changeSet id="2" author="martin">
-        <modifyDataType tableName="Movie" columnName="movie_description" newDataType="CLOB"></modifyDataType>
+        <modifyDataType tableName="Movie" columnName="movie_description" newDataType="CLOB"/>
     </changeSet>
 
     <changeSet id="3" author="martin">
-        <modifyDataType tableName="Presentation" columnName="date" newDataType="BIGINT"></modifyDataType>
+        <modifyDataType tableName="Presentation" columnName="date" newDataType="BIGINT"/>
         <addUniqueConstraint tableName="Presentation" columnNames="room_uuid, date"/>
-        <modifyDataType tableName="Reservation" columnName="date" newDataType="BIGINT"></modifyDataType>
+        <modifyDataType tableName="Reservation" columnName="date" newDataType="BIGINT"/>
     </changeSet>
 
     <changeSet id="4" author="martin">

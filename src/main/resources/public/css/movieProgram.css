@@ -1,0 +1,33 @@
+.icsFontColor {
+    color: darkgray;
+}
+
+.icsStandardMargin {
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+hr.linie-2 {
+    border-top: 1px solid darkgrey !important;
+    border-bottom: 0px solid darkgrey !important;
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 0%;
+    margin-right: 0%;
+    border-style: solid;
+    border-width: 0px;
+
+}
+
+.movieSpecs {
+    float: left;
+    margin-right: 3%;
+}
+
+.presentationTable{
+    color: inherit;
+    width: 14.29%;
+    align: center;
+}

@@ -1,3 +1,6 @@
+.navbarIcs{
+    border-bottom: 1px solid darkgray;
+}
 .center{
     display: block;
     margin-left: auto;
@@ -79,4 +82,8 @@ hr.linie-2 {
 
 .grid-item{
     padding: 5%;
+}
+
+.hover-ics{
+
 }

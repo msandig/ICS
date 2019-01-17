@@ -22,18 +22,16 @@ public class BusySeatController {
     ResponseEntity<Object> lockSeats(@RequestParam(value = "presentation") String presentation, @RequestParam(value = "locked") boolean locked, @RequestBody List<Seat> seats, HttpServletRequest request) {
 
         String sessionID = request.getSession().getId();
-        List<Seat> result = null;
-        if(presentation != null && !presentation.isEmpty() && locked){
-           result = reservationManager.lockSeats(presentation,seats, sessionID);
-        }else if(presentation != null && !presentation.isEmpty() && !locked){
-           result = reservationManager.unlockSeats(presentation,seats, sessionID);
+        Object result = null;
+        if(presentation != null && !presentation.isEmpty()){
+           result = reservationManager.lockSeats(presentation,seats, sessionID, locked);
         }
 
-        if(result != null) {
+        if(result instanceof List) {
             return new ResponseEntity<>(result, HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(result, HttpStatus.EXPECTATION_FAILED);
         }
-
-        return new ResponseEntity<>("FAILED", HttpStatus.EXPECTATION_FAILED);
     }
 
 

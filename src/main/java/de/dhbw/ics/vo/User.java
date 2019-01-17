@@ -1,6 +1,7 @@
 package de.dhbw.ics.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -17,6 +18,8 @@ public class User implements Cloneable {
     private String firstName = StringUtils.EMPTY;
     private String lastName = StringUtils.EMPTY;
     private String email;
+
+    @JsonIgnore
     private String password;
     private PaymentMethod paymentMethod = null;
     private Role role = null;
@@ -33,8 +36,13 @@ public class User implements Cloneable {
         this.lastName = (String) delegate.get("lastName");
         this.email = (String) delegate.get("email");
         this.setPassword((String) delegate.get("password"));
-        this.paymentMethod = new PaymentMethod((Map<String, Object>) delegate.get("paymentMethod"));
-        this.role = new Role((Map<String, Object>) delegate.get("paymentMethod"));
+        if (delegate.get("paymentMethod") instanceof Map) {
+            this.paymentMethod = new PaymentMethod((Map<String, Object>) delegate.get("paymentMethod"));
+        }
+        if (delegate.get("role") instanceof Map) {
+            this.role = new Role((Map<String, Object>) delegate.get("role"));
+        }
+
     }
 
     public User(String uuid) {
@@ -56,11 +64,14 @@ public class User implements Cloneable {
         this.uuid = UUID.randomUUID().toString();
     }
 
-    private void setPassword(String password){
+    private void setPassword(String password) {
+        if (password == null || password.isEmpty()) {
+            return;
+        }
         boolean isBase64 = Base64.isBase64(password);
-        if(isBase64) {
+        if (isBase64) {
             this.password = password;
-        }else {
+        } else {
             this.password = Base64.encodeBase64String(password.getBytes());
         }
     }

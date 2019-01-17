@@ -43,7 +43,9 @@ public class Seat {
         }
         this.number = (Integer) delegate.get("number");
         this.row = (Integer) delegate.get("row");
-        this.seatCategory = new SeatCategory((Map<String, Object>) delegate.get("seatCategory"));
+        if (delegate.get("seatCategory") instanceof Map) {
+            this.seatCategory = new SeatCategory((Map<String, Object>) delegate.get("seatCategory"));
+        }
     }
 
 

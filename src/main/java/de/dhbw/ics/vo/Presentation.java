@@ -23,10 +23,19 @@ public class Presentation {
             this.uuid = (String) delegate.get("uuid");
         }
 
-        this.date = (long) delegate.get("date");
-        this.movie = new Movie((Map<String, Object>) delegate.get("movie"));
-        this.room = new Room((Map<String, Object>) delegate.get("room"));
-        this.presentationCategory = new PresentationCategory((Map<String, Object>) delegate.get("presentationCategory"));
+        if (delegate.get("date") instanceof Map) {
+            this.date = (long) delegate.get("date");
+        }
+
+        if (delegate.get("movie") instanceof Map) {
+            this.movie = new Movie((Map<String, Object>) delegate.get("movie"));
+        }
+        if (delegate.get("room") instanceof Map) {
+            this.room = new Room((Map<String, Object>) delegate.get("room"));
+        }
+        if (delegate.get("presentationCategory") instanceof Map) {
+            this.presentationCategory = new PresentationCategory((Map<String, Object>) delegate.get("presentationCategory"));
+        }
     }
 
     public Presentation(String uuid, Movie movie, Room room, long date, PresentationCategory presentationCategory) {
