@@ -14,28 +14,36 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
 
 
-   @Autowired
+    @Autowired
     private ReservationManager reservationManager;
 
     @RequestMapping(method = RequestMethod.GET, path = "/service/get/users/{email}")
     public @ResponseBody
-    ResponseEntity<User> get(@PathVariable String email, HttpServletRequest request) {
-        User user = null;
+    ResponseEntity<Object> get(@PathVariable String email, HttpServletRequest request) {
+        Object result = null;
         if (email != null && !email.isEmpty()) {
             String password = request.getHeader("auth");
-            user = this.reservationManager.getUser(email, password);
+            result = this.reservationManager.getUser(email, password);
         }
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        if (result instanceof User) {
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(result, HttpStatus.EXPECTATION_FAILED);
+        }
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/service/get/users", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_PROBLEM_JSON_UTF8_VALUE})
     public @ResponseBody
     ResponseEntity<Object> post(@RequestBody User user) {
-        User u = this.reservationManager.persistUser(user);
-        if(u != null){
-            return new ResponseEntity<>(u, HttpStatus.OK);
+        Object result = null;
+        if (user != null) {
+            result = this.reservationManager.persistUser(user);
         }
-        return new ResponseEntity<>("FAILED", HttpStatus.EXPECTATION_FAILED);
+        if (result instanceof User) {
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(result, HttpStatus.EXPECTATION_FAILED);
+        }
     }
 
 }

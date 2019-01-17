@@ -26,13 +26,19 @@ public class Reservation {
             this.uuid = UUID.randomUUID().toString();
         }
         this.date = (long) delegate.get("date");
-        this.user = new User((Map<String, Object>) delegate.get("user"));
+
+        if (delegate.get("user") instanceof Map) {
+            this.user = new User((Map<String, Object>) delegate.get("user"));
+        }
+
         this.payed = Boolean.parseBoolean((String) delegate.get("payed"));
-        List<Map<String, Object>> unmappedTickets = (List<Map<String, Object>>) delegate.get("tickets");
-        for(Map<String, Object> unmappedTicket : unmappedTickets){
-            Ticket ticket = new Ticket(unmappedTicket);
-            ticket.setReservation(this);
-            this.tickets.add(ticket);
+        if (delegate.get("tickets") instanceof Map) {
+            List<Map<String, Object>> unmappedTickets = (List<Map<String, Object>>) delegate.get("tickets");
+            for (Map<String, Object> unmappedTicket : unmappedTickets) {
+                Ticket ticket = new Ticket(unmappedTicket);
+                ticket.setReservation(this);
+                this.tickets.add(ticket);
+            }
         }
     }
 
@@ -43,7 +49,7 @@ public class Reservation {
         this.payed = payed;
     }
 
-    public Reservation( long date, boolean payed ){
+    public Reservation(long date, boolean payed) {
 
         this.date = date;
         this.payed = payed;

@@ -25,9 +25,17 @@ public class Ticket {
         } else {
             this.uuid = (String) delegate.get("uuid");
         }
-        this.presentation = new Presentation((Map<String, Object>) delegate.get("presentation"));
-        this.priceCategory = new PriceCategory((Map<String, Object>) delegate.get("priceCategory"));
-        this.seat = new Seat((Map<String, Object>) delegate.get("paymentMethod"));
+        if (delegate.get("presentation") instanceof Map) {
+            this.presentation = new Presentation((Map<String, Object>) delegate.get("presentation"));
+        }
+
+        if (delegate.get("priceCategory") instanceof Map) {
+            this.priceCategory = new PriceCategory((Map<String, Object>) delegate.get("priceCategory"));
+        }
+
+        if (delegate.get("presentation") instanceof Map) {
+            this.seat = new Seat((Map<String, Object>) delegate.get("presentation"));
+        }
     }
 
     public Ticket(String uuid, Seat seat, PriceCategory priceCategory, Presentation presentation) {
