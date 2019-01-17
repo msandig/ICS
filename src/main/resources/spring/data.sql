@@ -2300,5 +2300,3 @@ INSERT INTO PRESENTATION (pres_uuid, movie_uuid, prescat_uuid, room_uuid, date) 
 INSERT INTO PRESENTATION (pres_uuid, movie_uuid, prescat_uuid, room_uuid, date) VALUES ('017a6f27-5c53-4c36-8ec9-93e5e9b0c30a', '9b7bb5bd-6757-4b55-9af5-6d3ff1580042', '7ec80e73-2e86-41cf-b5e9-f25b2975ead3', '7b4fe9df-b6be-48ca-9db9-da4f6e40c687', 1550763000909);
 INSERT INTO PRESENTATION (pres_uuid, movie_uuid, prescat_uuid, room_uuid, date) VALUES ('03dd61c7-72fa-4455-9ce0-7ecce0f4a830', '9b7bb5bd-6757-4b55-9af5-6d3ff1580042', '7ec80e73-2e86-41cf-b5e9-f25b2975ead8', '7b4fe9df-b6be-48ca-9db9-da4f6e40c687', 1550772000909);
 INSERT INTO PRESENTATION (pres_uuid, movie_uuid, prescat_uuid, room_uuid, date) VALUES ('5541cfd2-e56c-4ec7-a1a1-b259b02dd448', '9b7bb5bd-6757-4b55-9af5-6d3ff1580042', '7ec80e73-2e86-41cf-b5e9-f25b2975ead3', '7b4fe9df-b6be-48ca-9db9-da4f6e40c687', 1550781000909);
-
-INSERT INTO BUSY_SEAT (seat_uuid, pres_uuid, busy, looked, timestamp, sessionID) VALUES ('2a32d0fe-8055-4663-9bcf-056b479c7701', '7ec6e7a0-0392-441b-b1fe-25a01a4ca96e', false, false, 0, '');
