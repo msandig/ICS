@@ -1,0 +1,57 @@
+{
+  "user": {
+    "uuid": "483c48b0-22dc-4b5b-8d58-feda89df70d2",
+    "firstName": "Martin",
+    "lastName": "Sandig",
+    "email": "test@sandig.de",
+    "password": null,
+    "role": {
+      "uuid": "efds8fe2-a1wq5-481f-a12d5-7557085edffe",
+      "title": "Guest",
+      "admin": false
+    }
+  },
+  "date": 4275862348,
+  "tickets": [
+    {
+      "presentation": {
+        "uuid": "7ec6e7a0-0392-441b-b1fe-25a01a4ca96e",
+        "room": {
+          "uuid": "deac0c4b-edc9-41e6-8987-790b3e7baf99",
+          "roomType": "3D Raum",
+          "number": 1,
+          "seats": {
+          },
+          "clean": true,
+          "vip": true
+        }
+      },
+      "priceCategory": {
+        "uuid": "a4034566-5123-4176-b3c7-17285b52a5ba"
+      },
+      "seat": {
+        "uuid": "2a32d0fe-8055-4663-9bcf-056b479c7701"
+      }
+    },
+    {
+      "presentation": {
+        "uuid": "7ec6e7a0-0392-441b-b1fe-25a01a4ca96e",
+        "room": {
+          "uuid": "deac0c4b-edc9-41e6-8987-790b3e7baf99",
+          "roomType": "3D Raum",
+          "number": 1,
+          "seats": {
+          },
+          "clean": true,
+          "vip": true
+        }
+      },
+      "priceCategory": {
+        "uuid": "a4034566-5123-4176-b3c7-17285b52a5ba"
+      },
+      "seat": {
+        "uuid": "e3ba3302-37b3-4b81-a36f-e4f66aa16b92"
+      }
+    }
+  ]
+}
