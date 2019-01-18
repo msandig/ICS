@@ -49,5 +49,21 @@ Entwicklung eines Prototyps für die Online-Reservierung von Kino-Tickets
     
 ### Frontend
 
+## Backend Services
+ Usage | Method   |  Endpoint | Parameters  |  Body | Response | Beschreibung 
+ ---| --- | --- | --- | --- | ---  | --- 
+ Vorstellungen | GET |  /service/get/presentations/{id} | ID (String)| - | Vorstellungsobjekt | Abfrage einer einzelnen, spezifischen Vorstellung.
+| | DELETE | /service/get/presentations/{id} | ID (String) | - | SUCCES / ERROR  |Zum Löschen einer Vorstellung.
+| | POST | /service/get/presentations | - | JSON - Vorstellungsobjekt | das angelegte Vorstellungsobjekt | Abspeichern einer neuen Vorstellung.
+| | GET | /service/get/presentations |  start (long) - frühstes Startdatum <br> <br>  end(long) - spätestes Enddatum <br><br>  title (String) - Suchstring für Filmtitel <br> <br> movie (String) - ID für konkreten Film | - | Liste von Vorstellungsobjekten | Abfrage mehrerer Vorstellungen. Parameter als Requestparameter (?param=...&param=...) an der URL.
+Sitze Sperren | POST |  /service/get/seats/lock | presentation (String) - Vorstellungs-ID <br> <br> locked (boolean) - Sperren oder Entsperren | JSON - Liste von Sitzen | Liste von Sitzobjekten | Endpoint zum sperren oder entsperren von Sitzen vor der eigentlichen Reservierung 
+Filme | GET | /service/get/movies | start (long) - frühstes Startdatum <br> <br>  end(long) - spätestes Enddatum <br><br>  title (String) - Suchstring für Filmtitel <br> <br> | - | Liste von Filmobjekten | Zum Suchen eines Films während eines bestimmten Zeitintervalls
+Preiskategorien | GET | service/get/categories/price | - | - | Liste von Preiskategorieobjekten | Zum Abfragen aller vorhanden Preiskategorien.
+Benutzer | GET | /service/get/users/{email} | Email (String) - Email des Benutzers | - | Benutzerobjekt | Zum Abfragen eines Benutzers von der Datenbank (Passwörter werden noch nicht 100% unterstützt --> Gast)
+| | POST | /service/get/users | - | JSON - Benutzerobjekt | Benutzerobjekt | Zum Erstellen eines neuen Benutzers
+Reservierungen | GET | /service/get/reservations/{id} | id (int) - Nummer der Reservierung <br> <br> email (String) - Email des Benutzers | - | Reservierngsobjekt | Zum Abfragen einer Reservierung
+| | DELETE |  /service/get/reservations/{id} | id (int) - Nummer der Reservierung <br> <br> email (String) - Email des Benutzers | - | SUCCES / ERROR  | Zum Löschen einer Reservierung
+| | POST | /service/get/reservations | - | JSON - Reservierungsobjekt | Reservierungsobjekt | Zum Anlegen einer neuen Reservierung
+
 
 

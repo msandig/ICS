@@ -278,7 +278,7 @@ public class ReservationManager {
         if (user == null)
             return ResultMessage.USER_NOT_FOUND;
 
-        Reservation reservation = this.reservationDao.get(resID);
+        Reservation reservation = this.reservationDao.getByNumber(resID);
         if (reservation == null)
             return ResultMessage.RESERVATION_IS_NULL;
 
