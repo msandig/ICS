@@ -56,6 +56,16 @@ public class Movie {
         this.uuid = UUID.randomUUID().toString();
     }
 
+    public Movie(Integer productionYear, String title, String description, Genre genre, Integer fsk, Integer runTime) {
+        this.productionYear = productionYear;
+        this.title = title;
+        this.description = description;
+        this.fsk = fsk;
+        this.runTime = runTime;
+        this.uuid = UUID.randomUUID().toString();
+        this.genre = genre;
+    }
+
     public String getUuid() {
         return uuid;
     }
