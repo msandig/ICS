@@ -198,6 +198,9 @@ public class ReservationManager {
         if(persistBusySeats.size() != reservation.getTickets().size() || persistBusySeats.size() != reservation.getTickets().size())
             return ResultMessage.COULD_NOT_PERSIST_RESERVATION;
 
+        if(reservation.getDate() == 0){
+            reservation.setDate(Calendar.getInstance().getTimeInMillis());
+        }
         if (this.reservationDao.persist(reservation)) {
             boolean error = false;
             for (Ticket t : persistTickets) {
