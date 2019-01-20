@@ -109,10 +109,4 @@ public class BusySeatDaoTest {
 
         assertTrue(busySeat.equals(busySeatClone));
     }
-
-    @Test
-    public void test9hashcode(){
-        int hashCode = -438449964;
-        assertEquals(hashCode,busySeat.hashCode());
-    }
 }
