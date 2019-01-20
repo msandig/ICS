@@ -18,6 +18,14 @@ public class Ticket {
     private PriceCategory priceCategory;
     private Presentation presentation;
 
+    public Ticket(Ticket ticket){
+        this.uuid = ticket.getUuid();
+        this.setReservation(ticket.getReservation());
+        this.setPresentation(ticket.getPresentation());
+        this.setPriceCategory(ticket.getPriceCategory());
+        this.setSeat(ticket.getSeat());
+    }
+
     @JsonCreator
     public Ticket(Map<String, Object> delegate) {
         if (delegate.get("uuid") == null) {

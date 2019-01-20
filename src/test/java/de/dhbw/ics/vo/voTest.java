@@ -170,7 +170,18 @@ public class voTest {
     }
 
     @Test
-    public void test11Reservation(){
+    public void test11Ticket(){
+        String uuid = UUID.randomUUID().toString();
+        ticket = new Ticket(uuid,seat,priceCategory,presentation);
+        assertTrue(ticket.getUuid().equals(uuid) && ticket.getSeat().equals(seat) && ticket.getPresentation().equals(presentation) &&
+                ticket.getPriceCategory().equals(priceCategory) && ticket.getReservation().equals(reservation));
+        Ticket ticketCopy = new Ticket(ticket);
+        assertTrue(ticket.equals(ticketCopy) && ticket.equals(ticket) &&
+                ticket.hashCode() == ticketCopy.hashCode());
+    }
+
+    @Test
+    public void test12Reservation(){
         String uuid = UUID.randomUUID().toString();
         Integer number = 231;
         long date = 342944;
@@ -188,7 +199,7 @@ public class voTest {
     }
 
     @Test
-    public void test12Presentation(){
+    public void test13Presentation(){
         String uuid = UUID.randomUUID().toString();
         long date = 7072019;
         presentation = new Presentation(uuid,movie,room,date,presentationCategory);
@@ -199,4 +210,6 @@ public class voTest {
         assertTrue(presentation.equals(presentation) && presentation.equals(presentationCopy) &&
                 presentation.hashCode() == presentationCopy.hashCode());
     }
+
+
 }
