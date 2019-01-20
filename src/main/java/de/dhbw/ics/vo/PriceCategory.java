@@ -17,6 +17,15 @@ public class PriceCategory {
     private String description;
     private BigDecimal price = null;
 
+    public PriceCategory(PriceCategory priceCategory){
+        this.uuid = priceCategory.getUuid();
+        this.setPresentationCategory(new PresentationCategory(priceCategory.getPresentationCategory()));
+        this.setSeatCategory(new SeatCategory(priceCategory.getSeatCategory()));
+        this.setTitle(priceCategory.getTitle());
+        this.setDescription(priceCategory.getDescription());
+        this.setPrice(priceCategory.getPrice());
+    }
+
     @JsonCreator
     public PriceCategory(Map<String, Object> delegate) {
         if (delegate.get("uuid") == null) {

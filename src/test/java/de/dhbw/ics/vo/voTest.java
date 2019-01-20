@@ -7,6 +7,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
@@ -147,11 +149,42 @@ public class voTest {
     }
 
     @Test
-    public void test__PriceCategory(){
+    public void test10PriceCategory(){
         String uuid = UUID.randomUUID().toString();
         String title = "Vormittags Avatar in 3D";
         String description = "Ein 3D Film";
         BigDecimal price = BigDecimal.valueOf(12.34);
         priceCategory = new PriceCategory(uuid,presentationCategory,seatCategory,title,description,price);
+        PriceCategory priceCategoryCopy = new PriceCategory(priceCategory);
+        assertTrue(priceCategory.equals(priceCategory) && priceCategory.equals(priceCategoryCopy));
+    }
+
+    @Test
+    public void test11Reservation(){
+        String uuid = UUID.randomUUID().toString();
+        Integer number = 231;
+        long date = 342944;
+        boolean played = false;
+        reservation = new Reservation(uuid,number,date,played);
+        reservation.setUser(user);
+        List<Ticket> ticketList = new ArrayList<>();
+        for(int i = 0; i < 10; i++) ticketList.add(ticket);
+        reservation.setTickets(ticketList);
+        assertTrue(reservation.getUuid().equals(uuid) && reservation.getDate() == date &&
+                reservation.getUser().equals(user) && reservation.getNumber().equals(number));
+        Reservation reservationCopy = new Reservation(reservation);
+        assertTrue(reservation.equals(reservation) && reservation.equals(reservationCopy));
+    }
+
+    @Test
+    public void test12Presentation(){
+        String uuid = UUID.randomUUID().toString();
+        long date = 7072019;
+        presentation = new Presentation(uuid,movie,room,date,presentationCategory);
+        assertTrue(presentation.getUuid().equals(uuid) && presentation.getRoom().equals(room) &&
+                presentation.getPresentationCategory().equals(presentationCategory) && presentation.getDate() == date &&
+                presentation.getMovie().equals(movie));
+        Presentation presentationCopy = new Presentation(presentation);
+        assertTrue(presentation.equals(presentation) && presentation.equals(presentationCopy));
     }
 }
