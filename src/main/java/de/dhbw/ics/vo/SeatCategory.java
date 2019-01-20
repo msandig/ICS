@@ -13,6 +13,12 @@ public class SeatCategory {
     private String title;
     private String description;
 
+    public SeatCategory(SeatCategory seatCategory){
+        this.uuid = seatCategory.getUuid();
+        this.setTitle(seatCategory.getTitle());
+        this.setDescription(seatCategory.getDescription());
+    }
+
     public SeatCategory(String uuid, String title, String description) {
         this.uuid = uuid;
         this.title = title;

@@ -20,6 +20,11 @@ public class Role {
         return title;
     }
 
+    public Role(Role role){
+        this.uuid = role.getUuid();
+        this.title = role.getTitle();
+    }
+
     @JsonCreator
     public Role(Map<String, Object> delegate) {
         if (delegate.get("uuid") != null) {

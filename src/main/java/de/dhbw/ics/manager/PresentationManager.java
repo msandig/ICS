@@ -30,7 +30,7 @@ public class PresentationManager {
     private PriceCategoryDao priceCategoryDao;
 
     public Object getAllPriceCategories(){
-        return this.priceCategoryDao.getAll();
+        return priceCategoryDao.getAll();
     }
 
     public List<Presentation> getAllPresentations() {

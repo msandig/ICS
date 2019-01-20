@@ -48,6 +48,14 @@ public class Seat {
         }
     }
 
+    public Seat(Seat seat){
+        this.uuid = seat.getUuid();
+        this.setSeatCategory(new SeatCategory(seat.getSeatCategory()));
+        this.room = new Room(seat.getRoom());
+        this.setRow(seat.getRow());
+        this.setNumber(seat.getNumber());
+        if(seat.busySeatMap != null) this.addBusy(seat.getCurrentBusySeat());
+    }
 
     public Seat(String uuid, Room room, SeatCategory seatCategory, Integer number, Integer row) {
         this.uuid = uuid;

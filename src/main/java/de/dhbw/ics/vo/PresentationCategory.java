@@ -14,6 +14,12 @@ public class PresentationCategory {
     private String title;
     private String description;
 
+    public PresentationCategory(PresentationCategory presentationCategory){
+        this.uuid = presentationCategory.getUuid();
+        this.setDescription(presentationCategory.getDescription());
+        this.setTitle(presentationCategory.getTitle());
+    }
+
     @JsonCreator
     public PresentationCategory(Map<String, Object> delegate) {
         if (delegate.get("uuid") == null) {

@@ -18,6 +18,17 @@ public class Movie {
     private String picture = null;
     private String description;
 
+    public Movie(Movie movie){
+        this.uuid = movie.getUuid();
+        this.genre = new Genre(movie.getGenre());
+        this.productionYear = movie.getProductionYear();
+        this.title = movie.getTitle();
+        this.fsk = movie.getFsk();
+        this.runTime = movie.getRunTime();
+        this.picture = movie.getPicture();
+        this.description = movie.getDescription();
+    }
+
     @JsonCreator
     public Movie(Map<String, Object> delegate) {
         if (delegate.get("uuid") == null) {
