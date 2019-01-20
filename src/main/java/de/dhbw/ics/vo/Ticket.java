@@ -98,7 +98,6 @@ public class Ticket {
 
         return new EqualsBuilder()
                 .append(uuid, ticket.uuid)
-                .append(reservation, ticket.reservation)
                 .append(seat, ticket.seat)
                 .append(priceCategory, ticket.priceCategory)
                 .append(presentation, ticket.presentation)
@@ -109,7 +108,6 @@ public class Ticket {
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
                 .append(uuid)
-                .append(reservation)
                 .append(seat)
                 .append(priceCategory)
                 .append(presentation)

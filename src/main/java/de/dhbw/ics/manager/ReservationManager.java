@@ -198,6 +198,9 @@ public class ReservationManager {
         if(persistBusySeats.size() != reservation.getTickets().size() || persistBusySeats.size() != reservation.getTickets().size())
             return ResultMessage.COULD_NOT_PERSIST_RESERVATION;
 
+        if(reservation.getDate() == 0){
+            reservation.setDate(Calendar.getInstance().getTimeInMillis());
+        }
         if (this.reservationDao.persist(reservation)) {
             boolean error = false;
             for (Ticket t : persistTickets) {
@@ -278,7 +281,7 @@ public class ReservationManager {
         if (user == null)
             return ResultMessage.USER_NOT_FOUND;
 
-        Reservation reservation = this.reservationDao.get(resID);
+        Reservation reservation = this.reservationDao.getByNumber(resID);
         if (reservation == null)
             return ResultMessage.RESERVATION_IS_NULL;
 
