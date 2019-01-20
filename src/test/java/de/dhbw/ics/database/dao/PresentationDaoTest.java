@@ -1,15 +1,16 @@
 package de.dhbw.ics.database.dao;
 
 import de.dhbw.ics.vo.*;
-import org.junit.FixMethodOrder;
-import org.junit.runner.RunWith;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -71,7 +72,7 @@ public class PresentationDaoTest {
     public void test4Update() {
         Movie anotherMovie = new Movie(1999, "Hyper", "the first chapter", genre, 12, 135);
         movieDao.persist(anotherMovie);
-        Presentation anotherPresentation = new Presentation(anotherMovie, presentation.getRoom(), presentation.getDate(), presentation.getPresentationCategory());
+        Presentation anotherPresentation = new Presentation(presentation.getUuid(), anotherMovie, presentation.getRoom(), presentation.getDate(), presentation.getPresentationCategory());
         DaoTestHelper.update(presentationDao, presentation.getUuid(), presentation, anotherPresentation);
     }
 
