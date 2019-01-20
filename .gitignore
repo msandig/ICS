@@ -13,4 +13,5 @@
 *.aux
 *.bbl
 *.blg
+/doc/master.pdf
 /doc/*.run.xml
