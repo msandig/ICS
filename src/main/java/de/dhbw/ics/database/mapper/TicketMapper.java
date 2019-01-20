@@ -37,7 +37,7 @@ public class TicketMapper implements RowMapper<Ticket> {
                 reservation.getTickets().add(ticket);
             }
         }
-        return null;
+        return ticket;
 
     }
 }
