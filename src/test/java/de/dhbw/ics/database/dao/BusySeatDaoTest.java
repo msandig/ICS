@@ -32,12 +32,12 @@ public class BusySeatDaoTest {
     }
 
     @Test
-    public void test1lockedCheck() {
-        busySeat.setLooked(true);
-        assertTrue(busySeat.isLooked());
+    public void test1LockedCheck() {
+        busySeat.setLocked(true);
+        assertTrue(busySeat.isLocked());
 
-        busySeat.setLooked(false);
-        assertFalse(busySeat.isLooked());
+        busySeat.setLocked(false);
+        assertFalse(busySeat.isLocked());
     }
 
     @Test
@@ -96,18 +96,18 @@ public class BusySeatDaoTest {
     }
 
     @Test
-    public void test8equels(){
+    public void test8equals(){
         assertTrue(busySeat.equals(busySeat));
-        BusySeat busySeatColne = new BusySeat();
+        BusySeat busySeatClone = new BusySeat();
 
-        busySeatColne.setTimestamp(busySeat.getTimestamp());
-        busySeatColne.setSessionID(busySeat.getSessionID());
-        busySeatColne.setPresentation(busySeat.getPresentation());
-        busySeatColne.setSeat(busySeat.getSeat());
-        busySeatColne.setLooked(busySeat.isLooked());
-        busySeatColne.setBusy(busySeat.isBusy());
+        busySeatClone.setTimestamp(busySeat.getTimestamp());
+        busySeatClone.setSessionID(busySeat.getSessionID());
+        busySeatClone.setPresentation(busySeat.getPresentation());
+        busySeatClone.setSeat(busySeat.getSeat());
+        busySeatClone.setLocked(busySeat.isLocked());
+        busySeatClone.setBusy(busySeat.isBusy());
 
-        assertTrue(busySeat.equals(busySeatColne));
+        assertTrue(busySeat.equals(busySeatClone));
     }
 
     @Test
