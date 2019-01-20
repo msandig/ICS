@@ -170,7 +170,7 @@ public class ReservationManager {
 
                     return ResultMessage.SEAT_TAKEN;
 
-                } else if (busySeat != null && busySeat.isLooked()) {
+                } else if (busySeat != null && busySeat.isLocked()) {
                     if (!busySeat.getSessionID().equals(sessionID)) {
                         int result = BusySeat.compareLockTimestamp(busySeat);
                         if (result > 0) {
@@ -178,13 +178,11 @@ public class ReservationManager {
                         }
                     }
                 } else if (busySeat == null) {
-                    busySeat = new BusySeat();
-                    busySeat.setPresentation(p);
-                    busySeat.setSeat(ticket.getSeat());
+                    busySeat = new BusySeat(true, ticket.getSeat(), p, true, sessionID, Calendar.getInstance().getTimeInMillis());
                 }
 
                 busySeat.setBusy(true);
-                busySeat.setLooked(true);
+                busySeat.setLocked(true);
                 busySeat.setTimestamp(Calendar.getInstance().getTimeInMillis());
                 busySeat.setSessionID(sessionID);
 
@@ -215,7 +213,7 @@ public class ReservationManager {
 
             if (error) {
                 for (BusySeat bs : persistBusySeats) {
-                    bs.setLooked(false);
+                    bs.setLocked(false);
                     bs.setSessionID("");
                     bs.setBusy(false);
                 }
@@ -253,7 +251,7 @@ public class ReservationManager {
             map.put("s", ticket.getSeat());
 
             BusySeat busySeat = this.busySeatDao.get(map);
-            busySeat.setLooked(false);
+            busySeat.setLocked(false);
             busySeat.setBusy(false);
 
             if (this.busySeatDao.persist(busySeat))
@@ -300,7 +298,7 @@ public class ReservationManager {
                 if (bs.isBusy())
                     return ResultMessage.SEAT_TAKEN;
 
-                if (bs.isLooked() && !bs.getSessionID().equals(sessionID)) {
+                if (bs.isLocked() && !bs.getSessionID().equals(sessionID)) {
                     int offset = BusySeat.compareLockTimestamp(bs);
                     if (offset > 0) {
                         return ResultMessage.LOCKED_SEAT;
@@ -308,13 +306,7 @@ public class ReservationManager {
                 }
             }
 
-            BusySeat busySeat = new BusySeat();
-            busySeat.setBusy(false);
-            busySeat.setLooked(true);
-            busySeat.setSessionID(sessionID);
-            busySeat.setTimestamp(Calendar.getInstance().getTimeInMillis());
-            busySeat.setPresentation(presentation);
-            busySeat.setSeat(s);
+            BusySeat busySeat = new BusySeat(false, s, presentation, true, sessionID, Calendar.getInstance().getTimeInMillis());
             bsUpdate.add(busySeat);
             s.setCurrentBusySeat(busySeat);
             s.addBusy(busySeat);
@@ -351,8 +343,8 @@ public class ReservationManager {
                 if (bs.isBusy())
                     return ResultMessage.SEAT_TAKEN;
 
-                if (bs.isLooked() && bs.getSessionID().equals(sessionID)) {
-                    bs.setLooked(false);
+                if (bs.isLocked() && bs.getSessionID().equals(sessionID)) {
+                    bs.setLocked(false);
                     bs.setTimestamp(0);
                     bs.setSessionID("");
                     bsUpdate.add(bs);

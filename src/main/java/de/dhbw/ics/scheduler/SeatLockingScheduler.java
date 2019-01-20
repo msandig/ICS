@@ -29,9 +29,9 @@ public class SeatLockingScheduler {
                 return;
 
             for (BusySeat bs : busySeats) {
-                if (bs.isLooked() && !bs.isBusy()) {
+                if (bs.isLocked() && !bs.isBusy()) {
                     if (BusySeat.compareLockTimestamp(bs) <=  0) {
-                        bs.setLooked(false);
+                        bs.setLocked(false);
                         bs.setTimestamp(0);
                         bs.setSessionID("");
                         bsUpdate.add(bs);

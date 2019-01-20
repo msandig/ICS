@@ -40,7 +40,7 @@ public class BusySeatMapper implements RowMapper<BusySeat> {
         long timestamp = resultSet.getLong("timestamp");
         BusySeat busySeat = new BusySeat();
         busySeat.setBusy(busy);
-        busySeat.setLooked(looked);
+        busySeat.setLocked(looked);
         busySeat.setSessionID(sessionID);
         busySeat.setTimestamp(timestamp);
 
