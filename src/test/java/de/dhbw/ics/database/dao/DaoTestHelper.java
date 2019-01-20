@@ -19,8 +19,9 @@ public class DaoTestHelper {
     public static void getAll(Dao dao, Object testObject) {
         List<Object> objectList = dao.getAll();
         assertNotNull(objectList);
-        assertEquals(objectList.size(), 1);
-        assertEquals(testObject, objectList.get(0));
+        assertNotEquals(objectList.size(), 0);
+        Object o = objectList.get(objectList.indexOf(testObject));
+        assertEquals(testObject, o);
     }
 
     public static void update(Dao dao, Object key, Object testObject, Object changedObject) {
