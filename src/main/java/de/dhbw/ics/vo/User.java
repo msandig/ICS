@@ -25,6 +25,14 @@ public class User implements Cloneable {
     private Role role = null;
     private List<Reservation> reservationList = new ArrayList<>();
 
+    public User(User user){
+        this.setFirstName(user.getFirstName());
+        this.setLastName(user.getLastName());
+        this.email = user.getEmail();
+        this.setRole(new Role(user.getRole()));
+        if(user.getPaymentMethod() != null) this.setPaymentMethod(new PaymentMethod(user.getPaymentMethod()));
+    }
+
     @JsonCreator
     public User(Map<String, Object> delegate) {
         if (delegate.get("uuid") == null) {

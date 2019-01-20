@@ -17,6 +17,14 @@ public class Room {
     private Integer number;
     private Map<String, Seat> seats = new HashMap<>();
 
+    public Room(Room room){
+        this.uuid = room.getUuid();
+        this.setRoomType(room.getRoomType());
+        this.setClean(room.isClean());
+        this.setVIP(room.isVIP());
+        this.setNumber(room.getNumber());
+    }
+
     @JsonCreator
     public Room(Map<String, Object> delegate) {
         if (delegate.get("uuid") == null) {

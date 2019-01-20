@@ -13,6 +13,12 @@ public class PaymentMethod {
     private String description;
     private String provider;
 
+    public PaymentMethod(PaymentMethod paymentMethod){
+        this.uuid = paymentMethod.getUuid();
+        this.setDescription(paymentMethod.getDescription());
+        this.setProvider(paymentMethod.getProvider());
+    }
+
     @JsonCreator
     public PaymentMethod(Map<String, Object> delegate) {
         if (delegate.get("uuid") == null) {
