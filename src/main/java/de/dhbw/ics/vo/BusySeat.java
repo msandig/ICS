@@ -15,7 +15,7 @@ public class BusySeat {
     private Seat seat = null;
 
     private Presentation presentation = null;
-    private boolean looked = false;
+    private boolean locked = false;
 
     @JsonIgnore
     private String sessionID = StringUtils.EMPTY;
@@ -23,12 +23,12 @@ public class BusySeat {
     @JsonIgnore
     private long timestamp = 0;
 
-    public boolean isLooked() {
-        return looked;
+    public boolean isLocked() {
+        return locked;
     }
 
-    public void setLooked(boolean looked) {
-        this.looked = looked;
+    public void setLocked(boolean locked) {
+        this.locked = locked;
     }
 
     public boolean isBusy() {
@@ -97,7 +97,7 @@ public class BusySeat {
 
         return new EqualsBuilder()
                 .append(isBusy, busySeat.isBusy)
-                .append(looked, busySeat.looked)
+                .append(locked, busySeat.locked)
                 .append(seat, busySeat.seat)
                 .append(presentation, busySeat.presentation)
                 .isEquals();
@@ -109,7 +109,7 @@ public class BusySeat {
                 .append(isBusy)
                 .append(seat)
                 .append(presentation)
-                .append(looked)
+                .append(locked)
                 .toHashCode();
     }
 

@@ -53,6 +53,7 @@ public class ReservationManager {
         User u = userDao.get(user.getEmail());
         if (u != null) {
             if ((u.getPassword() == null || u.getPassword().isEmpty()) && u.getRole().getTitle().equals("Guest")) {
+                this.mapReservations(u);
                 return u;
             } else {
                 return ResultMessage.USER_NEEDS_PASSWORD;
@@ -90,7 +91,15 @@ public class ReservationManager {
         } else if (user.getPassword() != null && !user.getPassword().isEmpty()) {
             return ResultMessage.WRONG_PASSWORD;
         }
+        this.mapReservations(user);
         return user;
+    }
+
+    private void mapReservations(User user) {
+        this.reservationDao.getAllByUser(user);
+        if(user.getReservationList() != null && user.getReservationList().size() != 0){
+            user.getReservationList().forEach(r -> this.ticketDao.getAllByReservation(r));
+        }
     }
 
     public Object getReservation(String email, Integer resID) {
@@ -170,7 +179,7 @@ public class ReservationManager {
 
                     return ResultMessage.SEAT_TAKEN;
 
-                } else if (busySeat != null && busySeat.isLooked()) {
+                } else if (busySeat != null && busySeat.isLocked()) {
                     if (!busySeat.getSessionID().equals(sessionID)) {
                         int result = BusySeat.compareLockTimestamp(busySeat);
                         if (result > 0) {
@@ -184,7 +193,7 @@ public class ReservationManager {
                 }
 
                 busySeat.setBusy(true);
-                busySeat.setLooked(true);
+                busySeat.setLocked(true);
                 busySeat.setTimestamp(Calendar.getInstance().getTimeInMillis());
                 busySeat.setSessionID(sessionID);
 
@@ -215,7 +224,7 @@ public class ReservationManager {
 
             if (error) {
                 for (BusySeat bs : persistBusySeats) {
-                    bs.setLooked(false);
+                    bs.setLocked(false);
                     bs.setSessionID("");
                     bs.setBusy(false);
                 }
@@ -253,7 +262,7 @@ public class ReservationManager {
             map.put("s", ticket.getSeat());
 
             BusySeat busySeat = this.busySeatDao.get(map);
-            busySeat.setLooked(false);
+            busySeat.setLocked(false);
             busySeat.setBusy(false);
 
             if (this.busySeatDao.persist(busySeat))
@@ -300,7 +309,7 @@ public class ReservationManager {
                 if (bs.isBusy())
                     return ResultMessage.SEAT_TAKEN;
 
-                if (bs.isLooked() && !bs.getSessionID().equals(sessionID)) {
+                if (bs.isLocked() && !bs.getSessionID().equals(sessionID)) {
                     int offset = BusySeat.compareLockTimestamp(bs);
                     if (offset > 0) {
                         return ResultMessage.LOCKED_SEAT;
@@ -310,7 +319,7 @@ public class ReservationManager {
 
             BusySeat busySeat = new BusySeat();
             busySeat.setBusy(false);
-            busySeat.setLooked(true);
+            busySeat.setLocked(true);
             busySeat.setSessionID(sessionID);
             busySeat.setTimestamp(Calendar.getInstance().getTimeInMillis());
             busySeat.setPresentation(presentation);
@@ -351,8 +360,8 @@ public class ReservationManager {
                 if (bs.isBusy())
                     return ResultMessage.SEAT_TAKEN;
 
-                if (bs.isLooked() && bs.getSessionID().equals(sessionID)) {
-                    bs.setLooked(false);
+                if (bs.isLocked() && bs.getSessionID().equals(sessionID)) {
+                    bs.setLocked(false);
                     bs.setTimestamp(0);
                     bs.setSessionID("");
                     bsUpdate.add(bs);

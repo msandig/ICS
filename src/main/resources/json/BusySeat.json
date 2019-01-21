@@ -1,0 +1,12 @@
+[{
+  "uuid": "2a32d0fe-8055-4663-9bcf-056b479c7701",
+  "number": 11,
+  "row": 3,
+  "seatCategory":{"uuid": "ef688fe2-af15-481f-a8d5-0208a5c55624", "title": "Normal", "description": "Normaler Sitzplatz"}
+},{
+  "uuid": "e3ba3302-37b3-4b81-a36f-e4f66aa16b92",
+  "number": 15,
+  "row": 9,
+  "seatCategory":{"uuid": "ef688fe2-af15-481f-a8d5-0208a5c55624", "title": "Normal", "description": "Normaler Sitzplatz"}
+}
+]

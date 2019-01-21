@@ -28,6 +28,7 @@ public class ReservationMapper implements RowMapper<Reservation> {
         if(this.user != null){
             if (userUUID.equals(this.user.getUuid())){
                 reservation.setUser(this.user);
+                this.user.getReservationList().add(reservation);
             }
         }else{
             User user = new User(userUUID);

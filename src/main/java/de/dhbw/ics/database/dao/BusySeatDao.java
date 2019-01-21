@@ -26,7 +26,7 @@ public class BusySeatDao extends AbstractDao<BusySeat> {
         if (busySeats != null && busySeats.size() != 0) {
             List<Object[]> objects = new ArrayList<>();
             for(BusySeat bs : busySeats){
-                objects.add(new Object[]{bs.getSeat().getUuid(), bs.getPresentation().getUuid(), bs.isBusy(), bs.isLooked(), bs.getTimestamp(), bs.getSessionID()});
+                objects.add(new Object[]{bs.getSeat().getUuid(), bs.getPresentation().getUuid(), bs.isBusy(), bs.isLocked(), bs.getTimestamp(), bs.getSessionID()});
             }
             try {
                 if (this.jdbcTemplate != null) {
@@ -47,7 +47,7 @@ public class BusySeatDao extends AbstractDao<BusySeat> {
         if (object != null) {
             try {
                 if (this.jdbcTemplate != null) {
-                    this.jdbcTemplate.update(PERSIST, object.getSeat().getUuid(), object.getPresentation().getUuid(), object.isBusy(), object.isLooked(), object.getTimestamp(), object.getSessionID());
+                    this.jdbcTemplate.update(PERSIST, object.getSeat().getUuid(), object.getPresentation().getUuid(), object.isBusy(), object.isLocked(), object.getTimestamp(), object.getSessionID());
                     LOG.info("Persist / Update BusySeat!");
                     return true;
                 }

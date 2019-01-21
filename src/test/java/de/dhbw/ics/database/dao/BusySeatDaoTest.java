@@ -10,8 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.math.BigDecimal;
-
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
@@ -33,11 +31,11 @@ public class BusySeatDaoTest {
 
     @Test
     public void test1lockedCheck() {
-        busySeat.setLooked(true);
-        assertTrue(busySeat.isLooked());
+        busySeat.setLocked(true);
+        assertTrue(busySeat.isLocked());
 
-        busySeat.setLooked(false);
-        assertFalse(busySeat.isLooked());
+        busySeat.setLocked(false);
+        assertFalse(busySeat.isLocked());
     }
 
     @Test
@@ -104,7 +102,7 @@ public class BusySeatDaoTest {
         busySeatColne.setSessionID(busySeat.getSessionID());
         busySeatColne.setPresentation(busySeat.getPresentation());
         busySeatColne.setSeat(busySeat.getSeat());
-        busySeatColne.setLooked(busySeat.isLooked());
+        busySeatColne.setLocked(busySeat.isLocked());
         busySeatColne.setBusy(busySeat.isBusy());
 
         assertTrue(busySeat.equals(busySeatColne));
