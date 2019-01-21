@@ -15,6 +15,14 @@ public class Presentation {
     private long date;
     private PresentationCategory presentationCategory;
 
+    public Presentation(Presentation presentation){
+        this.uuid = presentation.getUuid();
+        this.setRoom(new Room(presentation.getRoom()));
+        this.setDate(presentation.getDate());
+        this.setMovie(new Movie(presentation.getMovie()));
+        this.setPresentationCategory(new PresentationCategory(presentation.getPresentationCategory()));
+    }
+
     @JsonCreator
     public Presentation(Map<String, Object> delegate) {
         if (delegate.get("uuid") == null) {

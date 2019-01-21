@@ -18,6 +18,15 @@ public class Reservation {
     private boolean payed;
     private List<Ticket> tickets = new ArrayList<>();
 
+    public Reservation(Reservation reservation){
+        this.uuid = reservation.getUuid();
+        this.setDate(reservation.getDate());
+        this.setPayed(reservation.isPayed());
+        this.setNumber(reservation.getNumber());
+        if(reservation.getUser() != null) this.setUser(reservation.getUser());
+        if(!reservation.getTickets().isEmpty()) this.setTickets(reservation.getTickets());
+    }
+
     @JsonCreator
     public Reservation(Map<String, Object> delegate) {
         if (delegate.get("uuid") != null) {

@@ -7,6 +7,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
@@ -39,6 +41,7 @@ public class voTest {
         Genre genreCopy = new Genre(genre);
         assertTrue(genre.equals(genre));
         assertTrue(genre.equals(genreCopy));
+        assertTrue(genre.hashCode() == genreCopy.hashCode());
     }
 
     @Test
@@ -61,6 +64,7 @@ public class voTest {
         Movie movieCopy = new Movie(movie);
         assertTrue(movie.equals(movie));
         assertTrue(movie.equals(movieCopy));
+        assertTrue(movie.hashCode() == movieCopy.hashCode());
     }
 
     @Test
@@ -74,7 +78,8 @@ public class voTest {
         assertTrue(uuid == room.getUuid() && roomType == room.getRoomType() && isClean == room.isClean()
                 && isVip == room.isVIP() && number == room.getNumber());
         Room roomCopy = new Room(room);
-        assertTrue(room.equals(room) && room.equals(roomCopy));
+        assertTrue(room.equals(room) && room.equals(roomCopy) &&
+                room.hashCode() == roomCopy.hashCode());
     }
 
     @Test
@@ -86,7 +91,8 @@ public class voTest {
         assertTrue(uuid == seatCategory.getUuid() && title == seatCategory.getTitle() &&
                 description == seatCategory.getDescription());
         SeatCategory seatCategoryCopy = new SeatCategory(seatCategory);
-        assertTrue(seatCategory.equals(seatCategory) && seatCategory.equals(seatCategoryCopy));
+        assertTrue(seatCategory.equals(seatCategory) && seatCategory.equals(seatCategoryCopy) &&
+                seatCategory.hashCode() == seatCategoryCopy.hashCode());
     }
 
     @Test
@@ -98,7 +104,8 @@ public class voTest {
         assertTrue(uuid == seat.getUuid() && number == seat.getNumber() && row == seat.getRow());
         assertTrue(room.equals(seat.getRoom()) && seatCategory.equals(seat.getSeatCategory()));
         Seat seatCopy = new Seat(seat);
-        assertTrue(seat.equals(seat) && seat.equals(seatCopy));
+        assertTrue(seat.equals(seat) && seat.equals(seatCopy) &&
+                seat.hashCode() == seatCopy.hashCode());
     }
 
     @Test
@@ -108,7 +115,8 @@ public class voTest {
         role = new Role(uuid,title);
         assertTrue(role.getUuid().equals(uuid) && role.getTitle().equals(title));
         Role roleCopy = new Role(role);
-        assertTrue(role.equals(role) && role.equals(roleCopy));
+        assertTrue(role.equals(role) && role.equals(roleCopy) &&
+                role.hashCode() == roleCopy.hashCode());
     }
 
     @Test
@@ -120,7 +128,8 @@ public class voTest {
         assertTrue(uuid.equals(paymentMethod.getUuid()) && description.equals(paymentMethod.getDescription())
                 && provider.equals(paymentMethod.getProvider()));
         PaymentMethod paymentMethodCopy = new PaymentMethod(paymentMethod);
-        assertTrue(paymentMethod.equals(paymentMethod) && paymentMethod.equals(paymentMethodCopy));
+        assertTrue(paymentMethod.equals(paymentMethod) && paymentMethod.equals(paymentMethodCopy) &&
+                paymentMethod.hashCode() == paymentMethodCopy.hashCode());
     }
 
     @Test
@@ -131,7 +140,8 @@ public class voTest {
         user = new User(uuid,email,role,password);
         assertTrue(uuid.equals(user.getUuid()) && email.equals(user.getEmail()) && password.equals(user.getPassword()));
         User userCopy = new User(user);
-        assertTrue(user.equals(user) && user.equals(userCopy));
+        assertTrue(user.equals(user) && user.equals(userCopy) &&
+                user.hashCode() == userCopy.hashCode());
     }
 
     @Test
@@ -143,15 +153,63 @@ public class voTest {
         assertTrue(presentationCategory.getUuid().equals(uuid) && presentationCategory.getDescription().equals(description)
                 && presentationCategory.getTitle().equals(description));
         PresentationCategory presentationCategoryCopy = new PresentationCategory(presentationCategory);
-        assertTrue(presentationCategory.equals(presentationCategory) && presentationCategory.equals(presentationCategoryCopy));
+        assertTrue(presentationCategory.equals(presentationCategory) && presentationCategory.equals(presentationCategoryCopy) &&
+                presentationCategory.hashCode() == presentationCategoryCopy.hashCode());
     }
 
     @Test
-    public void test__PriceCategory(){
+    public void test10PriceCategory(){
         String uuid = UUID.randomUUID().toString();
         String title = "Vormittags Avatar in 3D";
         String description = "Ein 3D Film";
         BigDecimal price = BigDecimal.valueOf(12.34);
         priceCategory = new PriceCategory(uuid,presentationCategory,seatCategory,title,description,price);
+        PriceCategory priceCategoryCopy = new PriceCategory(priceCategory);
+        assertTrue(priceCategory.equals(priceCategory) && priceCategory.equals(priceCategoryCopy) &&
+                priceCategory.hashCode() == priceCategoryCopy.hashCode());
     }
+
+    @Test
+    public void test11Ticket(){
+        String uuid = UUID.randomUUID().toString();
+        ticket = new Ticket(uuid,seat,priceCategory,presentation);
+        assertTrue(ticket.getUuid().equals(uuid) && ticket.getSeat().equals(seat) && ticket.getPresentation().equals(presentation) &&
+                ticket.getPriceCategory().equals(priceCategory) && ticket.getReservation().equals(reservation));
+        Ticket ticketCopy = new Ticket(ticket);
+        assertTrue(ticket.equals(ticketCopy) && ticket.equals(ticket) &&
+                ticket.hashCode() == ticketCopy.hashCode());
+    }
+
+    @Test
+    public void test12Reservation(){
+        String uuid = UUID.randomUUID().toString();
+        Integer number = 231;
+        long date = 342944;
+        boolean played = false;
+        reservation = new Reservation(uuid,number,date,played);
+        reservation.setUser(user);
+        List<Ticket> ticketList = new ArrayList<>();
+        for(int i = 0; i < 10; i++) ticketList.add(ticket);
+        reservation.setTickets(ticketList);
+        assertTrue(reservation.getUuid().equals(uuid) && reservation.getDate() == date &&
+                reservation.getUser().equals(user) && reservation.getNumber().equals(number));
+        Reservation reservationCopy = new Reservation(reservation);
+        assertTrue(reservation.equals(reservation) && reservation.equals(reservationCopy) &&
+                reservation.hashCode() == reservationCopy.hashCode());
+    }
+
+    @Test
+    public void test13Presentation(){
+        String uuid = UUID.randomUUID().toString();
+        long date = 7072019;
+        presentation = new Presentation(uuid,movie,room,date,presentationCategory);
+        assertTrue(presentation.getUuid().equals(uuid) && presentation.getRoom().equals(room) &&
+                presentation.getPresentationCategory().equals(presentationCategory) && presentation.getDate() == date &&
+                presentation.getMovie().equals(movie));
+        Presentation presentationCopy = new Presentation(presentation);
+        assertTrue(presentation.equals(presentation) && presentation.equals(presentationCopy) &&
+                presentation.hashCode() == presentationCopy.hashCode());
+    }
+
+
 }
