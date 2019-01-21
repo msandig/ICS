@@ -94,23 +94,18 @@ public class BusySeatDaoTest {
     }
 
     @Test
-    public void test8equels(){
+    public void test8equals(){
         assertTrue(busySeat.equals(busySeat));
-        BusySeat busySeatColne = new BusySeat();
+        BusySeat busySeatClone = new BusySeat();
 
-        busySeatColne.setTimestamp(busySeat.getTimestamp());
-        busySeatColne.setSessionID(busySeat.getSessionID());
-        busySeatColne.setPresentation(busySeat.getPresentation());
-        busySeatColne.setSeat(busySeat.getSeat());
-        busySeatColne.setLocked(busySeat.isLocked());
-        busySeatColne.setBusy(busySeat.isBusy());
+        busySeatClone.setTimestamp(busySeat.getTimestamp());
+        busySeatClone.setSessionID(busySeat.getSessionID());
+        busySeatClone.setPresentation(busySeat.getPresentation());
+        busySeatClone.setSeat(busySeat.getSeat());
+        busySeatClone.setLocked(busySeat.isLocked());
+        busySeatClone.setBusy(busySeat.isBusy());
 
-        assertTrue(busySeat.equals(busySeatColne));
+        assertTrue(busySeat.equals(busySeatClone));
     }
 
-    @Test
-    public void test9hashcode(){
-        int hashCode = -438449964;
-        assertEquals(hashCode,busySeat.hashCode());
-    }
 }
