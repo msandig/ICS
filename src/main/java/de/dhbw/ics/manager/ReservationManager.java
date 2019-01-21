@@ -53,6 +53,7 @@ public class ReservationManager {
         User u = userDao.get(user.getEmail());
         if (u != null) {
             if ((u.getPassword() == null || u.getPassword().isEmpty()) && u.getRole().getTitle().equals("Guest")) {
+                this.mapReservations(u);
                 return u;
             } else {
                 return ResultMessage.USER_NEEDS_PASSWORD;
@@ -90,7 +91,15 @@ public class ReservationManager {
         } else if (user.getPassword() != null && !user.getPassword().isEmpty()) {
             return ResultMessage.WRONG_PASSWORD;
         }
+        this.mapReservations(user);
         return user;
+    }
+
+    private void mapReservations(User user) {
+        this.reservationDao.getAllByUser(user);
+        if(user.getReservationList() != null && user.getReservationList().size() != 0){
+            user.getReservationList().forEach(r -> this.ticketDao.getAllByReservation(r));
+        }
     }
 
     public Object getReservation(String email, Integer resID) {
@@ -178,7 +187,9 @@ public class ReservationManager {
                         }
                     }
                 } else if (busySeat == null) {
-                    busySeat = new BusySeat(true, ticket.getSeat(), p, true, sessionID, Calendar.getInstance().getTimeInMillis());
+                    busySeat = new BusySeat();
+                    busySeat.setPresentation(p);
+                    busySeat.setSeat(ticket.getSeat());
                 }
 
                 busySeat.setBusy(true);
@@ -306,7 +317,13 @@ public class ReservationManager {
                 }
             }
 
-            BusySeat busySeat = new BusySeat(false, s, presentation, true, sessionID, Calendar.getInstance().getTimeInMillis());
+            BusySeat busySeat = new BusySeat();
+            busySeat.setBusy(false);
+            busySeat.setLocked(true);
+            busySeat.setSessionID(sessionID);
+            busySeat.setTimestamp(Calendar.getInstance().getTimeInMillis());
+            busySeat.setPresentation(presentation);
+            busySeat.setSeat(s);
             bsUpdate.add(busySeat);
             s.setCurrentBusySeat(busySeat);
             s.addBusy(busySeat);

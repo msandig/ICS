@@ -1,6 +1,7 @@
 package de.dhbw.ics.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -14,6 +15,7 @@ public class Reservation {
     private String uuid;
     private Integer number;
     private long date;
+    @JsonIgnore
     private User user = null;
     private boolean payed;
     private List<Ticket> tickets = new ArrayList<>();

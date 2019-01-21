@@ -10,8 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.math.BigDecimal;
-
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
@@ -32,7 +30,7 @@ public class BusySeatDaoTest {
     }
 
     @Test
-    public void test1LockedCheck() {
+    public void test1lockedCheck() {
         busySeat.setLocked(true);
         assertTrue(busySeat.isLocked());
 
@@ -96,17 +94,23 @@ public class BusySeatDaoTest {
     }
 
     @Test
-    public void test8equals(){
+    public void test8equels(){
         assertTrue(busySeat.equals(busySeat));
-        BusySeat busySeatClone = new BusySeat();
+        BusySeat busySeatColne = new BusySeat();
 
-        busySeatClone.setTimestamp(busySeat.getTimestamp());
-        busySeatClone.setSessionID(busySeat.getSessionID());
-        busySeatClone.setPresentation(busySeat.getPresentation());
-        busySeatClone.setSeat(busySeat.getSeat());
-        busySeatClone.setLocked(busySeat.isLocked());
-        busySeatClone.setBusy(busySeat.isBusy());
+        busySeatColne.setTimestamp(busySeat.getTimestamp());
+        busySeatColne.setSessionID(busySeat.getSessionID());
+        busySeatColne.setPresentation(busySeat.getPresentation());
+        busySeatColne.setSeat(busySeat.getSeat());
+        busySeatColne.setLocked(busySeat.isLocked());
+        busySeatColne.setBusy(busySeat.isBusy());
 
-        assertTrue(busySeat.equals(busySeatClone));
+        assertTrue(busySeat.equals(busySeatColne));
+    }
+
+    @Test
+    public void test9hashcode(){
+        int hashCode = -438449964;
+        assertEquals(hashCode,busySeat.hashCode());
     }
 }
