@@ -38,27 +38,22 @@ public class BusySeatMapper implements RowMapper<BusySeat> {
         boolean busy = resultSet.getBoolean("busy");
         String sessionID = resultSet.getString("sessionID");
         long timestamp = resultSet.getLong("timestamp");
-        BusySeat busySeat = new BusySeat();
-        busySeat.setBusy(busy);
-        busySeat.setLocked(locked);
-        busySeat.setSessionID(sessionID);
-        busySeat.setTimestamp(timestamp);
 
+        BusySeat busySeat = null;
         if (this.room != null && this.room.getSeats().size() != 0 && this.presentation != null && this.presentation.getUuid().equals(presentationUUID)) {
-            busySeat.setPresentation(this.presentation);
             if(this.seat == null) {
                 Seat s = this.room.getSeats().get(seatUUID);
+                busySeat = new BusySeat(busy, s, this.presentation, locked, sessionID, timestamp);
                 busySeat.setSeat(s);
                 s.addBusy(busySeat);
                 s.setCurrentBusySeat(busySeat);
             }else{
-                busySeat.setSeat(this.seat);
+                busySeat = new BusySeat(busy, this.seat, this.presentation, locked, sessionID, timestamp);
                 this.seat.addBusy(busySeat);
             }
         }else{
             Seat s = new Seat(seatUUID, null, null, 0, 0 );
-            busySeat.setSeat(s);
-            busySeat.setPresentation(new Presentation(presentationUUID, null,null, 0, null));
+            busySeat = new BusySeat(busy, s, new Presentation(presentationUUID, null,null, 0, null), locked, sessionID, timestamp);
             s.addBusy(busySeat);
         }
         return busySeat;

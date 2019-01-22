@@ -97,7 +97,7 @@ public class ReservationManager {
 
     private void mapReservations(User user) {
         this.reservationDao.getAllByUser(user);
-        if(user.getReservationList() != null && user.getReservationList().size() != 0){
+        if (user.getReservationList() != null && user.getReservationList().size() != 0) {
             user.getReservationList().forEach(r -> this.ticketDao.getAllByReservation(r));
         }
     }
@@ -186,16 +186,16 @@ public class ReservationManager {
                             return ResultMessage.LOCKED_SEAT;
                         }
                     }
-                } else if (busySeat == null) {
-                    busySeat = new BusySeat();
-                    busySeat.setPresentation(p);
-                    busySeat.setSeat(ticket.getSeat());
                 }
 
-                busySeat.setBusy(true);
-                busySeat.setLocked(true);
-                busySeat.setTimestamp(Calendar.getInstance().getTimeInMillis());
-                busySeat.setSessionID(sessionID);
+                if (busySeat == null) {
+                    busySeat = new BusySeat(true, s, p, true, sessionID, Calendar.getInstance().getTimeInMillis());
+                } else {
+                    busySeat.setBusy(true);
+                    busySeat.setLocked(true);
+                    busySeat.setTimestamp(Calendar.getInstance().getTimeInMillis());
+                    busySeat.setSessionID(sessionID);
+                }
 
                 persistBusySeats.add(busySeat);
                 persistTickets.add(ticket);
@@ -204,10 +204,10 @@ public class ReservationManager {
             }
         }
 
-        if(persistBusySeats.size() != reservation.getTickets().size() || persistBusySeats.size() != reservation.getTickets().size())
+        if (persistBusySeats.size() != reservation.getTickets().size() || persistBusySeats.size() != reservation.getTickets().size())
             return ResultMessage.COULD_NOT_PERSIST_RESERVATION;
 
-        if(reservation.getDate() == 0){
+        if (reservation.getDate() == 0) {
             reservation.setDate(Calendar.getInstance().getTimeInMillis());
         }
         if (this.reservationDao.persist(reservation)) {
@@ -315,18 +315,20 @@ public class ReservationManager {
                         return ResultMessage.LOCKED_SEAT;
                     }
                 }
+
+                bs.setBusy(false);
+                bs.setLocked(true);
+                bs.setSessionID(sessionID);
+                bs.setTimestamp(Calendar.getInstance().getTimeInMillis());
+                s.setCurrentBusySeat(bs);
+                s.addBusy(bs);
+                continue;
             }
 
-            BusySeat busySeat = new BusySeat();
-            busySeat.setBusy(false);
-            busySeat.setLocked(true);
-            busySeat.setSessionID(sessionID);
-            busySeat.setTimestamp(Calendar.getInstance().getTimeInMillis());
-            busySeat.setPresentation(presentation);
-            busySeat.setSeat(s);
-            bsUpdate.add(busySeat);
-            s.setCurrentBusySeat(busySeat);
-            s.addBusy(busySeat);
+            bs = new BusySeat(false, s, presentation, true, sessionID, Calendar.getInstance().getTimeInMillis());
+            bsUpdate.add(bs);
+            s.setCurrentBusySeat(bs);
+            s.addBusy(bs);
         }
         if (bsUpdate.size() == seats.size()) {
             if (this.busySeatDao.persistBatch(bsUpdate)) {

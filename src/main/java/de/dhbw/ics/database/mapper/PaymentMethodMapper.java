@@ -12,8 +12,11 @@ public class PaymentMethodMapper implements RowMapper<PaymentMethod> {
     public PaymentMethod mapRow(ResultSet resultSet, int i) throws SQLException {
         String uuid = resultSet.getString("pay_uuid");
         String description = resultSet.getString("pay_description");
-        String provider =  resultSet.getString("provider");
-        return new PaymentMethod(uuid, description, provider);
+        String provider = resultSet.getString("provider");
+        if (uuid != null) {
+            return new PaymentMethod(uuid, description, provider);
+        }
+        return null;
     }
 
 }

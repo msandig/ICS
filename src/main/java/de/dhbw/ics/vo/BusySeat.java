@@ -23,6 +23,17 @@ public class BusySeat {
     @JsonIgnore
     private long timestamp = 0;
 
+    public BusySeat(){}
+
+    public BusySeat(boolean isBusy, Seat seat, Presentation presentation, boolean locked, String sessionID, long timestamp) {
+        this.isBusy = isBusy;
+        this.seat = seat;
+        this.presentation = presentation;
+        this.locked = locked;
+        this.sessionID = sessionID;
+        this.timestamp = timestamp;
+    }
+
     public boolean isLocked() {
         return locked;
     }
@@ -70,16 +81,6 @@ public class BusySeat {
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
-
-    public BusySeat(boolean isBusy, Seat seat, Presentation presentation, boolean locked, String sessionID, long timestamp) {
-        this.isBusy = isBusy;
-        this.seat = seat;
-        this.presentation = presentation;
-        this.locked = locked;
-        this.sessionID = sessionID;
-        this.timestamp = timestamp;
-    }
-    public BusySeat(){}
 
     @JsonGetter("presentation")
     public String getPresentationUUID() {
