@@ -74,6 +74,10 @@ hr.linie-2 {
     color: darkgray;
 }
 
+.card-text:hover{
+
+}
+
 .grid-container{
     display: grid;
 
@@ -86,4 +90,18 @@ hr.linie-2 {
 
 .hover-ics{
 
+}
+
+.modal-ku{
+    width: 1200px;
+    margin: auto;
+}
+
+.nodecoration-ics{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+body.modal-open {
+    padding-right: 0 !important;
 }
