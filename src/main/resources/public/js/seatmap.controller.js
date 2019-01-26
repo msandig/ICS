@@ -30,7 +30,7 @@ $(document).ready(function() {
             node : $('#legend'),
             items : [
                 [ 'a', 'available',   'Option' ],
-                [ 'a', 'unavailable', 'Sold']
+                [ 'c', 'unavailable', 'Sold']
             ]
         },
         click: function () { //Click event
