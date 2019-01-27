@@ -1,23 +1,21 @@
 % !TEX root =  master.tex
 \chapter{Analyse} \label{analyse}
 	
-	Analyse für den Durchblick.
-	Studium, Modul \enquote{Fallstudie} et cetera
+%	\section{Anforderungsanalyse}
 	
-	\section{Anforderungsanalyse}
-	
-	\section{Ist-Analyse}
-	Mithilfe der Ist-Analyse wird eine bestehende Lösung zur Reservierung von Kinokarten betrachtet und evaluiert. Diese Betrachtung bildet die Grundlage für die Evaluierung der verschiedener Aufbauten der Kinoreservierungssysteme. Dabei spielen vor allem die Verständlichkeit der Seite und die verschiedenen Schritte, die für eine Reservierung nötig sind eine entscheidende Rolle. Außerdem wird verglichen, welche Schritte für die Reservierung notwendig sind, mit den verschiedenen Seiten, auf die man weitergeleitet wird. Dabei wird versucht herauszufinden, welche Funktionen für eine Reservierung essenziell sind und welche zusätzliche Funktionen darstellen. Des Weiteren werden die verschiedenen Möglichkeiten einer Bestätigung betrachtet, sowie die Notwendigkeit eines Benutzerkontos. 
+	\section[Ist-Analyse]{Ist-Analyse {\hfill \normalsize Yvonne Werner}}
+	Mithilfe der Ist-Analyse wird eine bestehende Lösung zur Reservierung von Kinokarten betrachtet und evaluiert. Diese Betrachtung bildet die Grundlage für die Evaluierung der verschiedenen Aufbauten der Kinoreservierungssysteme. Dabei spielen vor allem die Verständlichkeit der Seite und die verschiedenen Schritte, die für eine Reservierung nötig sind, eine entscheidende Rolle. Außerdem wird verglichen, welche Schritte für die Reservierung notwendig sind, mit den verschiedenen Seiten, auf die man weitergeleitet wird. Dabei wird versucht herauszufinden, welche Funktionen für eine Reservierung essenziell sind und welche zusätzliche Funktionen darstellen. Des Weiteren werden die verschiedenen Möglichkeiten einer Bestätigung sowie die Notwendigkeit eines Benutzerkontos betrachtet. 
 	
 	\subsection{Kinopolis Viernheim}
 	Beim Öffnen der Seite fällt auf, dass das Hauptfenster zur Reservierung von Karten von einem Rahmen mit Werbung für einen aktuellen Film umgeben ist (siehe Abb. \vref{fig:Kinop.Start}). Nach dem Klicken auf diesen Teil der Seite, wird der Nutzer zu einer Übersichtsseite dieses Films weitergeleitet. 
-	\begin{figure}
+	\begin{figure}[H]
 		\centering 
 		\includegraphics[scale=0.38]{img/Kinopolis_MA_Startseite.png}
 		\captionsetup{format=hang}
 		\centering\caption[Startseite von Kinopolis Viernheim]{\label{fig:Kinop.Start}Startseite von Kinopolis\footnotemark}
 	\end{figure} \footnotetext{Quelle: https://www.kinopolis.de/vi}
-	\\Die eigentliche Hauptseite in der Mitte enthält eine Kopfleiste, in der zwischen Programm \& Tickets sowie zwischen Events, Angeboten und Gutscheinen gewählt werden kann. Außerdem besteht die Möglichkeit, sich für eine Premium-Club Card zu registrieren, um Punkte sammeln und diese in Vorteile umwandeln zu können. Des Weiteren ist über ein Symbol die Anmeldung zu einem eingerichteten Account möglich. Unterhalb des Kopfs informiert eine Leiste mit wechselndem Inhalt über Events zu aktuellen Filmen. Als Beispiel wird unter anderem eine \enquote{Ladykino Preview} und ein sich bewegender Sitz angepriesen. 
+
+	Die eigentliche Hauptseite in der Mitte enthält eine Kopfleiste, in der zwischen Programm \& Tickets sowie zwischen Events, Angeboten und Gutscheinen gewählt werden kann. Außerdem besteht die Möglichkeit, sich für eine Premium-Club Card zu registrieren, um Punkte sammeln und diese in Vorteile umwandeln zu können. Des Weiteren ist über ein Symbol die Anmeldung zu einem eingerichteten Account möglich. Unterhalb des Kopfs informiert eine Leiste mit wechselndem Inhalt über Events zu aktuellen Filmen. Als Beispiel wird unter anderem eine \enquote{Ladykino Preview} und ein sich bewegender Sitz angepriesen. 
 	\\Nachfolgend findet der Nutzer unter der Überschrift \enquote{Aktuelles Programm} einige ausgewählte Filme. Sie werden in der Plakatansicht dargestellt (siehe Abb. \vref{fig:Kinop.Start2}), weshalb für den Nutzer auf den ersten Blick nur das Filmplakat und der Titel ersichtlich sind. Mithilfe des darunterliegenden Buttons können weitere aktuelle Filme angezeigt werden. Durch das Führen der Maus auf das Plakat eines Films, ergibt sich die Auswahl zwischen dem Anschauen des Trailers, dem Lesen von Filminformationen und dem direkten Kauf von Tickets über die Auswahl der Vorstellung.
 	\begin{figure}
 		\centering 
@@ -28,7 +26,7 @@
 	\footnotetext{Quelle: https://www.kinopolis.de/vi}
 	Neben diesen Bereichen enthält die Startseite von Kinopolis ebenfalls Informationen zu aktuellen Events, wie \enquote{Kids Previews} und \enquote{Ladykino}. Darüber hinaus bieten sich darunter befindende Abschnitte Auskunft zu Filmen, die bald anlaufen werden, sowie Nachrichten aus Hollywood. 
 	
-	Die zweite Möglichkeit zur Auswahl eines Filmes besteht durch den zweiten Tab \enquote{Programm \& Tickets}. Dort befindet sich zunächst eine Leiste, in der die Vorstellungen für einen bestimmten Tag oder für eine ganze Woche angezeigt werden können. Standardmäßig ist die Übersicht einer Woche ausgewählt (siehe Abb.\vref{fig:Kinop.Progr.}), wodurch zu jedem Film alle Vorstellungen der Woche aufgelistet sind. Neben der zeitlichen Eingrenzung der Suche, können mit dem in der Abbildung ausgeklappten Programmfilter weitere Eingrenzungen erfolgen. Die Filterung kann nach Genre, FSK-Stufen, Art der Darstellung (2D, 3D,...) und nach zeitlicher Eingrenzung eines Tages erfolgen. Durch die zuletzt genannte Filtermöglichkeit, wird der Beginn der Vorstellungen in Vormittags, Nachmittags und Abends eingestuft.
+	Die zweite Möglichkeit zur Auswahl eines Filmes besteht durch den zweiten Tab \enquote{Programm \& Tickets}. Dort befindet sich zunächst eine Leiste, in der die Vorstellungen für einen bestimmten Tag oder für eine ganze Woche angezeigt werden können. Standardmäßig ist die Übersicht einer Woche ausgewählt (siehe Abb.\vref{fig:Kinop.Progr.}), wodurch zu jedem Film alle Vorstellungen der Woche aufgelistet sind. Neben der zeitlichen Eingrenzung der Suche, können mit dem in der Abbildung ausgeklappten Programmfilter weitere Eingrenzungen erfolgen. Die Filterung kann nach Genre, FSK-Stufen, Art der Darstellung (2D, 3D, ...) und nach zeitlicher Eingrenzung eines Tages erfolgen. Durch die zuletzt genannte Filtermöglichkeit, wird der Beginn der Vorstellungen in Vormittags, Nachmittags und Abends eingestuft.
 	\\Rechts neben dem Programmfilter kann je nach Präferenz des Nutzers zwischen zwei Ansichten für die Auflistung der Filme gewechselt werden. Zur Auswahl steht die Listenansicht, sowie die Plakatansicht. Voreingestellt ist die Listenansicht, in der die Filme untereinander dargestellt werden. Zu jedem Film sind Eckdaten wie beispielsweise das Genre, die Länge, und der Start (die erste Vorstellung dieses Films) angegeben. Außerdem wird durch Labels unterstützend ersichtlich, welche FSK-Stufe für den Film besteht. Zusätzliche Labels unterrichten den Nutzer über spezielle Events sowie Angebote. Des Weiteren wird ein Überblick über die Vorstellungen eines Films der kommenden Woche geboten. Dabei wird neben der Zeit ebenfalls der Saal angegeben. Durch das Überfahren einer Vorstellung mit der Maus bekommt der Nutzer die Eckdaten des jeweiligen Saals angezeigt. Bei speziellen Anforderungen an den Saal, kann der Nutzer über den Button \enquote{Saalübersicht} die Daten zu allen vorhandenen Sälen abrufen und somit viel Zeit bei der Suche nach einem Kinosaal, der die Anforderungen erfüllt, sparen. Im nächsten Schritt kann der Nutzer entweder weitere Informationen zu einem Film anschauen, indem er auf den Button \enquote{Filminfos} oder auf den Titel klickt. Dadurch wird der Nutzer auf eine Detailseite weitergeleitet, die im nachfolgend erläutert wird. Wenn der Nutzer bereits eine Vorstellung ausgewählt hat, bekommt er durch das Anklicken der Vorstellung auf die Reservierungsseite weitergeleitet. 
 	\\Die Plakatansicht als zweite Möglichkeit der Darstellung ist ähnlich aufgebaut, wie die Darstellung der Filme auf der Startseite. Der Nutzer sieht die verschiedenen Filmplakate und den Titel dieser. Es liegt also an dem Nutzer, ob er zusätzliche Informationen zu dem Film direkt ersichtlich haben möchte oder nicht.  
 	\\Neben den zwei erklärten Seiten, bietet das Portal weitere Seiten mit Informationen über Events, Angebote und anderen Vorteilen, die nicht zwingend zur Reservierung von Karten notwendig sind. Deshalb werden diese Seiten in der Ist-Analyse zwar registriert, aber nicht als essenzielle Anforderungen an ein Kinoreservierungssystem erfasst. Aus diesem Grund werden sie nicht näher erläutert.
@@ -53,13 +51,15 @@
 	Beim Reservieren von Karten können die Karten durch den Button \enquote{Jetzt reservieren} reserviert werden, wodurch der Nutzer eine Reservierungsnummer als Bestätigung zugewiesen bekommt. Mit dieser kann er die Karten bis eine halbe Stunde vor Beginn der Vorstellung an der Kasse abholen. Auf der Bestätigungsseite bekommt der Nutzer ebenfalls die Möglichkeit die Reservierung zu drucken, sodass er sie auch ausdrucken könnte. Des Weiteren hat der Kunde die Möglichkeit die Karten zu kaufen oder direkt zu stornieren. 
 	\\In dem Kaufvorgang gelangt der Kunde nach dem Anklicken von \enquote{Weiter} in die Ansicht des Warenkorbs, welche die wichtigsten Informationen zu der Vorstellung und dem Standort des Kinos enthält. Außerdem werden Reihe und Plätze der Sitze mit ihrem dazugehörigen Preis angezeigt. Danach muss die Zahlungsmethode gewählt werden, wobei die verschiedenen Auswahlmöglichkeiten zunächst schwer zu erkennen sind. Nach der Auswahl werden die Tickets bezahlt und der Kunde kann in dem Kino direkt reingehen ohne sich zuvor an der Kasse anstellen zu müssen. 
 	
-	\textbf{Bilder von Detailsseite?; von Auswahl der Sitze; Reservierungsansicht}
-	\textbf{Text dazuschreiben, warum nur die Bilder der Reservierung genommen werden?}
+	\begin{center}
+		\textbf{Bilder von Detailsseite?; von Auswahl der Sitze; Reservierungsansicht}
+	\textbf{\\Text dazuschreiben, warum nur die Bilder der Reservierung genommen werden?}
+	\end{center}
 	
 	\subsubsection{Zusammenfassung der erforderlichen Schritte} 
 	Für eine Reservierung von Karten sind vier Schritte von Bedeutung. Zunächst muss sich der Nutzer für einen Film entscheiden. Dies kann durch den Trailer oder das Lesen der Filmbeschreibung geschehen. Nachfolgend wählt der Kunde einen Tag und eine Uhrzeit aus, an dem er sich den Film anschauen möchte. In dem nächsten Schritt entscheidet er sich für eine bestimmte Anzahl an Plätzen sowie wo sich die Sitze in dem Kinosaal befinden sollen. Als letzter Schritt erfolgt die Reservierung der Tickets indem der Kunde seine Daten angibt und dadurch eine Reservierungsnummer mitgeteilt bekommt, mit der er die Karten im Kino abholen kann.
 	
-	\section{Soll-Analyse}
+	\section[Soll-Analyse]{Soll-Analyse {\hfill \normalsize Milena Zahn}}
 		
 	 	\subsection{User-Research-Prozess} 
 	 	User Research ist eine systematische Untersuchung der Ziele, Bedürfnisse und Fähigkeiten der Benutzer\autocite[Vgl.][S. 6]{Schumacher.2010}.
@@ -122,12 +122,16 @@
 			\caption[Use Case Walter]{\label{fig:useCaseWalter} Use Case Walter [DRAFT]}
 		\end{figure}
 		
-		Schließlich wird aus den Personas eine User-Story-Map erstellt. In dieser werden die daraus hervorgehenden Features visuell geplant und in unterschiedliche Releases priorisiert. 
-		
-	\begin{center}
-		{\textbf{[User-Story-Map // Größe?]}}
-	\end{center}
-		
+	\subsection{User-Story-Mapping}
+	Schließlich wird aus den Personas das User-Story-Mapping erstellt. In dieser werden die aus den Use-Cases hervorgehenden Features visuell geplant und in unterschiedliche Releases priorisiert. 
+
+	%Stories On Board erklären
+	%Usm erläutern
+	\begin{figure}[H]
+		\subfigure[Teil 1]{\includegraphics[width=14cm]{img/usm1.png}} 
+		\subfigure[Teil 2]{\includegraphics[width=14cm]{img/usm2.png}} 
+		\caption[User-Story-Map ]{\label{fig:userStoryMap}User-Story-Map\\ Quelle: Stories on Board}
+	\end{figure} 
 	 	
 %		\subsection{Vorgabe}
 %		\subsection{Rahmenbedingungen}
