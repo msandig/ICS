@@ -1,9 +1,6 @@
 
 //Backend Data for movieProgramm.html
 
-//am Ende <script src="js/main.js"></script>
-
-
 this.presentation = "";
 var oMe = this;
 var url = "http://localhost:8080/service/get/presentations?start=1549843241000&end=1550447981000";
