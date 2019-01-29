@@ -34,12 +34,12 @@
     <div id="Navbar"></div>
     <!-- Divider -->
     <!--Caption -->
-    <h1 style="margin-top: 3%; margin-left: 3%; color: darkgray">Ihr aktuelles Filmprogramm vom dd.mm.yyyy bis dd.mm.yyyy </h1>
+    <h1 style="margin-top: 3%; margin-left: 3%; color: darkgray">Ihr aktuelles Filmprogramm vom 11.02.2019 bis 17.02.1019 </h1>
     <!--<hr class="linie-1"> -->
     <!--Table-->
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-shopping icsStandardMargin "><!-- TODO try without shopping -->
+            <table id = "tableMovieProgram" class="table table-shopping icsStandardMargin "><!-- TODO try without shopping -->
                 <!--<thead>
                 <tr>
                     <th class="text-center">  </th>
@@ -58,18 +58,18 @@
                     <div>
                     </div>
                 </tr>
-                <tr>
-                    <td style="width: 200px">
+                <tr id="tablePresentations">
+                    <td id="childTitle" style="width: 200px">
                         <div style="width: 200px; float: left">
-                            <img class="icsStandardMargin" src="img/movies/aquaman.jpg" style="width: 200px">
+                            <img id = "imageMovieProgram" class="icsStandardMargin" style="width: 200px">
                         </div>
                     </td>
-                    <td>
+                    <td id="childTable" >
                         <div style="float: left; width:100%; margin-left: 3%">
-                            <h2 class="icsFontColor" > Aquaman </h2>
-                            <p class="movieSpecs icsFontColor"><b>Laufzeit:</b> 314min</p>
-                            <p class="movieSpecs icsFontColor"><b>FSK:</b> 16</p>
-                            <p class="movieSpecs icsFontColor"><b>Filmstart:</b> 20-12-2018 </p>
+                            <h2 id = "titleMovieProgram" class="icsFontColor" ></h2>
+                            <p id = "LaufzeitMovieProgram" class="movieSpecs icsFontColor"><b></b></p>
+                            <p id = "fskMovieProgram" class="movieSpecs icsFontColor"><b></b></p>
+                            <p id = "startdateMovieProgram" class="movieSpecs icsFontColor"><b></b></p>
                         </div>
                         <div>
                         <table class="icsFontColor" style="margin-left: 3%">
@@ -86,65 +86,47 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="presentationTable"><a href="seatmap.html" style="color:inherit" >17:30</a></td>
-                                    <td class="presentationTable">17:30</td>
-                                    <td class="presentationTable">17:30</td>
-                                    <td class="presentationTable">17:30</td>
-                                    <td class="presentationTable">17:30</td>
-                                    <td class="presentationTable">17:30</td>
-                                    <td class="presentationTable">17:30</td>
+                                    <td class="presentationTable"><a href="seatmap.html" style="color:inherit" ></a></td>
+                                    <td class="presentationTable"></td>
+                                    <td class="presentationTable"></td>
+                                    <td class="presentationTable"></td>
+                                    <td class="presentationTable"></td>
+                                    <td class="presentationTable"></td>
+                                    <td class="presentationTable"></td>
                                 </tr>
                                 <tr>
                                     <td class="presentationTable"></td>
                                     <td class="presentationTable"></td>
                                     <td class="presentationTable"></td>
-                                    <td class="presentationTable">19:30</td>
-                                    <td class="presentationTable">19:30</td>
                                     <td class="presentationTable"></td>
-                                    <td class="presentationTable">19:30</td>
+                                    <td class="presentationTable"></td>
+                                    <td class="presentationTable"></td>
+                                    <td class="presentationTable"></td>
                                 </tr>
                                 <tr>
                                     <td class="presentationTable"></td>
-                                    <td class="presentationTable">21:00</td>
                                     <td class="presentationTable"></td>
-                                    <td class="presentationTable">21:00</td>
                                     <td class="presentationTable"></td>
-                                    <td class="presentationTable">21:00</td>
-                                    <td class="presentationTable">21:00</td>
+                                    <td class="presentationTable"></td>
+                                    <td class="presentationTable"></td>
+                                    <td class="presentationTable"></td>
+                                    <td class="presentationTable"></td>
+                                </tr>
+                                <tr>
+                                    <td class="presentationTable"></td>
+                                    <td class="presentationTable"></td>
+                                    <td class="presentationTable"></td>
+                                    <td class="presentationTable"></td>
+                                    <td class="presentationTable"></td>
+                                    <td class="presentationTable"></td>
+                                    <td class="presentationTable"></td>
                                 </tr>
                             </tbody>
                         </table>
                         </div>
                     </td>
-                    <td>
+                    <td id="childEnd">
                         <div style="background-color: green; margin-left: 3%">
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <div class="img-container">
-                            <h2 class="icsFontColor" > Bohemian Rhapsody </h2>
-                            <img src="img/movies/bohemian.jpg" style="width: 200px">
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <div class="img-container">
-                            <h2 class="icsFontColor" > Bumblebee </h2>
-                            <img src="img/movies/Bumblebee.jpg" style="width: 200px">
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <div class="img-container">
-                            <h2 class="icsFontColor" > Mary Poppins' Rückkehr </h2>
-                            <img src="img/movies/marypoppins.jpg" style="width: 200px">
                         </div>
                     </td>
                 </tr>
@@ -160,4 +142,5 @@
 </div>
 
 </body>
+<script src="js/main.js"></script>
 </html>
