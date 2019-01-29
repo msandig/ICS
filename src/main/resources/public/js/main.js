@@ -87,7 +87,7 @@ window.setTimeout(function () {
 
                     if (oMovie.cells[1].children[0].children[0].innerText == "" || oMovie.cells[1].children[0].children[0].innerText == oAttribute.movie.title) {
 
-                        oMovie.cells[0].children[0].childNodes[1].scr = oAttribute.movie.picture;
+                        var image = oMovie.cells[0].children[0].childNodes[1].scr = oAttribute.movie.picture;
                         oMovie.cells[1].children[0].children[0].innerText = oAttribute.movie.title;
                         oMovie.cells[1].children[0].children[1].innerText = "Laufzeit: " + oAttribute.movie.runTime;
                         oMovie.cells[1].children[0].children[2].innerText = "FSK: " + oAttribute.movie.fsk;
@@ -109,14 +109,20 @@ window.setTimeout(function () {
                             date = 6;
                         }
 
+                        var minutes = new Date(oAttribute.date).getMinutes();
+                        if(minutes == 0){
+                            minutes = "0" + minutes;
+                        }
+                        var hours = new Date(oAttribute.date).getHours()
+
                         if (oMovie.cells[1].children[1].children[0].children[1].children[0].cells[date].innerText == "") {
-                            oMovie.cells[1].children[1].children[0].children[1].children[0].cells[date].innerText = new Date(oAttribute.date).getHours() + ":" + new Date(oAttribute.date).getMinutes();
+                            oMovie.cells[1].children[1].children[0].children[1].children[0].cells[date].innerText = hours + ":" + minutes;
                         } else if (oMovie.cells[1].children[1].children[0].children[1].children[1].cells[date].innerText == "") {
-                            oMovie.cells[1].children[1].children[0].children[1].children[1].cells[date].innerText = new Date(oAttribute.date).getHours() + ":" + new Date(oAttribute.date).getMinutes();
+                            oMovie.cells[1].children[1].children[0].children[1].children[1].cells[date].innerText = hours + ":" + minutes;
                         } else if (oMovie.cells[1].children[1].children[0].children[1].children[2].cells[date].innerText == "") {
-                            oMovie.cells[1].children[1].children[0].children[1].children[2].cells[date].innerText = new Date(oAttribute.date).getHours() + ":" + new Date(oAttribute.date).getMinutes();
+                            oMovie.cells[1].children[1].children[0].children[1].children[2].cells[date].innerText = hours + ":" + minutes;
                         } else if (oMovie.cells[1].children[1].children[0].children[1].children[3].cells[date].innerText == "") {
-                            oMovie.cells[1].children[1].children[0].children[1].children[3].cells[date].innerText = new Date(oAttribute.date).getHours() + ":" + new Date(oAttribute.date).getMinutes();
+                            oMovie.cells[1].children[1].children[0].children[1].children[3].cells[date].innerText = hours + ":" + minutes;
                         }
                         return;
                     }   //if
@@ -140,14 +146,20 @@ window.setTimeout(function () {
                                 } else if (new Date(oAttribute.date).getDay() == 6) {
                                     date = 6;
                                 }
+                                 var minutes = new Date(oAttribute.date).getMinutes();
+                                 if(minutes == 0){
+                                     minutes = "0" + minutes;
+                                 }
+                                 var hours = new Date(oAttribute.date).getHours()
+
                                 if (row.cells[1].children[1].children[0].children[1].children[0].cells[date].innerText == "") {
-                                    row.cells[1].children[1].children[0].children[1].children[0].cells[date].innerText = new Date(oAttribute.date).getHours() + ":" + new Date(oAttribute.date).getMinutes();
+                                    row.cells[1].children[1].children[0].children[1].children[0].cells[date].innerText = hours + ":" + minutes;
                                 } else if (row.cells[1].children[1].children[0].children[1].children[1].cells[date].innerText == "") {
-                                    row.cells[1].children[1].children[0].children[1].children[1].cells[date].innerText = new Date(oAttribute.date).getHours() + ":" + new Date(oAttribute.date).getMinutes();
+                                    row.cells[1].children[1].children[0].children[1].children[1].cells[date].innerText = hours + ":" + minutes;
                                 } else if (row.cells[1].children[1].children[0].children[1].children[2].cells[date].innerText == "") {
-                                    row.cells[1].children[1].children[0].children[1].children[2].cells[date].innerText = new Date(oAttribute.date).getHours() + ":" + new Date(oAttribute.date).getMinutes();
+                                    row.cells[1].children[1].children[0].children[1].children[2].cells[date].innerText = hours + ":" + minutes;
                                 } else if (row.cells[1].children[1].children[0].children[1].children[3].cells[date].innerText == "") {
-                                    row.cells[1].children[1].children[0].children[1].children[3].cells[date].innerText = new Date(oAttribute.date).getHours() + ":" + new Date(oAttribute.date).getMinutes();
+                                    row.cells[1].children[1].children[0].children[1].children[3].cells[date].innerText = hours + ":" + minutes;
                                 }
                                 return;
                             } else {
@@ -208,14 +220,20 @@ window.setTimeout(function () {
                                 } else if (new Date(oAttribute.date).getDay() == 6) {
                                     date = 6;
                                 }
+                                 var minutes = new Date(oAttribute.date).getMinutes();
+                                 if(minutes == 0){
+                                     minutes = "0" + minutes;
+                                 }
+                                 var hours = new Date(oAttribute.date).getHours()
+
                                 if (row.cells[1].children[1].children[0].children[1].children[0].cells[date].innerText == "") {
-                                    row.cells[1].children[1].children[0].children[1].children[0].cells[date].innerText = new Date(oAttribute.date).getHours() + ":" + new Date(oAttribute.date).getMinutes();
+                                    row.cells[1].children[1].children[0].children[1].children[0].cells[date].innerText = hours + ":" + minutes;
                                 } else if (row.cells[1].children[1].children[0].children[1].children[1].cells[date].innerText == "") {
-                                    row.cells[1].children[1].children[0].children[1].children[1].cells[date].innerText = new Date(oAttribute.date).getHours() + ":" + new Date(oAttribute.date).getMinutes();
+                                    row.cells[1].children[1].children[0].children[1].children[1].cells[date].innerText = hours + ":" + minutes;
                                 } else if (row.cells[1].children[1].children[0].children[1].children[2].cells[date].innerText == "") {
-                                    row.cells[1].children[1].children[0].children[1].children[2].cells[date].innerText = new Date(oAttribute.date).getHours() + ":" + new Date(oAttribute.date).getMinutes();
+                                    row.cells[1].children[1].children[0].children[1].children[2].cells[date].innerText = hours + ":" + minutes;
                                 } else if (row.cells[1].children[1].children[0].children[1].children[3].cells[date].innerText == "") {
-                                    row.cells[1].children[1].children[0].children[1].children[3].cells[date].innerText = new Date(oAttribute.date).getHours() + ":" + new Date(oAttribute.date).getMinutes();
+                                    row.cells[1].children[1].children[0].children[1].children[3].cells[date].innerText = hours + ":" + minutes;
                                 }
                                 return;
                             }
@@ -248,14 +266,20 @@ window.setTimeout(function () {
                             } else if (new Date(oAttribute.date).getDay() == 6) {
                                 var date = 6;
                             }
+                             var minutes = new Date(oAttribute.date).getMinutes();
+                             if(minutes == 0){
+                                 minutes = "0" + minutes;
+                             }
+                             var hours = new Date(oAttribute.date).getHours()
+
                             if (row.cells[1].children[1].children[0].children[1].children[0].cells[date].innerText == "") {
-                                row.cells[1].children[1].children[0].children[1].children[0].cells[date].innerText = new Date(oAttribute.date).getHours() + ":" + new Date(oAttribute.date).getMinutes();
+                                row.cells[1].children[1].children[0].children[1].children[0].cells[date].innerText = hours + ":" + minutes;
                             } else if (row.cells[1].children[1].children[0].children[1].children[1].cells[date].innerText == "") {
-                                row.cells[1].children[1].children[0].children[1].children[1].cells[date].innerText = new Date(oAttribute.date).getHours() + ":" + new Date(oAttribute.date).getMinutes();
+                                row.cells[1].children[1].children[0].children[1].children[1].cells[date].innerText = hours + ":" + minutes
                             } else if (row.cells[1].children[1].children[0].children[1].children[2].cells[date].innerText == "") {
-                                row.cells[1].children[1].children[0].children[1].children[2].cells[date].innerText = new Date(oAttribute.date).getHours() + ":" + new Date(oAttribute.date).getMinutes();
+                                row.cells[1].children[1].children[0].children[1].children[2].cells[date].innerText = hours + ":" + minutes
                             } else if (row.cells[1].children[1].children[0].children[1].children[3].cells[date].innerText == "") {
-                                row.cells[1].children[1].children[0].children[1].children[3].cells[date].innerText = new Date(oAttribute.date).getHours() + ":" + new Date(oAttribute.date).getMinutes();
+                                row.cells[1].children[1].children[0].children[1].children[3].cells[date].innerText = hours + ":" + minutes
                             }
                             return;
                         }
