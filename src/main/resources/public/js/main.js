@@ -269,6 +269,6 @@ window.setTimeout(function () {
 
     }   //if
 
-}, 200); // TimeOut
+}, 300); // TimeOut
 
 
