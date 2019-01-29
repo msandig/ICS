@@ -48,14 +48,17 @@ public class PresentationManager {
         return this.movieDao.getMovieByTitle(title);
     }
 
-    public List<Presentation> getAllPresentations(long start, long end) {
+    public Object getAllPresentations(long start, long end) {
+        if(start <= 0 || end <= 0){
+            return ResultMessage.WRONG_PARAMETERS;
+        }
         List<Presentation> presentations = this.presentationDao.getPresentationsBetweenInterval(start, end);
         this.mapRooms(presentations);
         return presentations;
     }
 
     public Object getAllPresentationsByMovie(long start, long end, String movieID) {
-        if (movieID == null || movieID.isEmpty() || start == 0 || end == 0)
+        if (movieID == null || movieID.isEmpty() || start <= 0 || end <= 0)
             return ResultMessage.WRONG_PARAMETERS;
 
         List<Presentation> presentations = this.presentationDao.getPresentationsByMovieAndDateInterval(start, end, movieID);
@@ -68,7 +71,7 @@ public class PresentationManager {
     }
 
     public Object getAllMoviesBetweenInterval(long start, long end){
-        if(start == 0 || end == 0)
+        if(start <= 0 || end <= 0)
             return ResultMessage.WRONG_PARAMETERS;
 
         return this.movieDao.getMoviesBetweenDate(start, end);
@@ -98,6 +101,9 @@ public class PresentationManager {
     }
 
     public Object persistPresentation(Presentation presentation) {
+        if(presentation == null)
+            return ResultMessage.MISSING_PRESENTATION_TO_PERSIST;
+
         if (presentation.getUuid().isEmpty())
             return ResultMessage.MISSING_PRESENTATION_ID;
         if (Objects.isNull(presentation.getRoom()) || presentation.getRoom().getUuid().isEmpty())
@@ -138,7 +144,10 @@ public class PresentationManager {
     }
 
 
-    public List<Presentation> getAllPresentationsByTitle(long start, long end, String title) {
+    public Object getAllPresentationsByTitle(long start, long end, String title) {
+        if (title == null || title.isEmpty() || start <= 0 || end <= 0)
+            return ResultMessage.WRONG_PARAMETERS;
+
         List<Presentation> presentations = this.presentationDao.getPresentationsByTitleAndDateInterval(start, end, title);
         this.mapRooms(presentations);
         return presentations;

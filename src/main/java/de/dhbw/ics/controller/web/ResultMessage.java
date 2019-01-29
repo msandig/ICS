@@ -46,6 +46,8 @@ public class ResultMessage {
     public static final String COULD_NOT_DELETE_PRESENTATION = "Could not delete presentation!";
     public static final String USER_NEEDS_PASSWORD = "User exists with password!";
 
+    public static final String MISSING_PRESENTATION_TO_PERSIST = "No presenation available for persistence!";
+
 
 
 }

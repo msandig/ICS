@@ -41,19 +41,19 @@ public class BusySeatMapper implements RowMapper<BusySeat> {
 
         BusySeat busySeat = null;
         if (this.room != null && this.room.getSeats().size() != 0 && this.presentation != null && this.presentation.getUuid().equals(presentationUUID)) {
-            if(this.seat == null) {
+            if (this.seat == null) {
                 Seat s = this.room.getSeats().get(seatUUID);
                 busySeat = new BusySeat(busy, s, this.presentation, locked, sessionID, timestamp);
                 busySeat.setSeat(s);
                 s.addBusy(busySeat);
                 s.setCurrentBusySeat(busySeat);
-            }else{
+            } else {
                 busySeat = new BusySeat(busy, this.seat, this.presentation, locked, sessionID, timestamp);
                 this.seat.addBusy(busySeat);
             }
-        }else{
-            Seat s = new Seat(seatUUID, null, null, 0, 0 );
-            busySeat = new BusySeat(busy, s, new Presentation(presentationUUID, null,null, 0, null), locked, sessionID, timestamp);
+        } else {
+            Seat s = new Seat(seatUUID, null, null, 0, 0);
+            busySeat = new BusySeat(busy, s, new Presentation(presentationUUID, null, null, 0, null), locked, sessionID, timestamp);
             s.addBusy(busySeat);
         }
         return busySeat;
