@@ -1,6 +1,6 @@
 .front{
-    width: 400px;
-    margin: 5px 32px 45px 32px;
+    width: 500px;
+    margin: 5px 32px 45px 110px;
     background-color: darkgray;
     color: white;
     text-align: center;
@@ -82,7 +82,7 @@ div.seatCharts-seat.unavailable {
 
 div.seatCharts-container {
     border-right: 1px solid #adadad;
-    width: 500px;
+    width: 760px;
     padding: 20px;
     float: left;
 }
@@ -146,6 +146,8 @@ span.seatCharts-legendDescription {
 }
 
 .ticket-outer{
-    margin: 10% 10% 10% 10% ;
+    margin: 10% 5% 10% 5% ;
 }
-.seat-map-inner{}
+.seat-map-inner{
+    width: 1000px;
+}

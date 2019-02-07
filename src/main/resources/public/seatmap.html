@@ -35,28 +35,29 @@
     <script type="text/javascript" src="js/seatmap.controller.js"></script>
 
 
+
 </head>
 <body style="padding-top: 80px; background-color: darkgray">
 <div style="padding-top: 65px; max-width: 1300px; margin: 0 auto" class="bg-dark">
     <!-- Navbar -->
     <div id="Navbar"></div>
     <!--Caption -->
-    <h1 style="margin-top: 3%; margin-left: 3%; color: darkgray">Ihr aktuelles Filmprogramm vom dd.mm.yyyy bis dd.mm.yyyy </h1>
+    <h1 style="margin-top: 3%; margin-left: 3%; color: darkgray">Ihr aktuelles Filmprogramm vom 11.02.2019 bis 17.02.1019 </h1>
 
     <div class="ticket-outer">
         <div class="seat-map-inner" id="seat-map">
             <div class="front">SCREEN</div>
         </div>
         <div class="booking-details">
-            <h1>Aquaman</h1>
-            <p>Vorstellung:<span> November 3, 21:00</span></p>
+            <h1 id="title"></h1>
+            <p>Vorstellung:<span id="date"></span></p>
             <p>Gewählte Sitze: </p>
             <ul id="selected-seats"></ul>
 
             <p>Tickets: <span id="counter">0</span></p>
             <p>Total: <b><span id="total">0</span></b> €</p>
 
-            <button class="btn checkout-button">Reservieren</button>
+            <button class="btn checkout-button" onclick="reserve()">Reservieren</button>
             <button class="btn checkout-button">Kaufen</button>
 
 
