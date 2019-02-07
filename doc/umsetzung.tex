@@ -15,7 +15,7 @@
 	
 	\subsection{IntelliJ IDEA}
 	Wir haben uns für die Entwicklungsumgebung IntelliJ IDEA entschieden. Diese wurde von dem Software-Unternehmens JetBrains entwickelt. Sie unterstützt verschiedene Programmiersprachen wie Java, Kotlin, Groovy und Scala. Wir nutzten die OpenSource-Version \enquote{Community Edition}, jedoch gibt es auch eine kostenpflichtige, die \enquote{Ultimate Edition}. Zu den für uns wichtigen Features gehören außerdem die Unterstützung von Apache Maven, JUnit und Tools zur Versionskontrolle, insbesondere Git. Außerdem Code Coverage und auch Test Coverage sind in IntelliJ IDEA integriert. Dieser Versionsumfang kann zusätzlich mit Plug-ins erweitert werden. Diese werden teils von JetBrains, teils von der IntelliJ-Community entwickelt.
-	\\Für uns gab es viele Punkte dir für die Nutzung von IntelliJ IDEA gegenüber anderen Entwicklungsumgebungen sprachen. IntelliJ hat eine bessere Konsistenz als Eclipse; alle Editoren und Tools sehen für alle Programmiersprachen gleich aus. Die Editoren für JavaScript, TypeScript, \ac{HTML} und CSS sind von JetBrains besser ausgearbeitet als die von Eclipse.
+	\\Für uns gab es viele Punkte dir für die Nutzung von IntelliJ IDEA gegenüber anderen Entwicklungsumgebungen sprachen. IntelliJ hat eine bessere Konsistenz als Eclipse; alle Editoren und Tools sehen für alle Programmiersprachen gleich aus. Die Editoren für JavaScript, TypeScript, HTML und \acs{CSS} sind von JetBrains besser ausgearbeitet als die von Eclipse.
 	\\IntelliJ IDEA ist außerdem schnell und komfortabel. Die Code-Vervollständigung ist sehr schnell und nutzt auch andere eigene Klasse. Dadurch findet man schneller Fehlerquellen und bekommt meist korrekte Lösungsvorschläge angeboten. Diese muss man anders als bei anderen Entwicklungsumgebungen nicht mit der Maus anklicken sondern sie sind über eine Tastenkombination erreichbar. Eine weitere Erleichterung für Entwickler ist, dass man nie speichern muss, dies passiert automatisch. Dies spart einem nicht nur Zeit, sondern verhindert auch das Vergessen des Speicherns und so Verlust von Daten.
 	\\IntelliJ enthält außerdem eine \enquote{Duplicate Code Analyse}, so kann man gleichen Code schnell entdecken und kann den doppelten Code entfernen.
 	\\IntelliJ bietet GitHub Support, man kann Projekte direkt in GitHub importieren, man kann seinen Code über einen Knopfdruck in IntelliJ zu dem GitHub Repository hinzufügen, oder sich die neusten Code-Änderungen anzeigen lassen. 
@@ -32,24 +32,20 @@
 	\\Für alle Sachen, die komplizierter sind als bei anderen Textverarbeitungssystemen ist außerdem eine sehr aktive Gemeinschaft da, es gibt besonders im wissenschaftlichen Bedarf für alles Ergänzungen.
 	
 	\section[Backend]{Backend{\hfill \normalsize Martin Sandig}}
-	\subsection{Grundgerüst}\label{umsetzung:backend:grundgeruest}
-	--> Komponentendiagramm erstellen
-	
+\subsection{Grundgerüst}\label{umsetzung:backend:grundgeruest}
+	Das Backend wurde anhand des Fachkonzeptes implementiert. Da die grundlegende Anforderung für dieses, die Umsetzung in Java ist, wurde hierzu ein Java-Projekt mit Maven aufgesetzt. Apache Maven ist ein Software-Projektmanagement- und Verständniswerkzeug.\autocite{ApacheSoftwareFoundation} Es dient unter anderem dazu, den Aufbau von Projekten zu definieren, benutzte Frameworks zentral zu organisieren sowie einen Projektlebenszyklus abzubilden. Der in Maven implementierte Lebenszyklus umfasst mehrere Stadien, welche sich vom \glqq Clean\grqq, also dem Aufräumen eines Projektes, über \glqq Test\grqq \, bis zum \glqq Install\grqq \, bzw. \glqq Deploy\grqq \, erstrecken. Zwischen diesen Stadien existieren noch viele mehr, welche jedoch für diese Seminararbeit keine Rolle spielen sollen. Am Ende des \glqq Install\grqq -Stadiums steht eine ausführbare JAR-Datei zur Verfügung.
 
+	Die Konfiguration von Maven wird in einem \ac{POM} definiert. Hierzu existiert eine \glqq pom.xml\grqq-Datei im \ac{ICS}-Projekt. Die eigentliche Umsetzung des Backendes erfolgte mit Hilfe des \glqq Spring\grqq -Frameworks. Spring ist ein Framework, welches die Entwicklung von Java-Projekten vereinfachen soll sowie ein breites Spektrum an Funktionalitäten für Geschäftslogiken mitliefert.  Genauer gesagt beruht das Backend auf \glqq Spring-Boot\grqq, welches ein Bestandteil des Spring-Frameworks ist. Es dient dazu eigenständig lauffähige Spring-Anwendungen zu entwickeln, wobei alle nötigen Bibliotheken mitgeliefert werden.\autocite{PivotalSoftwareInc} In diesem Fall handelt es sich um eine Spring-Boot-Webanwendung. Für die Konfiguration des \ac{POM} gibt es vordefinierte Templates, sogenannte \glqq Archetypes\grqq. Aus diesen heraus lässt sich ein Maven-Projekt generieren, welches alle nötigen Basiseinstellungen mitbringt. Einen solcher Archetype existiert auch für Spring-Boot-Anwendungen, welcher für das \ac{ICS}-Projekt genutzt wurde.
 
-	Das Backend wurde anhand des Fachkonzeptes implementiert. Da die grundlegende Anforderung für dieses, die Umsetzung in Java ist, wurde hierzu ein Java-Projekt mit Maven aufgesetzt. Apache Maven ist ein Software-Projektmanagement- und Verständniswerkzeug.\autocite{ApacheSoftwareFoundation} Es dient unter anderem dazu, den Aufbau von Projekten zu definieren, benutzte Frameworks zentral zu organisieren sowie einen Projektlebenszyklus abzubilden. Der in Maven implementierte Lebenszyklus umfasst mehrere Stadien, welche sich vom \glqq Clean\grqq, also dem Aufräumen eines Projektes, über \glqq Test\grqq \, bis zum \glqq Install\grqq \, bzw. \glqq Deploy\grqq \, erstrecken. Zwischen diesen Stadien existieren noch viele mehr, welche für diese Seminararbeit keine Rolle spielen sollen. Am Ende des \glqq Install\grqq -Stadiums steht eine ausführbare JAR-Datei zur Verfügung.
+	Das Spring-Framework arbeitet mit Hilfe von \ac{IoC}-Containern. \ac{IoC} ist ein Prinzip bei der Software-Entwicklung, bei der die Steuerung der Anwendung bzw. die Steuerung von Objekten auf einen Container bzw. an ein Framework übertragen wird. Die \ac{IoC}-Container im Spring-Framework arbeiten nach dem \ac{DI}-Konzept, bei dem Abhängigkeiten von Objekten behandelt werden. Durch dieses Konzept müssen Objekte ihrer Abhängigkeiten nicht selber suchen sondern bekommen die benötigten Ressourcen bzw. Abhängigkeitsobjekte vom Framework zugewiesen.\autocite{WikimediaFoundationInc.2019d} Der \ac{IoC}-Container, welcher in diesem Projekt genutzt wurde nennt sich \glqq Application-Context \grqq. Objekte, welche sich in diesem Container bzw. Kontext befinden werden \glqq Spring Beans\grqq \, genannt. Spring Beans können auf verschiedene Arten deklariert und initiiert werden. Im Fall dieses Projektes werden alle benötigten Spring Beans beim Starten der Anwendung initiiert. Die Deklaration der Beans erfolgt zum einen durch Java-Annotations innerhalb von Java-Klassen. Zum Anderen werden die Beans in einer Konfigurationsdatei des Application-Contextes definiert. Diese Datei nennt sich \glqq applicationContext.xml\grqq.
 
-	Die Konfiguration von Maven wird in einem \ac{POM} definiert. Hierzu existiert eine \glqq pom.xml\grqq-Datei im \ac{ICS}-Projekt. Die eigentliche Umsetzung des Backendes erfolgte mit Hilfe des \glqq Spring\grqq -Frameworks. Spring ist ein Framework, welches für die Entwicklung von Java-Projekten vereinfachen soll sowie ein breites Spektrum an Funktionalitäten für Geschäftslogiken mitliefert.  Genauer gesagt beruht das Backend auf \glqq Spring-Boot\grqq, welches ein Bestandteil des Spring-Frameworks ist. Es dient dazu eigenständig lauffähige Spring-Anwendungen zu entwickeln, wobei alle nötigen Bibliotheken mitgeliefert werden.\autocite{PivotalSoftwareInc} In diesem Fall handelt es sich um eine Spring-Boot-Webanwendung. Für die Konfiguration des \ac{POM} gibt es vordefinierte Templates, sogennante \glqq Archetypes\grqq. Aus diesen heraus lässt sich ein Maven-Projekt generieren, welches alle nötigen Basiseinstellungen mitbringt. Einen solcher Archetype existiert auch für Spring-Boot-Anwendungen, welcher für das \ac{ICS}-Projekt genutzt wurde.
+	Um nun die Spring-Boot-Anwendung ausführbar zu machen wurden zwei Klassen, siehe Quelltext \ref{lst:IcsApplication} und \ref{lst:IcsWebConfiguration} angelegt. Innerhalb der \glqq IcsApplication\grqq -Klasse wird mit Hilfe der Annotation \glqq @SpringBootApplication\grqq \, und dem Inhalt der \glqq main-Methode\grqq \, definiert, dass es sich um eine Spring-Boot-Anwendung handelt. Die Klasse  \glqq IcsWeb\\Configuration\grqq \, dient zur erweiterten Konfiguration der Spring-Boot-Anwendung. Durch die Annotation \glqq @Configuration\grqq \, und die Implementierung des \glqq WebMvcConfigurer\grqq -Interface wird dem Spring-Framework mitgeteilt, dass es sich hierbei um eine Konfigurationsklasse handelt, welche beim Starten der Anwendung berücksichtigt werden muss. Durch die Annotation \glqq @ImportResource(...)\grqq \, wird die Konfigurationsdatei für den Application-Context geladen. \\
 
-	Das Spring-Framework arbeitet mit Hilfe von \ac{IoC}-Containern. \ac{IoC} ist ein Prinzip bei der Software-Entwicklung, bei der man die Steuerung der Anwendung bzw. die Steuerung von Objekten auf einen Container bzw. an ein Framework übertragen wird. Die \ac{IoC}-Container im Spring-Framework arbeiten nach dem \ac{DI}-Konzept, bei dem Abhängigkeiten von Objekten behandelt werden. Durch dieses Konzept müssen Objekte ihrer Abhängigkeiten nicht selber suchen sondern bekommen die benötigten Ressourcen bzw. Abhängigkeitsobjekte vom Framework zugewiesen. (QUELLE) Der \ac{IoC}-Container, welcher in diesem Projekt genutzt wurde nennt sich \glqq Application-Context \grqq. Objekte, welche sich in diesem Container bzw. Kontext befinden werden \glqq Spring Beans\grqq \, genannt. Spring Beans können auf verschiedene Arten deklariert und initiiert werden. Im Fall dieses Projektes werden alle benötigten Spring Beans beim Starten der Anwendung initiiert. Die Deklaration der Beans erfolgt zum einen durch Java-Annotations innerhalb von Java-Klassen. Zum Anderen werden die Beans in einer Konfigurationsdatei des Application-Contextes definiert. Diese Datei nennt sich \glqq applicationContext.xml\grqq.
-
-	Um nun die Spring-Boot-Anwendung ausführbar zu machen wurden zwei Klassen, siehe Quelltext \ref{lst:IcsApplication} und \ref{lst:IcsWebConfiguration} angelegt. Innerhalb der \glqq IcsApplication\grqq -Klasse wird mit Hilfe der Annotation \glqq @SpringBootApplication\grqq \, und dem Inhalt der \glqq main-Methode\grqq \, definiert, dass es sich um eine Spring-Boot-Anwendung handelt. Die Klasse \glqq IcsWebConfiguration\grqq \, dient zur erweiterten Konfiguration der Spring-Boot-Anwendung. Durch die Annotation \glqq @Configuration\grqq \, und die Implementierung des \glqq WebMvcConfigurer\grqq -Interface wird dem Spring-Framework mitgeteilt, dass es sich hierbei um eine Konfigurationsklasse handelt, welche beim Starten der Anwendung berücksichtigt werden muss. Durch die Annotation \glqq @ImportResource(...)\grqq \, wird die Konfigurationsdatei für den Application-Context geladen.
-
-\lstset{language=Java}
-\begin{lstlisting}[caption={IcsApplication.java}, label={lst:IcsApplication}]
-@SpringBootApplication
-@EnableAutoConfiguration
-@EnableScheduling
+\lstset{language=Java, moredelim=[is][\textcolor{darkorange}]{\%\%}{\%\%}}
+\begin{lstlisting}[caption={IcsApplication.java}, label={lst:IcsApplication}, basicstyle=\ttfamily\fontsize{10}{12}\selectfont]
+%%@SpringBootApplication%%
+%%@EnableAutoConfiguration%%
+%%@EnableScheduling%%
 public class IcsApplication {
   public static void main(String[] args) {
 	  SpringApplication.run(IcsApplication.class, args);
@@ -57,13 +53,15 @@ public class IcsApplication {
 }
 \end{lstlisting}
 
-\lstset{language=Java}
+\newpage
+
+\lstset{language=Java, moredelim=[is][\textcolor{darkorange}]{\%\%}{\%\%}}
 \begin{lstlisting}[caption={IcsWebConfiguration.java}, label={lst:IcsWebConfiguration}]
-@Configuration
-@ImportResource("classpath:spring/applicationContext.xml")
+%%@Configuration%%
+%%@ImportResource%%("classpath:spring/applicationContext.xml")
 public class IcsWebConfiguration implements WebMvcConfigurer {
   /**Something more **/
-  @Override
+  %%@Override%%
   public void addResourceHandlers(ResourceHandlerRegistry registry) {
     if (System.getProperty("os.name").contains("Windows")) {
 	  registry
@@ -84,16 +82,16 @@ public class IcsWebConfiguration implements WebMvcConfigurer {
 
 	Da es sich beim \ac{ICS}-Projekt um eine Webanwendung handelt wurde in der \glqq IcsWeb\\Configuration\grqq -Klasse, siehe Quelltext \ref{lst:IcsWebConfiguration}, ein weiterer \glqq ResourceHandler\grqq \, hinzugefügt, welcher einen \glqq content\grqq-Ordner auf dem Dateisystem zu einer URL (\glqq localhost:8080/content/*\grqq) der Webanwendung zuordnet. Dieser Ordner dient als Ablage für anzuzeigende Bilder der späteren Webseite. Damit dieser Ordner auf dem Dateisystem vorhanden ist, wurde ein Klasse \glqq FileSystemInitilizer\grqq \, implementiert. Beim Start der Anwendung wird ein Spring-Bean dieser Klasse initiiert, welches eine Ordnerstruktur auf dem Dateisystem anlegt. Hierfür ist es möglich eine Umgebungsvariable für die Anwendung zu setzten. Sollte diese nicht gesetzt worden sein, wird stattdessen der \glqq tmp\grqq- Ordner auf dem Root-Verzeichnis des Betriebssystems als Ausgangsordner für die Dateistruktur der Anwendung verwendet bzw. gegebenenfalls angelegt.
 	
-	Dadurch, dass Spring selbstständig Einstellungen für die Webanwendung vornimmt war es nicht nötig weitere Konfigurationen für eine Webanwendung vorzunehmen. Beispielsweise verbindet Spring automatisch einen \glqq public\grqq Ordner im Projekt mit der laufenden Webanwendung. Innerhalb dieses Ordners werden alle Dateien abgelegt (HTML, JavaScript, CSS), welche zum Anzeigen der Website relevant sind.
+	Dadurch, dass Spring selbstständig Einstellungen für die Webanwendung vornimmt war es nicht nötig weitere Konfigurationen für eine Webanwendung vorzunehmen. Beispielsweise verbindet Spring automatisch einen \glqq public\grqq-Ordner im Projekt mit der laufenden Webanwendung. Innerhalb dieses Ordners werden alle Dateien abgelegt (HTML, JavaScript, \acs{CSS}), welche zum Anzeigen der Website relevant sind.
 
 	\subsection{Datenbank} \label{umsetzung:backend:datenbank}
-	Für die \ac{ICS}-Anwendung wurde beschlossen eine Datenbank als Persistenz-Schicht zu verwenden. Das Schema dieser wurde anhand des ER-Modells aus der Entwurfsphase (ER DIA!!!!) entwickelt. Hierzu wurde ein Java-Framework namens \glqq Liquibase\grqq \, verwendet.\autocite{Liquibase} Liquibase ist ein Framework zum Verfolgen, Verwalten und Anwenden von Datenbankschemaänderungen, welches unabhängig von der zugrundeliegenden Datenbank arbeitet. Das Framework arbeitet mit einem sogenannten \glqq Database-Changelog\grqq, in welchem die Änderungshistorie des Datenbankschemas festgehalten wird. Der Changelog wird in einer XML-Struktur festgehalten. Die Änderungshistorie setzt sich aus \glqq ChangeSet\grqq-Einträgen zusammen, welche mit einen eindeutigen \ac{ID} und dem Autor gekennzeichnet werden. Ein Beispiel bzw. ein Auszug des ChangeLog's der \ac{ICS}-Anwendung ist in Quelltext \ref{lst:dbChangelog} zu sehen.
+	Für die \ac{ICS}-Anwendung wurde beschlossen eine Datenbank als Persistenz-Schicht zu verwenden. Das Schema dieser wurde anhand des ER-Modells aus der Entwurfsphase, siehe Abbildung \ref{fig:erModell}, entwickelt. Hierzu wurde ein Java-Framework namens \glqq Liquibase\grqq \, verwendet.\autocite{Liquibase} Liquibase ist ein Framework zum Verfolgen, Verwalten und Anwenden von Datenbankschemaänderungen, welches unabhängig von der zugrundeliegenden Datenbank arbeitet. Das Framework arbeitet mit einem sogenannten \glqq Database-Changelog\grqq, in welchem die Änderungshistorie des Datenbankschemas festgehalten wird. Der Changelog wird in einer XML-Struktur festgehalten. Die Änderungshistorie setzt sich aus \glqq ChangeSet\grqq-Einträgen zusammen, welche mit einen eindeutigen \ac{ID} und dem Autor gekennzeichnet werden. Ein Beispiel bzw. ein Auszug des ChangeLog's der \ac{ICS}-Anwendung ist in Quelltext \ref{lst:dbChangelog} zu sehen.
 	
 	\lstset{
 		language=XML,
 		morekeywords={encoding,databaseChangeLog,changeSet,column,constraints,createTable,addColumn,modifyDataType,xs:schema,xs:element,xs:complexType,xs:sequence,xs:attribute,xsi:schemaLocation,xmlns:xsi,xmlns}
 	}
-\begin{lstlisting}[caption={Database-Changelog Liquibase}, label={lst:dbChangelog}]
+\begin{lstlisting}[caption={Database-Changelog Liquibase}, label={lst:dbChangelog}, basicstyle=\ttfamily\fontsize{10}{12}\selectfont]
 <databaseChangeLog
   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -118,76 +116,115 @@ public class IcsWebConfiguration implements WebMvcConfigurer {
 
 	Der Database-Changelog, siehe Quelltext \ref{lst:dbChangelog}, wird bei jedem Starten der Anwendung mit der zugrundeliegenden Datenbank verglichen. Neue Änderungen bzw. neue ChangeSets, werden anschließend auf der Datenbank angewandt. Hierin liegt auch der große Vorteil von Liquibase. Wechselt man die Datenbank im Hintergrund, so muss man keinen großen Aufwand betreiben, die Datenbank einzurichten. Sollte das Datenbankschema beim Starten der Anwendung nicht mehr mit der Änderungshistorie übereinstimmen, so werden zum Schutz der Anwendung der Startvorgang unterbrochen und entsprechende Fehlermeldungen erzeugt.
 	
-	\begin{figure}[H]
-		\centering 
-		\includegraphics[width=0.8\textwidth]{img/liquibase_beans}
-		\captionsetup{format=hang}
-		\caption[Spring-Konfiguration für Liquibase]{\label{fig:liquibase_spring}Spring-Konfiguration für Liquibase}
-	\end{figure}
+	\lstset{
+		language=XML,
+		morekeywords={encoding,bean,property,contructor-arg,constraints,createTable,addColumn,modifyDataType,xs:schema,xs:element,xs:complexType,xs:sequence,xs:attribute,xsi:schemaLocation,xmlns:xsi,xmlns}
+	}
+\begin{lstlisting}[caption={Spring-Konfiguration für Liquibase}, label={lst:liquibase_spring}, basicstyle=\ttfamily\fontsize{10}{12}\selectfont]
+<bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
+  <property name="dataSource" ref="dataSource"/>
+  <property name="changeLog" value="classpath:spring/database.xml"/>
+</bean>
+
+<bean id="dataSource" factory-bean="dataSourceFactory" factory-method="getDataSource">
+  <constructor-arg value="false"/>
+</bean>
+
+<bean id="dataSourceFactory" class="de.dhbw.ics.database.DatabaseFactory"/>
+\end{lstlisting}
 	
-	Ein weiterer Vorteil von Liquibase ist, dass es eine Integration für das Spring-Framework, siehe Kapitel \ref{umsetzung:backend:grundgeruest}, mit sich bringt. Hierfür wurden mehrere Spring-Beans definiert, welche in Abbildung \ref{fig:liquibase_spring} zusehen sind. Wie man in dieser Abbildung erkennen kann, hängt das Bean für Liquibase (mit der \ac{ID} \glqq liquibase\grqq) von zwei Parametern ab. Der Parameter \glqq changelog\grqq \, gibt den Pfad zur Datei für die Konfiguration bzw. der Änderungshistorie an. Der zweite Parameter \glqq dataSource\grqq \, hat als Übergabewert eine Referenz zu einem anderen Spring-Bean. Dieses Bean liefert ein \glqq DataSource\grqq-Objekt zurück welches in der Klasse \glqq DataSourceFactory\grqq erzeugt wird. Diese DataSource enthält die Verbindungsdaten für die Datenbankverbindung. Im aktuellen Release des \ac{ICS}-Projektes sind die Verbindungsdaten noch nicht parametrisiert, sondern fest im Code implementiert. Für einen späteren Auslieferungs-Release würden die Verbindungsdaten, wie URL, Passwort und Benutzername über Umgebungsvariablen setzbar sein.
+%	\begin{figure}[H]
+%		\centering 
+%		\includegraphics[width=0.8\textwidth]{img/liquibase_beans}
+%		\captionsetup{format=hang}
+%		\caption[Spring-Konfiguration für Liquibase]{\label{fig:liquibase_spring}Spring-Konfiguration für Liquibase}
+%	\end{figure}
+	
+	Ein weiterer Vorteil von Liquibase ist, dass es eine Integration für das Spring-Framework, siehe Kapitel \ref{umsetzung:backend:grundgeruest}, mit sich bringt. Hierfür wurden mehrere Spring-Beans definiert, welche in Quelltext \ref{lst:liquibase_spring} zusehen sind. Wie man in dieser Abbildung erkennen kann, hängt das Bean für Liquibase (mit der \ac{ID} \glqq liquibase\grqq) von zwei Parametern ab. Der Parameter \glqq changelog\grqq \, gibt den Pfad zur Datei für die Konfiguration bzw. der Änderungshistorie an. Der zweite Parameter \glqq dataSource\grqq \, hat als Übergabewert eine Referenz zu einem anderen Spring-Bean. Dieses Bean liefert ein \glqq DataSource\grqq-Objekt zurück welches in der Klasse \glqq DataSourceFactory\grqq \, erzeugt wird. Diese DataSource enthält die Verbindungsdaten für die Datenbankverbindung. Im aktuellen Release des \ac{ICS}-Projektes sind die Verbindungsdaten noch nicht parametrisiert, sondern fest im Code implementiert. Für einen späteren Auslieferungs-Release würden die Verbindungsdaten, wie URL, Passwort und Benutzername über Umgebungsvariablen setzbar sein.
 	
 	Als Standard-Datenbank für die \ac{ICS}-Anwendung wurde eine H2-Datenbank verwendet. Die H2-Datenbank ist eine leichtgewichtige, in Java entwickelte Datenbank.\autocite{H2} Der Vorteil dieser ist, dass sie sehr einfach aufgebaut ist, zur Laufzeit angelegt oder bei Bedarf auch in Memory erzeugt werden kann. Im Fall von \ac{ICS} wird eine H2-Datenbank beim erstem Starten der Anwendung in dem Ordner \glqq database\grqq, welcher sich in der Dateistruktur der Anwendung befindet, angelegt. Dieser Ordner wird von dem im Kapitel \ref{umsetzung:backend:grundgeruest} erwähnten \glqq FileSystemInitializer\grqq \, erstellt, falls dieser noch nicht vorhanden ist.
 
 	\subsection{Fachkonzept}
 	
-	Das Fachkonzept wurde anhand des Entwurfs, siehe Kapitel \ref{entwurf}, entwickelt. Hierzu wurde sich an verschiedenen Entwicklungskonzepten orientiert und bzw. an diese angelehnt. Ein Beispiel hierfür ist \ac{DDD}. \ac{DDD} ist ein von Eric Evans geprägter Begriff, welcher eine Herangehensweise an die Modellierung komplexer Software beschreibt. \autocite{WikimediaFoundationInc.2019a}
+	Das Fachkonzept wurde anhand des Entwurfs, siehe Kapitel \ref{entwurf}, entwickelt. Hierzu wurde sich an verschiedenen Entwicklungskonzepten orientiert bzw. an diese angelehnt. Ein Beispiel hierfür ist das \ac{DDD}. \ac{DDD} ist ein von Eric Evans geprägter Begriff, welcher eine Herangehensweise an die Modellierung komplexer Software beschreibt. \autocite{WikimediaFoundationInc.2019a}
 	
 	\subsubsection{Anbindung der Datenbank}
+	Um die einzelnen Entitäten der Datenbank im Backend zu verwirklichen, wurde ein zu den Entwurfsmustern des \ac{DDD}, nämlich der \glqq Value-Objects\grqq \, bzw. der \glqq Entity-Objects\grqq, ähnliches Verfahren angewandt. Value-Objects zeichnen sich damit aus, dass sie keine Identität besitzen und sich nur durch ihre Eigenschaften definieren. Entity-Objects hingegen werden nicht durch ihre Eigenschaften sondern anhand ihrer Identität definiert. \autocite{WikimediaFoundationInc.2019a} Im Fall von \ac{ICS} wurde eine Vermischung dieser beiden Muster angewandt, da sich die Objekte zum einen durch ihre Identität aber auch durch ihre Eigenschaften definieren (Aggregate). Für jede Entität bzw. Tabelle der Datenbank wurde eine eigene Klasse (folglich genannt Entitätenklasse) angelegt. Diese Klassen, wie zum Beispiel \glqq User\grqq , \glqq Room\grqq , oder \glqq Presentation\grqq wurden im \glqq de.dhbw.ics.vo\grqq-Paket des \ac{ICS}-Projektes angelegt.
 	
-	Um die einzelnen Entitäten der Datenbank im Backend zu verwirklichen, wurde ein zu den Entwurfsmustern des \ac{DDD}, nämlich der \glqq Value-Objects\grqq \, bzw. der Entity-Objects, ähnliches Verfahren angewandt. Value-Objects zeichnen sich damit aus, dass sie keine Identität besitzen und sich nur durch ihre Eigenschaften definieren. Entity-Objects hingegen werden nicht durch ihre Eigenschaften sondern anhand ihrer Identität definiert. \autocite{WikimediaFoundationInc.2019a} Im Fall von \ac{ICS} wurde eine Vermischung dieser beiden Muster angewandt, da sich die Objekte zum einen durch ihre Identität aber auch durch ihre Eigenschaften definieren (Aggregate). Für jede Entität bzw. Tabelle der Datenbank wurde eine eigene Klasse (folglich genannt Entitätenklasse) angelegt. Diese Klassen, wie zum Beispiel \glqq User\grqq , \glqq Room \grqq , oder \glqq Presentation\grqq wurden im \glqq de.dhbw.ics.vo\grqq-Paket des \ac{ICS}-Projektes angelegt.
-	
-	Der nächste Schritt der Anbindung der Datenbank an das Backend war die Implementierung von sogenannten \ac{DAO}'s. Das \ac{DAO} ist ein Entwurfsmuster, welches den Zugriff auf unterschiedliche Arten von Datenquellen verwirklicht. \autocite{WikimediaFoundationInc.2019b} Für jede Entitätenklasse wurde eine \ac{DAO}-Klasse angelegt, welche die typischen \ac{CRUD}-Methoden implementieren. Hierfür wurde ein Interface \glqq Dao\grqq \, deklariert, welches alle \ac{CRUD}-Methoden beinhaltet, siehe Abbildung \ref{fig:dao_klassendia}. Dieses Interface wird von der abstrakten Klasse \glqq AbstractDao\grqq \, implementiert, jedoch wurden die Methoden des Interfaces abstrakt gelassen. Die abstrakte Klasse beinhaltet allgemeine Methoden um die \ac{CRUD}-Operationen auf der Datenbank ausführen zu können. Die Kind-Klassen, wie beispielsweise \glqq SeatDao\grqq, rufen diese Methode mit den für ihre Entität spezifischen Parametern in der \ac{CRUD}-Methode (bspw. \glqq persist\grqq) auf. Sollte die verallgemeinerten Methoden des AbstractDao für eine Entität nicht ausreichend sein, so wurden sie innerhalb der DAO-Klassen der Entitäten überschrieben.
+	Der nächste Schritt der Anbindung der Datenbank an das Backend war die Implementierung von sogenannten \ac{DAO}'s. Das \ac{DAO} ist ein Entwurfsmuster, welches den Zugriff auf unterschiedliche Arten von Datenquellen verwirklicht. \autocite{WikimediaFoundationInc.2019b} Für jede Entitätenklasse wurde eine \ac{DAO}-Klasse angelegt, welche die typischen \ac{CRUD}-Methoden implementieren. Hierfür wurde ein Interface \glqq Dao\grqq \, deklariert, welches alle \ac{CRUD}-Methoden beinhaltet, siehe Abbildung \ref{fig:dao_klassendia}. Dieses Interface wird von der abstrakten Klasse \glqq AbstractDao\grqq \, implementiert, jedoch wurden die Methoden des Interfaces abstrakt gelassen. Die abstrakte Klasse beinhaltet allgemeine Methoden um die \ac{CRUD}-Operationen auf der Datenbank ausführen zu können. Die Kind-Klassen, wie beispielsweise \glqq SeatDao\grqq, rufen diese Methode mit den für ihre Entität spezifischen Parametern in der jeweiligen \ac{CRUD}-Methode (bspw. \glqq persist\grqq) auf. Sollte die verallgemeinerten Methoden des AbstractDao für eine Entität nicht ausreichend sein, so wurden sie innerhalb der DAO-Klassen der Entitäten überschrieben.
 	
 	\begin{figure}[H]
 		\centering 
-		\includegraphics[width=0.8\textwidth]{img/dao_klassendia}
+		\includegraphics[width=0.6\textwidth]{img/dao_klassendia}
 		\captionsetup{format=hang}
-		\caption[Ausschnitt Klassendiagram \ac{DAO}-Vererbungshierarchie]{\label{fig:dao_klassendia}Ausschnitt Klassendiagramm \ac{DAO}-Vererbungshierarchie}
+		\caption[Ausschnitt Klassendiagram DAO-Vererbungshierarchie]{\label{fig:dao_klassendia}Ausschnitt Klassendiagramm \ac{DAO}-Vererbungshierarchie}
 	\end{figure}
 
 	Der eigentliche Zugriff auf die Datenbank bzw. das Ausführen von Operationen auf der Datenbank wurde durch \ac{JDBC}-Templates realisiert. \ac{JDBC} ist eine Datenbankschnittstelle für relationale Datenbanken, welches von durch die JAVA-Plattform zur Verfügung gestellt wird. \autocite{WikimediaFoundationInc.2019c} Spring bietet hierfür verschiedene Templates an, welche das Arbeiten mit JDBC vereinfachen.\autocite{PivotalSoftwareInc.b} 
 	
-	\begin{figure}[H]
-		\centering 
-		\includegraphics[width=0.8\textwidth]{img/jbdc_template_usage}
-		\captionsetup{format=hang}
-		\caption[\ac{JDBC}-Template-Verwendung]{\label{fig:jbdc_template_usage}\ac{JDBC}-Template-Verwendung}
-	\end{figure}
+\lstset{language=Java}
+\begin{lstlisting}[caption={Beispiel JDBC-Template-Verwendung}, label={lst:jbdc_template_usage}]
+Object object = null;
+try {
+     object = this.jdbcTemplate.queryForObject(selectStatement, args, rowMapper);
+} catch (DataAccessException e) {
+  LOG.error("Could not find {} for primary key: {} ", clazz.getSimpleName(), args);
+  LOG.error(e.getMessage());
+}
+\end{lstlisting}	
+	
+%	\begin{figure}[H]
+%		\centering 
+%		\includegraphics[width=0.8\textwidth]{img/jbdc_template_usage}
+%		\captionsetup{format=hang}
+%		\caption[\ac{JDBC}-Template-Verwendung]{\label{fig:jbdc_template_usage}\ac{JDBC}-Template-Verwendung}
+%	\end{figure}
 
-	Ein Beispiel für die Implementierung ist in Abbildung \ref{fig:jbdc_template_usage} zu sehen. Das \ac{JDBC}-Template bietet für beispielsweise \glqq SELECT\grqq-Abfragen eigene Methoden wie \grqq queryForObject\grqq. Dieser Methode müssen nur ein SQL-Befehl mit fehlenden Parametern, die Argumente bzw. Parameter für den SQL-Befehl sowie ein \glqq RowMapper\grqq-Objekt übergeben werden, um ein Objekt auf der Datenbank abzufragen. Die fehlenden Argumente der übergebenen SQL-Anweisungen, welche durch einen ?-Operator markiert sind, siehe Abbildung \ref{fig:select_beispiel}, werden innerhalb des \ac{JDBC}-Templates durch die übergebenen Argumente ergänzt. 
+	Ein Beispiel für die Implementierung ist in Quelltext \ref{lst:jbdc_template_usage} zu sehen. Das \ac{JDBC}-Template bietet für beispielsweise \glqq SELECT\grqq-Abfragen eigene Methoden wie \grqq queryForObject\grqq. Dieser Methode müssen nur ein SQL-Befehl mit fehlenden Parametern, die Argumente bzw. Parameter für den SQL-Befehl sowie ein \glqq RowMapper\grqq-Objekt übergeben werden, um ein Objekt auf der Datenbank abzufragen. Die fehlenden Argumente der übergebenen SQL-Anweisungen, welche durch einen ?-Operator markiert sind, siehe Abbildung \ref{fig:select_beispiel}, werden innerhalb des \ac{JDBC}-Templates durch die übergebenen Argumente ergänzt. 
 
 	\begin{figure}[H]
 		\centering 
 		\includegraphics[width=0.5\textwidth]{img/select_beispiel}
 		\captionsetup{format=hang}
-		\caption[Beispiel einer SQL-Anweisung für \ac{JDBC}]{\label{fig:select_beispiel}Beispiel einer SQL-Anweisung für \ac{JDBC}}
+		\caption[Beispiel einer SQL-Anweisung für JDBC]{\label{fig:select_beispiel}Beispiel einer SQL-Anweisung für \ac{JDBC}}
 	\end{figure}
 	
-	Das \ac{JDBC}-Template wird durch die Übergabe einer DataSource erzeugt. Hierfür wurde die gleiche DataSource verwendet, welche auch für die Initiierung von Liquibase verwendet wurde. Hierzu wurden von allen  \ac{DAO}-Klassen Spring-Bean Deklarationen angelegt sowie eine \glqq Set-Methode\grqq für die DataSource angelegt, siehe Abbildung \ref{fig:dao_klassendia} und \ref{fig:dao_spring}.
+	Das \ac{JDBC}-Template wird durch die Übergabe einer DataSource erzeugt. Hierfür wurde die gleiche DataSource verwendet, welche auch für die Initiierung von Liquibase verwendet wurde. Dazu wurden von allen  \ac{DAO}-Klassen Spring-Bean Deklarationen angelegt sowie eine \glqq Set-Methode\grqq \, für die DataSource angelegt, siehe Abbildung \ref{fig:dao_klassendia} und Quelltext \ref{lst:dao_spring}.
 	
-	\begin{figure}[H]
-		\centering 
-		\includegraphics[width=0.8\textwidth]{img/dao_spring}
-		\captionsetup{format=hang}
-		\caption[Beispiel für die Spring-Bean-Deklaration von \ac{DAO}-Objekten]{\label{fig:dao_spring}Beispiel für die Spring-Bean-Deklaration von \ac{DAO}-Objekten}
-	\end{figure}	
+%	\begin{figure}[H]
+%		\centering 
+%		\includegraphics[width=0.8\textwidth]{img/dao_spring}
+%		\captionsetup{format=hang}
+%		\caption[Beispiel für die Spring-Bean-Deklaration von \ac{DAO}-Objekten]{\label{fig:dao_spring}Beispiel für die Spring-Bean-Deklaration von \ac{DAO}-Objekten}
+%	\end{figure}
 	
-	Der letzte Schritt der Anwendung war die Implementierung von Mapper-Klassen, welche die Ergebnisse der Datenbankabfrage in Entitäten umwandeln bzw. Objekte dieser Erzeugen. Hierfür stellt Spring das bereits erwähnte Interface RowMapper zur Verfügung. 
+	\lstset{
+		language=XML,
+		morekeywords={encoding,bean,property,contructor-arg,constraints,createTable,addColumn,modifyDataType,xs:schema,xs:element,xs:complexType,xs:sequence,xs:attribute,xsi:schemaLocation,xmlns:xsi,xmlns}
+	}
+\begin{lstlisting}[caption={Beispiel für die Spring-Bean-Deklaration von DAO-Objekten}, label={lst:dao_spring}, basicstyle=\ttfamily\fontsize{10}{12}\selectfont]
+<bean id="genreDao" class="de.dhbw.ics.database.dao.GenreDao">
+  <property name="dataSource" ref="dataSource"/>
+</bean>
+
+<bean id="movieDao" class="de.dhbw.ics.database.dao.MovieDao">
+  <property name="dataSource" ref="dataSource"/>
+</bean>
+\end{lstlisting}	
 	
-	\subsubsection{Fach-Logik}
+	Der letzte Schritt war die Implementierung von Mapper-Klassen, welche die Ergebnisse der Datenbankabfrage in Entitäten umwandeln bzw. Objekte dieser Erzeugen. Hierfür stellt Spring das bereits erwähnte Interface RowMapper zur Verfügung. 
 	
-	Das Fachkonzept der \ac{ICS}-Anwendung wurde innerhalb von den Klassen \glqq PresentationManager\grqq und \glqq ReservationManager\grqq umgesetzt. Diese Manager werden ebenfalls als Spring-Bean deklariert, siehe Kapitel \ref{umsetzung:backend:grundgeruest}. Weiterhin bilden die Manager eine Verwaltungsschicht vor der Datenbankschicht, sprich vor den \ac{DAO}-Objekten. Da aus diesem Grund die Manager mit den \ac{DAO}-Objekten arbeiten, wurden private Attribute für jedes genutzte \ac{DAO} angelegt, siehe Abbildung \ref{fig:manager_dao}. Diese Attribute bzw. Objekte werden mit Hilfe des Spring-Frameworks bzw. des ApplicationContextes, siehe Kapitel \ref{umsetzung:backend:grundgeruest}, gesetzt, welches durch die Annotation \glqq Autowired\grqq \, signalisiert wird. 
+	\subsubsection{Fach-Logik}	
+	Das Fachkonzept der \ac{ICS}-Anwendung wurde innerhalb von den Klassen \glqq PresentationManager\grqq \, und \glqq ReservationManager\grqq \, umgesetzt. Diese Manager werden ebenfalls als Spring-Bean deklariert, siehe Kapitel \ref{umsetzung:backend:grundgeruest}. Weiterhin bilden die Manager eine Verwaltungsschicht vor der Datenbankschicht, sprich vor den \ac{DAO}-Objekten. Da aus diesem Grund die Manager mit den \ac{DAO}-Objekten arbeiten, wurden private Attribute für jedes genutzte \ac{DAO} angelegt, siehe Abbildung \ref{fig:manager_dao}. Diese Attribute bzw. Objekte werden mit Hilfe des Spring-Frameworks bzw. des Application-Contextes, siehe Kapitel \ref{umsetzung:backend:grundgeruest}, gesetzt, welches durch die Annotation \glqq Autowired\grqq \, signalisiert wird. 
 	
 	\begin{figure}[H]
 		\centering 
 		\includegraphics[width=0.5\textwidth]{img/manager_dao}
 		\captionsetup{format=hang}
-		\caption[Beispiel für die \ac{DAO}-Attribute der Manager]{\label{fig:manager_dao}Beispiel für die \ac{DAO}-Attribute der Manager}
+		\caption[Beispiel für die DAO-Attribute der Manager]{\label{fig:manager_dao}Beispiel für die \ac{DAO}-Attribute der Manager}
 	\end{figure}	
-	
-	
-	Der PresentationManager dient zur Verwaltung von Prozessen, welche mit dem Bearbeiten und Anzeigen von Vorstellungen zu tun haben. Im aktuellen Release bietet dieser Manager folgende Funktionalitäten an:
+		
+	Der PresentationManager dient zur Verwaltung von Prozessen, welche sich mit dem Bearbeiten und Anzeigen von Vorstellungen beschäftigen. Im aktuellen Release bietet dieser Manager folgende Funktionalitäten an:
 	
 	\begin{itemize}
 		\setlength\itemsep{-0.5em}
@@ -215,11 +252,9 @@ public class IcsWebConfiguration implements WebMvcConfigurer {
 		\item Sperren und Entsperren von Sitzen im Reservierungsprozess
 	\end{itemize}
 	
-	Der Reservierungsprozess ist in Abbildung /*****/ dargestellt. Ein wichtiger Bestandteil bei diesem ist das Sperren von Sitzen für andere Benutzer. Die Sperrwirkung für Sitze wurde im ReservationManager umgesetzt. Hierfür wurden zwei Methoden implementiert (\glqq lock\grqq \, und \glqq unlock\grqq) , siehe Quelltext \ref{lst:lockProcess}. Der Sperrprozess funktioniert folgender Maßen:
+	Der Reservierungsprozess ist in Abbildung \vref{fig:aktivitätReservierung} dargestellt. Ein wichtiger Bestandteil bei diesem ist das Sperren von Sitzen für andere Benutzer. Die Sperrwirkung für Sitze wurde im ReservationManager umgesetzt. Hierfür wurden zwei Methoden implementiert (\glqq lock\grqq \, und \glqq unlock\grqq). Der Sperrprozess, welcher in Quelltext \ref{lst:lockProcess} zu sehen ist, funktioniert folgender Maßen:
 	
-	Nachdem ein Anwender Sitze einer Vorstellung im Frontend ausgewählt hat und anschließend auf den Button zum Starten des Reservierungsprozesses betätigt hat, wird eine Liste mit den ausgewählten Sitzen, die Vorstellungs-\ac{ID}, eine Session-\ac{ID} sowie ein Parameter, welcher bestimmt ob die Sitze gesperrt oder entsperrt werden sollen, an das Backend geschickt. Anschließend wird die Liste sowie die angegeben Vorstellungs-\ac{ID} überprüft. Beispielsweise wird überprüft, ob die Sitze auch zur angegeben Vorstellen passen bzw. ob diese überhaupt vorhanden sind. Sofern die Überprüfung erfolgreich ist beginnt danach der Sperrprozess. Bei diesem wird überprüft, ob es dem Client erlaubt ist, die Sitze zu sperren. Dies erfolgt mittels der Session-ID, welche beim ersten Aufruf der Anwendung generiert und dem Client als Cookie mitgegeben wird. Innerhalb der Datenbank existiert eine Tabelle namens \glqq BusySeat\grqq, welche den aktuellen Zustand eines Sitzes für eine Vorstellung repräsentiert. Aus dieser Tabelle heraus werden Entitäten-Objekte erstellt, welche folgende Attribute besitzen: \glqq Seat, Presentation, isBusy, isLocked, sessionID, timestamp\grqq. Das Attribute isBusy sagt aus, dass ein Sitz bereits belegt ist. In diesem Fall ist es also nicht mehr möglich einen Sitz zu sperren. Das Attribute isLocked repräsentiert, ob ein Sitz gerade gesperrt ist. Befindet sich also ein Sitz in einem gesperrten Zustand, so wird durch das Attribute sessionID der Client ausgewiesen, welcher ihn gesperrt hat und durch das Attribute timestamp, wann er dies getan hat. Möchte nun ein Client einen Sitz sperren, so wird zunächst geprüft ob ein Eintrag in der Tabelle BusySeat vorhanden ist. Ist dies nicht der Fall so kann der Sitz gesperrt werden. Sollte ein Eintrag vorhanden sein, so wird die Session-ID überprüft. Stimmt die Session-ID in der Datenbank mit der des Client überein, so kann der Sitz ebenfalls gesperrt werden. Ansonsten wird überprüft ober der angegeben Zeitstempel älter ist als 5 min. Wenn er älter ist, so kann der Datenbankeintrag überschrieben und der Sitz gesperrt werden. Nachdem alle Sitze die Überprüfung bestanden haben, werden sie in der Datenbank gespeichert. Sollte beim Speichervorgang ein Fehler auftreten oder nicht alle Sitze die Überprüfung bestanden haben so wird dem Client ein Fehler zurück gegeben. Der selbe Prozess erfolgt bei der Entsperrung der Sitze.
-	
-	Des Weiteren wurde mit Hilfe von Spring ein \glqq Scheduling-Task\grqq \, implementiert, welcher alle 5min die BusySeat-Tabelle überprüft und alle gesperrten Entitäten, welche einen Zeitstempel besitzen der 5min in der Vergangenheit liegt, entsperrt.
+	Nachdem ein Anwender Sitze einer Vorstellung im Frontend ausgewählt hat und anschließend auf den Button zum Starten des Reservierungsprozesses betätigt hat, wird eine Liste mit den ausgewählten Sitzen, die Vorstellungs-\ac{ID}, eine Session-\ac{ID} sowie ein Parameter, welcher bestimmt ob die Sitze gesperrt oder entsperrt werden sollen, an das Backend geschickt. Anschließend wird die Liste sowie die angegeben Vorstellungs-\ac{ID} überprüft. Beispielsweise wird überprüft, ob die Sitze auch zur angegeben Vorstellen passen bzw. ob diese überhaupt vorhanden sind. Sofern die Überprüfung erfolgreich ist beginnt danach der Sperrprozess. Bei diesem wird überprüft, ob es dem Client erlaubt ist, die Sitze zu sperren. Dies erfolgt mittels der Session-ID, welche beim ersten Aufruf der Anwendung generiert und dem Client als Cookie mitgegeben wird. Innerhalb der Datenbank existiert eine Tabelle namens \glqq BusySeat\grqq, welche den aktuellen Zustand eines Sitzes für eine Vorstellung repräsentiert. Aus dieser Tabelle heraus werden Entitäten-Objekte erstellt, welche folgende Attribute besitzen: \glqq Seat, Presentation, isBusy, isLocked, sessionID, timestamp\grqq. Das Attribute isBusy sagt aus, dass ein Sitz bereits belegt ist. In diesem Fall ist es also nicht mehr möglich einen Sitz zu sperren. Das Attribute isLocked repräsentiert, ob ein Sitz gerade gesperrt ist. Befindet sich ein Sitz in einem gesperrten Zustand, so wird durch das Attribute sessionID der Client ausgewiesen, welcher ihn gesperrt hat und durch das Attribute timestamp, wann er dies getan hat. 
 
 \lstset{language=Java}
 \begin{lstlisting}[caption={Implementierung zum Sperren von Sitzen}, label={lst:lockProcess}]
@@ -259,7 +294,14 @@ private Object lockSeats(List<Seat> seats, String sessionID, Presentation presen
   }
   return ResultMessage.COULD_NOT_BLOCK_SEATS;
 }
+\end{lstlisting}
 
+	Möchte nun ein Client einen Sitz sperren, so wird zunächst geprüft ob ein Eintrag in der Tabelle BusySeat vorhanden ist. Ist dies nicht der Fall so kann der Sitz gesperrt werden. Sollte ein Eintrag vorhanden sein, so wird die Session-ID überprüft. Stimmt die Session-ID in der Datenbank mit der des Client überein, so kann der Sitz ebenfalls gesperrt werden. Ansonsten wird überprüft ober der angegeben Zeitstempel älter ist als 5 min. Wenn er älter ist, so kann der Datenbankeintrag überschrieben und der Sitz gesperrt werden. Nachdem alle Sitze die Überprüfung bestanden haben, werden sie in der Datenbank gespeichert. Sollte beim Speichervorgang ein Fehler auftreten oder nicht alle Sitze die Überprüfung bestanden haben so wird dem Client ein Fehler zurück gegeben. Der selbe Prozess erfolgt bei der Entsperrung der Sitze, welcher in Quelltext  \ref{lst:unlockProcess} zusehen ist.
+	
+	Des Weiteren wurde mit Hilfe von Spring ein \glqq Scheduling-Task\grqq \, implementiert, welcher alle 5min die BusySeat-Tabelle überprüft und alle gesperrten Entitäten, welche einen Zeitstempel besitzen der 5min in der Vergangenheit liegt, entsperrt, damit die Sitze für andere Benutzer wieder buchbar sind.
+
+\lstset{language=Java, moredelim=[is][\textcolor{darkorange}]{\%\%}{\%\%}}
+\begin{lstlisting}[caption={Implementierung zum Entsperren von Sitzen}, label={lst:unlockProcess}]
 private Object unlockSeats(List<Seat> seats, String sessionID, Presentation presentation) {
   List<BusySeat> bsUpdate = new ArrayList<>();
   for (Seat s : seats) {
@@ -285,26 +327,173 @@ private Object unlockSeats(List<Seat> seats, String sessionID, Presentation pres
   }
   return null;
 }
-
 \end{lstlisting}
 
 	\subsection{REST-Schnittstellen}
+	Für den dynamischen Datenaustausch zwischen Front- und Backend wurde sich dazu entschlossen \ac{REST}-Schnittstellen zu verwenden. \ac{REST} bezeichnet ein Programmierparadigma für verteilte Systeme, welches sich an dem Verhalten des \ac{WWW} orientiert.\autocite{REST} Im Fall von \ac{ICS} wurden \ac{REST}-Schnittstellen entwickelt, welche mit dem \ac{HTTP}-Protokoll arbeiten und mit \ac{JSON}-Objekten umgehen können. Hierfür bietet Spring, siehe Kapitel \ref{umsetzung:backend:grundgeruest}, die Möglichkeit einfache sogenannte \glqq RestController\grqq \, zu implementieren, siehe Quelltext \ref{lst:beispiel_restcontroller}.
 	
-	Für den dynamischen Datenaustausch zwischen Front- und Backend wurde sich dazu entschlossen \ac{REST}-Schnittstellen zu verwenden. \ac{REST} bezeichnet ein Programmierparadigma für verteilte Systeme, welches sich an dem Verhalten des \ac{WWW} orientiert.\autocite{REST} Im Fall von \ac{ICS} wurden \ac{REST}-Schnittstellen entwickelt, welche mit dem HTTP-Protokoll arbeiten und mit \ac{JSON}-Objekten umgehen können. Hierfür bietet Spring, siehe Kapitel \ref{umsetzung:backend:grundgeruest}, die Möglichkeit einfache sogenannte \glqq RestController\grqq zu implementieren, siehe Abbildung \ref{fig:beispiel_restcontroller}.
-	
+%	\begin{figure}[H]
+%		\centering 
+%		\includegraphics[width=\textwidth]{img/beispiel_restcontroller}
+%		\captionsetup{format=hang}
+%		\caption[Beispiel für einen RestController]{\label{fig:beispiel_restcontroller}Beispiel für einen RestController}
+%	\end{figure}	
+\lstset{language=Java, moredelim=[is][\textcolor{darkorange}]{\%\%}{\%\%}}
+\begin{lstlisting}[caption={Beispiel für einen RestController}, label={lst:beispiel_restcontroller}]
+%%@RestController%%
+public class PriceCategoryController {
+  %%@Autowired%%
+  private PresentationManager presentationManager;
+
+  %%@RequestMapping%%(method = RequestMethod.GET, path = "/service/get/categories/price")
+  public %%@ResponseBody%% ResponseEntity<Object> getAll() {
+    Object result = this.presentationManager.getAllPriceCategories();
+    if (result instanceof List) {
+      return new ResponseEntity<>(result, HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>(result, HttpStatus.EXPECTATION_FAILED);
+    }
+  }
+}
+\end{lstlisting}			
+
+	Mit der Annotation \glqq @RestController\grqq \, wird die Klasse \glqq PriceCategoryController\grqq, siehe Quelltext \ref{lst:beispiel_restcontroller}, dem Spring-Framework als Controller einer \ac{REST}ful-Schnittstelle bekannt gemacht. Jeder RestController verwaltet mehrere Endpunkte der \ac{ICS}-Anwendung. Damit ist gemeint, dass festgelegt wird auf welcher URL die Schnittstelle erreichbar ist und mit welcher \ac{HTTP}-Methode man diese aufrufen sollte. Diese Konfiguration erfolgt durch die Annotation \glqq RequestMapping\grqq. Jedem Endpunkt wird hierdurch eine implementierte Methode im Backend zugewiesen, was in Quelltext \ref{lst:beispiel_restcontroller} anhand der Methode \glqq getAll\grqq \, dargestellt ist. Weiterhin ist es möglich durch die Übergabeparameter der Methoden auch die Parameter, welche an die \ac{REST}-Schnittstelle übergeben werden müssen zu definieren. Dabei kann man mittels Annotationen, wie beispielsweise \glqq @PathVariable\grqq \, bestimmen, auf welche Art die Daten an die Schnittstelle übergeben werden sollen. Dies kann zum Beispiel über URL-Parameter, \ac{HTTP}-Header oder als \ac{HTTP}-Body erfolgen. In der nachfolgenden Tabelle (Abbildung \ref{fig:restservices}) ist eine Auswahl an Endpunkten der \ac{ICS}-Anwendung zu sehen:
+		
 	\begin{figure}[H]
 		\centering 
-		\includegraphics[width=\textwidth]{img/beispiel_restcontroller}
+		\includegraphics[width=\textwidth]{img/restservices}
 		\captionsetup{format=hang}
-		\caption[Beispiel für einen RestController]{\label{fig:beispiel_restcontroller}Beispiel für einen RestController}
-	\end{figure}	
+		\caption[Beispiele für REST-Endpunkte]{\label{fig:restservices}Beispiele für \ac{REST}-Endpunkte}
+	\end{figure}
+	
+	Im \ac{ICS}-Projekt ist es möglich Entitäten-Objekte, wie beispielsweise eine Reservierung in Form eines \ac{JSON} in einem \ac{HTTP}-Body an die Restschnittstellen zu übergeben. Hierzu muss anschließend das JSON-Objekt in die Struktur der Entität umgewandelt werden. Hierfür bietet Spring eine Integration für das \glqq FasterXML Jackson\grqq-Framework.\footnote{https://github.com/FasterXML/jackson} Dieses Framework ist in der Lage \ac{JSON}-Objekte in einen gewünschtes Objekt eines anderen Typen umzuwandeln. Es bedient sich hierbei der Getter und Setter einer Klasse oder dem Konstruktor. Da die Entitäten im \ac{ICS}-Projekt fast ausschließlich mit überladenen Konstruktoren initialisiert werden, wurden diese mit Hilfe der Annotation \glqq @JsonCreator\grqq \, gekennzeichnet, damit das Framework den richtigen für die Umwandlung verwendet. Hierbei trat das Problem auf, dass der \glqq Jackson Object Mapper\grqq \, nicht in der Lage ist verschiedene bzw. überladene Konstruktoren richtig zu verwenden und es deswegen zu Fehlern kam. Aus diesem Grund wurden für die Entitäten sogenannte \grqq Delegate-Constructor\grqq \, implementiert, welcher mit eine Java-Map arbeitet, siehe Quelltext \ref{lst:delegate_constructor}.
+	
+\lstset{language=Java, moredelim=[is][\textcolor{darkorange}]{\%\%}{\%\%}}
+\begin{lstlisting}[caption={Beispiel eines Delegate-Constructors}, label={lst:delegate_constructor}]
+%%@JsonCreator%%
+public PriceCategory(Map<String, Object> delegate) {
+  if (delegate.get("uuid") == null) {
+    this.uuid = UUID.randomUUID().toString();
+  } else {
+    this.uuid = (String) delegate.get("uuid");
+  }
+
+  this.title = (String) delegate.get("title");
+  this.description = (String) delegate.get("description");
+  if (delegate.get("presentationCategory") != null) {
+    this.presentationCategory = new PresentationCategory((Map<String,Object>) delegate.get("presentationCategory"));
+  }
+  if (delegate.get("seatCategory") != null) {
+    this.seatCategory = new SeatCategory((Map<String, Object>) delegate.get("seatCategory"));
+  }
+  if (delegate.get("price") != null) {
+    this.price = new BigDecimal((String)delegate.get("price"));
+  }
+}
+\end{lstlisting}
 	
 	\section[Frontend]{Frontend {\hfill \normalsize Jonas Dutzi, Dennis Köhler}}
+	%TODO Zitationen in bib Datei?
+	Das im Kapitel zuvor beschriebene Backend kümmert sich um die Funktionen des Programms und spielt sich im Hintergrund ab. In diesem Kapitel wird nun das Gegenstück hierzu erklärt: Das Frontend. Unter einem Frontend versteht man all das, was der Nutzer von dem Programm zu sehen bekommt. Das Frontend wird auch Benutzeroberfläche oder \ac{GUI} genannt. In unserem Projekt wurde das Frontend als Homepage entwickelt. Ein Grund für die Entwicklung der Oberfläche in Form einer Homepage war, dass ein Teil des Teams bereits erste Erfahrungen in der Web-Programmierung vorweisen konnte. Somit war eine eher geringe Einarbeitungszeit vonnöten.
+	    
+	    Das Ziel der Entwicklung des Frontends war es, eine grafische Oberfläche für die Reservierung von Kinotickets zu bauen. Dies sollte möglichst benutzerfreundlich umgesetzt werden, sodass das Programm bestmöglich an die Bedürfnisse der Benutzer des User-Research-Prozesses aus Kapitel \ref{analyse} angepasst ist. Als Design-Grundlagen dienten die zuvor durchgeführte Ist-Analyse des Kinopolis in Viernheim aus Kapitel \ref{analyse} und die selbst entwickelten Design-Entwürfe aus Kapitel \ref{entwurf}. In der Entwicklungsphase wurden vor allem einige Ideen aus den Design-Entwürfen übernommen. Zudem brachten alle Teammitglieder im Verlauf des Projektes noch zusätzliche Ideen ein, die unverzüglich in die Software eingebaut wurden. Wie im gesamten Projekt wurde auch das Frontend in der Entwicklungsumgebung IntelliJ entwickelt. Um gleichzeitig an der Oberfläche arbeiten zu können, wurden bestimmte Programmteile ausgelagert, sodass auch  eine parallele Arbeit an einer Seite ermöglicht wurde. 
+	    
+	    In den folgenden Unterkapiteln wird auf die verwendeten Technologien eingegangen, die bei der Entwicklung des Frontends benutzt wurden. Zudem folgt eine detaillierte Beschreibung der einzelnen Seiten der Oberfläche. Hierbei werden mittels Screenshots der Aufbau der Seiten erklärt, responsive Merkmale aufgezeigt und ausgewählte Design-Merkmale dargestellt. Dabei werden neben der Oberfläche auch die im Hintergrund ausgeführten Skripts erläutert. Anschließend folgt der genaue Ablauf des Bestellvorgangs mit Screenfolge. Zuletzt wird das Ergebnis mit den Design-Entwürfen verglichen und ein Ausblick für die Weiterentwicklung des Frontends gegeben.
+	    
+	    \subsection{Verwendete Technologien}
+	    In diesem Kapitel werden die Technologien, die zur Entwicklung des Frontends verwendet wurden, näher erläutert. Die folgende Aufzählung soll zunächst einen Überblick über alle Technologien geben:
+	    \begin{singlespacing}
+	    \begin{itemize}
+	        \setlength\itemsep{-0.8em}
+	        \item HTML
+	        \item \acs{CSS}
+	        \item Bootstrap (Framework)
+	        \item JavaScript
+	        \item JQuery (JavaScript Framework)
+	        \item Seatmap (Framework)
+	    \end{itemize}
+	     \end{singlespacing}
+	    
+	    \subsubsection{HTML}
+	    \acf{HTML} ist der Standard für die Strukturierung und Erstellung von Webanwendungen. 
+	    %Die Abkürzung HTML bedeutet ausgeschrieben Hypertext Markup Language. 
+	    In diesem Projekt wird die fünfte Generation von \ac{HTML} verwendet. Da HTML5 keine Programmiersprache, sondern eine Formatierungssprache ist, wird die Technologie ausschließlich für allgemeinen Aufbau der Webseite benutzt. Der tatsächliche Inhalt der Webseite wird aus dem Backend geladen. \ac{HTML}-Seiten werden je nach verwendetem Browser unterschiedlich interpretiert. Deshalb ist es wichtig, die entwickelten Seiten auf den gängigsten Webbrowsern zu testen. So kann eine fehlerhafte Anzeige des Inhalts im Voraus verhindert werden. \ac{HTML}-Seiten haben einen grundlegenden Aufbau. Dieser ist bei jedem Dokument gleich. 
+	    Der grundlegende Aufbau ist in der folgenden Abbildung zu sehen:
+	    \begin{figure}[H]
+	    			\centering 
+	    			\includegraphics[width=9.5cm]{img/html1.png}
+	    			\captionsetup{format=hang}
+	    			\caption[Aufbau der HTML-Seite]{\label{fig:html} Aufbau der \ac{HTML}-Seite \footnotemark} 
+	    \end{figure}
+	    \footnotetext{http://papac.info/html-seite-vorlage/grundgerst-html-seite-doctype-definition-html-tutorialhtml-seite-vorlage/}
+	    
+	    
+	    Anhand der Abbildung kann man sehen, dass ein \ac{HTML}-Dokument immer mit der Deklaration des Dokumententyps \enquote{<!DOCTYPE html>} beginnt. Dadurch kann der Internet-Browser erkennen, dass die geladene Datei ein \ac{HTML}-Dokument ist. Der tatsächliche Inhalt der Seite steht zwischen des öffnenden und schließenden \ac{HTML}-Tags, \enquote{<html>} beziehungsweise \enquote{</html>}. Der Inhalt wird zusätzlich noch in den \enquote{head} (zu deutsch: Kopfbereich) und in den \enquote{body} (zu deutsch: Textkörper) unterteilt. Im Kopfbereich können Metadaten eingestellt werden, wie die Zeichencodierung und die Bezeichnung der Registerkarte im Internet-Browser. Zudem können hier andere Dateien eingebunden werden, wie JavaScript-, \acs{CSS}- und JQuery-Dateien. In den Textkörper kommt dann der tatsächliche sichtbare Inhalt der Seite. Dies wären beispielsweise Bilder, Überschriften, Texte und eine Navigationsleisten.   
+	    
+	    \subsubsection{CSS}
+	    Während sich \ac{HTML} um den Inhalt der Seite unserer Webanwendung kümmert, werden zusätzlich mehrere \acs{CSS}-Dateien verwendet, um die Inhalte möglichst ansprechend gestalten zu können. Die Abkürzung \acs{CSS} steht für Cascading Style Sheet (zu deutsch: mehrstufige Formatvorlagen\footnote{https://wiki.selfhtml.org/wiki/CSS}). Die Formatierungssprache \acs{CSS} ist für das Layout der HTML-Seiten verantwortlich. Beispielsweise können mithilfe von \acs{CSS} Textformatierungen, Farben, Textausrichtungen und viele weitere Eigenschaften festgelegt werden. In den \acs{CSS}-Dateien wird definiert welche HTML-Tags die bestimmten Formateigenschaften übernehmen. Dies wird als Selektor bezeichnet. Anschließend folgen innerhalb geschweiften Klammern die \acs{CSS}-Eigenschaften. Über \acs{CSS} können auch Mouseover-Effekte und Bilderkarusselle erstellt werden.  
+	    
+	    \subsubsection{Bootstrap (Framework)}
+	    Bootstrap ist das beliebteste Open-Source-Framework auf der GitHub Entwicklerplattform.  Das von den beiden Twitter-Mitarbeitern Mark Otto und Jacob Thornton entwickelte Framework ist eine Kombination aus HTML, \acs{CSS} und JavaScript.\footnote{https://www.le-dot.com/de/blog/was-ist-bootstrap} Durch Einsetzung dieses Frameworks entsteht ein Leitfaden für den Entwickler. Bootstrap bietet viele Vorteile, wie ein Grid-System, mit dem schnell responsive Seiten erstellt werden können, um eine Seite auf möglichst vielen Endgeräten ansprechend anzuzeigen. Zudem bringt Bootstrap einige Funktionen mit, zum Beispiel vorgefertigte HTML- und \acs{CSS}-Komponenten, wie Typografien, Navigationsleisten, Tabellen und Buttons. Das Framework kann auf der Bootstrap-Webseite heruntergeladen werden. Nachdem die Dateien in die HTML-Seiten im Kopfbereich eingebunden wurden, können alle Funktionen des Frameworks eingesetzt werden.
+	    
+	    \subsubsection{JavaScript}
+	    Die Programmiersprache JavaScript wird in diesem Projekt verwendet, um aus den bisher statischen Seiten, dynamische Seiten zu erzeugen.  Book Grundkurs Webprogrammierung S.149 JavaScript ist eine client-seitige Programmiersprache. Das bedeutet, dass der JavaScript-Code direkt beim Client, in diesem Falle im Webbrowser, ausgeführt wird. Die gängigsten Webbrowser unterstützen die Programmiersprache JavaScript standardmäßig. JavaScript-Dateien können genau wie \acs{CSS}-Dateien im Kopfbereich der HTML-Seite eingebunden werden. Mit JavaSript können Reaktionen auf Benutzereingaben implementiert werden. Dies findet beispielsweise bei der Erzeugung des Sitzplans des Kinos statt. Mit JavaScript kann der Inhalt der Seite dynamisch angepasst werden und Daten aus dem Backend ins Frontend geladen werden. So werden zum Beispiel die Filme und deren weitere Informationen aus dem Backend für die Anzeige auf der Benutzeroberfläche dynamisch geladen. 
+	    
+	    \subsubsection{jQuery (JavaScript Framework)}
+	    jQuery ist das meistverwendete JavaScript-Framework. Das Framework stellt beispielsweise zusätzliche Funktionen für Events, Animationen und Effekte bereit. Die Bibliothek kann wie das Bootstrap Framework heruntergeladen und in die HTML-Seiten eingebunden werden. In unserem Projekt findet das Framework jQuery unter anderem beim Laden der Navigationsleiste und der Fußleiste Anwendung.   
+	    
+	    \subsubsection{Seatmap (jQuery Framework)}
+	    
+	    Für die Auswahl der Kinotickets wurde im Frontend eine Sitzauswahl implementiert. Diese ermöglicht eine einfache Bedienung für den Benutzer der Intelligent Cinema Suite. Für das Erstellen der Seatmap wird ein jQuery-Framework von Mateusz Markowski verwendet. \footnote{https://github.com/mateuszmarkowski/jQuery-Seat-Charts} Das Framework bietet eine gute Grundlage, die zusätzlich noch relativ leicht an die eigenen Ideen angepasst werden kann. Vorteilhaft ist auch, dass dieses Framework gut dokumentiert ist und somit einfach zu verstehen ist. Die Daten werden auch hier vom Backend ins Frontend übermittelt, sodass eine dynamische Sitzplatzreservierung ermöglicht wird. In der folgenden Abbildung ist die Benutzeroberfläche zur Sitzplatzauswahl der Intelligent Cinema Suite zu sehen:
+	    
+	     \begin{figure}[H]
+	    	    			\centering 
+	    	    			\includegraphics[width=9cm]{img/sitzplan.png}
+	    	    			\captionsetup{format=hang}
+	    	    			\caption[Seatmap der ICS]{\label{fig:Seatmap} Seatmap der \ac{ICS}} 
+	    	    \end{figure}
+	    
+	    Auf der linken Seite wird der Kinosaal mit den Sitplätzen dargestellt. Hierbei ist mithilfe der Legende zu erkennen welche Farben, welche Bedeutung haben. So kann der Benutzer einfach sehen, welche Plätze noch frei sind. Durch Anklicken auf freie Sitze werden diese auf der rechten Seite aufgelistet, sodass der Benutzer einen Überblick über seinen aktuellen Reserviervorgang hat. Zudem wird der Preis für die Tickets angezeigt. Durch den Button kann die Reservierung bestätigt werden.   
+	    
+	    
+	    \subsection{Allgemeiner Aufbau der Seiten}
+	    In den Kapiteln zuvor wurde beschrieben, welche Technologien für das Erstellen des Frontends benutzt wurden. Nun wird der allgemeine Aufbau der Seiten erläutert. Die einzelnen Seiten der Webanwendung folgen einem gemeinsamen Muster. Sie bestehen aus der Navigationsleiste, einem bestimmten Inhalt und einer Fußleiste. Mit der Navigationsleiste können andere Seiten geöffnet werden. Dieser Routing-Vorgang wird in unserem Projekt mit der Technologie HTML verwendet. Durch das HTML-Tag \enquote{<a>} können Links auf andere Seiten erstellt werden. Hierfür muss der Pfad angegeben werden, wo die referenzierte HTML-Datei liegt, die beim Klicken auf den Link geöffnet werden soll. In der folgenden Abbildung \ref{fig:Navigationsleiste} ist die Navigationsleiste unserer Seiten zu sehen:
+	
+	\begin{figure}[H]
+	    	    			\centering 
+	    	    			\includegraphics[width=14cm]{img/NavBar.png}
+	    	    			\captionsetup{format=hang}
+	    	    			\caption[Navigationsleiste der ICS]{\label{fig:Navigationsleiste} Navigationsleiste der \ac{ICS}} 
+	   \end{figure}
+	    
+	    
+	    Anhand der Abbildung kann man den Aufbau der Navigationsleiste leicht erkennen. Auf der linken Seite befinden sich neben des Icons der Intelligent Cinema Suite die verschiedenen Links zu den anderen Seiten. Diese sind: 
+	    \begin{itemize}
+	        \setlength\itemsep{-0.8em}
+	        \item Programm und Tickets: Hier ist eine Programmübersicht vorzufinden über die aktuellen Vorstellungen im Kino. Des Weiteren kommt man durch das Klicken auf eine bestimmte Uhrzeit auf die Ticket-Reservierung.
+	        \item News: Hier werden interessante oder wichtige Neuigkeiten der Intelligent Cinema Suite präsentiert. 
+	        \item Gutscheine: Auf dieser Seite sollen Gutscheine für die Intelligent Cinema Suite gekauft werden können
+	        \item Kontakt: Die Kontakt-Seite dient als Kontaktaufnahme, um der Intelligent Cinema Suite bei Fragen direkt schreiben zu können 
+	    \end{itemize}
+	    
+	    Auf der rechten Seite soll man die gesamte Anwendung durch Schlüsselwörter, wie ein bestimmter Filmname, durchsuchen können. Zudem soll eine Benutzeranmeldung ermöglicht werden, mit der man sich für Reservierung anmelden kann.
+
+	    In der Fußleiste sind zunächst Links zu sozialen Netzwerken, die die Intelligent Cinema Suite zur Vermarktung verwendet. Darunter befindet sich nochmal der Name,  sowie die Besitzer des Kinos. Auf der rechten Seite sind allgemeine Kontaktinformationen aufzufinden. In der Abbildung \ref{fig:Footer} ist die Fußleiste der Intelligent Cinema Suite zu sehen.
+ 		\begin{figure}[H]
+	    	    			\centering 
+	    	    			\includegraphics[width=14cm]{img/Footer.png}
+	    	    			\captionsetup{format=hang}
+	    	    			\caption[Fußleiste der ICS]{\label{fig:Footer} Fußleiste der \ac{ICS}} 
+  	    \end{figure}
+
+	    
+	    Die Navigationsleiste und Fußleiste sind in jeder Seite wiederzufinden. So entsteht eine einfache und übersichtliche Oberfläche für den Benutzer, die zugleich selbsterklärend ist. Mittels jQuery werden diese beiden Hauptbestandteile in alle Seiten geladen. Dadurch wird die Wiederholung von Code vermieden und eine einfachere Wartung ermöglicht. Lediglich der Inhalt zwischen Navigationsleiste und Fußzeile ist unterschiedlich. Was genau auf den einzelnen Seiten zu finden ist, lässt sich am besten praktisch herausfinden, indem man die Webanwendung live testet. Einige besondere Ausschnitte des Inhalts werden jedoch auch zusätzlich noch in den folgenden Kapiteln erwähnt. 
+	
 	
 	\subsection{Responsive Merkmale}
 	Ziel des Projektes sollte es ebenfalls sein die Kinowebseite nicht nur für den großen Bildschirm am Computer zu entwickeln, sondern auch die Darstellung auf gegebenenfalls kleineren Endgeräten zu beachten. Die Nutzung von Websites auf mobilen Geräten steigt seit einigen Jahren kontinuierlich an. Im Jahr 2018 wurden zum Beispiel 52,2\% aller Aufrufe von Webseiten von Smartphones durchgeführt, während im Jahr 2009 noch nicht einmal 1\% aller Aufrufe durch die mobilen Geräte abgedeckt war\footnote{https://www.statista.com/statistics/241462/global-mobile-phone-website-traffic-share/}. Das zeigt auf wie wichtig das Thema des Responsive Webdesigns ist und welche Rolle es noch in der Zukunft spielen wird. Um diejenigen Nutzer, welche die Kinowebsite auch auf mobilen Endgeräten verwenden wollen nicht mit schlecht dargestelltem Inhalt zu enttäuschen, wurden in diesem Projekt hauptsächlich zwei Elemente des Bootstrap Frameworks zur Hilfe gezogen. Zum einen das Gitter System für die Anzeige von Inhalten und zum anderen die sich einklappende Navigationsleiste.
 	
-	Das in Bootstrap vorhandene Gitter System macht es möglich Inhalte, welche in Tabellenform bzw. in Reihen und Spalten, angezeigt werden an verschiedene Gerätegröße anzupassen. Hierfür werden drei vorgefertigte CSS-Klassen verwendet. Das äußere Div erhält die Klasse \texttt{.container} und umspannt den gesamten Inhalt. Innerhalb dieses Containers können Reihen und Spalten angelegt werden, welche durch weitere Divs mit den Klassen \texttt{.row} (Reihe) und \texttt{.col} (Spalte) realisiert werden. Diese kann man nach seinen Bedürfnissen schachteln, um die gewünschte Anzahl an Reihen und Spalten zu realisieren. Durch die Erweiterung \texttt{.col-\# (\# = 1-12)} kann die Breite und Anzahl der Elemente pro Reihe genau definiert werden. Hierbei stelle 12 die gesamte Seitenbreite dar, welche zum Beispiel mit einem 
+	Das in Bootstrap vorhandene Gitter System macht es möglich Inhalte, welche in Tabellenform bzw. in Reihen und Spalten, angezeigt werden an verschiedene Gerätegröße anzupassen. Hierfür werden drei vorgefertigte \acs{CSS}-Klassen verwendet. Das äußere Div erhält die Klasse \texttt{.container} und umspannt den gesamten Inhalt. Innerhalb dieses Containers können Reihen und Spalten angelegt werden, welche durch weitere Divs mit den Klassen \texttt{.row} (Reihe) und \texttt{.col} (Spalte) realisiert werden. Diese kann man nach seinen Bedürfnissen schachteln, um die gewünschte Anzahl an Reihen und Spalten zu realisieren. Durch die Erweiterung \texttt{.col-\# (\# = 1-12)} kann die Breite und Anzahl der Elemente pro Reihe genau definiert werden. Hierbei stelle 12 die gesamte Seitenbreite dar, welche zum Beispiel mit einem 
 	\texttt{col-12}  Element, zwei \texttt{col-6} Elementen oder drei \texttt{col-4} Elementen gefüllt werden kann. Um zu erreichen, dass bei variierender Gerätegröße unterschiedlich viele Elemente pro Reihe angezeigt werden, kann der Zusatz \texttt{.col-xx-\#}hinzugefügt werden. An stelle von xx kann nun eine vorgefertigten Gerätegrößen gewählt werden:
 	
 	\begin{table}[H]
@@ -327,7 +516,7 @@ private Object unlockSeats(List<Seat> seats, String sessionID, Presentation pres
 
 	Bei kleinen Geräten wird die volle Breite (12) ausgenutzt und eine Kachel nimmt die gesamte Reihe ein. Übersteigt die Gerätegröße 768px teilen sich zwei Kacheln die volle Breite (6+6), ab 922px werden drei Kacheln nebeneinander angezeigt (4+4+4).
 	
-	Ein weiteres sich anpassendes Element stellt die Navigationsleiste dar. Ziel ist es bei kleineren Gerätegröße nicht den gesamten Inhalt anzuzeigen, sondern ihn hinter einem Button zu verstecken. Bei Betätigung dieses Buttons soll der Inhalt in Form einer Dropdown-Liste angezeigt werden. Um dies zu erreichen ist innerhalb des \texttt{<nav> </nav>} - \ac{HTML}-Tags ein Button zu erstellen, welchem die in Bootstrap vorgefertigte CSS-Klasse \texttt{.navbar-toggler} zugewiesen wird. Die einzuklappenden Inhalte werden Innerhalb eines Divs, welches die vorgefertigten Klassen \texttt{.collapse}, \texttt{.navbar-collapse}, sowie eine feste ID besitzt, definiert. Diese ID wird dann dem Button-Attribut \texttt{data-target} zugewiesen. Zuletzt wird über die Klasse \texttt{.navbar-\\expand-lg} definiert, dass die Navigationsleiste ab einer Fenster-/Gerätebreite von kleiner als 992 Pixel hinter dem Button verschwindet. Die Abbildungen \vref{fig:navLeiste} und \vref{fig:navLeisteAus} zeigen das Ergebnis:
+	Ein weiteres sich anpassendes Element stellt die Navigationsleiste dar. Ziel ist es bei kleineren Gerätegröße nicht den gesamten Inhalt anzuzeigen, sondern ihn hinter einem Button zu verstecken. Bei Betätigung dieses Buttons soll der Inhalt in Form einer Dropdown-Liste angezeigt werden. Um dies zu erreichen ist innerhalb des \texttt{<nav> </nav>} - \ac{HTML}-Tags ein Button zu erstellen, welchem die in Bootstrap vorgefertigte \acs{CSS}-Klasse \texttt{.navbar-toggler} zugewiesen wird. Die einzuklappenden Inhalte werden Innerhalb eines Divs, welches die vorgefertigten Klassen \texttt{.collapse}, \texttt{.navbar-collapse}, sowie eine feste ID besitzt, definiert. Diese ID wird dann dem Button-Attribut \texttt{data-target} zugewiesen. Zuletzt wird über die Klasse \texttt{.navbar-\\expand-lg} definiert, dass die Navigationsleiste ab einer Fenster-/Gerätebreite von kleiner als 992 Pixel hinter dem Button verschwindet. Die Abbildungen \vref{fig:navLeiste} und \vref{fig:navLeisteAus} zeigen das Ergebnis:
 	\begin{figure}[H]
 		\centering 
 		\includegraphics[width=13cm]{img/navLeiste.png}
@@ -339,10 +528,10 @@ private Object unlockSeats(List<Seat> seats, String sessionID, Presentation pres
 		\centering 
 		\includegraphics[width=6cm]{img/navLeisteAus.png}
 		\captionsetup{format=hang}
-		\caption[Navigationsleiste ausgeklappt]{\label{fig:navLeisteAus} Navigationsleiste ausgeklappt auf dem Smartphone (Breite 414 Pixel)}
+		\caption[Navigationsleiste ausgeklappt]{\label{fig:navLeisteAus} Navigationsleiste ausgeklappt auf dem Smartphone \\ (Breite 414 Pixel)}
 	\end{figure}
 
-	\subsection{Design}
+	\subsection{Design} \label{subdesign}
 	Um Nutzer anzuziehen und deren Erwartungen an eine moderne Website gerecht zu werden sollte das Ergebnis nicht nur funktional und responsive sein, sondern auch gut aussehen. Hierfür wurde bereits im Vorfeld der Umsetzung ein Design Entwurf angefertigt (Kapitel \vref{design}), welcher die Struktur vorgeben sollte. Diese wurde bei der Entwicklung auch weitestgehend eingehalten und es fanden neben der Umgestaltung der Navigationsleiste hauptsächlich kleinere Veränderungen, wie die Verschiebung von Inhalten statt. Einige Merkmale wurden im Entwurf jedoch noch nicht aufgeführt bzw. berücksichtigt und wurden erst während des Entwicklungsprozesses entschieden. 
 	
 	
@@ -367,27 +556,40 @@ private Object unlockSeats(List<Seat> seats, String sessionID, Presentation pres
 	\end{figure}
 
 	\subsection{Ablauf des Bestellvorgangs}
+	Nachdem ein Nutzer den Entschluss getroffen hat eine Reservierung für eine Kinovorstellung zu buchen wird er zunächst die Startseite seines Lieblingskinos besuchen. Auch auf der ICS-Webseite beginnt der Reservierungsvorgang auf der Startseite. Hier werden dem Benutzer zunächst die neuesten Filme oder Angebote in Form des Sliders präsentiert. Direkt darunter findet der Nutzer Schaltflächen für die aktuellsten Filme, die das Kino zu bieten hat. Neben dem entsprechenden Plakat erhält man an dieser Stelle nur sehr kurz gehaltene Informationen über den Film, sowie dessen FSK-Einstufung. Ist die Entscheidung für einen Film noch nicht getroffen, können durch klicken auf die entsprechenden Schaltflächen weitere Informationen angezeigt werden. Ein daraufhin erscheinender Popup gibt neben weiterführenden Informationen über den Regisseur, die Darsteller in den Hauptrollen, die Filmlänge und einer ausführlicheren Beschreibung die Möglichkeit einen Trailer zu sehen. Sollte sich der Nutzer nun für den ausgewählten Film entschieden haben, gelangt er über den \enquote{Zum Programm} Button direkt zur Liste der entsprechenden Vorstellungen auf der Programm \& Tickets Seite. Ist die Entscheidung schon im Vorfeld getroffen worden, so kann die Programm \& Tickets Seite über die Navigationsleiste auch direkt erreicht werden. Hier werden alle zurzeit verfügbaren Filme und deren Vorstellungen aufgeführt. Eine Tabelle der Spielzeiten ist für jeden Film vorhanden und der Nutzer kann die gewünschte Vorstellung über einen Klick auf die entsprechende Uhrzeit erreichen. Ist dieser Schritt vollendet findet sich der Nutzer auf der Detailseite der ausgewählten Vorstellung wieder. 
+	
+	Hier ist auf der linken Seite der Sitzplan zu finden. Rechts daneben werden die wichtigsten Eckdaten bezüglich des Filmes, Datums und der Uhrzeit noch einmal aufgeführt. Wie in Kapitel \vref{subdesign} beschrieben können noch verfügbare Sitze an ihrer grünen Farbe erkannt und durch einen Klick ausgewählt werden. Die gewählten Plätze werden nicht nur durch eine farbliche Aufhellung hervorgehoben, sondern auch auf der rechten Seite einzeln aufgeführt. Ist der Nutzer mit seiner Auswahl zufrieden kann er der \enquote{Reservieren} oder \enquote{Kaufen} Button betätigen. In einem daraufhin erscheinenden Popup sind persönliche Daten in Form der E-Mail-Adresse und vollem Namen einzutragen. Nach dem Bestätigen der Daten erhält der Nutzer seine Reservierungsnummer und der Reservierungsvorgang ist beendet.
+	
+	Ein Nutzerkonto, welches für mehrere Bestellvorgänge verwendet werden kann und die Funktion Tickets direkt online zu kaufen stehen noch nicht zur Verfügung. Ebenso ist eine Bestätigung per E-Mail vorgesehen, konnte jedoch nichtmehr umgesetzt werden. 
 	
 	
 	\section[Verknüpfung Back- und Frontend]{Verknüpfung Back- und Frontend {\hfill \normalsize Sandra Keller}}
-	Unser Backend und unser Frontend wurde von unterschiedlichen Personengruppen entwickelt. Um das \ac{HTML}-Frontend mit dem Backend zu verbinden, haben wir uns dazu entschieden JavaScript zu benutzen.
+	Das Backend und das Frontend wurde von unterschiedlichen Personengruppen entwickelt. Um das \ac{HTML}-Frontend mit dem Backend zu verbinden, wurde JavaScript genutzt. 
 	
-	JavaScript ist eine Skriptsprache, die für dynamisches HTML in Webbrowsers entwickelt wurde. Mit JavaScript kann man auf die \ac{HTML}-Seite zugreifen und diese nachträglich verändern. In unserem Fall wird die Seite ohne Daten gebaut und danach mit den Daten des Backends gefüllt. 
-	\\In \ac{HTML} hat man die Möglichkeit eine JavaScript-Datei einzubauen, die aufgerufen wird, wenn die HTML-Datei geladen wird. 
-	In der JavaScript-Datei hat man die Möglichkeit auf die \ac{HTML}-Elemente zuzugreifen, wenn man diesen eine eindeutige \ac{ID} zugewiesen hat. 
+	JavaScript ist eine Skriptsprache, die für dynamisches \ac{HTML} in Webbrowsers entwickelt wurde. Mit JavaSkript kann man auf die \ac{HTML}-Seite zugreifen und diese nachträglich verändern. In unserem Fall wird die Seite ohne Daten gebaut und danach mit den Daten des Backends gefüllt.
+	\\In \ac{HTML} hat man die Möglichkeit eine JavaScript-Datei einzubauen, die aufgerufen wird, wenn die HTML-Datei geladen wird. 
+	\\In der JavaScript-Datei hat man die Möglichkeit auf die \ac{HTML}-Elemente zuzugreifen, wenn man diesen eine eindeutige \ac{ID} zugewiesen hat. 
+
 	
 	In der JavaScript-Datei kann man auf die Daten des Backends zugreifen, indem man die Daten von der \ac{URL} erhält. Hierfür nutzten wir einen \texttt{XMLHttpRequest}. Dieser Request ist ein JavaScript Objekt, das von Microsoft entwickelt wurde. Es bietet einen einfachen Weg, Daten von einem \ac{URL} zu erhalten. Man kann dadurch jedoch, nicht wie der Name zu vermuten lässt, auch andere Daten empfangen, nicht nur XML. Ebenso unterstützt der Request auch andere Protokolle als \ac{HTTP}.
 	
-	Diese Anfrage (Request) wird losgeschickt, danach wartet man auf eine Response. Mit dieser Antwort (Response) kann man weiter arbeiten. Sie enthält die Daten, die man mit der \ac{URL} angefordert hat. Dies sind zum Beispiel alle Präsentationen in einem gewissen Zeitraum, oder eine einzelne Präsentation und deren Sitzplatzbelegung.
-	Diese Daten gibt uns das Backend in Form von JSONs, so kann man die Daten gut verarbeiten und für das Frontend vorbereiten. 
+	Diese Anfrage (Request) wird losgeschickt, danach wartet man auf eine Response. Mit dieser Antwort (Response) kann man weiter arbeiten. Sie enthält die Daten, die man mit der \ac{URL} angefordert hat. Dies sind zum Beispiel alle Präsentationen in einem gewissen Zeitraum, oder eine einzelne Präsentation und deren Sitzplatzbelegung.
+
+	Diese Daten gibt uns das Backend in Form von JSONs, so kann man die Daten gut verarbeiten und für das Frontend vorbereiten. 
+
 	
-	Im Falle der Übersichtsseite, die alle Präsentationen in einem gewissen Zeitraum (in einer Woche) anzeigt, empfängt man viele einzelne Präsentationen, die man für das Frontend vorbereiten muss. Hierzu muss man die verschiedenen Präsentationen den Tabellen des Frontends zuordnen. Hierfür geht man jedes einzelne Element der JSON, also jede einzelne Präsentation durch. Es wird geguckt, ob dieser Film in den Vorführungen schon aufgeführt wird, falls nein wird für diesen Film eine neue Zeile eingerichtet, falls ja wird nur noch die neue Uhrzeit dieser Präsentation zu den Uhrzeiten des Films hinzugefügt. Dazu greift man auf die Tabelle der \ac{HTML}-Datei zu und fügt diesen neue Zeilen und Elemente hinzu. Je nachdem, was nun das Frontend für Daten braucht, wird der Request angepasst und die empfangenen Daten anders verarbeitet.
+	Im Falle der Übersichtsseite, die alle Präsentationen in einem gewissen Zeitraum (in einer Woche) anzeigt, empfängt man viele einzelne Präsentationen, die man für das Frontend vorbereiten muss. Hierzu muss man die verschiedenen Präsentationen den Tabellen des Frontends zuordnen. Hierfür geht man jedes einzelne Element der JSON, also jede einzelne Präsentation durch. Es wird geguckt, ob dieser Film in den Vorführungen schon aufgeführt wird, falls nein wird für diesen Film eine neue Zeile eingerichtet, falls ja wird nur noch die neue Uhrzeit dieser Präsentation zu den Uhrzeiten des Films hinzugefügt. Dazu greift man auf die Tabelle der \ac{HTML}-Datei zu und fügt diesen neue Zeilen und Elemente hinzu. Je nachdem, was das Frontend für Daten braucht, wird der Request angepasst und die empfangenen Daten anders verarbeitet.
 	
-	Die Schwierigkeit hierbei liegt darin, dass die Antwort des Request Zeit braucht, bis sie geladen ist, deswegen muss man ein Timeout einfügen, sodass mit diesen Daten gearbeitet werden kann.
-	Des weiteren muss man auf die \ac{HTML}-Elemente zugreifen oder neue einfügen, während diese schon gebaut wurden. Man muss also anhand der bestehenden Elemente weiterbauen wie die Seite aussehen soll.
-	Ein weiteres Problem ergab sich, wenn man Informationen vom Backend hatte, diese jedoch für eine neu ladende Seite benötigte, da dann die Antwort nicht mehr verfügbar war, dies konnte man jedoch umgehen, indem man die Daten zwischenspeicherte.
+	Die Schwierigkeit hierbei liegt darin, dass die Antwort des Request Zeit braucht, bis sie geladen ist, deswegen muss ein Timeout eingefügt werden, sodass mit diesen Daten gearbeitet werden kann.
+
+	Des weiteren muss man auf die \ac{HTML}-Elemente zugreifen oder neue einfügen, während diese schon gebaut wurden. Man muss also anhand der bestehenden Elemente weiterbauen wie die Seite aussehen soll.
+
+	Ein weiteres Problem ergab sich, wenn man Informationen vom Backend hatte, diese jedoch für eine neu ladende Seite benötigte, da dann die Antwort nicht mehr verfügbar war, dies konnte man jedoch umgehen, indem man die Daten zwischenspeicherte.
+
 	
-	Im Kapitel Entwurf \vref{schichtenmodell} wurde unser Schichtenmodell erläutert. Dieses zeigte unsere drei Schichten Frontend, Backend und die Datenbank. Die dort zu erkennenden Schichten wurden so wie in diesem Kapitel beschrieben in Verbindung gesetzt. Mit JavaScript haben wir die Daten vom Backend angefragt, welches uns die Daten von der Datenbank geliefert hat. Diese haben wir verarbeitet und für das Frontend vorbereitet und diesem danach zugewiesen.
+
+	
+	Im Kapitel Entwurf \vref{schichtenmodell} wurde das Schichtenmodell erläutert. Dieses zeigte die drei Schichten Frontend, Backend und die Datenbank. Die dort zu erkennenden Schichten wurden so wie in diesem Kapitel beschrieben in Verbindung gesetzt. Mit JavaScript wurden die Daten vom Backend angefragt, welches die Daten von der Datenbank geliefert hat. Diese wurden verarbeitet und für das Frontend vorbereitet und diesem danach zugewiesen.
 	
 	\section[Modultests]{Modultests{\hfill \normalsize Fabio Westphal}}
 	Das Testen von Code stellt einen essenziellen Teil der Entwicklung von Software dar. Der ANSI/IEEE Standard 610.12-1990 definiert Tests folgendermaßen:	\enquote {An activity in which a system or component is executed under specified conditions, the results are observed or recorded, and an evaluation is made of some aspect of the system or component.} Man unterscheidet grundsätzlich Whitebox- und Blackbox-Tests. Bei Whitebox-Tests wird die innere Funktionsweise der Software getestet, wohingegen bei Blackbox-Tests kein Wissen über den Quellcode zugrundeliegt und nur der geforderte Funktionsumfang getestet wird.\autocite{franz2007handbuch}[Vgl.][S.28] Im Projekt wurden hauptsächlich Komponententests angewendet, welche zu den Whitebox-Tests zählen. Hierbei werden Klassen und Methoden einzeln parallel zur weiteren Entwicklung getestet. Durch die kleinschrittige Testweise tragen sie auch zur lebenden Dokumentation bei. Wichtig ist dabei, dass jeder Test korrekt,
@@ -444,6 +646,9 @@ public class MovieDaoTest {
 	}
 }
 	\end{lstlisting}
+	Mithilfe der assert-Methoden ist es möglich, zu testende Behauptungen aufzustellen. So gibt man beispielweise in der Methode \texttt{assertFalse()} eine Bedingung an, die nicht erfüllt sein darf, damit der Test grün läuft. Analog dazu gibt man bei der \texttt{assertEquals()}-Methode zwei Parameter mit, die übereinstimmen müssen, um einen erfolgreichen Test zu erzielen.
+	Mithilfe dieser Methoden werden also manuell Bedingungen aufgestellt, wenn das bloße durchlaufen einer zu testenden Methode noch nicht ausreicht, um eine Aussage über dessen Korrektheit zu machen.
+	
 	Beim Ausführen der Tests gibt es in der Entwicklungsumgebung IntelliJ die Möglichkeit, die Abdeckung zu berechnen. Dabei werden zum einen die Zeilen gezählt, die von den Tests betroffen sind und zum anderen die Methoden bzw. Klassen. In Relation zur Gesamtheit der Zeilen - bzw. Methoden oder Klassen - ergibt dies die Testabdeckung als Prozentzahl (siehe Abb. \ref{fig:TestCoverage}).\newline
 	\begin{figure} [H]
 		\centering 
