@@ -1,8 +1,6 @@
 % !TEX root =  master.tex
 \chapter{Analyse} \label{analyse}
 	
-%	\section{Anforderungsanalyse}
-	
 	\section[Ist-Analyse]{Ist-Analyse {\hfill \normalsize Yvonne Werner}}\label{istAnalyse}
 	Mithilfe der Ist-Analyse wird eine bestehende Lösung zur Reservierung von Kinokarten betrachtet. Diese bildet die Grundlage für die Evaluierung eines möglichen Aufbaus von Kinoreservierungssystemen. Dabei spielen vor allem die Verständlichkeit der Seite und die verschiedenen Reservierungsschritte eine entscheidende Rolle. Zu letzterem wird betrachtet, welche Aktionen der Nutzer durchlaufen kann bzw. muss um eine Reservierung vorzunehmen und auf welche Seiten er dabei weitergeleitet wird.Dadurch wird versucht herauszufinden, welche Funktionen für eine Reservierung essenziell sind und welche Schritte zusätzliche Funktionen darstellen. Des Weiteren wird darauf geachtet, wie eine Reservierung erfolgen kann, d.h. ob die Notwendigkeit eines Benutzerkontos zwingend besteht oder ob eine Reservierung ebenfalls als Gast möglich ist. 
 	
@@ -128,11 +126,11 @@
 		Im nächsten Schritt werden Personas aus den User Profiles erstellt. Personas sind fiktive Personen, die für eine Nutzergruppe steht. Der Zweck von Personas ist, dass Entwickler Empathie und Einfühlungsvermögen zu den konkreten Anwendern aufbauen können. Darüber hinaus bieten den Personas den Vorteil eine Diskussionsgrundlage zu schaffen und damit die Funktionen den Personas angepasst werden. Für das Reservierungs-Tool wurden vier verschiedene Personas, die in Abbildung \vref{fig:personas} dargestellt werden, aus den User Profiles angelegt. 
 		
 		\begin{figure}[H]
-			\subfigure[Persona Franzi]{\includegraphics[width=0.49\textwidth]{img/franzi.png}} 
-			\subfigure[Persona Gustav]{\includegraphics[width=0.49\textwidth]{img/gustav.png}} 
-			\subfigure[Persona Kassandra]{\includegraphics[width=0.49\textwidth]{img/kassandra.png}} 
-			\subfigure[Persona Walter]{\includegraphics[width=0.49\textwidth]{img/walter.png}} 
-			\caption[Personas ]{\label{fig:personas}Personas \\ Quelle: StoriesOnBoard \footnotemark}
+			\subfigure[Persona Franzi]{\includegraphics[width=0.49\textwidth]{img/franzi1.png}} 
+			\subfigure[Persona Gustav]{\includegraphics[width=0.49\textwidth]{img/gustav1.png}} 
+			\subfigure[Persona Kassandra]{\includegraphics[width=0.49\textwidth]{img/kassandra1.png}} 
+			\subfigure[Persona Walter]{\includegraphics[width=0.49\textwidth]{img/walter1.png}} 
+			\caption[Personas ]{\label{fig:personas}Personas}
 		\end{figure} 
 		\footnotetext{http://storiesonboard.com}
 		
@@ -196,20 +194,17 @@
 		\end{figure}
 		
 	\subsection{User-Story-Mapping}
-	Schließlich wird aus den Personas und den Use Cases das User-Story-Mapping erstellt. Das User-Story-Mapping ist \enquote{eine schlanke und sehr effiziente Methode} \autocite[][S. 143]{userStory}, um die die Reihenfolge der Anforderungen, die realisiert werden sollen, zu koordinieren. In dieser werden die aus den Use-Cases hervorgehenden Features visuell geplant und in unterschiedliche Releases priorisiert. Dafür wurde das Online-Tool \enquote{StoriesOnBoard}\footnote{https://storiesonboard.com} genutzt. In dieser Software konnten ebenfalls die Personas angelegt werden, damit diese den Aktivitäten zugeordnet werden können. In Abbildung \vref{fig:userStoryMap} ist die erstellte User-Story-Map dargestellt. In Abbildung \ref{fig:userStoryMap}(a) sieht man den ersten Teil, wobei der Teil 2 in Abbildung \ref{fig:userStoryMap}(b) in der Online-Software direkt nebenan dargestellt wird. 
+	Schließlich wird aus den Personas und den Use Cases das User-Story-Mapping erstellt. Das User-Story-Mapping ist \enquote{eine schlanke und sehr effiziente Methode}, \autocite[][S. 143]{userStory} um die die Reihenfolge der Anforderungen, die realisiert werden sollen, zu koordinieren. In dieser werden die aus den Use-Cases hervorgehenden Features visuell geplant und in unterschiedliche Releases priorisiert. Dafür wurde das Online-Tool \enquote{StoriesOnBoard}\footnote{https://storiesonboard.com} genutzt. In dieser Software konnten ebenfalls die Personas angelegt werden, damit diese den Aktivitäten zugeordnet werden können. In Abbildung \vref{fig:userStoryMap} ist die erstellte User-Story-Map dargestellt.
 	
-	Der erste Schritt ist die Ermittlung der Projektziele. Es werden die Ziele der Personas die aus den Use Cases hervorgehen zusammengefasst. Diese werden auf den blauen Karteikarten aufgelistet und in eine logische Reihenfolge gebracht. Den Zielen werden die entsprechenden Personas zugeordnet (in den Abbildungen leider nicht wie in dem Online-Tool erkennbar). Nachdem die Ziele gesammelt wurden, werden die einzelnen Benutzerschritte auf den darunter liegenden gelben Karteikarten festgehalten. Man identifiziert die Schritte, die der Benutzer unternimmt bzw. durchläuft, um sein Ziel zu erreichen. Der dritte Schritt ist es Lösungsmöglichkeiten und erforderliche Funktionen, also die User-Stories, auf die weißen Karteikarten zu schreiben. Nach diesem Brainstorming-Prozess sind nun alle Ideen festgehalten. Die User Stories haben unterschiedliche Prioritätsstufen und werden in Releases unterteilt. Nach dem häufigsten Verhalten und der grundlegenden Lösung des Reservierungs-Tool wurden die User-Stories priorisiert und das \enquote{Walking Skeleton} erstellt. 
+	Der erste Schritt ist die Ermittlung der Projektziele. Es werden die Ziele der Personas die aus den Use Cases hervorgehen zusammengefasst. Diese werden auf den blauen Karteikarten aufgelistet und in eine logische Reihenfolge gebracht. Den Zielen werden die entsprechenden Personas zugeordnet. In der User-Story-Map wird dies durch die entsprechenden Bilder der Personas oberhalb der blauen Karten angezeigt. Nachdem die Ziele gesammelt wurden, werden die einzelnen Benutzerschritte auf den darunter liegenden gelben Karteikarten festgehalten. Man identifiziert die Schritte, die der Benutzer unternimmt bzw. durchläuft, um sein Ziel zu erreichen. Der dritte Schritt ist es Lösungsmöglichkeiten und erforderliche Funktionen, also die User-Stories, auf die weißen Karteikarten zu schreiben. Nach diesem Brainstorming-Prozess sind nun alle Ideen festgehalten. Die User Stories haben unterschiedliche Prioritätsstufen und werden in Releases unterteilt. Nach dem häufigsten Verhalten und der grundlegenden Lösung des Reservierungs-Tool wurden die User-Stories priorisiert und das \enquote{Walking Skeleton} erstellt. 
 	
 	 Die Abbildung \ref{fig:userStoryMap}(a) stellt die wichtigsten Ziele des Prototypen dar. Zum einen ist dies eine Übersicht der aktuellen Filme. Dabei sollen die Kunden einen Überblick über das Kino-Programm bekommen und erste Informationen zu den Vorstellungen. Zum anderen soll ein Benutzer Sitze reservieren können. Dafür muss er zunächst einen Film, Datum und Uhrzeit auswählen. Danach kann er die Sitzplätze zu der Vorstellung aussuchen. Der Reservierungsprozess war zunächst nur für Benutzer mit Kundenkonto vorgesehen, wodurch der Endnutzer die Schritte Login oder Regestrieren durchläuft. Als Bestätigung soll der Nutzer die Bestellnummer bekommen. 
 	 
-	 Abbildung \ref{fig:userStoryMap}(b) zeigt die weiteren geplanten Funktionen bezüglich dem \enquote{Kundenkonto}. Die administrativen Ziele, die die Use Cases \ref{fig:useCaseKassandra} bis \ref{fig:useCaseWalter2} beschreiben, wurden in das zweite Release eingestuft, da diese nicht zu dem \enquote{Minimum Viable Product} gehören. Im Rahmen des Projektes ist die Umsetzung des Walking Skeleton geplant und das zweite Release, aufgrund der beschränkten Zeit, für die weitere Umsetzung nach dem Projekt geplant.
+	 Abbildung \ref{fig:userStoryMap}(b) zeigt die weiteren geplanten Funktionen bezüglich dem \enquote{Kundenkonto}. Die administrativen Ziele, die in den Use Cases \ref{fig:useCaseKassandra} bis \ref{fig:useCaseWalter2} beschrieben werden, wurden in das zweite Release eingestuft, da diese nicht zu dem \enquote{Minimum Viable Product} gehören. Im Rahmen des Projektes ist die Umsetzung des Walking Skeleton geplant und das zweite Release, aufgrund der beschränkten Zeit, für die weitere Umsetzung nach dem Projekt geplant.
 
 	\begin{figure}[H]
-		\subfigure[Teil 1]{\includegraphics[width=14cm]{img/usm1.png}} 
-		\subfigure[Teil 2]{\includegraphics[width=14cm]{img/usm2.png}} 
-		\caption[User-Story-Map ]{\label{fig:userStoryMap}User-Story-Map\\ Quelle: Stories on Board}
+		\subfigure[Teil 1]{\includegraphics[width=14cm]{img/usm_1.png}} 
+		\subfigure[Teil 2]{\includegraphics[width=14cm]{img/usm_2.png}} 
+		\caption[User-Story-Map ]{\label{fig:userStoryMap}User-Story-Map\footnotemark}
 	\end{figure} 
-	 	
-%		\subsection{Vorgabe}
-%		\subsection{Rahmenbedingungen}
-%		\subsection{Bewertungskriterien}
+	\footnotetext{https://storiesonboard.com}
