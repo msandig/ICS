@@ -12,6 +12,7 @@
 *.gz
 *.aux
 *.bbl
+*.lof
 *.blg
 /doc/master.pdf
 /doc/*.run.xml

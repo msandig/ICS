@@ -37,19 +37,21 @@
 \definecolor{pgrey}{rgb}{0.46,0.45,0.48}
 
 \usepackage{listings}
+
 \lstset{language=Java,
-	showspaces=false,
-	showtabs=false,
-	breaklines=true,
-	showstringspaces=false,
-	breakatwhitespace=true,
-	commentstyle=\color{pgreen},
-	keywordstyle=\color{pblue},
-	stringstyle=\color{pred},
-	basicstyle=\ttfamily,
-	moredelim=[il][\textcolor{pgrey}]{$$},
-	%	morecomment=[s][\color{yellow}]{@}{\ },
-	moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%}
+    showspaces=false,
+    showtabs=false,
+    breaklines=true,
+    showstringspaces=false,
+    breakatwhitespace=true,
+    commentstyle=\color{pgreen},
+    keywordstyle=\color{pblue},
+    stringstyle=\color{pred},
+    basicstyle=\ttfamily,
+    moredelim=[il][\textcolor{pgrey}]{$$},
+    %    morecomment=[s][\color{yellow}]{@}{\ },
+   moredelim=[is][\textcolor{darkorange}]{\%\%}{\%\%},
+    basicstyle=\ttfamily\fontsize{10}{12}\selectfont
 }
 
 \begin{document}
@@ -84,10 +86,10 @@
 \listoffigures
 
 %	Tabellenverzeichnis
-%\listoftables
+\listoftables
 
 %	Listingsverzeichnis
-%\lstlistoflistings
+\lstlistoflistings
 
 % 	Algorithmenverzeichnis
 %\listofalgorithms
@@ -108,8 +110,8 @@
 % Kapitel eine eigene Datei anzulegen und mittels input-Kommando einzuziehen.
 \input{einleitung}
 %\input{grundlagen}
-\input{methodik}
 \input{projektplanung}
+\input{methodik}
 \input{analyse}
 \input{entwurf}
 \input{umsetzung}

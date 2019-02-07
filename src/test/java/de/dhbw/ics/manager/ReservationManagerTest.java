@@ -1,11 +1,13 @@
 package de.dhbw.ics.manager;
 
 
+import de.dhbw.ics.controller.web.ResultMessage;
 import de.dhbw.ics.database.dao.*;
 import de.dhbw.ics.vo.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -129,11 +131,16 @@ public class ReservationManagerTest {
         reservation.setUser(user);
         reservation.setNumber(42);
 
+        Mockito.when(this.userDao.persist(user)).thenReturn(true);
+        Mockito.when(this.userDao.get(user.getEmail())).thenReturn(user);
+
+        Mockito.when(this.reservationDao.getByNumber(reservation.getNumber())).thenReturn(reservation);
+        Mockito.when(this.reservationDao.delete(reservation.getUuid())).thenReturn(true);
     }
 
     @Test
     public void test1persistUser() {
-        reservationManager.persistUser(user);
+        assertNotEquals(reservationManager.persistUser(user).getClass(), ResultMessage.class);
     }
     @Test
     public void test2persistReservation(){
@@ -161,8 +168,7 @@ public class ReservationManagerTest {
     }
     @Test
     public void test6deleteReservation(){
-        reservationManager.deleteReservation(reservation.getUser().getEmail(), reservation.getNumber());
-        assertNotEquals(reservationManager.getReservation(reservation.getUser().getEmail(), reservation.getNumber()).getClass(), reservation.getClass());
+        assertEquals(reservationManager.deleteReservation(reservation.getUser().getEmail(), reservation.getNumber()), ResultMessage.SUCCESS);
     }
 
 }
