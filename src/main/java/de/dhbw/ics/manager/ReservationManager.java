@@ -104,7 +104,7 @@ public class ReservationManager {
 
     public Object getReservation(String email, Integer resID) {
         Object result = this.checkForReservation(email, resID);
-        if (result instanceof Presentation) {
+        if (result instanceof Reservation) {
             this.ticketDao.getAllByReservation((Reservation) result);
         }
         return result;
@@ -344,7 +344,7 @@ public class ReservationManager {
         if (result instanceof Presentation) {
             presentation = (Presentation) result;
         } else {
-            return ResultMessage.PRESENTATION_NOT_FOUND;
+            return result;
         }
         if (locking) {
             return this.lockSeats(seats, sessionID, presentation);
