@@ -3,6 +3,7 @@ package de.dhbw.ics.manager;
 import de.dhbw.ics.controller.web.ResultMessage;
 import de.dhbw.ics.database.dao.*;
 import de.dhbw.ics.vo.*;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,20 +51,25 @@ public class ReservationManager {
             return ResultMessage.MISSING_LASTNAME;
         }
 
-        User u = userDao.get(user.getEmail());
+        User u = this.userDao.get(user.getEmail());
         if (u != null) {
             if ((u.getPassword() == null || u.getPassword().isEmpty()) && u.getRole().getTitle().equals("Guest")) {
                 this.mapReservations(u);
                 return u;
-            } else {
+            } else if(user.getPassword() == null || user.getPassword().equals(StringUtils.EMPTY)){
                 return ResultMessage.USER_NEEDS_PASSWORD;
+            } else if (!user.getPassword().equals(u.getPassword()) && !u.comparePassword(user.getPassword())){
+                return ResultMessage.USER_NEEDS_PASSWORD;
+            } else {
+                this.mapReservations(u);
+                return u;
             }
         }
 
-        if (user.getRole() == null && user.getPassword() == null) {
-            user.setRole(roleDao.getByTitle("Guest"));
+        if (user.getRole() == null && (user.getPassword() == null || user.getPassword().equals(StringUtils.EMPTY))) {
+            user.setRole(this.roleDao.getByTitle("Guest"));
         } else if (user.getRole() == null) {
-            user.setRole(roleDao.getByTitle("User"));
+            user.setRole(this.roleDao.getByTitle("User"));
         }
 
         if (this.userDao.persist(user))
@@ -126,13 +132,16 @@ public class ReservationManager {
             return ResultMessage.USER_NOT_FOUND;
 
         if (!user.getRole().getTitle().equals("Guest")) {
-            String password = user.getPassword();
+            String password = reservation.getUser().getPassword();
+            if(password == null){
+                return  ResultMessage.USER_NEEDS_PASSWORD;
+            }
             if (!Base64.isBase64(password.getBytes())) {
                 if (!user.comparePassword(password))
-                    return null;
+                    return ResultMessage.WRONG_PASSWORD;
             } else {
                 if (!password.equals(user.getPassword()))
-                    return null;
+                    return ResultMessage.WRONG_PASSWORD;
             }
         }
 
@@ -294,7 +303,7 @@ public class ReservationManager {
         if (reservation == null)
             return ResultMessage.RESERVATION_IS_NULL;
 
-        if (!reservation.getUser().getUuid().equals(user.getUuid()))
+        if (reservation.getUser() == null || !reservation.getUser().getUuid().equals(user.getUuid()))
             return ResultMessage.RESERVATION_USER_UNMATCHING;
 
         reservation.setUser(user);
@@ -322,6 +331,7 @@ public class ReservationManager {
                 bs.setTimestamp(Calendar.getInstance().getTimeInMillis());
                 s.setCurrentBusySeat(bs);
                 s.addBusy(bs);
+                bsUpdate.add(bs);
                 continue;
             }
 
@@ -340,7 +350,7 @@ public class ReservationManager {
 
     public Object lockSeats(String uuid, List<Seat> seats, String sessionID, boolean locking) {
         Presentation presentation;
-        Object result = checkForLocking(uuid, seats, sessionID);
+        Object result = checkForPresentation(uuid, seats, sessionID);
         if (result instanceof Presentation) {
             presentation = (Presentation) result;
         } else {
@@ -377,10 +387,10 @@ public class ReservationManager {
                 return seats;
             }
         }
-        return null;
+        return ResultMessage.COULD_NOT_UNBLOCK_SEATS;
     }
 
-    private Object checkForLocking(String uuid, List<Seat> seats, String sessionID) {
+    private Object checkForPresentation(String uuid, List<Seat> seats, String sessionID) {
         if (uuid == null || uuid.isEmpty())
             return ResultMessage.MISSING_PRESENTATION_ID;
 
