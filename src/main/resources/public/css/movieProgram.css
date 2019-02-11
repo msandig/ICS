@@ -1,3 +1,8 @@
+
+table{ cursor: default}
+h1{ cursor: default}
+a:hover { cursor: pointer; background-color: #41464c }
+
 .icsFontColor {
     color: darkgray;
 }
@@ -27,7 +32,9 @@ hr.linie-2 {
 }
 
 .presentationTable{
-    color: inherit;
     width: 14.29%;
     align: center;
 }
+
+
+
