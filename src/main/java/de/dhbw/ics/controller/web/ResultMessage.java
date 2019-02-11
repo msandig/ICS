@@ -25,6 +25,7 @@ public class ResultMessage {
     public static final String MISSING_SEAT = "Seat is not set!";
     public static final String LOCKED_SEAT = "Seat is locked by another person!";
     public static final String COULD_NOT_BLOCK_SEATS = "Could not block seats!";
+    public static final String COULD_NOT_UNBLOCK_SEATS = "Could not unblock seats!";
     public static final String COULD_NOT_PERSIST_TICKETS = "Could not persist tickets!";
     public static final String COULD_NOT_PERSIST_RESERVATION = "Could not persist reservation!";
     public static final String COULD_NOT_DELETE_RESERVATION = "Could not delete reservation!";

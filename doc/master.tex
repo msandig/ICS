@@ -86,10 +86,15 @@
 \listoffigures
 
 %	Tabellenverzeichnis
-\listoftables
+%\listoftables
 
 %	Listingsverzeichnis
+%\lstlistoflistings
+
+\noindent\begin{minipage}{\textwidth}
+\listoftables
 \lstlistoflistings
+\end{minipage}
 
 % 	Algorithmenverzeichnis
 %\listofalgorithms
@@ -124,11 +129,11 @@
 \cleardoublepage
 
 % Der Anhang beginnt hier - jedes Kapitel wird alphabetisch aufgezählt. (Anhang A, B usw.)
-%\appendix
-%\ihead{\appendixname~\thechapter} % Neue Header-Definition
+\appendix
+\ihead{\appendixname~\thechapter} % Neue Header-Definition
 
 % appendix.tex einziehen
-%\input{appendix}
+\input{appendix}
 
 % Ehrenwörtliche Erklärung ewerkl.tex einziehen
 \input{ewerkl.tex}

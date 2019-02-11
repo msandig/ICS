@@ -67,32 +67,32 @@ public class PresentationManagerTest {
         this.room = new Room("3D", true, true, 1);
         this.seatCategory = new SeatCategory("test", "test");
 
-        this.seat1 = new Seat(room, seatCategory, 1, 1);
-        this.seat2 = new Seat(room, seatCategory, 2, 1);
+        this.seat1 = new Seat(this.room, this.seatCategory, 1, 1);
+        this.seat2 = new Seat(this.room, this.seatCategory, 2, 1);
 
         this.genre = new Genre("test");
         this.movie = new Movie(2018, "test", "test", genre, 18, 120);
 
         this.presentationCategory = new PresentationCategory("test", "test");
-        this.presentation = new Presentation(movie, room, Calendar.getInstance().getTimeInMillis(), presentationCategory);
-        this.priceCategory = new PriceCategory(presentationCategory, seatCategory, "Test", "test", new BigDecimal("10.00"));
+        this.presentation = new Presentation(this.movie, this.room, Calendar.getInstance().getTimeInMillis(), this.presentationCategory);
+        this.priceCategory = new PriceCategory(this.presentationCategory, this.seatCategory, "Test", "test", new BigDecimal("10.00"));
 
-        Mockito.when(this.priceCategoryDao.getAll()).thenReturn(Arrays.asList(priceCategory));
+        Mockito.when(this.priceCategoryDao.getAll()).thenReturn(Arrays.asList(this.priceCategory));
 
-        Mockito.when(this.presentationDao.get(presentation.getUuid())).thenReturn(presentation);
-        Mockito.when(this.presentationDao.getAll()).thenReturn(Arrays.asList(presentation));
+        Mockito.when(this.presentationDao.get(presentation.getUuid())).thenReturn(this.presentation);
+        Mockito.when(this.presentationDao.getAll()).thenReturn(Arrays.asList(this.presentation));
         Mockito.when(this.presentationDao.delete(presentation.getUuid())).thenReturn(true);
-        Mockito.when(this.presentationDao.getPresentationsByMovieAndDateInterval(1, 1, movie.getUuid())).thenReturn(Arrays.asList(presentation));
-        Mockito.when(this.presentationDao.getPresentationsByTitleAndDateInterval(1, 1, movie.getTitle())).thenReturn(Arrays.asList(presentation));
-        Mockito.when(this.presentationDao.getPresentationsBetweenInterval(1, 2)).thenReturn(Arrays.asList(presentation));
+        Mockito.when(this.presentationDao.getPresentationsByMovieAndDateInterval(1, 1, this.movie.getUuid())).thenReturn(Arrays.asList(this.presentation));
+        Mockito.when(this.presentationDao.getPresentationsByTitleAndDateInterval(1, 1, this.movie.getTitle())).thenReturn(Arrays.asList(this.presentation));
+        Mockito.when(this.presentationDao.getPresentationsBetweenInterval(1, 2)).thenReturn(Arrays.asList(this.presentation));
         Mockito.when(this.presentationDao.persist(presentation)).thenReturn(true);
 
-        Mockito.when(this.movieDao.getAll()).thenReturn(Arrays.asList(movie));
-        Mockito.when(this.movieDao.getMovieByTitle(movie.getTitle())).thenReturn(Arrays.asList(movie));
-        Mockito.when(this.movieDao.getMoviesBetweenDate(1, 2)).thenReturn(Arrays.asList(movie));
+        Mockito.when(this.movieDao.getAll()).thenReturn(Arrays.asList(this.movie));
+        Mockito.when(this.movieDao.getMovieByTitle(this.movie.getTitle())).thenReturn(Arrays.asList(this.movie));
+        Mockito.when(this.movieDao.getMoviesBetweenDate(1, 2)).thenReturn(Arrays.asList(this.movie));
 
-        Mockito.when(this.seatDao.getAllByRoom(room)).thenReturn(Arrays.asList(seat1, seat2));
-        Mockito.when(this.busySeatDao.getAllByPresentation(presentation)).thenReturn(null);
+        Mockito.when(this.seatDao.getAllByRoom(this.room)).thenReturn(Arrays.asList(this.seat1, this.seat2));
+        Mockito.when(this.busySeatDao.getAllByPresentation(this.presentation)).thenReturn(null);
 
 
     }
@@ -167,7 +167,7 @@ public class PresentationManagerTest {
         assertThat(result, CoreMatchers.instanceOf(List.class));
         assertEquals(0, ((List) result).size());
 
-        result = this.presentationManager.getAllPresentationsByMovie(1, 1, movie.getUuid());
+        result = this.presentationManager.getAllPresentationsByMovie(1, 1, this.movie.getUuid());
         assertThat(result, CoreMatchers.instanceOf(List.class));
         assertNotEquals(0, ((List) result).size());
         assertEquals(this.presentation, ((List<Presentation>) result).get(0));
@@ -199,11 +199,11 @@ public class PresentationManagerTest {
         Object result = this.presentationManager.persistPresentation(null);
         assertEquals(ResultMessage.MISSING_PRESENTATION_TO_PERSIST, result);
 
-        Presentation p = new Presentation("", presentation.getMovie(), presentation.getRoom(), presentation.getDate(), presentation.getPresentationCategory());
+        Presentation p = new Presentation("", presentation.getMovie(), this.presentation.getRoom(), this.presentation.getDate(), this.presentation.getPresentationCategory());
         result = this.presentationManager.persistPresentation(p);
         assertEquals(ResultMessage.MISSING_PRESENTATION_ID, result);
 
-        p = new Presentation(presentation);
+        p = new Presentation(this.presentation);
         p.setRoom(null);
         result = this.presentationManager.persistPresentation(p);
         assertEquals(ResultMessage.MISSING_ROOM, result);
@@ -211,22 +211,22 @@ public class PresentationManagerTest {
         result = this.presentationManager.persistPresentation(presentation);
         assertEquals(ResultMessage.DATE_IN_PAST, result);
 
-        presentation.setDate(presentation.getDate() + 3600000);
+        presentation.setDate(this.presentation.getDate() + 3600000);
 
-        p = new Presentation(presentation);
+        p = new Presentation(this.presentation);
         p.setMovie(null);
         result = this.presentationManager.persistPresentation(p);
         assertEquals(ResultMessage.MISSING_MOVIE, result);
 
-        p = new Presentation(presentation);
+        p = new Presentation(this.presentation);
         p.setPresentationCategory(null);
         result = this.presentationManager.persistPresentation(p);
         assertEquals(ResultMessage.MISSING_PRESENTATION_CATEGORY, result);
 
-        result = this.presentationManager.persistPresentation(presentation);
-        assertEquals(presentation, result);
+        result = this.presentationManager.persistPresentation(this.presentation);
+        assertEquals(this.presentation, result);
 
-        p = new Presentation(presentation.getMovie(), presentation.getRoom(), presentation.getDate(), presentation.getPresentationCategory());
+        p = new Presentation(this.presentation.getMovie(), this.presentation.getRoom(), this.presentation.getDate(), this.presentation.getPresentationCategory());
         result = this.presentationManager.persistPresentation(p);
         assertEquals(ResultMessage.COULD_NOT_PERSIST_PRESENTATION, result);
     }
