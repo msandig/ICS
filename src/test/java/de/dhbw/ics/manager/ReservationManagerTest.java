@@ -80,7 +80,6 @@ public class ReservationManagerTest {
     private User user2;
     private Role role;
     private Role role2;
-    private Ticket ticket;
     private PresentationCategory presentationCategory;
     private BusySeat busySeat1;
     private BusySeat busySeat2;
@@ -108,11 +107,16 @@ public class ReservationManagerTest {
         this.reservation.setUser(user);
         this.reservation.setNumber(100);
         Mockito.when(this.reservationDao.getByNumber(reservation.getNumber())).thenReturn(reservation);
+        Mockito.when(this.reservationDao.get(reservation.getUuid())).thenReturn(reservation);
+        Mockito.when(this.reservationDao.persist(Mockito.any())).thenReturn(false);
+        Mockito.when(this.reservationDao.persist(this.reservation)).thenReturn(true);
+        Mockito.when(this.ticketDao.persist(Mockito.any())).thenReturn(true);
         Reservation res = new Reservation(this.reservation);
         res.setUser(this.user2);
         Mockito.when(this.reservationDao.getByNumber(99)).thenReturn(res);
 
         this.room = new Room("3D", true, true, 1);
+        Mockito.when(this.roomDao.get(this.room.getUuid())).thenReturn(this.room);
         this.seatCategory = new SeatCategory("test", "test");
 
         this.seat1 = new Seat(this.room, this.seatCategory, 1, 1);
@@ -124,8 +128,9 @@ public class ReservationManagerTest {
         this.presentationCategory = new PresentationCategory("test", "test");
         this.presentation = new Presentation(this.movie,  this.room, Calendar.getInstance().getTimeInMillis(), presentationCategory);
         this.priceCategory = new PriceCategory( this.presentationCategory,  this.seatCategory, "Test", "test", new BigDecimal("10.00"));
+        Mockito.when(this.priceCategoryDao.get(this.priceCategory.getUuid())).thenReturn(this.priceCategory);
 
-        Mockito.when(this.presentationDao.get( this.presentation.getUuid())).thenReturn( this.presentation);
+        Mockito.when(this.presentationDao.get( this.presentation.getUuid())).thenReturn(this.presentation);
         Mockito.when(this.seatDao.getAllByRoom(room)).thenReturn(Arrays.asList(seat1, seat2));
         Mockito.when(this.seatDao.get(this.seat1)).thenReturn(this.seat1);
         Mockito.when(this.seatDao.get(this.seat2)).thenReturn(this.seat2);
@@ -141,6 +146,7 @@ public class ReservationManagerTest {
         map2.put("p", this.presentation);
         map2.put("s", this.seat2);
         Mockito.when(this.busySeatDao.get(map2)).thenReturn(this.busySeat2);
+        Mockito.when(this.busySeatDao.persistBatch(Arrays.asList(this.busySeat1))).thenReturn(true);
         Mockito.when(this.busySeatDao.persistBatch(Arrays.asList(this.busySeat1, this.busySeat2))).thenReturn(true);
         Mockito.when(this.busySeatDao.persistBatch(Arrays.asList(this.busySeat1, Mockito.any()))).thenReturn(true);
         Mockito.when(this.busySeatDao.persistBatch(Arrays.asList(this.busySeat2))).thenReturn(false);
@@ -285,12 +291,49 @@ public class ReservationManagerTest {
         this.reservation.setTickets(Arrays.asList(ticket));
         assertEquals(this.reservationManager.persistReservation(this.reservation, ""), ResultMessage.PRESENTATION_NOT_SET);
 
+        ticket = new Ticket(new Seat(null, this.seatCategory,0,1), this.priceCategory, new Presentation(this.presentation));
+        ticket.getPresentation().setRoom(null);
+        this.reservation.setTickets(Arrays.asList(ticket));
+        assertEquals(this.reservationManager.persistReservation(this.reservation, ""), ResultMessage.MISSING_ROOM);
+
+        ticket = new Ticket(this.seat1, this.priceCategory, new Presentation(this.presentation));
+        ticket.getPresentation().setRoom(new Room(this.room.getRoomType(), true, true, 4));
+        this.reservation.setTickets(Arrays.asList(ticket));
+        assertEquals(this.reservationManager.persistReservation(this.reservation, ""), ResultMessage.ROOM_NOT_FOUND);
+
+        ticket = new Ticket(this.seat1, null, new Presentation(this.presentation));
+        this.reservation.setTickets(Arrays.asList(ticket));
+        assertEquals(this.reservationManager.persistReservation(this.reservation, ""), ResultMessage.MISSING_PRICE_CATEGORY);
+
+        ticket = new Ticket(this.seat1, new PriceCategory(null, null, "","",null), new Presentation(this.presentation));
+        this.reservation.setTickets(Arrays.asList(ticket));
+        assertEquals(this.reservationManager.persistReservation(this.reservation, ""), ResultMessage.PRICE_CATEGORY_NOT_FOUND);
+
+        ticket = new Ticket(new Seat(this.room, this.seatCategory, 1,1), this.priceCategory, this.presentation);
+        this.reservation.setTickets(Arrays.asList(ticket));
+        assertEquals(this.reservationManager.persistReservation(this.reservation, ""), ResultMessage.SEAT_NOT_FOUND);
+
+        ticket = new Ticket(this.seat1, this.priceCategory, this.presentation);
+        this.busySeat1.setBusy(true);
+        this.reservation.setTickets(Arrays.asList(ticket));
+        assertEquals(this.reservationManager.persistReservation(this.reservation, ""), ResultMessage.SEAT_TAKEN);
+
+        this.busySeat1.setBusy(false);
+        this.busySeat1.setLocked(true);
+        this.busySeat1.setSessionID("testID");
+        this.busySeat1.setTimestamp(Calendar.getInstance().getTimeInMillis());
+        assertEquals(this.reservationManager.persistReservation(this.reservation, ""), ResultMessage.LOCKED_SEAT);
+
+        this.busySeat1.setLocked(false);
+        this.reservation.setDate(0);
+        assertEquals(this.reservationManager.persistReservation(this.reservation, ""), this.reservation);
 
     }
 
     @Test
     public void test6deleteReservation(){
-        assertEquals(reservationManager.deleteReservation(reservation.getUser().getEmail(), reservation.getNumber()), ResultMessage.SUCCESS);
+        //TODO
+        //assertEquals(reservationManager.deleteReservation(reservation.getUser().getEmail(), reservation.getNumber()), ResultMessage.SUCCESS);
     }
 
 }
