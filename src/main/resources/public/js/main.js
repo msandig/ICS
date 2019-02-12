@@ -396,17 +396,14 @@ window.setTimeout(function () {
 
                     return;
                 }); // oTable
-
-                $(document).ready(function(){
-                    $('#Aquaman').attr("src", "img/movies/aquaman.jpg")
-                    $('#Bumblebee').attr("src", "img/movies/bumblebee.jpg")
-                    $('#Bird').attr("src", "img/movies/birdbox.jpg")
-                    $('#Mary').attr("src", "img/movies/marypoppins.jpg")
-                    $('#Venom').attr("src", "img/movies/venom.jpg")
-                    $('#Phantastische').attr("src", "img/movies/grindelwalds_verbrechen.jpg")
-                    $('#Spider').attr("src", "img/movies/spiderman_into_the_spider_verse.jpg")
-                    $('#Robin').attr("src", "img/movies/robin-hood.jpg")
-                });
+                    $('#Aquaman').attr("src", "img/movies/aquaman.jpg");
+                    $('#Bumblebee').attr("src", "img/movies/bumblebee.jpg");
+                    $('#Bird').attr("src", "img/movies/birdbox.jpg");
+                    $('#Mary').attr("src", "img/movies/marypoppins.jpg");
+                    $('#Venom').attr("src", "img/movies/venom.jpg");
+                    $('#Phantastische').attr("src", "img/movies/grindelwalds_verbrechen.jpg");
+                    $('#Spider').attr("src", "img/movies/spiderman_into_the_spider_verse.jpg");
+                    $('#Robin').attr("src", "img/movies/robin-hood.jpg");
 
             }
 
