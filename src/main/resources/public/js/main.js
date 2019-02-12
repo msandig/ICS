@@ -414,7 +414,7 @@ window.setTimeout(function () {
         $('#Robin').attr("src", "http://localhost:8080/img/movies/robin-hood.jpg")
     }, 3)
 
-}, 100); // TimeOut
+}, 500); // TimeOut
 
 
 
