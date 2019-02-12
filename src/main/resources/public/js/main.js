@@ -46,7 +46,7 @@ window.setTimeout(function () {
 
 /////////////////////index.html////////////////////////////////////////////////////////////////////////////////////
 
-            if (document.URL == "http://localhost:63342/ICS2/public/index.html") {
+            if (document.URL.includes("index.html") == true) {
 
                 oMe.presentation.map(function (oAttribute) {
                     if (oAttribute.movie.title == "Aquaman Collection") {
@@ -396,23 +396,20 @@ window.setTimeout(function () {
 
                     return;
                 }); // oTable
+                    $('#Aquaman').attr("src", "img/movies/aquaman.jpg");
+                    $('#Bumblebee').attr("src", "img/movies/bumblebee.jpg");
+                    $('#Bird').attr("src", "img/movies/birdbox.jpg");
+                    $('#Mary').attr("src", "img/movies/marypoppins.jpg");
+                    $('#Venom').attr("src", "img/movies/venom.jpg");
+                    $('#Phantastische').attr("src", "img/movies/grindelwalds_verbrechen.jpg");
+                    $('#Spider').attr("src", "img/movies/spiderman_into_the_spider_verse.jpg");
+                    $('#Robin').attr("src", "img/movies/robin-hood.jpg");
 
             }
 
         }, 2); //Timeout
 
     }   //if
-
-    window.setTimeout(function(){
-        $('#Aquaman').attr("src", "http://localhost:8080/img/movies/aquaman.jpg")
-        $('#Bumblebee').attr("src", "http://localhost:8080/img/movies/bumblebee.jpg")
-        $('#Bird').attr("src", "http://localhost:8080/img/movies/birdbox.jpg")
-        $('#Mary').attr("src", "http://localhost:8080/img/movies/marypoppins.jpg")
-        $('#Venom').attr("src", "http://localhost:8080/img/movies/venom.jpg")
-        $('#Phantastische').attr("src", "http://localhost:8080/img/movies/grindelwalds_verbrechen.jpg")
-        $('#Spider').attr("src", "http://localhost:8080/img/movies/spiderman_into_the_spider_verse.jpg")
-        $('#Robin').attr("src", "http://localhost:8080/img/movies/robin-hood.jpg")
-    }, 3)
 
 }, 500); // TimeOut
 
