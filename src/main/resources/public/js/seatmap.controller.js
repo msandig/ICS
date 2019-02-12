@@ -491,7 +491,7 @@ function reserve(){
             if (requestUser.readyState == 4) {
                 oMe.user = JSON.parse(requestUser.response);
             }
-    }, 700);
+    }, 800);
 
     window.setTimeout(function(){
 
@@ -547,13 +547,25 @@ function reserve(){
              if (request.readyState == 4) {
                     this.reservation = JSON.parse(request.response);
                 }
-        }, 800);
+        }, 900);
 
         window.setTimeout(function(){
             var number = this.reservation.number;
-        }, 900);
+
+            if (number != undefined) {
+                let div = document.createElement('div');
+                div.className = "alert alert-success";
+                div.innerHTML = "<strong>Success!</strong> Ihre Reservierung war erfolgreich. Ihre Reservierungsnummer lautet: " + number + " Bitte zeigen Sie diese an der Kasse vor.";
+                document.getElementById("tickets").insertBefore(div, document.getElementById("tickets").children[0]);
+            } else {
+                let div = document.createElement('div');
+                div.className = "alert alert-danger";
+                div.innerHTML = "<strong>Error!</strong> Ihre Reservierung ging schief. Bitte versuchen Sie es erneut!";
+                document.getElementById("tickets").insertBefore(div, document.getElementById("tickets").children[0]);
+            }
+            }, 1000);
 
 
-    }, 1000)
+    }, 1200)
 
   }
