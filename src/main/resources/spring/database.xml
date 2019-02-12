@@ -276,4 +276,11 @@
                  stripComments="true"/>
     </changeSet>
 
+    <changeSet id="6" author="martin">
+        <addForeignKeyConstraint baseTableName="Busy_Seat" baseColumnNames="seat_uuid" constraintName="seat_uuid_bs" referencedTableName="Seat"
+                                 referencedColumnNames="seat_uuid"/>
+        <addForeignKeyConstraint baseTableName="Busy_Seat" baseColumnNames="pres_uuid" constraintName="pres_uuid_bs" referencedTableName="Presentation"
+                                 referencedColumnNames="pres_uuid"/>
+    </changeSet>
+
 </databaseChangeLog>

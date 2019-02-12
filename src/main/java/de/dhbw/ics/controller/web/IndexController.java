@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class IndexController {
 
-	@GetMapping("/")
+	@GetMapping("")
 	public String index(HttpSession httpSession) {
 		return "index.html";
 	}
