@@ -146,8 +146,9 @@ window.setTimeout(function () {
 
                         if (oMovie.cells[1].children[0].children[0].innerText == "" || oMovie.cells[1].children[0].children[0].innerText == oAttribute.movie.title) {
 
-                            var image = oMovie.cells[0].children[0].childNodes[1].scr = oAttribute.movie.picture;
+                            var id = oAttribute.movie.title.split(" ");
                             oMovie.cells[1].children[0].children[0].innerText = oAttribute.movie.title;
+                            oMovie.cells[0].children[0].childNodes[1].id = id[0];
                             oMovie.cells[1].children[0].children[1].innerText = "Laufzeit: " + oAttribute.movie.runTime;
                             oMovie.cells[1].children[0].children[2].innerText = "FSK: " + oAttribute.movie.fsk;
                             oMovie.cells[1].children[0].children[3].innerText = "Filmstart: " + oAttribute.movie.productionYear;
@@ -279,7 +280,12 @@ window.setTimeout(function () {
                                     row.appendChild(childTableRow);
                                     row.appendChild(childEndRow);
 
-                                    row.cells[0].children[0].childNodes[1].scr = oAttribute.movie.picture;
+                                    if(oAttribute.movie.title == "Spider-Man: A New Universe"){
+                                        var id = oAttribute.movie.title.split("-")
+                                    } else {
+                                        var id = oAttribute.movie.title.split(" ");
+                                    }
+                                    row.cells[0].children[0].childNodes[1].id = id[0];
                                     row.cells[1].children[0].children[0].innerText = oAttribute.movie.title;
                                     row.cells[1].children[0].children[1].innerText = "Laufzeit: " + oAttribute.movie.runTime;
                                     row.cells[1].children[0].children[2].innerText = "FSK: " + oAttribute.movie.fsk;
@@ -335,7 +341,8 @@ window.setTimeout(function () {
                                 row.appendChild(childTable);
                                 row.appendChild(childEnd);
 
-                                row.cells[0].children[0].childNodes[1].scr = oAttribute.movie.picture;
+                                var id = oAttribute.movie.title.split(" ");
+                                row.cells[0].children[0].childNodes[1].id = id[0];
                                 row.cells[1].children[0].children[0].innerText = oAttribute.movie.title;
                                 row.cells[1].children[0].children[1].innerText = "Laufzeit: " + oAttribute.movie.runTime;
                                 row.cells[1].children[0].children[2].innerText = "FSK: " + oAttribute.movie.fsk;
@@ -396,7 +403,18 @@ window.setTimeout(function () {
 
     }   //if
 
-}, 300); // TimeOut
+    window.setTimeout(function(){
+        $('#Aquaman').attr("src", "http://localhost:8080/img/movies/aquaman.jpg")
+        $('#Bumblebee').attr("src", "http://localhost:8080/img/movies/bumblebee.jpg")
+        $('#Bird').attr("src", "http://localhost:8080/img/movies/birdbox.jpg")
+        $('#Mary').attr("src", "http://localhost:8080/img/movies/marypoppins.jpg")
+        $('#Venom').attr("src", "http://localhost:8080/img/movies/venom.jpg")
+        $('#Phantastische').attr("src", "http://localhost:8080/img/movies/grindelwalds_verbrechen.jpg")
+        $('#Spider').attr("src", "http://localhost:8080/img/movies/spiderman_into_the_spider_verse.jpg")
+        $('#Robin').attr("src", "http://localhost:8080/img/movies/robin-hood.jpg")
+    }, 3)
+
+}, 100); // TimeOut
 
 
 
