@@ -46,7 +46,7 @@ window.setTimeout(function () {
 
 /////////////////////index.html////////////////////////////////////////////////////////////////////////////////////
 
-            if (document.URL.includes("index.html") == true) {
+            if (document.URL.includes("index.html") == true || document.URL == "http://localhost:8080/") {
 
                 oMe.presentation.map(function (oAttribute) {
                     if (oAttribute.movie.title == "Aquaman Collection") {
@@ -60,7 +60,7 @@ window.setTimeout(function () {
                         if (document.getElementById("titleBumblebee").innerText == "") {
                             document.getElementById("titleBumblebee").innerText = oAttribute.movie.title;
                             document.getElementById("titleBumblebee2").innerText = oAttribute.movie.title;
-                            document.getElementById("textBumblebee").innerText = oAttribute.movie.description;
+                            document.getElementById("textBumblebee2").innerText = oAttribute.movie.description;
 
                         }
                     } else if (oAttribute.movie.title == "Bird Box") {
@@ -91,7 +91,26 @@ window.setTimeout(function () {
                             document.getElementById("textTierwesen2").innerText = oAttribute.movie.description;
 
                         }
+
+                    } else if (oAttribute.movie.title == "Spider-Man: A New Universe") {
+                        if (document.getElementById("titleSpider").innerText == "") {
+                            document.getElementById("titleSpider").innerText = oAttribute.movie.title;
+                            document.getElementById("titleSpider2").innerText = oAttribute.movie.title;
+                            document.getElementById("textSpider2").innerText = oAttribute.movie.description;
+
+                        }
+
+                    } else if (oAttribute.movie.title == "Robin Hood") {
+                        if (document.getElementById("titleRobin").innerText == "") {
+                            document.getElementById("titleRobin").innerText = oAttribute.movie.title;
+                            document.getElementById("titleRobin2").innerText = oAttribute.movie.title;
+                            document.getElementById("textRobin2").innerText = oAttribute.movie.description;
+
+                        }
+
                     }
+
+
 
                 });
 
