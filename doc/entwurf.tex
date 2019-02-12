@@ -5,7 +5,7 @@
 		Damit eine klare Struktur für die Frontend Entwicklung gegeben ist und mehrere Entwickler auf gleichem Wissensstand mit dem Programmieren beginnen können ist ein Entwurf essentiell. Der Design Entwurf stellt die erste konkrete Idee für das Frontend dar und wurde auf Basis der Analyse marktführender Kinowebseiten erstellt. Er soll nicht als strenge Richtlinie für die Umsetzung verstanden werden, sondern ist vielmehr als Orientierungshilfe und Unterstützung zu verstehen. Die wichtigsten Unterschiede zur realisierten Umsetzung werden später im Abschnitt \vref{subdesign} dargestellt. 
 		
 		Der Entwurf wurde in einem kleineren Team mithilfe diverser Zeichenapps auf dem iPad erstellt. Auch wenn eine Reihe an Tools wie \enquote{Mockingbird} oder \enquote{wireframe.cc} für genau diesen Anwendungsfall gedacht sind, wurde sich bewusst dagegen entschieden. Gründe hierfür sind zum Beispiel die benötigte Einarbeitungszeit in das entsprechende Tool oder deren reduzierter Funktionsumfang in kostenlosen Testversionen. 
-		Als Mockup dargestellt wurden die drei Hauptseiten: Startseite, Programm und Sitzplan, welche den Funktionsumfang des Reservierungsprozesses enthalten, abbilden. Die Startseite ist in Abbildung \ref{fig:mockUpStartseite} zu sehen.
+		Als Mockup dargestellt wurden die drei Hauptseiten: Startseite, Programm und Sitzplan, welche den Funktionsumfang des Reservierungsprozesses enthalten. Die Startseite ist in Abbildung \ref{fig:mockUpStartseite} zu sehen.
 		
 		\begin{figure}[H]
 			\centering 
@@ -23,7 +23,7 @@
 			\caption[Mockup Programm]{\label{fig:mockUpProgramm} Mockup Programm }
 		\end{figure}
 		
-		Die nächste Ansicht zeigt das Programm, also die Filme mit ihren Vorstellungen. Die Filme werden tabellarisch untereinander in Spalten aufgereiht. In jeder Spalte werden auf der linken Seite noch einmal wesentliche Informationen bereitgestellt, während auf der Rechten der Kalenderausschnitt für die jeweilige Woche zu sehen ist. Die Laufzeiten der Filme werden im Mockup als Kästchen symbolisiert, welche später durch entsprechende Uhrzeiten zu ersetzen sind. Diese Kästchen sollen durch einen klick zur nächsten Seite führen: der Detailansicht einer Vorstellung mit Sitzplan.
+		Die nächste Ansicht zeigt das Programm, also die Filme mit ihren Vorstellungen. Die Filme werden tabellarisch untereinander in Spalten aufgereiht. In jeder Spalte werden auf der linken Seite noch einmal wesentliche Informationen bereitgestellt, während auf der Rechten der Kalenderausschnitt für die jeweilige Woche zu sehen ist. Die Laufzeiten der Filme werden im Mockup als Kästchen symbolisiert, welche später durch entsprechende Uhrzeiten zu ersetzen sind. Diese Kästchen sollen durch einen Klick zur nächsten Seite führen: der Detailansicht einer Vorstellung mit Sitzplan.
 		
 		In Abbildung \ref{fig:mockUpSitzplan} sind noch einmal die Eckdaten der ausgewählten Vorstellung zu sehen. Darunter soll der Nutzer über zwei Eingabefelder die Anzahl, als auch den Typ der gewünschten Plätze auswählen können. Mithilfe des Sitzplans kann nun eine genauere Auswahl der Sitze erfolgen. Die Quadrate, welche die Sitze darstellen sollen, nehmen hierzu passende Farben an und können durch Klicken ausgewählt werden.
 		
@@ -36,7 +36,7 @@
 		
 		
 	
-	\section[Technischer Entwurf]{Technischer Entwurf{\hfill \normalsize Felix Waage}} 	
+	\section[Technischer Entwurf]{Technischer Entwurf{\hfill \normalsize Felix Waage}} \label{chapter:technischer_entwurf}
 
 		Das \ac{ICS} ist ein komplexes Softwaresystem, welches aus verschiedenen Komponenten, Services und Schichten besteht. Aus diesem Grund war es bereits von Beginn an wichtig, einen genauen Entwurf der späteren Softwarearchitektur zu entwickeln. Diese Vorgehensweise soll vor allem ein möglichst skalierbares, effizientes und anpassungsfähiges Softwaresystem hervorbringen. Des Weiteren wird durch eine gute Dokumentation das System wartungsfreundlicher, da Zusammenhänge schneller erkannt werden können und somit Probleme leichter aufzufinden sind. Auch die Zusammenarbeit der Teammitglieder profitiert von einem ausführlichen technischen Entwurf.
 		
@@ -102,7 +102,7 @@
 			
 			\item  \textbf{Benutzer \textit{macht} Reservierung} -- Eine Reservierung wird immer durch genau einen Benutzer vorgenommen, jedoch kann ein Benutzer mehrere Tickets Reservieren, muss es jedoch nicht, weshalb es sich hier auch um eine 1:n Beziehung handelt, wobei in diesem Fall n auch den Wert 0 annehmen kann. 
 		\end{itemize}
-		Im letzten Schritt gilt es, die Attribute der einzelnen Entitäten zu ermitteln und in das ER-Diagramm einzutragen. So hat ein Benutzer eine Email-Adresse (\texttt{email}), einen Namen (\texttt{name}) und eine Benutzernummer (\texttt{benutzer\_nr}). Eine Reservierung besitzt eine Reservierungsnummer (\texttt{res\_nr}), ein Datum (\texttt{datum}) und eine Benutzernummer (\texttt{benutzer\_nr}). Und jedes Ticket eine Reservierungsnummer (\texttt{res\_nr}) und eine Ticketnummer (\texttt{ticket\_nr}). Ein Ticket beinhaltet natürlich noch Informationen zur Vorstellung, dem Sitz und dem Preis, jedoch sollen diese zur Vereinfachnung nicht betrachtet werden. Nachfolgend ist das eben erläuterte ER-Diagramm abgebildet (Abbildung \ref{fig:erdiagramm_reservation}).
+		Im letzten Schritt gilt es, die Attribute der einzelnen Entitäten zu ermitteln und in das ER-Diagramm einzutragen. So hat ein Benutzer eine Email-Adresse (\texttt{email}), einen Namen (\texttt{name}) und eine Benutzernummer (\texttt{benutzer\_nr}). Eine Reservierung besitzt eine Reservierungsnummer (\texttt{res\_nr}), ein Datum (\texttt{datum}) und eine Benutzernummer (\texttt{benutzer\_nr}). Und jedes Ticket verfügt über eine Reservierungsnummer (\texttt{res\_nr}) und eine Ticketnummer (\texttt{ticket\_nr}). Ein Ticket beinhaltet natürlich noch Informationen zur Vorstellung, dem Sitz und dem Preis, jedoch sollen diese zur Vereinfachnung nicht betrachtet werden. Nachfolgend ist das eben erläuterte ER-Diagramm abgebildet (Abbildung \ref{fig:erdiagramm_reservation}).
 		
 		\begin{figure}[H]
 			\centering 
@@ -116,7 +116,7 @@
 		
 		Mit Hilfe des Entity-Relationship-Modell kann nun die Datenbank angelegt werden. Dazu sind bestimmte Regeln und Vorgehensweisen anzuwenden, um die benötigten Tabellen und Spalten aus dem ER-Modell zu extrahieren:
 				
-		Die Tabellen der Datenbank entsprechen den Entitäten im ER-Modell. Die Attribute werden als Spalten überwiegend unverändert übernommen. Als Schlüssel bietet es sich an, ein zusätzliches Schlüsselattribut zu verwenden, das eine fortlaufende Nummer oder eine \ac{UUID}. Um die Beziehungen zwischen den Attributen richtig abbilden zu können, müssen die Kardinalitäten beachtet werden. 
+		Die Tabellen der Datenbank entsprechen den Entitäten im ER-Modell. Die Attribute werden als Spalten überwiegend unverändert übernommen. Als Schlüssel bietet es sich an, ein zusätzliches Schlüsselattribut zu verwenden, zum Beispiel eine fortlaufende Nummer oder eine \ac{UUID}. Um die Beziehungen zwischen den Attributen richtig abbilden zu können, müssen die Kardinalitäten beachtet werden. 
 				\begin{itemize}
 					\item 1:1 Beziehung -- Bei dieser Form der Kardinalität enthält eine der beiden Tabellen den Primärschlüssel der anderen Tabelle in Form eines Fremdschlüssels.
 					\item 1:n Beziehung -- Liegt diese Form der Kardinalität vor, wird der Primärschlüssel der Entität, die nur einfach in der Beziehung beteiligt ist, als Fremdschlüssel auf der n-Seite hinzugefügt. 
@@ -153,7 +153,7 @@
 		Diese Darstellung kann durch Attribute und Funktionen erweitert werden, wobei die Sichtbarkeit der Attribute und Funktionen bereits im Klassendiagramm beschrieben werden sollte. In Java sind drei Zugriffsmodifikatoren definiert:
 		\begin{itemize}
 			\item\textbf{public} -- Es kann von Außen auf das Attribut oder die Funktion direkt zugegriffen werden. Dies kann dazu führen, dass Klassenbestandteile nicht sinngemäß verwendet werden. In UML wird dieser Zugriffsmodifikator durch ein + vor dem Attribut oder der Funktion dargestellt. 
-			\item\textbf{private} -- Nur Funktionen innerhalb der Klasse können auf diese Attribute oder Funktionen zugreifen. Die Notation UML beschreibt dies mit einem - vor dem Attribut oder der Funktion.
+			\item\textbf{private} -- Nur Funktionen innerhalb der Klasse können auf diese Attribute oder Funktionen zugreifen. Die UML Notation beschreibt dies mit einem - vor dem Attribut oder der Funktion.
 			\item\textbf{protected} -- Durch den Zugriffmodifikator protected ist es auch Subklassen möglich, auf Attribute und Funktionen zuzugreifen. In der UML-Notation wird dieser Zugriffsmodifikator durch \# repräsentiert.
 		\end{itemize}
 		Allgemein ist es jedoch üblich, Attribute grundsätzlich als \texttt{private} zu deklarieren und den Zugriff durch sogenannte \textit{Getter- und Setter-Methoden} zu ermöglichen. Dies ermöglicht es, Werte vor dem Speichern auf Korrektheit zu prüfen. Außerdem kann so ein Missbrauch der Klasse für andere Zwecke verhindert werden. Eine Klasse mit all den erwähnten Bestandteilen wird in UML wie folgt dargestellt (Abbildung \ref{fig:KlasseUML}): 
