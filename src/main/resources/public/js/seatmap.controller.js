@@ -1,6 +1,10 @@
 var oMe = this;
 var url = "http://localhost:8080/service/get/presentations/";
 this.movie = "";
+this.date = "";
+this.presentationUuid = "";
+this.room = "";
+this.BusySeat = [];
 
 var price = 10; //price
 var id1 = [];
@@ -77,6 +81,9 @@ $(document).ready(function () {
 
         var movie = JSON.parse(oMe.movie);
         var title = movie.movie.title;
+        this.date = movie.date;
+        this.presentationUuid = movie.uuid;
+        this.room = movie.room;
         var date = new Date(movie.date).getDate();
         var month = new Date(movie.date).getMonth();
         if (month == 0) {
@@ -379,11 +386,10 @@ function recalculateTotal(sc) {
     return total;
 }
 
-function reserve() {
+function block() {
     var seats = document.getElementById("selected-seats");
     var children = Array.prototype.slice.call(seats.children);
     var reservations = [];
-    var BusySeat = [];
     var number2 = [];
     var row2 = [];
     var i = 0;
@@ -435,7 +441,7 @@ function reserve() {
             seatCategory = seatCategory13[number];
         }
 
-        BusySeat[i] = {
+        this.BusySeat[i] = {
             "uuid": id,
             "number": parseInt(number),
             "row": parseInt(row),
@@ -448,7 +454,7 @@ function reserve() {
         return id;
     });
 
-    var string = JSON.stringify(BusySeat);
+    var string = JSON.stringify(this.BusySeat);
 
     var uuid = localStorage.getItem("movie");
 
@@ -457,3 +463,97 @@ function reserve() {
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
     request.send(string);
 };
+
+function reserve(){
+    var vorname = document.getElementById("vorname").value;
+    var nachname = document.getElementById("nachname").value;
+    var mail = document.getElementById("email").value;
+    var date = this.date;
+    var presentationUuid = this.presentationUuid;
+    var room = this.room;
+    this.user = "";
+    this.reservation = "";
+
+    var user = {
+        "firstName": vorname,
+        "lastName": nachname,
+        "email": mail
+    };
+
+    var stringUser = JSON.stringify(user);
+
+    var requestUser = new XMLHttpRequest();
+    requestUser.open("POST", "http://localhost:8080/service/get/users");
+    requestUser.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+    requestUser.send(stringUser);
+
+    window.setTimeout(function(){
+            if (requestUser.readyState == 4) {
+                oMe.user = JSON.parse(requestUser.response);
+            }
+    }, 700);
+
+    window.setTimeout(function(){
+
+        var tickets = this.BusySeat.map(function(oAttribute){
+
+            return {
+                "presentation": {
+                    "uuid": presentationUuid,
+                    "room": {
+                        "uuid": room.uuid,
+                        "roomType": room.roomType,
+                        "number": room.number,
+                        "seats": {
+                        },
+                        "clean": room.clean,
+                        "vip": room.vip
+                    }
+                },
+                "priceCategory": {
+                    "uuid": "a4034566-5123-4176-b3c7-17285b52a5ba"
+                },
+                "seat": {
+                    "uuid": oAttribute.uuid
+                }
+            }
+        });
+
+        var Reservation = {
+            "user": {
+                "uuid": this.user.uuid,
+                "firstName": vorname,
+                "lastName": nachname,
+                "email": mail,
+                "password": null,
+                "role": {
+                    "uuid": "efds8fe2-a1wq5-481f-a12d5-7557085edffe",
+                    "title": "Guest",
+                    "admin": false
+                }
+            },
+            "date": date,
+            "tickets": tickets
+        };
+
+        var string = JSON.stringify(Reservation);
+
+        var request = new XMLHttpRequest();
+        request.open("POST", "http://localhost:8080/service/get/reservations");
+        request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        request.send(string);
+
+        window.setTimeout(function(){
+             if (request.readyState == 4) {
+                    this.reservation = JSON.parse(request.response);
+                }
+        }, 800);
+
+        window.setTimeout(function(){
+            var number = this.reservation.number;
+        }, 900);
+
+
+    }, 1000)
+
+  }

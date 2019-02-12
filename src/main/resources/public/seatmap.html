@@ -57,7 +57,7 @@
             <p>Tickets: <span id="counter">0</span></p>
             <p>Total: <b><span id="total">0</span></b> €</p>
 
-            <button href="#reserveModal" data-toggle="modal" class="btn checkout-button">Reservieren</button>
+            <button href="#reserveModal" data-toggle="modal" onclick="block()" class="btn checkout-button">Reservieren</button>
             <button class="btn checkout-button">Kaufen</button>
 
 
@@ -93,7 +93,7 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" onclick="reserve()" data-dismiss="modal">Verbindlich reservieren</button>
+                            <button type="button" class="btn btn-success" onclick="reserve()"  data-dismiss="modal">Verbindlich reservieren</button>
                         </div>
                     </div>
                 </div>
