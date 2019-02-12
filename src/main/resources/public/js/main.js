@@ -54,7 +54,6 @@ window.setTimeout(function () {
                             document.getElementById("titleAquaman").innerText = oAttribute.movie.title;
                             document.getElementById("titleAquaman2").innerText = oAttribute.movie.title;
                             document.getElementById("textAquaman2").innerText = oAttribute.movie.description;
-                            document.getElementById("textAquaman").innerText = oAttribute.movie.description;
 
                         }
                     } else if (oAttribute.movie.title == "Bumblebee") {
@@ -62,14 +61,12 @@ window.setTimeout(function () {
                             document.getElementById("titleBumblebee").innerText = oAttribute.movie.title;
                             document.getElementById("titleBumblebee2").innerText = oAttribute.movie.title;
                             document.getElementById("textBumblebee").innerText = oAttribute.movie.description;
-                            document.getElementById("textBumblebee2").innerText = oAttribute.movie.description;
 
                         }
                     } else if (oAttribute.movie.title == "Bird Box") {
                         if (document.getElementById("titleBird").innerText == "") {
                             document.getElementById("titleBird").innerText = oAttribute.movie.title;
                             document.getElementById("titleBird2").innerText = oAttribute.movie.title;
-                            document.getElementById("textBird").innerText = oAttribute.movie.description;
                             document.getElementById("textBird2").innerText = oAttribute.movie.description;
 
                         }
@@ -77,7 +74,6 @@ window.setTimeout(function () {
                         if (document.getElementById("titleMary").innerText == "") {
                             document.getElementById("titleMary").innerText = oAttribute.movie.title;
                             document.getElementById("titleMary2").innerText = oAttribute.movie.title;
-                            document.getElementById("textMary").innerText = oAttribute.movie.description;
                             document.getElementById("textMary2").innerText = oAttribute.movie.description;
 
                         }
@@ -85,7 +81,6 @@ window.setTimeout(function () {
                         if (document.getElementById("titleVenom").innerText == "") {
                             document.getElementById("titleVenom").innerText = oAttribute.movie.title;
                             document.getElementById("titleVenom").innerText = oAttribute.movie.title;
-                            document.getElementById("textVenom").innerText = oAttribute.movie.description;
                             document.getElementById("textVenom2").innerText = oAttribute.movie.description;
 
                         }
@@ -93,7 +88,6 @@ window.setTimeout(function () {
                         if (document.getElementById("titleTierwesen").innerText == "") {
                             document.getElementById("titleTierwesen").innerText = oAttribute.movie.title;
                             document.getElementById("titleTierwesen").innerText = oAttribute.movie.title;
-                            document.getElementById("textTierwesen").innerText = oAttribute.movie.description;
                             document.getElementById("textTierwesen2").innerText = oAttribute.movie.description;
 
                         }
