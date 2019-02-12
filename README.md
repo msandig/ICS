@@ -33,19 +33,19 @@ Entwicklung eines Prototyps für die Online-Reservierung von Kino-Tickets
     * Modell :white_check_mark:
     * Erzeugen der Datenbankstruktur bei erstem Projektstartup :white_check_mark:
     * Implementierung von VO (Value Object) - Klassen :white_check_mark:
-    * Testen von VO's :x:
+    * Testen von VO's :ballot_box_with_check:
     * Implementierung von DAO's (Data Access Objects) :white_check_mark:
     * Testen der DAO's :ballot_box_with_check:
         * CRUD-Tests :ballot_box_with_check:
         * Dependency-Tests :x:
 * Manager
-    * Entwerfen der Verarbeitungslogik :x:
-    * Implementierung der Verarbeitungslogik :x:
-    * Testen der Verarbeitungslogik :x:
+    * Entwerfen der Verarbeitungslogik :white_check_mark:
+    * Implementierung der Verarbeitungslogik :white_check_mark:
+    * Testen der Verarbeitungslogik :ballot_box_with_check:
 * REST-Schnittstellen :x:
-    * Entwerfen von REST-Schnittstellenmuster :x:
-    * Implementieren der REST-Schnittstellen :x:
-    * Testen der REST-Schnittstellen :x:
+    * Entwerfen von REST-Schnittstellenmuster:white_check_mark:
+    * Implementieren der REST-Schnittstellen :white_check_mark:
+    * Testen der REST-Schnittstellen :ballot_box_with_check:
     
 ### Frontend
 
