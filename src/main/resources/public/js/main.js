@@ -46,7 +46,7 @@ window.setTimeout(function () {
 
 /////////////////////index.html////////////////////////////////////////////////////////////////////////////////////
 
-            if (document.URL == "http://localhost:63342/ICS2/public/index.html") {
+            if (document.URL.includes("index.html") == true) {
 
                 oMe.presentation.map(function (oAttribute) {
                     if (oAttribute.movie.title == "Aquaman Collection") {
