@@ -57,7 +57,39 @@
             <p>Tickets: <span id="counter">0</span></p>
             <p>Total: <b><span id="total">0</span></b> €</p>
 
-            <button class="btn checkout-button" onclick="reserve()">Reservieren</button>
+            <button href="#reserveModal" data-toggle="modal" class="btn checkout-button">Reservieren</button>
+            <!-- Modal -->
+            <div class="modal fade" id="reserveModal" role="dialog">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Geben Sie Ihre Daten für die Reservierung an:</h5>
+                            </br>
+                            </br>
+                        </div>
+                        <div class="modal-body">
+                            <h6><i>* Pflichtangaben</i></h6>
+                            <div class="form-group">
+                                <label for="vorname">Vorname: *</label>
+                                <input type="text" class="form-control" id="vorname" placeholder="Ihr Vorname" name="vorname">
+                            </div>
+                            <div class="form-group">
+                                <label for="nachname">Nachname: *</label>
+                                <input type="text" class="form-control" id="nachname" placeholder="Ihr Nachname" name="nachname">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email: *</label>
+                                <input type="email" class="form-control" id="email" placeholder="Ihre Email" name="email">
+                            </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" onclick="reserve()" data-dismiss="modal">Verbindlich reservieren</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
             <button class="btn checkout-button">Kaufen</button>
 
 
