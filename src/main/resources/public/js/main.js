@@ -420,11 +420,11 @@ window.setTimeout(function () {
 
             }
 
-        }, 100); //Timeout
+        }, 50); //Timeout
 
     }   //if
 
-}, 400); // TimeOut
+}, 100); // TimeOut
 
 
 
