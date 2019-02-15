@@ -36,7 +36,7 @@ window.setTimeout(
                 oMe.presentation = JSON.parse(xhr.response);
             }
         }
-    }, 100);
+    }, 1);
 
 window.setTimeout(function () {
 
@@ -420,11 +420,11 @@ window.setTimeout(function () {
 
             }
 
-        }, 200); //Timeout
+        }, 100); //Timeout
 
     }   //if
 
-}, 500); // TimeOut
+}, 400); // TimeOut
 
 
 
